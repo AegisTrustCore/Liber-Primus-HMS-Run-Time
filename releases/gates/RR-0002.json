@@ -3,7 +3,7 @@
   "schema_version": "1.1.0",
   "release_id": "RR-0002",
   "release_type": "RESEARCH",
-  "status": "PENDING",
+  "status": "APPROVED",
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
@@ -14,7 +14,7 @@
     "intended_tag": "RR-0002"
   },
   "common_checks": {
-    "publication_approved": false,
+    "publication_approved": true,
     "secret_scan_passed": true,
     "rights_reviewed": true,
     "provenance_complete": true,
@@ -32,16 +32,16 @@
     }
   },
   "human_approval": {
-    "approved": false,
-    "approver": null,
-    "approved_at": null,
-    "approved_subject_sha256": null
+    "approved": true,
+    "approver": "coreystilwell3-eng",
+    "approved_at": "2026-08-13T13:28:14-05:00",
+    "approved_subject_sha256": "9acb3f90fd206cfeba29256c1ec90cc7fa2faf7fcabf01318fb90c459530f780"
   },
   "notes": [
     "The exact release subject is the normalized E1059 ledger-verification package bound by RR-0002.json; no other active research route is included.",
     "The claim closes only OutGuess 0.13 with the default-key path on the declared hashed carriers. It does not claim that LP2 or steganography generally is solved or exhausted.",
     "All 75 extraction ledgers, the complete detector ledger, frozen controls, source archive identity, and a portable verifier are retained.",
     "Reproduction remains PARTIAL because canonical JPEG carriers and large coefficient bitmaps are not redistributed; the public verifier reproduces the complete ledger audit and decision.",
-    "Automation prepared and validated this exact release subject but did not grant publication approval."
+    "The repository owner explicitly approved the exact RR-0002 subject on 2026-08-13; automation recorded but did not originate that approval."
   ]
 }
