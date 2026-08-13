@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "RR-0002",
+  "release_type": "RESEARCH",
+  "candidate_commit_sha": "903a44bdbdd87b56f86e7e6ac7347b05d3b14839",
+  "intended_tag": "RR-0002",
+  "environment_id": "ENV-0003",
+  "release_notes": "research/runsets/RSET-0003/START-HERE.md",
+  "artifacts": [
+    {"name": "research/runsets/RSET-0003/RSET-0003.zip", "sha256": "7e4b9072a7abc0ac4c4f61d10f80a8ea90e2e81af7457b302e200f4d4a37ea1b"},
+    {"name": "research/runs/RUN-0008/RUN-0008.zip", "sha256": "c2b8bf3d53888151c4061abcce21192afc99edf981cf3a7a51e5606f76d192fd"},
+    {"name": "research/results/RES-0008/RES-0008.zip", "sha256": "a10cd3d2284b8cd6360042969ebfa61df056ae771472b3aecd531acd2e9be536"},
+    {"name": "research/capsules/CAP-0003/CAP-0003.zip", "sha256": "42636e8794bcd9d25bb9ac0660306291a5465dd6809f737ed399122cc0c5a026"},
+    {"name": "research/runsets/RSET-0003/START-HERE.md", "sha256": "c2bac1e02e845643a52b2796b07b6e4f6c03fd7d3b029c85dd9197ad6841b903"},
+    {"name": "releases/environments/ENV-0003.json", "sha256": "7b4c4f577ac6e77b0c52ea4e9f5a30d0c39159f4e7cf1e466afa56a3317c2ca9"}
+  ]
+}

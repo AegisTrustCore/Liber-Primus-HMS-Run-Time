@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "RR-0002",
+  "release_type": "RESEARCH",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "903a44bdbdd87b56f86e7e6ac7347b05d3b14839",
+    "release_manifest": "releases/manifests/RR-0002.json",
+    "release_manifest_sha256": "5a370ced98c6329bdd3ea2e151201f3baed1a19c432978fad73f9003d552b2c4",
+    "environment_id": "ENV-0003",
+    "intended_tag": "RR-0002"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "research": {
+      "claims_bounded": true,
+      "complete_family_retained": true,
+      "controls_recorded": true,
+      "corrections_linked": true,
+      "clean_reproduction_passed": true
+    }
+  },
+  "human_approval": {
+    "approved": false,
+    "approver": null,
+    "approved_at": null,
+    "approved_subject_sha256": null
+  },
+  "notes": [
+    "The exact release subject is the normalized E1059 ledger-verification package bound by RR-0002.json; no other active research route is included.",
+    "The claim closes only OutGuess 0.13 with the default-key path on the declared hashed carriers. It does not claim that LP2 or steganography generally is solved or exhausted.",
+    "All 75 extraction ledgers, the complete detector ledger, frozen controls, source archive identity, and a portable verifier are retained.",
+    "Reproduction remains PARTIAL because canonical JPEG carriers and large coefficient bitmaps are not redistributed; the public verifier reproduces the complete ledger audit and decision.",
+    "Automation prepared and validated this exact release subject but did not grant publication approval."
+  ]
+}
