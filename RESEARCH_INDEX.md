@@ -17,8 +17,9 @@ This index answers three different questions separately: what is publicly verifi
 | Page 32 | Structural candidates and bounded negative results; rune prose remains unsolved | [Page 32 dossier](pages/page-032/README.md) |
 | Page 72 | Structural/register candidates; no reviewed record explicitly reports plaintext recovery | [Page 72 dossier](pages/page-072/README.md) |
 | Page 73 | Known-control replay candidate; selector interpretation corrected | [Page 73 dossier](pages/page-073/README.md) |
-| Negative results | Multiple bounded candidates identified; none packaged as a final public record yet | [Negative results](NEGATIVE_RESULTS.md) |
-| Corrections | Page 73 visible-hash causal-selector claim withdrawn | [Corrections](CORRECTIONS.md) |
+| Published closure run set | Five reviewed historical closure runs: acquisition null, three Page 32 negatives, and one anti-post-hoc correction | [RSET-0002](research/runsets/RSET-0002/README.md) |
+| Negative results | Four structured bounded negative/null Results are published as source-tree objects; RSET-0002 remains untagged | [Negative results](NEGATIVE_RESULTS.md) |
+| Corrections | Page 73 visible-hash causal-selector claim withdrawn; Page 32 terminal holdout eligibility narrowed | [Corrections](CORRECTIONS.md) |
 
 ## Public release roadmap
 

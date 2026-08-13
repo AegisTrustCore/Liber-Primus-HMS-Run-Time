@@ -1,0 +1,4 @@
+{
+  "description": "Compare fifteen signed displacement-transition residues with fifteen payload-junction GP29 residues positionwise and calculate the binomial upper tail under p=1/29.",
+  "implementation": "scripts/reproduce_rset_0002.py"
+}

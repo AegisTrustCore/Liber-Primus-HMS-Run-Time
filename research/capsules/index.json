@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "object_type": "CAPSULES",
-  "count": 1,
+  "count": 2,
   "entries": [
     {
       "id": "CAP-0001",
@@ -14,6 +14,18 @@
       "package": "CAP-0001/CAP-0001.zip",
       "package_sha256": "0916e542fdff927692a656b90fe6362a3549d240c052a6f3bc87539d1ea1bc90",
       "result_page": "CAP-0001/result.html"
+    },
+    {
+      "id": "CAP-0002",
+      "title": "Page 32 manifest-interpretation closures",
+      "status": "PUBLISHED",
+      "reproduction_status": null,
+      "page": null,
+      "method": null,
+      "capsule": null,
+      "package": "CAP-0002/CAP-0002.zip",
+      "package_sha256": "61c28d7d1d0f33aa4af058e65a6063513ec41b4ef02a89fcee2d37438936fac4",
+      "result_page": "CAP-0002/result.html"
     }
   ]
 }

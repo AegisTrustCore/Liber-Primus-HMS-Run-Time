@@ -1,0 +1,26 @@
+{
+  "source_system": "UNKNOWN",
+  "historical_source": {
+    "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+    "original_identifier": "E1607_PAGE32_SPIRAL_TURN_PAYLOAD_PAGE_BOUNDARY_HOLDOUT_v1.zip",
+    "source_preserved": true,
+    "sha256": "4ba71d8db14079063a064dc5fb828de70c8e5dce7e61a9948803cc8d6de7dd11",
+    "size_bytes": 18847
+  },
+  "environment_manifest": "releases/environments/ENV-0002.json",
+  "parent_records": [],
+  "source_paths": [],
+  "migration": {
+    "historical": true,
+    "original_run": "E1607",
+    "original_source": "Personal Research",
+    "migrated_at": "2026-08-13T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Converted historical fields to the HMS run schema.",
+      "Preserved the contract, report, result, and ledger as normalized UTF-8 text.",
+      "Added an independent standard-library reproduction.",
+      "Excluded the full rune transcription and forward next-slice instructions."
+    ]
+  }
+}

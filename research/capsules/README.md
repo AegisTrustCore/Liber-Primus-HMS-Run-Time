@@ -7,3 +7,4 @@ The JSON index is authoritative for discovery; HTML, CSV, and Markdown are gener
 - [CSV index](index.csv)
 
 - [CAP-0001 — Public verification foundation](CAP-0001/README.md)
+- [CAP-0002 — Page 32 manifest-interpretation closures](CAP-0002/README.md)

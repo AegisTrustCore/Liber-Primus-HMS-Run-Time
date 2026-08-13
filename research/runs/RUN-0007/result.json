@@ -1,0 +1,14 @@
+{
+  "run_id": "RUN-0007",
+  "status": "COMPLETE",
+  "result_class": "CORRECTION",
+  "summary": "NO_ELIGIBLE_TERMINAL_HOLDOUT",
+  "metrics": {
+    "audited_targets": 6,
+    "eligible_targets": 0
+  },
+  "acceptance": {
+    "passed": false,
+    "criterion": "At least one independently withheld, predeclared terminal endpoint exists."
+  }
+}

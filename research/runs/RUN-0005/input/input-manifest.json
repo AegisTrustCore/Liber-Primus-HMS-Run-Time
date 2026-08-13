@@ -1,0 +1,17 @@
+{
+  "run_id": "RUN-0005",
+  "inputs": [
+    {
+      "id": "TURN-BOUNDARY-LEDGER",
+      "path": "research/runs/RUN-0005/historical/turn_boundary_ledger.csv",
+      "sha256": "587da09feca4528c787598910c98daac68f6dd2233404d21c76ac7e5ff4b5257",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "LP-RUNES-TEXT",
+      "path": null,
+      "sha256": "5e0003aa7f7dde3b238d17c5f964790dbf6bf9db5edacc4a5ec0bad81c6f4bce",
+      "availability": "HASH_ONLY"
+    }
+  ]
+}

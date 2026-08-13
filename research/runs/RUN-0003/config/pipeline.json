@@ -1,0 +1,4 @@
+{
+  "description": "Query frozen URL forms, preserve CDX metadata, range-fetch exact WARC records, extract unnormalized response payloads, and compare direct SHA-512 with the declared target.",
+  "implementation": "NOT_PRESERVED"
+}

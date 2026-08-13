@@ -1,2 +1,3 @@
 id,title,status,reproduction_status,page,method,capsule,package,package_sha256,result_page
-RSET-0001,Public Verification Foundations,STAGED,,,,,RSET-0001/RSET-0001.zip,57b1b4e0499d5d2443865ff1438411be7982eb20adf333d9fd1a1c2641b7c6f9,RSET-0001/result.html
+RSET-0001,Public Verification Foundations,STAGED,,,,,RSET-0001/RSET-0001.zip,1154bc9226c19599532e38acb00090a2f8603f7283121a05037eba7af7cd0532,RSET-0001/result.html
+RSET-0002,Page 32 Closures and Acquisition Boundaries,PUBLISHED,,,,,RSET-0002/RSET-0002.zip,d8c726988dd2e9a662342df49b130befa36a0f9968cc2d4e98b459a16ead04cc,RSET-0002/result.html

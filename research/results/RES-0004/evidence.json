@@ -1,0 +1,11 @@
+{
+  "result_id": "RES-0004",
+  "controls": [
+    "Fourteen adjacent-pair leave-out controls.",
+    "No language optimization or alternate transformations."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0004/manifest.json"
+  ]
+}

@@ -1,0 +1,7 @@
+candidate_target,independent_holdout,reason
+Page order,False,Already used to formulate the earlier terminal interpretation.
+Operation modes,False,Already used in prior mode concordance.
+Page lengths,False,No frozen decoder maps the edge states to those lengths.
+Dot-family delimiters,False,No predeclared rule maps edge states to dot counts.
+Red-header fields,False,No source-authorized decoder existed before inspection.
+Internal punctuation,False,Not predicted by the frozen edge grammar.

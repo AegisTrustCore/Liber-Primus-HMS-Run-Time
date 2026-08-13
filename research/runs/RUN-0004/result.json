@@ -1,0 +1,15 @@
+{
+  "run_id": "RUN-0004",
+  "status": "COMPLETE",
+  "result_class": "BOUNDED_NEGATIVE",
+  "summary": "REJECT_NEGATIVE_DISPLACEMENT_AS_BLOCK_REVERSAL",
+  "metrics": {
+    "rr_rank": 3,
+    "rr_margin": -0.030043545034063257,
+    "max_control_rr_margin": 0.05369590033953564
+  },
+  "acceptance": {
+    "passed": false,
+    "criterion": "RR is best and its margin exceeds every corresponding adjacent-pair control."
+  }
+}

@@ -1,5 +1,9 @@
 # Page 32 Audit Dossier
 
+## Published structured closure records
+
+The [RSET-0002 package](../../research/runsets/RSET-0002/README.md) publishes three exact Page 32 bounded negatives and one holdout-eligibility correction. These records close only their frozen interpretations; they do not claim Page 32 is solved or structurally exhausted.
+
 Status: **SOURCE TRIAGE COMPLETE; REPRODUCTION PENDING**
 Priority: **1**
 

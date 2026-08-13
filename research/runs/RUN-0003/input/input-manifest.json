@@ -1,0 +1,11 @@
+{
+  "run_id": "RUN-0003",
+  "inputs": [
+    {
+      "id": "E1601-INVENTORY",
+      "path": null,
+      "sha256": null,
+      "availability": "HASH_NOT_RECORDED"
+    }
+  ]
+}

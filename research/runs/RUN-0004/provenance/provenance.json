@@ -1,0 +1,25 @@
+{
+  "source_system": "UNKNOWN",
+  "historical_source": {
+    "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+    "original_identifier": "E1606_PAGE32_SIGNED_DISPLACEMENT_BLOCK_REVERSAL_HOLDOUT_v1.zip",
+    "source_preserved": true,
+    "sha256": "5d358c3fac9dbf5e8a7ecb01cc0f2f9c8adf36ff0d3a4cd3499a7189f3bfc6e7",
+    "size_bytes": 20164
+  },
+  "environment_manifest": "releases/environments/ENV-0002.json",
+  "parent_records": [],
+  "source_paths": [],
+  "migration": {
+    "historical": true,
+    "original_run": "E1606",
+    "original_source": "Personal Research",
+    "migrated_at": "2026-08-13T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Converted historical fields to the HMS run schema.",
+      "Preserved the contract, report, result, and score ledger as normalized UTF-8 text.",
+      "Excluded the full rune transcription and forward next-slice instructions."
+    ]
+  }
+}

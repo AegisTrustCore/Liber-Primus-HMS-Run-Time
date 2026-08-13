@@ -1,0 +1,17 @@
+{
+  "run_id": "RUN-0006",
+  "inputs": [
+    {
+      "id": "GAP-JUNCTION-LEDGER",
+      "path": "research/runs/RUN-0006/historical/gap_junction_ledger.csv",
+      "sha256": "47377d5b649c00138303ed061f7c763825419bff204778754a2f7a49825bea9c",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "LP-RUNES-TEXT",
+      "path": null,
+      "sha256": "5e0003aa7f7dde3b238d17c5f964790dbf6bf9db5edacc4a5ec0bad81c6f4bce",
+      "availability": "HASH_ONLY"
+    }
+  ]
+}

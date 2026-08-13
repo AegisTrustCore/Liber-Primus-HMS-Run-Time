@@ -1,0 +1,14 @@
+{
+  "run_id": "RUN-0005",
+  "status": "COMPLETE",
+  "result_class": "BOUNDED_NEGATIVE",
+  "summary": "REJECT_SPIRAL_TURN_PAGE_BOUNDARY_CORRESPONDENCE",
+  "metrics": {
+    "overlap": 4,
+    "hypergeometric_upper_p": 0.09190809190809192
+  },
+  "acceptance": {
+    "passed": false,
+    "criterion": "Exact hypergeometric upper-tail p <= 0.01."
+  }
+}

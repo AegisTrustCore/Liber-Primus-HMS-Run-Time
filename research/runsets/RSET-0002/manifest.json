@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schemas/run-set.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RSET-0002",
+  "title": "Page 32 Closures and Acquisition Boundaries",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "purpose": "Publish reviewed evidence packages for five historical null, negative, and correction runs while preserving their exact claim boundaries.",
+  "run_ids": ["RUN-0003", "RUN-0004", "RUN-0005", "RUN-0006", "RUN-0007"],
+  "result_ids": ["RES-0003", "RES-0004", "RES-0005", "RES-0006", "RES-0007"],
+  "capsule_ids": ["CAP-0002"],
+  "selection_notes": [
+    "Selected because each conclusion is bounded and understandable.",
+    "Original nested ZIP identity and size are recorded in each Run.",
+    "Public packages preserve reviewed evidence but exclude full rune transcription and forward next-slice instructions.",
+    "E1607 through E1609 have independent public ledger reproductions; E1606 is partial because the original model implementation is absent; E1605 is historical-only because the network environment is not reconstructed."
+  ],
+  "release_notes": "Published through the main-branch Research Archive as a portable public download. This source publication does not imply a separately tagged GitHub Release or a Patreon attachment."
+}

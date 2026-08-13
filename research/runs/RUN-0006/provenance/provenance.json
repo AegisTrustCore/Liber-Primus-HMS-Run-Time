@@ -1,0 +1,26 @@
+{
+  "source_system": "UNKNOWN",
+  "historical_source": {
+    "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+    "original_identifier": "E1608_PAGE32_SIGNED_PRIME_GAP_TO_PAYLOAD_JUNCTION_VECTOR_v1.zip",
+    "source_preserved": true,
+    "sha256": "23c9ddbc117f86f75d151cdcb5d239c9bb7ab808085ba1f3c64412c03712ba9c",
+    "size_bytes": 19086
+  },
+  "environment_manifest": "releases/environments/ENV-0002.json",
+  "parent_records": [],
+  "source_paths": [],
+  "migration": {
+    "historical": true,
+    "original_run": "E1608",
+    "original_source": "Personal Research",
+    "migrated_at": "2026-08-13T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Converted historical fields to the HMS run schema.",
+      "Preserved the contract, report, result, and ledger as normalized UTF-8 text.",
+      "Added an independent standard-library reproduction.",
+      "Excluded the full rune transcription and forward next-slice instructions."
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+HMS ENDEAVOUR
+RES-0005
+
+TITLE:
+Page 32 spiral turns did not pass the page-boundary holdout
+
+STATUS:
+BOUNDED_NEGATIVE / REPRODUCED
+
+CLAIM:
+The frozen six spiral turns overlapped four of six internal page-boundary blocks, but the exact hypergeometric upper-tail p-value of 0.091908092 did not pass the 0.01 threshold.
+
+WHY IT MATTERS:
+It records a suggestive visual overlap without overstating it as supported correspondence.
+
+SUPPORTED BY:
+RUN-0005
+
+WHAT THIS DOES NOT CLAIM:
+- That every relationship between Page 32 and page boundaries is invalid.
+- Any plaintext recovery.
+
+LIMITATIONS:
+- Only the exact declared position sets were tested.
+
+CURRENT INTERPRETATION:
+Bounded negative for the exact spiral-turn/page-boundary correspondence.

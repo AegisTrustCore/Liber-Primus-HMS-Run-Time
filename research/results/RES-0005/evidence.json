@@ -1,0 +1,12 @@
+{
+  "result_id": "RES-0005",
+  "controls": [
+    "Exact frozen positions and exact hypergeometric test.",
+    "No shifted corner or alternate boundary convention."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0005/manifest.json",
+    "scripts/reproduce_rset_0002.py"
+  ]
+}

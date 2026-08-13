@@ -1,0 +1,44 @@
+HMS ENDEAVOUR
+RUN-0005
+
+TITLE:
+Page 32 spiral-turn versus payload-page-boundary holdout
+
+STATUS:
+BOUNDED_NEGATIVE / REPRODUCED
+
+SUMMARY:
+Four of six spiral turns overlapped the six boundary-containing blocks, but the exact upper-tail p-value was 0.091908092 and failed the frozen 0.01 threshold.
+
+WHY THIS RUN EXISTS:
+To distinguish a visually suggestive Page 32 overlap from a statistically admissible structural correspondence.
+
+TARGET:
+Correspondence between six exact spiral-turn positions and six internal payload-page-boundary blocks
+
+METHOD:
+Calculate overlap of the two frozen six-position subsets and the exact hypergeometric upper tail over all six-position subsets of sixteen.
+
+PARAMETERS:
+{"alpha": 0.01, "boundary_blocks": [3, 5, 8, 10, 13, 15], "population": 16, "test": "hypergeometric_upper_tail", "turn_positions": [2, 3, 5, 7, 10, 13]}
+
+RESULT:
+REJECT_SPIRAL_TURN_PAGE_BOUNDARY_CORRESPONDENCE
+
+METRICS:
+- overlap: 4 of_6
+- hypergeometric_upper_p: 0.09190809190809192 probability
+
+CONTROLS:
+- No shifted turn definition, final-cell addition, block reordering, or line-boundary substitution was allowed.
+- The turn and page-boundary positions were frozen before scoring.
+
+INTERPRETATION:
+The exact tested turn/boundary correspondence is rejected at the frozen threshold despite a visually suggestive overlap.
+
+LIMITATIONS:
+- This rejects only the exact positionwise definition and threshold.
+- The full rune transcription and forward next-slice instructions are excluded from the public package.
+
+SOURCE:
+UNKNOWN / E1607_PAGE32_SPIRAL_TURN_PAYLOAD_PAGE_BOUNDARY_HOLDOUT_v1.zip

@@ -1,0 +1,11 @@
+{
+  "run_id": "RUN-0007",
+  "inputs": [
+    {
+      "id": "TERMINAL-HOLDOUT-LEDGER",
+      "path": "research/runs/RUN-0007/historical/terminal_holdout_eligibility.csv",
+      "sha256": "29a69f55aeba464cedb3b67819f28fdcfe06eda6f35bd51ee86f1b18403cd474",
+      "availability": "PUBLIC"
+    }
+  ]
+}

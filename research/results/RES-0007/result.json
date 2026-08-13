@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0007",
+  "evidence_class": "CORRECTION",
+  "claim": "All six audited terminal endpoint classes were ineligible for a new holdout because they were previously used, lacked a predeclared decoder, or were not predicted by the frozen grammar.",
+  "current_interpretation": "No further claim strength is admissible from the inspected terminal features under this route."
+}
