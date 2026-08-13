@@ -45,11 +45,15 @@ def write_json(path: Path, value: object) -> None:
     write_text(path, json.dumps(value, ensure_ascii=False, indent=2))
 
 
-def canonical_file_hash(path: Path) -> str:
+def canonical_file_bytes(path: Path) -> bytes:
     data = path.read_bytes()
     if b"\0" not in data:
         data = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
-    return hashlib.sha256(data).hexdigest()
+    return data
+
+
+def canonical_file_hash(path: Path) -> str:
+    return hashlib.sha256(canonical_file_bytes(path)).hexdigest()
 
 
 def badge(value: str) -> str:
@@ -251,7 +255,7 @@ def finalize_package(path: Path, zip_name: str) -> None:
             info.create_system = 3
             info.compress_type = zipfile.ZIP_STORED
             info.external_attr = 0o100644 << 16
-            archive.writestr(info, file.read_bytes())
+            archive.writestr(info, canonical_file_bytes(file))
 
 
 def index_html(kind: str, entries: list[dict]) -> str:

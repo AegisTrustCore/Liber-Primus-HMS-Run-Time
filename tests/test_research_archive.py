@@ -2,7 +2,7 @@ import json
 import unittest
 from pathlib import Path
 
-from scripts.build_research_archive import ROOT, validate_archive
+from scripts.build_research_archive import ROOT, canonical_file_bytes, validate_archive
 
 
 class ResearchArchiveTests(unittest.TestCase):
@@ -11,6 +11,16 @@ class ResearchArchiveTests(unittest.TestCase):
 
     def test_archive_is_internally_consistent(self):
         self.assertEqual(validate_archive(), [])
+
+    def test_archive_text_bytes_are_platform_canonical(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as directory:
+            lf = Path(directory) / "lf.txt"
+            crlf = Path(directory) / "crlf.txt"
+            lf.write_bytes(b"alpha\nbeta\n")
+            crlf.write_bytes(b"alpha\r\nbeta\r\n")
+            self.assertEqual(canonical_file_bytes(lf), canonical_file_bytes(crlf))
 
     def test_run_result_links_are_reciprocal(self):
         run = self.load("research/runs/RUN-0001/manifest.json")

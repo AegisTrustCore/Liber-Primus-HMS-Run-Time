@@ -96,7 +96,7 @@
       "method": "OUTGUESS_DEFAULT_KEY_MATCHED_NULL",
       "capsule": "CAP-0003",
       "package": "RUN-0008/RUN-0008.zip",
-      "package_sha256": "c2b8bf3d53888151c4061abcce21192afc99edf981cf3a7a51e5606f76d192fd",
+      "package_sha256": "f1df281413ba097c65a972517ca4b103cf8cfc6be5fe9ec4d3e666d5af171724",
       "result_page": "RUN-0008/result.html"
     }
   ]
