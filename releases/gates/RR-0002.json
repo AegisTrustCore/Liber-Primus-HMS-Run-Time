@@ -7,9 +7,9 @@
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
-    "candidate_commit_sha": "903a44bdbdd87b56f86e7e6ac7347b05d3b14839",
+    "candidate_commit_sha": "f987c4f26e3953242fce1460fd9caca8ad3b7275",
     "release_manifest": "releases/manifests/RR-0002.json",
-    "release_manifest_sha256": "5a370ced98c6329bdd3ea2e151201f3baed1a19c432978fad73f9003d552b2c4",
+    "release_manifest_sha256": "9acb3f90fd206cfeba29256c1ec90cc7fa2faf7fcabf01318fb90c459530f780",
     "environment_id": "ENV-0003",
     "intended_tag": "RR-0002"
   },
