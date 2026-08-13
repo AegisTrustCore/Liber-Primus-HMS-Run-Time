@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import os
 import shutil
+import subprocess
 import sys
 import zipfile
 from pathlib import Path
@@ -65,21 +66,23 @@ def write_package(stage: Path, output: Path) -> Path:
 
 def build_executable(entry: str, name: str, stage: Path, work: Path, windowed: bool) -> None:
     try:
-        import PyInstaller.__main__
+        import PyInstaller
     except ImportError as error:
         raise SystemExit("PyInstaller 6.22.0 is required: python -m pip install -r requirements-build.txt") from error
     args = [
-        str(ROOT / entry), "--name", name, "--onefile", "--clean", "--noconfirm",
+        sys.executable, "-m", "PyInstaller", str(ROOT / entry), "--name", name, "--onefile", "--clean", "--noconfirm",
         "--distpath", str(stage), "--workpath", str(work / name), "--specpath", str(work / "spec"),
         "--paths", str(ROOT),
     ]
     args.append("--windowed" if windowed else "--console")
-    PyInstaller.__main__.run(args)
+    subprocess.run(args, cwd=ROOT, check=True, env=os.environ.copy())
 
 
 def main() -> int:
     if os.name != "nt":
         raise SystemExit("This builder creates the declared Windows x64 package and must run on Windows.")
+    os.environ["SOURCE_DATE_EPOCH"] = "1786578000"
+    os.environ["PYTHONHASHSEED"] = "0"
     dist = ROOT / "dist"
     work = ROOT / "build" / "gp29-windows"
     stage = work / "package"
