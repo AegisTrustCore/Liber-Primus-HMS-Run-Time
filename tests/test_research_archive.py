@@ -31,6 +31,10 @@ class ResearchArchiveTests(unittest.TestCase):
         run_set = self.load("research/runsets/RSET-0002/manifest.json")
         self.assertEqual(run_set["publication_status"], "PUBLISHED")
 
+    def test_e1059_run_set_remains_staged(self):
+        run_set = self.load("research/runsets/RSET-0003/manifest.json")
+        self.assertEqual(run_set["publication_status"], "STAGED")
+
     def test_public_status_matches_archive_counts_and_run_set_states(self):
         archive = self.load("research/archive-index.json")
         project_status = (ROOT / "PROJECT_STATUS.md").read_text(encoding="utf-8")
@@ -44,8 +48,26 @@ class ResearchArchiveTests(unittest.TestCase):
         self.assertIn(summary, project_status)
         self.assertIn("`RSET-0001` remains `STAGED`", project_status)
         self.assertIn("`RSET-0002` is `PUBLISHED`", project_status)
-        self.assertIn("Seven Results", research_index)
+        self.assertIn("`RSET-0003` remains `STAGED`", project_status)
+        self.assertIn("Eight Results", research_index)
         self.assertNotIn("draft PR #6", project_status)
+
+    def test_e1059_public_verifier(self):
+        import subprocess
+        import sys
+
+        verifier = ROOT / "research/runs/RUN-0008/evidence/verify_e1059.py"
+        completed = subprocess.run(
+            [sys.executable, str(verifier)],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        result = json.loads(completed.stdout)
+        self.assertEqual(result["passed"], 13)
+        self.assertEqual(result["failed"], 0)
 
     def test_run_set_zip_contains_member_packages(self):
         import zipfile

@@ -11,11 +11,15 @@ The [RSET-0002 archive](research/runsets/RSET-0002/README.md) packages four boun
 
 Each Result states the tested family and what the negative does not establish.
 
+The staged [RSET-0003 archive](research/runsets/RSET-0003/START-HERE.md) adds:
+
+- [`RES-0008`](research/results/RES-0008/README.md) — no LP2 page separated under the exact frozen OutGuess 0.13 default-key path; other keys, carriers, tools, and steganography generally remain outside scope.
+
 Negative results are part of the evidence record. A failed candidate, rejected transformation, or null control can prevent repeated work and narrow the search space.
 
 ## Current ledger
 
-Four bounded negative/null Results now have structured public source-tree packages. Their curated Run Set, `RSET-0002`, is published on `main` with a portable ZIP but has not been promoted to a separately tagged GitHub Release asset.
+Five bounded negative/null Results now have structured public source-tree packages. `RSET-0002` is published on `main`; the E1059 package is collected in staged `RSET-0003`. Neither has been promoted to a separately tagged GitHub Release asset.
 
 The source workspace contains many likely negative, null, control, and bounded-rejection outputs. They will be promoted only after the tested claim, parameters, success criterion, actual outcome, and limits of the rejection are documented.
 

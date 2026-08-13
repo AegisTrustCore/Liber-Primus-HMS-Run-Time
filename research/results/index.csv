@@ -6,3 +6,4 @@ RES-0004,Negative Page 32 displacements did not support block reversal,BOUNDED_N
 RES-0005,Page 32 spiral turns did not pass the page-boundary holdout,BOUNDED_NEGATIVE,REPRODUCED,,,CAP-0002,RES-0005/RES-0005.zip,faacb2d5184f36db1438d2035009a0cbd3f8dba6e7cb23ee3ea20f6f998ecd53,RES-0005/result.html
 RES-0006,Page 32 signed prime gaps did not match payload-junction residues,BOUNDED_NEGATIVE,REPRODUCED,,,CAP-0002,RES-0006/RES-0006.zip,14ed2c47d0121f0ae5527e4e877503087cc369f7e74261dca5c60b18937aea6e,RES-0006/result.html
 RES-0007,No eligible terminal holdout remained for the Page 32 red edge,CORRECTION,REPRODUCED,,,CAP-0002,RES-0007/RES-0007.zip,daa56df1792447804bb8d96df0140b3d9efeed25c6d665e31f9e153eba72e775,RES-0007/result.html
+RES-0008,Default-key OutGuess does not separate an LP2 page,BOUNDED_NEGATIVE,PARTIAL,,,CAP-0003,RES-0008/RES-0008.zip,a10cd3d2284b8cd6360042969ebfa61df056ae771472b3aecd531acd2e9be536,RES-0008/result.html

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "object_type": "CAPSULES",
-  "count": 2,
+  "count": 3,
   "entries": [
     {
       "id": "CAP-0001",
@@ -26,6 +26,18 @@
       "package": "CAP-0002/CAP-0002.zip",
       "package_sha256": "61c28d7d1d0f33aa4af058e65a6063513ec41b4ef02a89fcee2d37438936fac4",
       "result_page": "CAP-0002/result.html"
+    },
+    {
+      "id": "CAP-0003",
+      "title": "E1059 default-key OutGuess branch closure",
+      "status": "PUBLISHED",
+      "reproduction_status": null,
+      "page": null,
+      "method": null,
+      "capsule": null,
+      "package": "CAP-0003/CAP-0003.zip",
+      "package_sha256": "42636e8794bcd9d25bb9ac0660306291a5465dd6809f737ed399122cc0c5a026",
+      "result_page": "CAP-0003/result.html"
     }
   ]
 }

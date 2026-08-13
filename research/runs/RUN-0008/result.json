@@ -1,0 +1,18 @@
+{
+  "run_id": "RUN-0008",
+  "status": "COMPLETE",
+  "result_class": "BOUNDED_NEGATIVE",
+  "summary": "REMOVE_OUTGUESS_DEFAULT_KEY_EXTRACTION_FROM_ACTIVE_LP2_KEY_CHANNELS",
+  "metrics": {
+    "canonical_pages": 75,
+    "independent_retrieval_matches": 75,
+    "dominant_FFFFFFFF_headers": 65,
+    "known_control_detector_positives": 10,
+    "false_control_rejections": 6,
+    "lp2_detector_positives": 0
+  },
+  "acceptance": {
+    "passed": true,
+    "criterion": "Only known LP1 controls separate; no LP2 page is a detector positive or familywise matched-null anomaly under the frozen test."
+  }
+}

@@ -1,0 +1,7 @@
+name,value,unit
+canonical_pages,75,pages
+independent_retrieval_matches,75,of_75
+dominant_FFFFFFFF_headers,65,pages
+known_control_detector_positives,10,of_10
+false_control_rejections,6,of_6
+lp2_detector_positives,0,of_58

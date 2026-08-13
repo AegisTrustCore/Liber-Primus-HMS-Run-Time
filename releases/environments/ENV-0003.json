@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schemas/environment-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "id": "ENV-0003",
+  "hms_version": "E1059 normalized public-evidence candidate",
+  "engine": "CPython 3.12.10",
+  "operating_system": "Windows 11",
+  "architecture": "x86_64",
+  "dependencies": [],
+  "encoding": "UTF-8",
+  "alphabet_mapping": "Not applicable; this verifier evaluates extraction metadata and detector ledgers.",
+  "page_numbering": "Physical Liber Primus page-image index 00 through 74; LP1 is 00-16 and LP2 is 17-74.",
+  "corpus_manifest_id": "E1059-CANONICAL-PAGE-MANIFEST",
+  "random_seed": null,
+  "container_or_lock_hash": null
+}

@@ -1,0 +1,1 @@
+PASS — 13/13 normalized E1059 evidence checks; active LP2 default-key OutGuess leads: none.

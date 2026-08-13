@@ -8,3 +8,4 @@ The JSON index is authoritative for discovery; HTML, CSV, and Markdown are gener
 
 - [RSET-0001 — Public Verification Foundations](RSET-0001/README.md)
 - [RSET-0002 — Page 32 Closures and Acquisition Boundaries](RSET-0002/README.md)
+- [RSET-0003 — E1059 Default-Key OutGuess Closure](RSET-0003/README.md)

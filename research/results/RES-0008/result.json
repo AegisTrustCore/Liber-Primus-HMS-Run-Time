@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0008",
+  "evidence_class": "BOUNDED_NEGATIVE",
+  "claim": "Across the declared 75 canonical carriers, the frozen default-key OutGuess 0.13 test recognized all ten known LP1 positive controls but no LP2 page separated from the repeated FFFFFFFF false-header distribution or its page-specific matched null.",
+  "current_interpretation": "Remove the tested default-key OutGuess extraction path from active LP2 key channels and retain it only as a regression and canonical-carrier provenance control."
+}

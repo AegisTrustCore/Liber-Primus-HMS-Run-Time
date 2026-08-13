@@ -1,0 +1,16 @@
+{
+  "bitmap": "30.bitmap",
+  "usable_bits": 640118,
+  "raw_header_hex": "ffffffff",
+  "decoded_header_hex": "c0a128e3",
+  "seed": 41408,
+  "declared_length": 58152,
+  "recovered_length": 58151,
+  "missing_bytes": 1,
+  "complete": false,
+  "final_iterator_offset": 640118,
+  "capacity_margin_bits": 0,
+  "error": "EOFError((640118, 640118))",
+  "output_sha256": "554f4c459a61232c0813f1e0ca65c00b7ca42635402dbc5e894e774a2f533a01",
+  "raw_sha256": "308d44b87167bf54387921d5d14aa102f3a3672a888713529801e145cb9e628f"
+}

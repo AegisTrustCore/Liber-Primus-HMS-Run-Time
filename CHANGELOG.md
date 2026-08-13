@@ -8,7 +8,8 @@ All notable public software and repository changes are recorded here. Research p
 
 - Staged `RSET-0001` with the published OpenPGP artifact replay and Expedition-verifier synthetic control.
 - Published `RSET-0002` with five historical closure runs, four bounded negative/null Results, and one correction.
-- Added seven first-class Runs, seven Results, two Capsules, downloadable packages, generated indexes, provenance, and checksums.
+- Staged `RSET-0003` with `RUN-0008`/`RES-0008`, the E1059 default-key OutGuess bounded closure, all 75 retained extraction ledgers, and a portable verifier.
+- Added eight first-class Runs, eight Results, three Capsules, downloadable packages, generated indexes, provenance, and checksums.
 - Reconciled public status documents with the canonical Research Archive indexes; verified new LP plaintext remains zero.
 
 ### In development
