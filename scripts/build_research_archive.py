@@ -240,13 +240,14 @@ def finalize_package(path: Path, zip_name: str) -> None:
     )
     lines = [f"{canonical_file_hash(file)}  {file.relative_to(path).as_posix()}" for file in files]
     write_text(path / "SHA256SUMS", "\n".join(lines))
-    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_STORED) as archive:
         for file in sorted(
             (p for p in path.rglob("*") if p.is_file() and p != zip_path),
             key=sort_key,
         ):
             info = zipfile.ZipInfo(f"{path.name}/{file.relative_to(path).as_posix()}", date_time=(2026, 8, 13, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
+            info.create_system = 3
+            info.compress_type = zipfile.ZIP_STORED
             info.external_attr = 0o100644 << 16
             archive.writestr(info, file.read_bytes())
 

@@ -5,31 +5,31 @@
       "id": "RUN-0001",
       "type": "RUN",
       "path": "bundles/RUN-0001.zip",
-      "sha256": "080780222980043c6c127ff431fd84367b52a6509445c2f0861256847fb111f9"
+      "sha256": "c7f8997dfc332b0e4eb23ed6863336429b2ee3840da0dca2d6732dc469ae5e7e"
     },
     {
       "id": "RUN-0002",
       "type": "RUN",
       "path": "bundles/RUN-0002.zip",
-      "sha256": "b00cf5f0763a69b1f374ff44df7292bfa6092d1eb046ebdf20360ff4ab8eacb5"
+      "sha256": "3d5f69a000757990c87f28041b2e993d85582c194de5c80facc7f89719396fab"
     },
     {
       "id": "RES-0001",
       "type": "RESULT",
       "path": "bundles/RES-0001.zip",
-      "sha256": "195919555c706e38eaddd6a81cf108740ea54153526209739804c0815b676d16"
+      "sha256": "346835bd2521825b187c988bf0a41520c6ef21a659c42459348f496a78a65caf"
     },
     {
       "id": "RES-0002",
       "type": "RESULT",
       "path": "bundles/RES-0002.zip",
-      "sha256": "eb60a2ed2506a64d60e50213841b810a19a225b2b299df6eddaf7f237ca1bd18"
+      "sha256": "0c2f070b6a611dc3db8114a8c0f185d63dddc66aba5273ad60668d02deb1e64a"
     },
     {
       "id": "CAP-0001",
       "type": "CAPSULE",
       "path": "bundles/CAP-0001.zip",
-      "sha256": "d46eca642039fbff0e03e99c1e3f03a4eb7d94d81ce631177147001b7f58f748"
+      "sha256": "0916e542fdff927692a656b90fe6362a3549d240c052a6f3bc87539d1ea1bc90"
     }
   ]
 }
