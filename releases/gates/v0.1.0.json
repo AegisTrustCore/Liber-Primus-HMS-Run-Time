@@ -9,7 +9,7 @@
     "schema_version": "1.0.0",
     "candidate_commit_sha": "4bcef7e5b86cfca29fff96f720887a6f64285346",
     "release_manifest": "releases/manifests/v0.1.0.json",
-    "release_manifest_sha256": "beb8b3c95d64cbf7de9e7434a98a416f78786691a508533d10557be3a4c69fa8",
+    "release_manifest_sha256": "061472e5c350a6d3b97e8b4db6c7984b1acd42ff2811c2decb89a018823bb67c",
     "environment_id": "ENV-0001",
     "intended_tag": "v0.1.0"
   },
@@ -36,7 +36,7 @@
     "approved": true,
     "approver": "coreystilwell3-eng (repository owner)",
     "approved_at": "2026-08-13T06:10:00Z",
-    "approved_subject_sha256": "beb8b3c95d64cbf7de9e7434a98a416f78786691a508533d10557be3a4c69fa8"
+    "approved_subject_sha256": "061472e5c350a6d3b97e8b4db6c7984b1acd42ff2811c2decb89a018823bb67c"
   },
   "notes": [
     "Approval records the repository owner's explicit instruction to complete the v0.1.0 release after PR #1 passed the final boundary audit.",

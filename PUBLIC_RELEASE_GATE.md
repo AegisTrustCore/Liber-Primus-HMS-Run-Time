@@ -12,7 +12,7 @@ Every gate binds approval to one canonical manifest under `releases/manifests/`.
 - the subject schema version;
 - the intended tag.
 
-The human approval record repeats the approved manifest digest. If the manifest bytes, candidate commit, environment, intended tag, or subject digest changes, validation fails and the existing approval is invalid. A modified subject must return to `PENDING` and receive a new named human decision.
+The human approval record repeats the approved manifest digest. The digest is computed from canonical JSON—UTF-8, sorted object keys, compact separators, and no insignificant whitespace—so line-ending and formatting differences cannot change the subject. If the manifest's semantic content, candidate commit, environment, intended tag, or subject digest changes, validation fails and the existing approval is invalid. A modified subject must return to `PENDING` and receive a new named human decision.
 
 ## Common and type-specific gates
 

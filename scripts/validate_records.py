@@ -3,8 +3,8 @@
 
 from __future__ import annotations
 
-import json
 import hashlib
+import json
 import re
 import sys
 from pathlib import Path
@@ -99,6 +99,17 @@ def load_json(path: Path) -> dict:
     if not isinstance(value, dict):
         raise ValueError("top-level JSON value must be an object")
     return value
+
+
+def canonical_json_sha256(value: dict) -> str:
+    """Hash semantic JSON content independently of whitespace and line endings."""
+    canonical = json.dumps(
+        value,
+        ensure_ascii=False,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    return hashlib.sha256(canonical).hexdigest()
 
 
 def validate_research_record(path: Path, seen_ids: set[str]) -> list[str]:
@@ -465,14 +476,14 @@ def validate_release_gates(directory: Path) -> tuple[list[str], dict[str, dict]]
             if manifest_path is None or not manifest_path.is_relative_to(manifest_root) or not manifest_path.is_file():
                 errors.append(f"{path.relative_to(ROOT)}: release_manifest must resolve under releases/manifests")
             else:
-                actual_digest = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
-                if subject_digest != actual_digest:
-                    errors.append(f"{path.relative_to(ROOT)}: release subject changed; human approval is invalid")
                 try:
                     manifest = load_json(manifest_path)
                 except (OSError, json.JSONDecodeError, ValueError) as exc:
                     errors.append(f"{manifest_path.relative_to(ROOT)}: {exc}")
                     manifest = {}
+                actual_digest = canonical_json_sha256(manifest)
+                if subject_digest != actual_digest:
+                    errors.append(f"{path.relative_to(ROOT)}: release subject changed; human approval is invalid")
                 comparisons = {
                     "release_id": release_id,
                     "release_type": release_type,
