@@ -5,7 +5,7 @@
   "release_type": "RESEARCH",
   "status": "PENDING",
   "classification": "PUBLIC",
-  "release_subject": {"schema_version":"1.0.0","candidate_commit_sha":"ce845dbe3e2f00e7dbab8111edf71d651d33add4","release_manifest":"releases/manifests/RR-0001.json","release_manifest_sha256":"5fb261398e73e93c3cd810c037cb2736ba95754e8259053f97abbd2d34681829","environment_id":"ENV-0002","intended_tag":"RR-0001"},
+  "release_subject": {"schema_version":"1.0.0","candidate_commit_sha":"a848a97ad3fb297f9836a3d6977c42456d358acc","release_manifest":"releases/manifests/RR-0001.json","release_manifest_sha256":"e7a123b3bb7a85e037cd6482c2896ac21ed72bb9c7a9016a16d9b411409442a6","environment_id":"ENV-0002","intended_tag":"RR-0001"},
   "common_checks": {"publication_approved":false,"secret_scan_passed":true,"rights_reviewed":true,"provenance_complete":true,"environment_recorded":true,"links_tested":true,"automated_validation_passed":true},
   "type_checks": {"research":{"claims_bounded":true,"complete_family_retained":true,"controls_recorded":true,"corrections_linked":true,"clean_reproduction_passed":true}},
   "human_approval": {"approved":false,"approver":null,"approved_at":null,"approved_subject_sha256":null},

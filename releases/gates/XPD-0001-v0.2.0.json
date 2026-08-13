@@ -7,9 +7,9 @@
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
-    "candidate_commit_sha": "a1e5c8e7cfbe61b7b8683436686a2429c6a910f8",
+    "candidate_commit_sha": "a848a97ad3fb297f9836a3d6977c42456d358acc",
     "release_manifest": "releases/manifests/XPD-0001-v0.2.0.json",
-    "release_manifest_sha256": "8bc4aee54011dce0e92ddd9e7502ffd55a4811378b09d5df777e8b65f497f836",
+    "release_manifest_sha256": "b7467da1fc52ed732e62227913a332d61098ca0d56d747dc54836b158c2fcbb8",
     "environment_id": "ENV-0002",
     "intended_tag": "XPD-0001-v0.2.0"
   },
