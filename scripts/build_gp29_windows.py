@@ -12,11 +12,11 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.1.0-rc.1"
+VERSION = "0.1.0-rc.2"
 PACKAGE_NAME = f"HMS-GP29-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 13, 0, 0, 0)
 
-START_HERE = """HMS GP29 Calculator v0.1.0-rc.1
+START_HERE = """HMS GP29 Calculator v0.1.0-rc.2
 
 WHAT IT IS
 A deterministic Gematria Primus calculator. It is not a decoder and makes no Liber Primus solve claim.
@@ -28,7 +28,24 @@ START
 - The desktop executable also supports HMS-GP29.exe --self-test for package qualification.
 
 INPUT
-Use the 29 supported runes, or explicit sound tokens separated by spaces or commas. Continuous Latin is rejected because sound segmentation would be ambiguous.
+Use ordinary Latin text, the 29 supported runes, or explicit sound tokens separated by spaces or commas. Latin mode uses the documented frozen longest-alias rule; it does not infer language or plaintext.
+
+OUTPUT
+Each rune reports its canonical L, R, prime, N, and Q values. Aggregate sums and documented residues are included in the visible result and JSON export.
+
+DOCUMENTED TESTS
+- Latin: CICADA -> Prime / GP sum 340
+- Tokens: F U/V TH -> Prime / GP sum 10
+- Rune: ᚠ -> Prime / GP sum 2
+- EXAMPLE.txt contains the UTF-8 Latin example.
+
+CLI EXAMPLES
+HMS-GP29-CLI.exe self-test
+HMS-GP29-CLI.exe gp29 CICADA --mode latin
+HMS-GP29-CLI.exe gp29 --file EXAMPLE.txt --mode latin
+
+JSON EXPORT
+In the desktop application, calculate first and select Export JSON. You choose the destination and filename in the Save dialog.
 
 PRIVACY
 The application is offline. It has no telemetry, accounts, or network features. Input files are read but never modified.
@@ -91,6 +108,7 @@ def main() -> int:
     build_executable("scripts/hms_runtime.py", "HMS-GP29-CLI", stage, work, False)
     build_executable("scripts/gp29_app.py", "HMS-GP29", stage, work, True)
     (stage / "START-HERE.txt").write_text(START_HERE, encoding="utf-8", newline="\n")
+    (stage / "EXAMPLE.txt").write_text("CICADA\n", encoding="utf-8", newline="\n")
     shutil.copyfile(ROOT / "LICENSE", stage / "LICENSE.txt")
     output = write_package(stage, dist / PACKAGE_NAME)
     print(f"Built {output}")
