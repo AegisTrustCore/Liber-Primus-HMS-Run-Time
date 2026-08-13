@@ -1,3 +1,3 @@
 id,title,status,reproduction_status,page,method,capsule,package,package_sha256,result_page
-RES-0001,Bundled historical Cicada 3301 OpenPGP artifact identity,VERIFIED,REPRODUCED,,,CAP-0001,RES-0001/RES-0001.zip,68fa5be2ab1464e43e8f77059f9c36357cebeb604e28685dfa31a620f7d45d94,RES-0001/result.html
-RES-0002,Expedition verifier synthetic control behavior,KNOWN_CONTROL,REPRODUCED,,,CAP-0001,RES-0002/RES-0002.zip,1dae2ab6ebd522920b8b6cfd8bb52e85a283e00a4fdbfac48a88ae7d5436d461,RES-0002/result.html
+RES-0001,Bundled historical Cicada 3301 OpenPGP artifact identity,VERIFIED,REPRODUCED,,,CAP-0001,RES-0001/RES-0001.zip,195919555c706e38eaddd6a81cf108740ea54153526209739804c0815b676d16,RES-0001/result.html
+RES-0002,Expedition verifier synthetic control behavior,KNOWN_CONTROL,REPRODUCED,,,CAP-0001,RES-0002/RES-0002.zip,eb60a2ed2506a64d60e50213841b810a19a225b2b299df6eddaf7f237ca1bd18,RES-0002/result.html

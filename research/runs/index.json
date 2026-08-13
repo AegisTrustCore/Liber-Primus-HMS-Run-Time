@@ -12,7 +12,7 @@
       "method": "ARTIFACT_IDENTITY_VERIFICATION",
       "capsule": "CAP-0001",
       "package": "RUN-0001/RUN-0001.zip",
-      "package_sha256": "f05014dc56c102f9b9d65c162b8814a46479f95631e24904d1039c8210cdb172",
+      "package_sha256": "080780222980043c6c127ff431fd84367b52a6509445c2f0861256847fb111f9",
       "result_page": "RUN-0001/result.html"
     },
     {
@@ -24,7 +24,7 @@
       "method": "SYNTHETIC_SOFTWARE_VERIFICATION",
       "capsule": "CAP-0001",
       "package": "RUN-0002/RUN-0002.zip",
-      "package_sha256": "1cdea40c56de908241e1afcfb30291aaa654016a4aebb0047defd890f5f0149d",
+      "package_sha256": "b00cf5f0763a69b1f374ff44df7292bfa6092d1eb046ebdf20360ff4ab8eacb5",
       "result_page": "RUN-0002/result.html"
     }
   ]
