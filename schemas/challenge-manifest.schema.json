@@ -14,17 +14,40 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "title", "status", "classification", "access_level", "challenge_type", "entrypoint", "verifier", "answer_sha256", "solution_status", "public_solution", "research_claim", "last_updated"],
+        "required": ["id", "title", "version", "status", "classification", "access_level", "challenge_type", "difficulty", "research_concept", "skill_taught", "instrument_used", "source_class", "evidence_ceiling", "beginner_entry", "entrypoint", "verifier", "answer_sha256", "public_hints", "solution_status", "public_solution", "research_claim", "last_updated"],
         "properties": {
           "id": {"type": "string", "pattern": "^XPD-[0-9]{4,}$"},
           "title": {"type": "string", "minLength": 1},
+          "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
           "status": {"enum": ["DRAFT", "RELEASE_CANDIDATE", "OPEN", "SOLVED", "ARCHIVED"]},
           "classification": {"const": "PUBLIC"},
           "access_level": {"const": "OBSERVER"},
           "challenge_type": {"enum": ["SYNTHETIC_METHOD_TRAINING", "PUBLIC_RESEARCH_REPRODUCTION", "PUBLIC_PUZZLE"]},
+          "difficulty": {"enum": ["DECKHAND", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL"]},
+          "research_concept": {"type": "string", "minLength": 1},
+          "skill_taught": {"type": "string", "minLength": 1},
+          "instrument_used": {"type": ["string", "null"]},
+          "source_class": {"enum": ["SYNTHETIC", "KNOWN_CONTROL", "PUBLIC_STRUCTURAL", "PUBLIC_RESEARCH"]},
+          "evidence_ceiling": {"enum": ["TRAINING", "KNOWN_CONTROL", "STRUCTURAL", "BOUNDED_NEGATIVE", "HYPOTHESIS"]},
+          "beginner_entry": {"type": "boolean"},
           "entrypoint": {"type": "string", "minLength": 1},
           "verifier": {"type": "string", "minLength": 1},
           "answer_sha256": {"pattern": "^[a-f0-9]{64}$"},
+          "public_hints": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "path", "sha256", "release_state"],
+              "properties": {
+                "id": {"type": "string", "pattern": "^HINT-[0-9]+$"},
+                "path": {"type": "string", "minLength": 1},
+                "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                "release_state": {"enum": ["PUBLIC", "DELAYED", "SEALED"]}
+              }
+            }
+          },
           "solution_status": {"enum": ["SEALED", "PUBLISHED"]},
           "public_solution": {"type": ["string", "null"]},
           "research_claim": {"type": "boolean"},

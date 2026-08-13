@@ -23,7 +23,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name="HMS-XPD-0001-Verifier-CLI-v0.1.0-Windows-x64",
+    name="HMS-XPD-0001-Verifier-CLI-v0.2.0-Windows-x64",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

@@ -21,14 +21,14 @@ Last reviewed: 2026-08-13
 - Canonical object/provenance model, deterministic environment manifest, and mandatory human-controlled Public Release Gate
 - Research privacy, compute-entitlement, discovery disclosure, release-signing, and free-workflow contracts
 
-## Released after the frozen foundation
+## Prepared after the frozen foundation
 
-- `RUN-0001`: bounded reproduction of the already-public historical OpenPGP artifact verification.
+- `RUN-0001`: bounded reproduction candidate for the already-public historical OpenPGP artifact verification.
 - `RUN-0002`: five synthetic acceptance and rejection tests for the canonical Expedition verifier core.
 - Distribution and UX standard separating developer source from customer-ready applications.
 - Automated public-boundary scan rejecting workstation paths and local endpoints.
 
-These additions do not modify the `v0.1.0` assets or claim an LP plaintext recovery.
+These additions are staged in draft PR #6. They do not modify the `v0.1.0` assets or claim an LP plaintext recovery, and `RR-0001` remains pending exact-subject approval.
 
 ## Source audit included in the foundation
 

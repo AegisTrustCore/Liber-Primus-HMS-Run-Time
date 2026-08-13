@@ -35,6 +35,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 - [Instrument registry](instruments/README.md) — the authoritative public tool-status page
 - [Distribution standard](docs/DISTRIBUTION_STANDARD.md) — when source becomes a usable customer release
 - [Public Expeditions](challenges/README.md) — free clues, puzzles, verifiers, and eventual solutions
+- [Expedition standard](docs/EXPEDITION_STANDARD.md) — beginner entry, hints, verification, and campaign quality gate
 - [Membership](MEMBERSHIP.md) — Patreon tiers and the current/planned capability boundary
 - [Architecture](ARCHITECTURE.md) — GitHub, Patreon, Runtime, Aegis, and Vault separation
 - [Governance](GOVERNANCE.md) — protected-branch and merge policy

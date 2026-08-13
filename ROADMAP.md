@@ -51,7 +51,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Capability | Status |
 |---|---|
 | Checksum and corpus-manifest verifier | IN DEVELOPMENT |
-| Public reproduction packages | RELEASED — RUN-0001 and RUN-0002 |
+| Public reproduction packages | RELEASE CANDIDATE — RUN-0001 and RUN-0002 |
 | ProofLock and notary verification | PLANNED |
 | Authenticated sockets and API | PLANNED |
 | Add-on architecture and plugin SDK | PLANNED |

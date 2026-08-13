@@ -2,6 +2,8 @@
 
 Public Expeditions are free, reproducible puzzles that teach HMS research methods. They are not Liber Primus translations and do not contain unpublished research unless a release explicitly says otherwise.
 
+All challenges follow the [Expedition Design Standard](../docs/EXPEDITION_STANDARD.md): discoverable entrance, objective verification, progressive hints, educational value, a canonical solution, and an explicit campaign state.
+
 ## Release states
 
 - `DRAFT` — being written; not available to participants
@@ -18,7 +20,7 @@ The machine-readable authority is [manifest.json](manifest.json). A challenge ap
 |---|---|---|---|
 | XPD-0001 | The Evidence Ledger | Synthetic method-training puzzle | Release candidate |
 
-Start with [Expedition 001](expedition-001/README.md). Its local verifier is usable during review, but the campaign begins only after the status changes to `OPEN` on the public branch.
+Start with [Expedition 001](expedition-001/README.md). It now includes a five-minute beginner route, fill-in worksheet, harmless extraction example, and [progressive public hints](expedition-001/HINTS.md). Its local source verifier is usable during review, but the campaign begins only after the status changes to `OPEN` on the public branch. Seeing the puzzle page does not mean the campaign is open.
 
 ## Access principle
 
