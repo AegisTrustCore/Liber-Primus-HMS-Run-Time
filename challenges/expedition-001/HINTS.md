@@ -1,14 +1,14 @@
-# Expedition 001 — Progressive Public Hints
+# Expedition 001 — Signal Ladder
 
 Status: **PUBLIC PRACTICE HINTS**
 
-These hints are ordered from lightest to strongest. Stop as soon as you can continue. They explain the route without publishing the sealed answer.
+Five transmissions follow, ordered from faintest to strongest. Stop as soon as the route becomes clear. The atmosphere is Cicada-inspired; the instructions are literal, and the sealed answer is not published here.
 
-## Hint 0 — What kind of puzzle is this?
+## Signal 0 — Listen before decoding
 
-Do not search for a cipher technique hidden in the prose. Each entry already tells you what happened. Your task is to name the **evidence state** using exactly one vocabulary label.
+There is no cipher technique hidden in the prose. Each entry already tells you what happened. Your task is to name the **evidence state** using exactly one vocabulary label.
 
-## Hint 1 — Ask one diagnostic question per log
+## Signal 1 — Five questions, five records
 
 1. Was a relationship reproduced without readable plaintext?
 2. Was an earlier interpretation narrowed or withdrawn?
@@ -18,13 +18,13 @@ Do not search for a cipher technique hidden in the prose. Each entry already tel
 
 Match each question to the vocabulary definition that answers it most precisely.
 
-## Hint 2 — Elimination rule
+## Signal 2 — One name is silent
 
 No selected label repeats. One vocabulary label is unused.
 
 None of the five fictional entries says that a new claim completed a release gate. That observation should help identify the unused label.
 
-## Hint 3 — Extraction rescue
+## Signal 3 — Remove the noise
 
 After choosing the labels, do not count punctuation or underscores. For example:
 
@@ -34,8 +34,8 @@ BOUNDED_NEGATIVE → BOUNDEDNEGATIVE
 
 Now count characters from 1, not 0. Use positions `2, 3, 3, 9, 1` in log order and join the extracted characters without separators.
 
-## Still stuck?
+## Signal 4 — Return to the ledger
 
-Re-read the short descriptions already provided in the worksheet’s “What happened?” column. Each is a plain-language restatement of the decisive phrase. The puzzle is testing classification discipline, not obscure Cicada knowledge.
+Re-read the short descriptions already provided in the worksheet’s “What happened?” column. Each is a plain-language restatement of the decisive phrase. The puzzle tests classification discipline, not obscure Cicada knowledge.
 
-The complete label-by-label solution remains sealed until the campaign solution gate.
+The complete label-by-label solution remains sealed until the campaign solution gate. Verify the record; do not invent a signal that is not there.

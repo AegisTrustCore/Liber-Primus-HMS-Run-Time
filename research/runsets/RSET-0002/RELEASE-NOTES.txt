@@ -39,10 +39,12 @@ Level: Reproduced correction.
 Does not prove: That the earlier retrospective observation is independently false.
 Next: Use a genuinely new source-authorized feature or retain retrospective status.
 
-READING HINTS
-1. Read what the result does not prove.
-2. Check whether replay support is REPRODUCED, PARTIAL, or HISTORICAL_ONLY.
-3. Follow RUN -> RES -> CAP to move from execution to conclusion to investigation.
+READING SIGNALS
+1. FIND THE BOUNDARY: read what the result does not prove.
+2. TEST THE ECHO: check whether replay support is REPRODUCED, PARTIAL, or HISTORICAL_ONLY.
+3. FOLLOW THE CHAIN: use RUN -> RES -> CAP to move from execution to conclusion to investigation.
+
+A PATTERN IS NOT A MESSAGE. A CLOSED ROUTE IS NOT A CLOSED BOOK.
 
 WHAT COMES NEXT
 1. Independent reproductions for RUN-0005 through RUN-0007.

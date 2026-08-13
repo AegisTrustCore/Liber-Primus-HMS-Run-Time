@@ -1,8 +1,10 @@
 # Start Here — RSET-0002
 
-This release closes several specific research routes. It does **not** claim a new Liber Primus translation.
+Five signals were examined. Four routes closed under their declared tests; one route never reached an eligible test. This release does **not** claim a new Liber Primus translation.
 
-## The release in one minute
+> **A pattern is not a message. A closed route is not a closed book. Verify before following the signal.**
+
+## The signal in one minute
 
 | Record | Simple result | Evidence level | Can you check it? |
 |---|---|---|---|
@@ -82,15 +84,15 @@ This release closes several specific research routes. It does **not** claim a ne
 
 **Next:** Use a genuinely new, source-authorized feature or leave the claim at retrospective status.
 
-## Three reading hints
+## Three signals for reading the evidence
 
-**Hint 1 — Read the boundary first.** Look for `This does not prove` before interpreting a result.
+**Signal 1 — Find the boundary.** Look for `This does not prove` before interpreting a result. The boundary is part of the evidence.
 
-**Hint 2 — Check reproducibility.** `REPRODUCED`, `PARTIAL`, and `HISTORICAL_ONLY` describe different levels of replay support.
+**Signal 2 — Test the echo.** `REPRODUCED`, `PARTIAL`, and `HISTORICAL_ONLY` describe how much of the transmission another researcher can replay.
 
-**Hint 3 — Follow the IDs.** A `RUN` records execution, a `RES` states the supported conclusion, and `CAP-0002` groups the investigation.
+**Signal 3 — Follow the chain.** A `RUN` records execution, a `RES` states the supported conclusion, and `CAP-0002` groups the investigation. If the chain breaks, stop there.
 
-## What comes next
+## The next transmission
 
 1. Collect independent reproductions of `RUN-0005` through `RUN-0007`.
 2. Reconstruct missing environment or implementation details for `RUN-0003` and `RUN-0004`.

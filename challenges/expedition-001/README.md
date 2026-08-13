@@ -12,6 +12,8 @@ Evidence ceiling: **TRAINING ONLY — NO LIBER PRIMUS RESEARCH CLAIM**
 
 > If you opened this page and did not know what to do, start with the five-minute route immediately below. You do not need Cicada knowledge, runes, cryptography, or HMS software.
 
+> **The signal is not the answer. The record of how you verified it is.**
+
 ## Your mission in one sentence
 
 Classify five fictional research log entries, extract one character from each classification label, join those characters into a five-letter answer, and check it locally.
@@ -67,7 +69,7 @@ Choose the most precise vocabulary label for each entry.
 | 4 | Previously known text recreated |  |  | 9 |  |
 | 5 | Proposed but not run |  |  | 1 |  |
 
-If you are stuck, open the [progressive public hints](HINTS.md). Read only one hint at a time.
+If the signal fades, open the [progressive public hints](HINTS.md). Reveal only one signal at a time; each one states its practical instruction directly.
 
 ## Check your answer
 
