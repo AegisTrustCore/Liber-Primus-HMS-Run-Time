@@ -1,8 +1,8 @@
 # Next Steps
 
-## Foundation freeze
+## Foundation released
 
-PR #1 remains `v0.1.0-rc.1` for publication-boundary review. Its scope is frozen: no new research packages, application features, or challenge launch will be added before merge.
+PR #1 passed the publication-boundary audit and was squash-merged. The separate release-state decision activated `v0.1.0` as the public research foundation.
 
 Completed foundation gates:
 
@@ -14,15 +14,9 @@ Completed foundation gates:
 - Machine-readable Public Release Gate with automation unable to supply human approval.
 - Patreon no-affiliation and GP29-status corrections.
 
-Still required before `v0.1.0`:
+The [release gate](releases/gates/v0.1.0.json) records the repository owner's named approval. The signed tag, checksums, and stable member-facing links bind the public release to that decision.
 
-1. Perform the final human review and explicitly approve [the pending gate](releases/gates/v0.1.0.json).
-2. Configure and document the HMS release-signing identity without placing its private key in the repository or automation context.
-3. Review and merge through protected `main` after all required checks pass.
-4. Generate `SHA256SUMS`, sign the tag and release artifacts, and publish `v0.1.0` only from the reviewed foundation merge.
-5. Update temporary Patreon branch/PR links to stable `main` or tagged-release URLs.
-
-## Progressive public sequence after `v0.1.0`
+## Progressive public sequence
 
 1. Release GP29 `v0.1` as a separately versioned free tool.
 2. Open Expedition 001 only after the foundation is live on the default branch.

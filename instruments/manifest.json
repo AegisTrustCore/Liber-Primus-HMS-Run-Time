@@ -3,8 +3,8 @@
   "schema_version": "1.0.0",
   "last_reviewed": "2026-08-13",
   "instruments": [
-    {"id":"public-record-validator","name":"Public Record Validator","purpose":"Enforce public record and dossier invariants.","status":"RELEASE_CANDIDATE","current_version":"0.1.0-rc.1","access_level":"OBSERVER","last_updated":"2026-08-12"},
-    {"id":"lp-source-audit","name":"LP Source Audit Inventory","purpose":"Hash and classify private intake while keeping raw metadata private.","status":"RELEASE_CANDIDATE","current_version":"0.1.0-rc.1","access_level":"OBSERVER","last_updated":"2026-08-12"},
+    {"id":"public-record-validator","name":"Public Record Validator","purpose":"Enforce public record and dossier invariants.","status":"RELEASED","current_version":"0.1.0","access_level":"OBSERVER","last_updated":"2026-08-13"},
+    {"id":"lp-source-audit","name":"LP Source Audit Inventory","purpose":"Hash and classify private intake while keeping raw metadata private.","status":"RELEASED","current_version":"0.1.0","access_level":"OBSERVER","last_updated":"2026-08-13"},
     {"id":"corpus-manifest-verifier","name":"Corpus Manifest Verifier","purpose":"Verify canonical corpus inputs and hashes.","status":"IN_DEVELOPMENT","current_version":null,"access_level":"OBSERVER","last_updated":"2026-08-12"},
     {"id":"public-gp29-calculator","name":"Public GP29 Calculator","purpose":"Evaluate explicit rune or token GP values with a deterministic public CLI.","status":"IN_DEVELOPMENT","current_version":null,"access_level":"OBSERVER","last_updated":"2026-08-12"},
     {"id":"advanced-gp-laboratory","name":"Advanced GP Laboratory","purpose":"Provide saved calculations, comparisons, and advanced analysis.","status":"PLANNED","current_version":null,"access_level":"CARTOGRAPHER","last_updated":"2026-08-12"},

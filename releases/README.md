@@ -1,8 +1,9 @@
 # Release State
 
 - [Current machine-readable state](release-state.json)
+- [`v0.1.0` release notes](v0.1.0.md)
 - [Foundation release-candidate notes](v0.1.0-rc.1.md)
-- [Pending `v0.1.0` Public Release Gate](gates/v0.1.0.json)
+- [Approved `v0.1.0` Public Release Gate](gates/v0.1.0.json)
 - [Foundation deterministic environment](environments/ENV-0001.json)
 - [Official release signing policy](../SIGNING.md)
 - [Public release catalog](../PUBLIC_RELEASES.md)

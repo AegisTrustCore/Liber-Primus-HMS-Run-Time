@@ -1,8 +1,8 @@
 # Project Status
 
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-13
 
-## Present in the foundation release candidate
+## Released in the `v0.1.0` foundation
 
 - Public repository boundary and release philosophy
 - Evidence, publication, and access-status definitions
@@ -21,7 +21,7 @@ Last reviewed: 2026-08-12
 - Canonical object/provenance model, deterministic environment manifest, and mandatory human-controlled Public Release Gate
 - Research privacy, compute-entitlement, discovery disclosure, release-signing, and free-workflow contracts
 
-## Source audit completed in the candidate branch
+## Source audit included in the foundation
 
 The first-pass audit covered the complete supplied Personal Research tree, including its nested More research collection:
 
@@ -53,19 +53,17 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 
 ## Immediate focus
 
-1. Complete the publication-boundary audit and merge the frozen foundation candidate.
-2. Tag the reviewed foundation as `v0.1.0`.
-3. Release GP29 `v0.1` separately.
-4. Open Expedition 001 after the foundation is live.
-5. Publish `RC-0001` only after clean reproduction and evidence packaging.
-6. Release HMS Endeavour Lite alpha through a separate capability review.
+1. Release GP29 `v0.1` separately.
+2. Open Expedition 001 through its own release decision.
+3. Publish `RC-0001` only after clean reproduction and evidence packaging.
+4. Release HMS Endeavour Lite alpha through a separate capability review.
 
 ## Platform launch state
 
-- GitHub: public repository connected; foundation changes remain in draft PR review.
+- GitHub: `v0.1.0` public research foundation released.
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
 - Public GP29 Calculator: in development and intentionally excluded from the frozen foundation candidate; planned as the next separate tool release.
 - Endeavour Lite and Liber Runtime: architecture started; runnable applications remain planned.
 - Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
-- Scope freeze: PR #1 accepts only foundation-boundary corrections until merge; Expedition 001 remains closed.
+- Scope: foundation content merged through PR #1; Expedition 001 remains closed pending its own release.

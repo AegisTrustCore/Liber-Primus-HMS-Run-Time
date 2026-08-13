@@ -2,6 +2,14 @@
 
 Official HMS software releases must be attributable to a documented HMS signing identity.
 
+## Current signing identity
+
+The `v0.1.x` release series uses OpenPGP fingerprint:
+
+`7B4E 8795 A984 2FB0 4301 114B 7A7B 2779 E2F1 8AE6`
+
+This HMS release key is distinct from the historical Cicada 3301 evidence key. Verification material is attached to the GitHub Release; the private key remains outside the repository and publication workflow.
+
 ## Required artifacts
 
 - Annotated, cryptographically signed Git tag.

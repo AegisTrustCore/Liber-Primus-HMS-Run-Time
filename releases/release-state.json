@@ -3,17 +3,17 @@
   "schema_version": "1.0.0",
   "last_reviewed": "2026-08-13",
   "github": {
-    "current_public_tag": null,
-    "main_state": "INITIAL_SHELL",
+    "current_public_tag": "v0.1.0",
+    "main_state": "FOUNDATION",
     "available_now": [
-      "Initial repository README",
-      "Apache License 2.0"
+      "Public research governance and evidence model",
+      "Sanitized Liber Primus source-audit summary",
+      "Page 32, 72, and 73 audit dossiers",
+      "Historical Cicada 3301 OpenPGP provenance verifier",
+      "Public record validator and release schemas",
+      "Synthetic Expedition 001 release candidate"
     ],
-    "release_candidate": {
-      "version": "v0.1.0-rc.1",
-      "status": "RELEASE_CANDIDATE",
-      "pull_request": "https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/pull/1"
-    }
+    "release_candidate": null
   },
   "research": {
     "published_record_count": 1,
