@@ -19,6 +19,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 - [Cicada 3301 / PGP provenance](CICADA_3301.md) — historical identity reference and non-affiliation boundary
 - [Public releases](PUBLIC_RELEASES.md) — what is actually available on GitHub now
 - [Public reproduction runs 001](research/runsets/RSET-0001/README.md) — structured, downloadable proof packages with no advanced LP route disclosure
+- [Public closure runs 002](research/runsets/RSET-0002/START-HERE.md) — five bounded historical closures with a portable evidence package
 - [Research index](RESEARCH_INDEX.md) — verified, control, open, negative, and corrected work
 - [Verified results](VERIFIED_RESULTS.md) — claims that have passed the public release gate
 - [Known controls](KNOWN_CONTROLS.md) — solved material used to validate HMS behavior
@@ -51,6 +52,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 | Component | State |
 |---|---|
 | Foundation | **RELEASED — v0.1.0** |
+| Research Archive | **PUBLISHED ON `main` — 7 Runs, 7 Results, 2 Capsules; RSET-0001 staged, RSET-0002 published** |
 | GP29 Calculator | IN DEVELOPMENT |
 | Expedition 001 | RELEASE CANDIDATE — CLOSED |
 | Expedition Verifier | IN DEVELOPMENT — private Windows candidate qualified; no public download |
@@ -63,7 +65,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 
 **Verified HMS recoveries of previously unknown Liber Primus plaintext: 0**
 
-The public foundation currently distributes developer-source utilities, not customer applications. The first [public run drop](reports/PUBLIC_RUNS_001.md) is reproducible from source; the first Windows puzzle-verifier package remains private until Expedition 001 receives its own release approval.
+The public foundation currently distributes developer-source utilities and portable research packages, not customer applications. [RSET-0001](research/runsets/RSET-0001/README.md) is a staged review package; [RSET-0002](research/runsets/RSET-0002/START-HERE.md) is a published source-tree release. The first Windows puzzle-verifier package remains private until Expedition 001 receives its own release approval.
 
 ## Current public position
 

@@ -28,3 +28,5 @@ The first bounded [structured run set](research/runsets/RSET-0001/README.md) con
 - `RUN-0002`, synthetic acceptance and rejection tests for the local Expedition verifier core.
 
 Neither run is an LP plaintext result, route disclosure, or claim that Expedition 001 is open.
+
+The second structured set, [`RSET-0002`](research/runsets/RSET-0002/README.md), publishes bounded negatives and a correction. Those records belong in the negative-result and correction ledgers, not in the verified-plaintext ledger.

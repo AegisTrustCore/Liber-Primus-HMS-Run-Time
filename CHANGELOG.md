@@ -4,12 +4,19 @@ All notable public software and repository changes are recorded here. Research p
 
 ## [Unreleased]
 
+### Public research archive
+
+- Staged `RSET-0001` with the published OpenPGP artifact replay and Expedition-verifier synthetic control.
+- Published `RSET-0002` with five historical closure runs, four bounded negative/null Results, and one correction.
+- Added seven first-class Runs, seven Results, two Capsules, downloadable packages, generated indexes, provenance, and checksums.
+- Reconciled public status documents with the canonical Research Archive indexes; verified new LP plaintext remains zero.
+
 ### In development
 
 - GP29 `v0.1`
 - Canonical corpus manifest
-- Page 32, 72, and 73 evidence audits
-- First public known-control reproduction package
+- Continued Page 32, 72, and 73 evidence audits and provenance reconciliation
+- First solved-material LP known-control reproduction package
 - Corpus manifest verifier
 
 ## [0.1.0] — 2026-08-13

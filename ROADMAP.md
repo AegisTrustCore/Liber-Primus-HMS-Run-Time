@@ -19,12 +19,12 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 
 | Capability | Status |
 |---|---|
-| Source inventory and sanitized audit | RELEASE CANDIDATE |
-| Page 32 dossier | IN DEVELOPMENT |
-| Page 72 dossier | IN DEVELOPMENT |
-| Page 73 dossier and selector correction | IN DEVELOPMENT |
-| Known-control reproduction packages | IN DEVELOPMENT |
-| Negative-result archive | IN DEVELOPMENT |
+| Source inventory and sanitized audit | RELEASED |
+| Page 32 dossier and first closure set | RELEASED — continuing research |
+| Page 72 dossier | RELEASED — reconciliation continuing |
+| Page 73 dossier and selector correction | RELEASED — provenance reconciliation continuing |
+| Known-control reproduction packages | RELEASED — initial non-plaintext controls; solved-material LP control pending |
+| Negative-result archive | RELEASED — initial bounded set; continuing curation |
 | First HMS-originated verified-result record | PLANNED |
 
 ## Atlas and laboratory
@@ -51,7 +51,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Capability | Status |
 |---|---|
 | Checksum and corpus-manifest verifier | IN DEVELOPMENT |
-| Public reproduction packages | RELEASE CANDIDATE — RUN-0001 and RUN-0002 |
+| Public reproduction packages | ACTIVE — seven member Runs/Results published; RSET-0001 staged, RSET-0002 published on `main`; no separate tagged release |
 | ProofLock and notary verification | PLANNED |
 | Authenticated sockets and API | PLANNED |
 | Add-on architecture and plugin SDK | PLANNED |
