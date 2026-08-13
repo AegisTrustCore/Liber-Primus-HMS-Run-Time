@@ -6,4 +6,4 @@ Prove the canonical HMS research-package workflow with a curated, low-disclosure
 
 - [Readable overview](result.html)
 - [Member downloads and hashes](downloads.json)
-- [Complete staged bundle](RSET-0001.zip)
+- [Download complete staged run set](RSET-0001.zip)

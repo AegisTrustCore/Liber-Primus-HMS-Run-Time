@@ -1,0 +1,46 @@
+HMS ENDEAVOUR
+RUN-0004
+
+TITLE:
+Page 32 signed-displacement block-reversal holdout
+
+STATUS:
+BOUNDED_NEGATIVE / PARTIAL
+
+SUMMARY:
+The predicted RR orientation ranked third of four on the withheld pair and failed both frozen acceptance conditions.
+
+WHY THIS RUN EXISTS:
+To test the negative-sign-as-reversal interpretation without language scoring or post-hoc transformations.
+
+TARGET:
+Whether the final two negative generated displacements prescribe reversing blocks 15 and 16
+
+METHOD:
+Train a first-order GP29 transition model on blocks 1-14 and score DD, DR, RD, and RR on blocks 15-16, with adjacent-pair leave-out controls.
+
+PARAMETERS:
+{"block_length": 109, "blocks": 16, "held_out_blocks": "15-16", "language_scoring": false, "predicted_orientation": "RR", "training_blocks": "1-14"}
+
+RESULT:
+REJECT_NEGATIVE_DISPLACEMENT_AS_BLOCK_REVERSAL
+
+METRICS:
+- rr_rank: 3 rank_of_4
+- rr_margin: -0.030043545034063257 mean_log_likelihood
+- max_control_rr_margin: 0.05369590033953564 mean_log_likelihood
+
+CONTROLS:
+- No block swap, reverse-register substitution, cyclic shift, or phonetic branching was allowed.
+- Fourteen adjacent block pairs supplied leave-pair-out comparison controls.
+
+INTERPRETATION:
+Within the exact tested model and pairing, negative displacement is not supported as an instruction to reverse the final two rune blocks.
+
+LIMITATIONS:
+- The original implementation was not preserved, so the published score ledger and decision are auditable but the model cannot yet be independently regenerated from source.
+- The conclusion does not reject other predeclared meanings of sign outside this slice.
+- The full rune transcription and forward next-slice instructions are excluded from the public package.
+
+SOURCE:
+UNKNOWN / E1606_PAGE32_SIGNED_DISPLACEMENT_BLOCK_REVERSAL_HOLDOUT_v1.zip

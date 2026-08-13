@@ -1,0 +1,9 @@
+{
+  "trials": 15,
+  "null_match_probability": 0.034482758620689655,
+  "alpha": 0.01,
+  "test": "binomial_upper_tail",
+  "cyclic_shift": false,
+  "sign_flip": false,
+  "reverse_order": false
+}

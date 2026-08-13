@@ -1,0 +1,26 @@
+{
+  "source_system": "UNKNOWN",
+  "historical_source": {
+    "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+    "original_identifier": "E1609_PAGE32_RED_EDGE_TERMINAL_HOLDOUT_ELIGIBILITY_NULL_v1.zip",
+    "source_preserved": true,
+    "sha256": "784694f92ef4076ed071fedb7d4b5fa6659296e6adb3d48eee323331f58dc147",
+    "size_bytes": 3845
+  },
+  "environment_manifest": "releases/environments/ENV-0002.json",
+  "parent_records": [],
+  "source_paths": [],
+  "migration": {
+    "historical": true,
+    "original_run": "E1609",
+    "original_source": "Personal Research",
+    "migrated_at": "2026-08-13T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Converted historical fields to the HMS run schema.",
+      "Preserved the contract, report, result, and eligibility ledger as normalized UTF-8 text.",
+      "Added an independent ledger-count reproduction.",
+      "Excluded forward next-slice instructions."
+    ]
+  }
+}

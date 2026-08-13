@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "object_type": "RESULTS",
-  "count": 2,
+  "count": 7,
   "entries": [
     {
       "id": "RES-0001",
@@ -26,6 +26,66 @@
       "package": "RES-0002/RES-0002.zip",
       "package_sha256": "0c2f070b6a611dc3db8114a8c0f185d63dddc66aba5273ad60668d02deb1e64a",
       "result_page": "RES-0002/result.html"
+    },
+    {
+      "id": "RES-0003",
+      "title": "Common Crawl body acquisition was blocked in the historical runtime",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "HISTORICAL_ONLY",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0002",
+      "package": "RES-0003/RES-0003.zip",
+      "package_sha256": "22fc29a30869063bc324acfcecc265efaec1293af4a1f845ff4fdd96b6e6cf8e",
+      "result_page": "RES-0003/result.html"
+    },
+    {
+      "id": "RES-0004",
+      "title": "Negative Page 32 displacements did not support block reversal",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "PARTIAL",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0002",
+      "package": "RES-0004/RES-0004.zip",
+      "package_sha256": "509574930a1a698497aa3ffcc0e085696a01357e509639ce85d708b7104904ce",
+      "result_page": "RES-0004/result.html"
+    },
+    {
+      "id": "RES-0005",
+      "title": "Page 32 spiral turns did not pass the page-boundary holdout",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "REPRODUCED",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0002",
+      "package": "RES-0005/RES-0005.zip",
+      "package_sha256": "faacb2d5184f36db1438d2035009a0cbd3f8dba6e7cb23ee3ea20f6f998ecd53",
+      "result_page": "RES-0005/result.html"
+    },
+    {
+      "id": "RES-0006",
+      "title": "Page 32 signed prime gaps did not match payload-junction residues",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "REPRODUCED",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0002",
+      "package": "RES-0006/RES-0006.zip",
+      "package_sha256": "14ed2c47d0121f0ae5527e4e877503087cc369f7e74261dca5c60b18937aea6e",
+      "result_page": "RES-0006/result.html"
+    },
+    {
+      "id": "RES-0007",
+      "title": "No eligible terminal holdout remained for the Page 32 red edge",
+      "status": "CORRECTION",
+      "reproduction_status": "REPRODUCED",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0002",
+      "package": "RES-0007/RES-0007.zip",
+      "package_sha256": "daa56df1792447804bb8d96df0140b3d9efeed25c6d665e31f9e153eba72e775",
+      "result_page": "RES-0007/result.html"
     }
   ]
 }

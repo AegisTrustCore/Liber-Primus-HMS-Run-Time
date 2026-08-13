@@ -1,0 +1,22 @@
+HMS ENDEAVOUR
+RSET-0002
+
+Page 32 Closures and Acquisition Boundaries
+
+STATUS: PUBLISHED
+
+Publish reviewed evidence packages for five historical null, negative, and correction runs while preserving their exact claim boundaries.
+
+RUNS:
+RUN-0003
+RUN-0004
+RUN-0005
+RUN-0006
+RUN-0007
+
+RESULTS:
+RES-0003
+RES-0004
+RES-0005
+RES-0006
+RES-0007

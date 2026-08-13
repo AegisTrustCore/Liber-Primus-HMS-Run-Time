@@ -1,0 +1,44 @@
+HMS ENDEAVOUR
+RUN-0007
+
+TITLE:
+Page 32 red-edge terminal holdout eligibility audit
+
+STATUS:
+CORRECTION / REPRODUCED
+
+SUMMARY:
+All six candidate terminal endpoints were ineligible because they were already used, lacked a predeclared decoder, or were not predicted by the frozen grammar.
+
+WHY THIS RUN EXISTS:
+To prevent a retrospective red-edge concordance from being strengthened with post-hoc mappings to already inspected solved-page features.
+
+TARGET:
+Whether any terminal-page feature remained independently withheld and predeclared for a valid test
+
+METHOD:
+Audit each frozen candidate endpoint for independence and a predeclared decoder; count only eligible targets.
+
+PARAMETERS:
+{"audited_target_classes": 6, "eligibility_requirement": "independently withheld and predicted before plaintext inspection"}
+
+RESULT:
+NO_ELIGIBLE_TERMINAL_HOLDOUT
+
+METRICS:
+- audited_targets: 6 count
+- eligible_targets: 0 count
+
+CONTROLS:
+- Targets already used to formulate the earlier interpretation are ineligible.
+- Features without a source-authorized predeclared decoder are ineligible.
+
+INTERPRETATION:
+No new terminal feature may be scored under this route without inventing a decoder after inspection; the earlier concordance remains retrospective and cannot be upgraded by this audit.
+
+LIMITATIONS:
+- This eligibility audit does not independently test the underlying retrospective concordance.
+- The forward next-slice instruction is excluded from the public package.
+
+SOURCE:
+UNKNOWN / E1609_PAGE32_RED_EDGE_TERMINAL_HOLDOUT_ELIGIBILITY_NULL_v1.zip

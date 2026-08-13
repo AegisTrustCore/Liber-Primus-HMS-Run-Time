@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RUN-0007 — Page 32 red-edge terminal holdout eligibility audit</title>
+<style>
+:root{--bg:#0b1014;--panel:#121a20;--ink:#e7edf0;--muted:#9aabb4;--cyan:#64d8e8;--brass:#d1ad62;--line:#263740}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+main{max-width:1040px;margin:auto;padding:3rem 1.25rem} header{border-bottom:1px solid var(--line);padding-bottom:1.5rem;margin-bottom:2rem}
+h1{margin:.2rem 0;color:var(--cyan);font-size:clamp(1.8rem,4vw,3rem)} h2{color:var(--brass);margin-top:2rem;font-size:1.05rem;letter-spacing:.08em}
+a{color:var(--cyan)} .eyebrow{color:var(--muted);letter-spacing:.16em} .badge{display:inline-block;border:1px solid var(--brass);border-radius:999px;padding:.18rem .65rem;margin:.2rem .35rem .2rem 0;color:var(--brass);font-size:.78rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem} section,.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1rem 1.2rem}
+table{width:100%;border-collapse:collapse} td,th{padding:.55rem;border-bottom:1px solid var(--line);text-align:left} code{overflow-wrap:anywhere} input,select{background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:.7rem;border-radius:4px}
+</style></head><body><main><header><div class="eyebrow">HMS ENDEAVOUR · RESEARCH ARCHIVE</div><h1>RUN-0007</h1><p>Page 32 red-edge terminal holdout eligibility audit</p><span class="badge">PUBLISHED</span></header><div><span class="badge">CORRECTION</span><span class="badge">REPRODUCED</span><span class="badge">COMPLETE MIGRATION</span></div>
+<section><h2>SUMMARY</h2><p>All six candidate terminal endpoints were ineligible because they were already used, lacked a predeclared decoder, or were not predicted by the frozen grammar.</p></section>
+<div class="grid"><section><h2>WHY THIS RUN EXISTS</h2><p>To prevent a retrospective red-edge concordance from being strengthened with post-hoc mappings to already inspected solved-page features.</p></section><section><h2>TARGET</h2><p>Whether any terminal-page feature remained independently withheld and predeclared for a valid test</p></section></div>
+<section><h2>INPUTS</h2><table><tr><th>ID</th><th>Path</th><th>Availability</th></tr><tr><td>TERMINAL-HOLDOUT-LEDGER</td><td><code>research/runs/RUN-0007/historical/terminal_holdout_eligibility.csv</code></td><td><span class="badge">PUBLIC</span></td></tr></table></section>
+<section><h2>PIPELINE / METHOD</h2><p>Audit each frozen candidate endpoint for independence and a predeclared decoder; count only eligible targets.</p><p><code>scripts/reproduce_rset_0002.py</code></p></section>
+<section><h2>PARAMETERS</h2><pre>{
+  &quot;audited_target_classes&quot;: 6,
+  &quot;eligibility_requirement&quot;: &quot;independently withheld and predicted before plaintext inspection&quot;
+}</pre></section>
+<section><h2>OUTPUT</h2><p>NO_ELIGIBLE_TERMINAL_HOLDOUT</p><pre>NO_ELIGIBLE_TERMINAL_HOLDOUT</pre></section>
+<section><h2>METRICS</h2><table><tr><th>Metric</th><th>Value</th><th>Unit</th></tr><tr><td>audited_targets</td><td>6</td><td>count</td></tr><tr><td>eligible_targets</td><td>0</td><td>count</td></tr></table></section>
+<div class="grid"><section><h2>CONTROLS</h2><ul><li>Targets already used to formulate the earlier interpretation are ineligible.</li><li>Features without a source-authorized predeclared decoder are ineligible.</li></ul></section><section><h2>INTERPRETATION</h2><p>No new terminal feature may be scored under this route without inventing a decoder after inspection; the earlier concordance remains retrospective and cannot be upgraded by this audit.</p></section></div>
+<section><h2>LIMITATIONS</h2><ul><li>This eligibility audit does not independently test the underlying retrospective concordance.</li><li>The forward next-slice instruction is excluded from the public package.</li></ul></section>
+<section><h2>RELATED RESULT</h2><p><a href="../../results/RES-0007/result.html">RES-0007</a></p></section>
+<section><h2>PROVENANCE</h2><p>Source system: <code>UNKNOWN</code></p><p>Environment: <code>releases/environments/ENV-0002.json</code></p><p>Raw historical output: <span class="badge">SANITIZED SUBSET</span></p></section>
+<section><h2>REPRODUCE</h2><pre>scripts/reproduce_rset_0002.py</pre></section>
+<section><h2>RAW FILES & DOWNLOAD</h2><p><a href="manifest.json">Manifest JSON</a> · <a href="result.json">Result JSON</a> · <a href="output/metrics.csv">Metrics CSV</a> · <a href="provenance/provenance.json">Provenance</a> · <a href="RUN-0007.zip">Download package</a></p></section></main></body></html>

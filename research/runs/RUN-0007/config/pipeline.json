@@ -1,0 +1,4 @@
+{
+  "description": "Audit each frozen candidate endpoint for independence and a predeclared decoder; count only eligible targets.",
+  "implementation": "scripts/reproduce_rset_0002.py"
+}

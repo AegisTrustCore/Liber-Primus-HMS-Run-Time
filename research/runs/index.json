@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "object_type": "RUNS",
-  "count": 2,
+  "count": 7,
   "entries": [
     {
       "id": "RUN-0001",
@@ -26,6 +26,66 @@
       "package": "RUN-0002/RUN-0002.zip",
       "package_sha256": "3d5f69a000757990c87f28041b2e993d85582c194de5c80facc7f89719396fab",
       "result_page": "RUN-0002/result.html"
+    },
+    {
+      "id": "RUN-0003",
+      "title": "Common Crawl 2015 Tor2web body-acquisition boundary",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "HISTORICAL_ONLY",
+      "page": 73,
+      "method": "EXTERNAL_ARCHIVE_ACQUISITION",
+      "capsule": "CAP-0002",
+      "package": "RUN-0003/RUN-0003.zip",
+      "package_sha256": "4553622382d7183a5ca763eea842e162476c7176e6384e65ef6d83b576218e8f",
+      "result_page": "RUN-0003/result.html"
+    },
+    {
+      "id": "RUN-0004",
+      "title": "Page 32 signed-displacement block-reversal holdout",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "PARTIAL",
+      "page": 32,
+      "method": "GP29_TRANSITION_HOLDOUT",
+      "capsule": "CAP-0002",
+      "package": "RUN-0004/RUN-0004.zip",
+      "package_sha256": "455224dec052144f081312e2fc5dd50b6e2ca721a3680ca4e0a74f9451b15b1a",
+      "result_page": "RUN-0004/result.html"
+    },
+    {
+      "id": "RUN-0005",
+      "title": "Page 32 spiral-turn versus payload-page-boundary holdout",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "REPRODUCED",
+      "page": 32,
+      "method": "EXACT_HYPERGEOMETRIC_HOLDOUT",
+      "capsule": "CAP-0002",
+      "package": "RUN-0005/RUN-0005.zip",
+      "package_sha256": "3e676b6afc0e343591e9b51d974a518a1fefa7e2f942e298d92e4d0f03c89a86",
+      "result_page": "RUN-0005/result.html"
+    },
+    {
+      "id": "RUN-0006",
+      "title": "Page 32 signed prime-gap to payload-junction vector",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "REPRODUCED",
+      "page": 32,
+      "method": "POSITIONWISE_MOD29_HOLDOUT",
+      "capsule": "CAP-0002",
+      "package": "RUN-0006/RUN-0006.zip",
+      "package_sha256": "1cfc6eab2909e8877ab41314da44fad0bf51341e00ec3ff9b9f5e6495f90b73b",
+      "result_page": "RUN-0006/result.html"
+    },
+    {
+      "id": "RUN-0007",
+      "title": "Page 32 red-edge terminal holdout eligibility audit",
+      "status": "CORRECTION",
+      "reproduction_status": "REPRODUCED",
+      "page": 32,
+      "method": "ANTI_POST_HOC_ELIGIBILITY_AUDIT",
+      "capsule": "CAP-0002",
+      "package": "RUN-0007/RUN-0007.zip",
+      "package_sha256": "e40d3f541a5e2699a19ff99aea2aeca986e5c7454f2a4363a22ed712de546ee6",
+      "result_page": "RUN-0007/result.html"
     }
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0003",
+  "evidence_class": "BOUNDED_NEGATIVE",
+  "claim": "Under the frozen E1605 contract, the historical runtime did not obtain parameterized CDX results or exact WARC response bytes, so zero captures entered the SHA-512 test and the required acquisition-blocked status applied.",
+  "current_interpretation": "A valid acquisition null and provenance boundary, not a content-search negative."
+}

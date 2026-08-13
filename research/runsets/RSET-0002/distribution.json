@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "run_set_id": "RSET-0002",
+  "truth_rule": "Tier changes access and detail, not evidence status.",
+  "public_github": {
+    "objects": ["RUN-0003", "RUN-0004", "RUN-0005", "RUN-0006", "RUN-0007", "RES-0003", "RES-0004", "RES-0005", "RES-0006", "RES-0007", "CAP-0002"],
+    "materials": ["canonical manifests", "reviewed historical subsets", "quantitative ledgers", "public reproduction script", "generated packages"]
+  },
+  "patreon": {
+    "PILGRIM": ["release orientation", "plain-language boundary guide"],
+    "NAVIGATOR": ["method walkthrough", "comparison across the five closures", "ledger interpretation"],
+    "CARTOGRAPHER": ["reproduction worksheet", "environment reconstruction request for RUN-0003 and RUN-0004", "complete approved parameter context"],
+    "ADMIRAL": ["independent validation assignment", "migration and disclosure review notes after approval"]
+  },
+  "held_from_distribution": [
+    {"material":"original nested ZIP files","reason":"They combine evidence with an unreviewed full rune transcription and forward experimental instructions."}
+  ]
+}

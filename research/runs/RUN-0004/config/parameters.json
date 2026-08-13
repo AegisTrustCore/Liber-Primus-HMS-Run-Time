@@ -1,0 +1,8 @@
+{
+  "blocks": 16,
+  "block_length": 109,
+  "training_blocks": "1-14",
+  "held_out_blocks": "15-16",
+  "predicted_orientation": "RR",
+  "language_scoring": false
+}

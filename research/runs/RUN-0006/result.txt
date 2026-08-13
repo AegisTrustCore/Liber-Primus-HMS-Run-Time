@@ -1,0 +1,44 @@
+HMS ENDEAVOUR
+RUN-0006
+
+TITLE:
+Page 32 signed prime-gap to payload-junction vector
+
+STATUS:
+BOUNDED_NEGATIVE / REPRODUCED
+
+SUMMARY:
+None of fifteen frozen positionwise residues matched; the exact upper-tail probability under p=1/29 is 1.0.
+
+WHY THIS RUN EXISTS:
+To test direct numeric-grid-to-block-junction fitting without shifts, reversals, sign inversions, alternate registers, or neighboring-rune searches.
+
+TARGET:
+Positionwise equality between signed displacement deltas mod 29 and payload-junction deltas mod 29
+
+METHOD:
+Compare fifteen signed displacement-transition residues with fifteen payload-junction GP29 residues positionwise and calculate the binomial upper tail under p=1/29.
+
+PARAMETERS:
+{"alpha": 0.01, "cyclic_shift": false, "null_match_probability": 0.034482758620689655, "reverse_order": false, "sign_flip": false, "test": "binomial_upper_tail", "trials": 15}
+
+RESULT:
+REJECT_SIGNED_GAP_AS_PAYLOAD_JUNCTION_VECTOR
+
+METRICS:
+- positionwise_matches: 0 of_15
+- binomial_upper_p: 1.0 probability
+
+CONTROLS:
+- No cyclic shift, sign flip, reverse order, alternate register, or neighboring rune was allowed.
+- The fifteen comparisons and p=1/29 null were frozen.
+
+INTERPRETATION:
+The exact signed-gap vector is not supported as a direct encoding of the fifteen payload-junction residues.
+
+LIMITATIONS:
+- This rejects only the exact positionwise mapping.
+- The full rune transcription and forward next-slice instructions are excluded from the public package.
+
+SOURCE:
+UNKNOWN / E1608_PAGE32_SIGNED_PRIME_GAP_TO_PAYLOAD_JUNCTION_VECTOR_v1.zip

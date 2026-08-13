@@ -1,0 +1,17 @@
+{
+  "run_id": "RUN-0004",
+  "inputs": [
+    {
+      "id": "LP-RUNES-TEXT",
+      "path": null,
+      "sha256": "5e0003aa7f7dde3b238d17c5f964790dbf6bf9db5edacc4a5ec0bad81c6f4bce",
+      "availability": "HASH_ONLY"
+    },
+    {
+      "id": "ORIENTATION-SCORES",
+      "path": "research/runs/RUN-0004/historical/orientation_scores.csv",
+      "sha256": "b729cc7e9359f132a622ad1022ae0a5b12e1017cf3c0d7f4707469611e82cc68",
+      "availability": "PUBLIC"
+    }
+  ]
+}

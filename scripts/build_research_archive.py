@@ -124,9 +124,10 @@ SOURCE:
 
 
 def run_html(run: dict) -> str:
-    inputs = "".join(f"<tr><td>{html.escape(i['id'])}</td><td><code>{html.escape(i['path'])}</code></td><td>{badge(i['availability'])}</td></tr>" for i in run["inputs"])
+    inputs = "".join(f"<tr><td>{html.escape(i['id'])}</td><td><code>{html.escape(i.get('path') or 'NOT DISTRIBUTED')}</code></td><td>{badge(i['availability'])}</td></tr>" for i in run["inputs"])
     metrics = "".join(f"<tr><td>{html.escape(m['name'])}</td><td>{html.escape(str(m['value']))}</td><td>{html.escape(m['unit'])}</td></tr>" for m in run["output"]["metrics"])
     related = " ".join(f'<a href="../../results/{rid}/result.html">{rid}</a>' for rid in run["result_ids"])
+    reproduce = run["parameters"].get("command") or run["pipeline"].get("implementation") or "NOT AVAILABLE"
     body = f"""<div>{badge(run['evidence_class'])}{badge(run['reproduction_status'])}{badge(run['migration_confidence'] + ' MIGRATION')}</div>
 <section><h2>SUMMARY</h2><p>{html.escape(run['summary'])}</p></section>
 <div class="grid"><section><h2>WHY THIS RUN EXISTS</h2><p>{html.escape(run['why_run'])}</p></section><section><h2>TARGET</h2><p>{html.escape(run['target']['description'])}</p></section></div>
@@ -139,7 +140,7 @@ def run_html(run: dict) -> str:
 <section><h2>LIMITATIONS</h2>{list_html(run['limitations'])}</section>
 <section><h2>RELATED RESULT</h2><p>{related}</p></section>
 <section><h2>PROVENANCE</h2><p>Source system: <code>{html.escape(run['provenance']['source_system'])}</code></p><p>Environment: <code>{html.escape(run['provenance']['environment_manifest'])}</code></p><p>Raw historical output: {badge(run['raw_artifacts']['availability'])}</p></section>
-<section><h2>REPRODUCE</h2><pre>{html.escape(run['parameters']['command'])}</pre></section>
+<section><h2>REPRODUCE</h2><pre>{html.escape(reproduce)}</pre></section>
 <section><h2>RAW FILES & DOWNLOAD</h2><p><a href="manifest.json">Manifest JSON</a> · <a href="result.json">Result JSON</a> · <a href="output/metrics.csv">Metrics CSV</a> · <a href="provenance/provenance.json">Provenance</a> · <a href="{run['id']}.zip">Download package</a></p></section>"""
     return shell(run["title"], run["id"], run["publication_status"], body)
 
@@ -160,7 +161,8 @@ def package_run(path: Path, run: dict) -> None:
     write_json(path / "provenance" / "provenance.json", run["provenance"])
     write_text(path / "result.txt", run_text(run))
     write_text(path / "result.html", run_html(run))
-    write_text(path / "README.md", f"# {run['id']} — {run['title']}\n\n{run['summary']}\n\n- [Readable result](result.html)\n- [Plain text](result.txt)\n- [Canonical manifest](manifest.json)\n- [Structured result](result.json)\n- [Metrics](output/metrics.csv)\n- [Provenance](provenance/provenance.json)\n- [Download package]({run['id']}.zip)\n\n## Reproduce\n\n```text\n{run['parameters']['command']}\n```\n\n## Limits\n\n" + "\n".join(f"- {item}" for item in run["limitations"]))
+    reproduce = run["parameters"].get("command") or run["pipeline"].get("implementation") or "NOT AVAILABLE"
+    write_text(path / "README.md", f"# {run['id']} — {run['title']}\n\n{run['summary']}\n\n- [Readable result](result.html)\n- [Plain text](result.txt)\n- [Canonical manifest](manifest.json)\n- [Structured result](result.json)\n- [Metrics](output/metrics.csv)\n- [Provenance](provenance/provenance.json)\n- [Download package]({run['id']}.zip)\n\n## Reproduce\n\n```text\n{reproduce}\n```\n\n## Limits\n\n" + "\n".join(f"- {item}" for item in run["limitations"]))
     finalize_package(path, f"{run['id']}.zip")
 
 
@@ -289,10 +291,11 @@ def package_runset(path: Path, item: dict, objects: dict[str, dict]) -> None:
             shutil.copyfile(source, target)
             members.append({"id": object_id, "type": kind[:-1].upper(), "path": f"bundles/{source.name}", "sha256": canonical_file_hash(target)})
     write_json(path / "downloads.json", {"run_set_id": item["id"], "members": members})
-    body = f'''<section><h2>PURPOSE</h2><p>{html.escape(item['purpose'])}</p></section><section><h2>RUNS</h2>{list_html(item['run_ids'])}</section><section><h2>RESULTS</h2>{list_html(item['result_ids'])}</section><section><h2>CAPSULES</h2>{list_html(item['capsule_ids'])}</section><section><h2>SELECTION NOTES</h2>{list_html(item['selection_notes'])}</section><section><h2>RELEASE STATE</h2><p>{html.escape(item['release_notes'])}</p></section><section><h2>DOWNLOAD</h2><p><a href="{item['id']}.zip">Download complete staged run set</a> · <a href="downloads.json">Member hashes</a></p></section>'''
+    bundle_label = "Download complete public run set" if item["publication_status"] == "PUBLISHED" else "Download complete staged run set"
+    body = f'''<section><h2>PURPOSE</h2><p>{html.escape(item['purpose'])}</p></section><section><h2>RUNS</h2>{list_html(item['run_ids'])}</section><section><h2>RESULTS</h2>{list_html(item['result_ids'])}</section><section><h2>CAPSULES</h2>{list_html(item['capsule_ids'])}</section><section><h2>SELECTION NOTES</h2>{list_html(item['selection_notes'])}</section><section><h2>RELEASE STATE</h2><p>{html.escape(item['release_notes'])}</p></section><section><h2>DOWNLOAD</h2><p><a href="{item['id']}.zip">{bundle_label}</a> · <a href="downloads.json">Member hashes</a></p></section>'''
     write_text(path / "result.html", shell(item["title"], item["id"], item["publication_status"], body))
     write_text(path / "result.txt", f"HMS ENDEAVOUR\n{item['id']}\n\n{item['title']}\n\nSTATUS: {item['publication_status']}\n\n{item['purpose']}\n\nRUNS:\n" + "\n".join(item["run_ids"]) + "\n\nRESULTS:\n" + "\n".join(item["result_ids"]))
-    write_text(path / "README.md", f"# {item['id']} — {item['title']}\n\n**Status: {item['publication_status']}**\n\n{item['purpose']}\n\n- [Readable overview](result.html)\n- [Member downloads and hashes](downloads.json)\n- [Complete staged bundle]({item['id']}.zip)")
+    write_text(path / "README.md", f"# {item['id']} — {item['title']}\n\n**Status: {item['publication_status']}**\n\n{item['purpose']}\n\n- [Readable overview](result.html)\n- [Member downloads and hashes](downloads.json)\n- [{bundle_label}]({item['id']}.zip)")
     finalize_package(path, f"{item['id']}.zip")
 
 
@@ -315,10 +318,16 @@ def validate_archive() -> list[str]:
             if rid not in results: errors.append(f"{object_id}: missing result {rid}")
         if item.get("capsule_id") not in capsules: errors.append(f"{object_id}: missing capsule {item.get('capsule_id')}")
         for source in item.get("inputs", []):
-            source_path = ROOT / source.get("path", "")
-            if source.get("availability") == "PUBLIC" and not source_path.is_file(): errors.append(f"{object_id}: missing public input {source.get('path')}")
+            source_name = source.get("path")
+            source_path = ROOT / source_name if source_name else None
+            if source.get("availability") == "PUBLIC" and (source_path is None or not source_path.is_file()): errors.append(f"{object_id}: missing public input {source_name}")
             expected = source.get("sha256")
-            if expected and source_path.is_file() and canonical_file_hash(source_path) != expected: errors.append(f"{object_id}: input hash mismatch for {source.get('path')}")
+            if expected and source_path is not None and source_path.is_file() and canonical_file_hash(source_path) != expected: errors.append(f"{object_id}: input hash mismatch for {source_name}")
+        raw = item.get("raw_artifacts", {})
+        for name in raw.get("files", []):
+            raw_path = path / name
+            if not raw_path.is_file():
+                errors.append(f"{object_id}: missing declared historical artifact {name}")
     for object_id, (_, item) in results.items():
         if item.get("classification") != "PUBLIC" or item.get("publication_status") != "PUBLISHED": errors.append(f"{object_id}: public result must be PUBLIC/PUBLISHED")
         for rid in item.get("supporting_runs", []):
@@ -394,6 +403,7 @@ def build() -> None:
         "published_runs": len(run_items),
         "published_results": len(result_items),
         "published_capsules": len(capsule_items),
+        "published_run_sets": sum(1 for _, item in runset_items if item["publication_status"] == "PUBLISHED"),
         "staged_run_sets": sum(1 for _, item in runset_items if item["publication_status"] == "STAGED"),
         "indexes": {"runs": "runs/index.json", "results": "results/index.json", "capsules": "capsules/index.json", "runsets": "runsets/index.json"},
     }
@@ -416,6 +426,7 @@ Structured objects—not prose alone—are the public research record.
 | Published Runs | {len(run_items)} |
 | Published Results | {len(result_items)} |
 | Published Capsules | {len(capsule_items)} |
+| Published Run Sets | {archive['published_run_sets']} |
 | Staged Run Sets | {archive['staged_run_sets']} |
 
 **{source_count_display} source artifacts does not mean {source_count_display} results.** It is the audited file count in the supplied Personal Research tree.

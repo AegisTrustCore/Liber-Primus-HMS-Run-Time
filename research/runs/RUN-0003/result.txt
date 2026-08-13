@@ -1,0 +1,45 @@
+HMS ENDEAVOUR
+RUN-0003
+
+TITLE:
+Common Crawl 2015 Tor2web body-acquisition boundary
+
+STATUS:
+BOUNDED_NEGATIVE / HISTORICAL_ONLY
+
+SUMMARY:
+The frozen runtime could reach archive documentation but could not retrieve parameterized CDX results or exact WARC byte ranges; no capture body entered the hash test.
+
+WHY THIS RUN EXISTS:
+To test a provenance-bearing external-byte route without substituting filenames, live pages, reconstructed HTML, or synthetic payloads.
+
+TARGET:
+Exact response-body acquisition from two frozen 2015 Common Crawl indexes
+
+METHOD:
+Query frozen URL forms, preserve CDX metadata, range-fetch exact WARC records, extract unnormalized response payloads, and compare direct SHA-512 with the declared target.
+
+PARAMETERS:
+{"crawls": ["CC-MAIN-2015-06", "CC-MAIN-2015-11"], "inventory_lines": 3204, "mirror_hosts": ["onion.to", "tor2web.org", "tor2web.fi"], "payload_normalization": "NONE"}
+
+RESULT:
+COMMON_CRAWL_BODY_ACQUISITION_BLOCKED
+
+METRICS:
+- captures_scored: 0 count
+- sha512_matches: 0 count
+
+CONTROLS:
+- Only the two declared crawl indexes and three root mirror forms were authorized.
+- The preregistered stop condition required an acquisition-blocked result when exact WARC bytes were unavailable.
+
+INTERPRETATION:
+This is an infrastructure/acquisition null. It does not test whether the frozen crawls contain relevant captures.
+
+LIMITATIONS:
+- No capture metadata or page body entered the hash test.
+- The execution environment and querying implementation were not preserved sufficiently for full reproduction.
+- The original archive contains forward research instructions that are excluded from the public normalized package.
+
+SOURCE:
+UNKNOWN / E1605_COMMON_CRAWL_2015_TOR2WEB_BODY_ACQUISITION_BLOCKED_v1.zip

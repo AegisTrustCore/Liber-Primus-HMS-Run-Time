@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0005",
+  "evidence_class": "BOUNDED_NEGATIVE",
+  "claim": "The frozen six spiral turns overlapped four of six internal page-boundary blocks, but the exact hypergeometric upper-tail p-value of 0.091908092 did not pass the 0.01 threshold.",
+  "current_interpretation": "Bounded negative for the exact spiral-turn/page-boundary correspondence."
+}

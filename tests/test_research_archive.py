@@ -27,6 +27,10 @@ class ResearchArchiveTests(unittest.TestCase):
         run_set = self.load("research/runsets/RSET-0001/manifest.json")
         self.assertEqual(run_set["publication_status"], "STAGED")
 
+    def test_page_32_closure_run_set_is_published(self):
+        run_set = self.load("research/runsets/RSET-0002/manifest.json")
+        self.assertEqual(run_set["publication_status"], "PUBLISHED")
+
     def test_run_set_zip_contains_member_packages(self):
         import zipfile
 

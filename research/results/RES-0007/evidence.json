@@ -1,0 +1,11 @@
+{
+  "result_id": "RES-0007",
+  "controls": [
+    "Independent withholding and prior decoder declaration were mandatory."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0007/manifest.json",
+    "scripts/reproduce_rset_0002.py"
+  ]
+}

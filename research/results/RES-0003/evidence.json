@@ -1,0 +1,10 @@
+{
+  "result_id": "RES-0003",
+  "controls": [
+    "No live-page, reconstructed-body, filename, or synthetic substitute was permitted."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0003/manifest.json"
+  ]
+}

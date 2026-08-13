@@ -1,2 +1,3 @@
 id,title,status,reproduction_status,page,method,capsule,package,package_sha256,result_page
 CAP-0001,Public verification foundation,PUBLISHED,,,,,CAP-0001/CAP-0001.zip,0916e542fdff927692a656b90fe6362a3549d240c052a6f3bc87539d1ea1bc90,CAP-0001/result.html
+CAP-0002,Page 32 manifest-interpretation closures,PUBLISHED,,,,,CAP-0002/CAP-0002.zip,61c28d7d1d0f33aa4af058e65a6063513ec41b4ef02a89fcee2d37438936fac4,CAP-0002/result.html

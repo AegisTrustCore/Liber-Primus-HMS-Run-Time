@@ -1,0 +1,13 @@
+{
+  "crawls": [
+    "CC-MAIN-2015-06",
+    "CC-MAIN-2015-11"
+  ],
+  "inventory_lines": 3204,
+  "mirror_hosts": [
+    "onion.to",
+    "tor2web.org",
+    "tor2web.fi"
+  ],
+  "payload_normalization": "NONE"
+}

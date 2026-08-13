@@ -1,0 +1,27 @@
+HMS ENDEAVOUR
+RES-0006
+
+TITLE:
+Page 32 signed prime gaps did not match payload-junction residues
+
+STATUS:
+BOUNDED_NEGATIVE / REPRODUCED
+
+CLAIM:
+The exact signed displacement-transition residues matched zero of fifteen consecutive payload-junction residues positionwise; the upper-tail probability under the frozen p=1/29 null is 1.0.
+
+WHY IT MATTERS:
+It closes the exact direct vector mapping before broader fitting can create post-hoc matches.
+
+SUPPORTED BY:
+RUN-0006
+
+WHAT THIS DOES NOT CLAIM:
+- That every Page 32 numeric relationship is invalid.
+- Any plaintext recovery.
+
+LIMITATIONS:
+- Only the exact positionwise mapping was tested.
+
+CURRENT INTERPRETATION:
+Reproduced bounded negative for the declared signed-gap vector mapping.

@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0004",
+  "evidence_class": "BOUNDED_NEGATIVE",
+  "claim": "Within the frozen first-order GP29 holdout, reversing both blocks predicted by the final two negative displacements ranked third of four and failed both acceptance criteria.",
+  "current_interpretation": "Reject negative displacement as the exact final-block reversal instruction tested by E1606."
+}

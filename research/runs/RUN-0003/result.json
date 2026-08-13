@@ -1,0 +1,14 @@
+{
+  "run_id": "RUN-0003",
+  "status": "COMPLETE",
+  "result_class": "BOUNDED_NEGATIVE",
+  "summary": "COMMON_CRAWL_BODY_ACQUISITION_BLOCKED",
+  "metrics": {
+    "captures_scored": 0,
+    "sha512_matches": 0
+  },
+  "acceptance": {
+    "passed": false,
+    "criterion": "Exact WARC response-body SHA-512 equals the frozen target."
+  }
+}

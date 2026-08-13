@@ -7,3 +7,4 @@ The JSON index is authoritative for discovery; HTML, CSV, and Markdown are gener
 - [CSV index](index.csv)
 
 - [RSET-0001 — Public Verification Foundations](RSET-0001/README.md)
+- [RSET-0002 — Page 32 Closures and Acquisition Boundaries](RSET-0002/README.md)

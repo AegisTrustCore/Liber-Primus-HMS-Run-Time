@@ -1,0 +1,4 @@
+name,value,unit
+rr_rank,3,rank_of_4
+rr_margin,-0.030043545034063257,mean_log_likelihood
+max_control_rr_margin,0.05369590033953564,mean_log_likelihood

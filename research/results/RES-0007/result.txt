@@ -1,0 +1,28 @@
+HMS ENDEAVOUR
+RES-0007
+
+TITLE:
+No eligible terminal holdout remained for the Page 32 red edge
+
+STATUS:
+CORRECTION / REPRODUCED
+
+CLAIM:
+All six audited terminal endpoint classes were ineligible for a new holdout because they were previously used, lacked a predeclared decoder, or were not predicted by the frozen grammar.
+
+WHY IT MATTERS:
+It prevents a retrospective concordance from being upgraded through post-hoc selection.
+
+SUPPORTED BY:
+RUN-0007
+
+WHAT THIS DOES NOT CLAIM:
+- That the earlier retrospective concordance is verified.
+- That a terminal decoder has been found.
+- Any plaintext recovery.
+
+LIMITATIONS:
+- This audits eligibility; it does not independently test the earlier concordance.
+
+CURRENT INTERPRETATION:
+No further claim strength is admissible from the inspected terminal features under this route.

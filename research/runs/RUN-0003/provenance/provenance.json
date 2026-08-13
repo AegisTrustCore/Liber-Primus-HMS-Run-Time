@@ -1,0 +1,25 @@
+{
+  "source_system": "UNKNOWN",
+  "historical_source": {
+    "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+    "original_identifier": "E1605_COMMON_CRAWL_2015_TOR2WEB_BODY_ACQUISITION_BLOCKED_v1.zip",
+    "source_preserved": true,
+    "sha256": "fea87038ae690c75708caeed4aaf47e5a6ad643fc2269836328eb08e184a4112",
+    "size_bytes": 4172
+  },
+  "environment_manifest": "releases/environments/ENV-0002.json",
+  "parent_records": [],
+  "source_paths": [],
+  "migration": {
+    "historical": true,
+    "original_run": "E1605",
+    "original_source": "Personal Research",
+    "migrated_at": "2026-08-13T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Converted historical fields to the HMS run schema.",
+      "Preserved the report, result, and frozen contract as normalized UTF-8 text.",
+      "Excluded forward next-slice instructions from the public package."
+    ]
+  }
+}

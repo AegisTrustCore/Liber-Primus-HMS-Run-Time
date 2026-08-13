@@ -1,0 +1,4 @@
+{
+  "description": "Train a first-order GP29 transition model on blocks 1-14 and score DD, DR, RD, and RR on blocks 15-16, with adjacent-pair leave-out controls.",
+  "implementation": "NOT_PRESERVED"
+}

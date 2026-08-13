@@ -1,0 +1,11 @@
+{
+  "result_id": "RES-0006",
+  "controls": [
+    "No shift, reversal, sign inversion, alternate register, or neighboring-rune search."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0006/manifest.json",
+    "scripts/reproduce_rset_0002.py"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "run_id": "RUN-0006",
+  "status": "COMPLETE",
+  "result_class": "BOUNDED_NEGATIVE",
+  "summary": "REJECT_SIGNED_GAP_AS_PAYLOAD_JUNCTION_VECTOR",
+  "metrics": {
+    "positionwise_matches": 0,
+    "binomial_upper_p": 1.0
+  },
+  "acceptance": {
+    "passed": false,
+    "criterion": "Binomial upper-tail p <= 0.01."
+  }
+}

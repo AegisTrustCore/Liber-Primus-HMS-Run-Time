@@ -10,6 +10,18 @@
     {"id":"RES-0001","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
     {"id":"RES-0002","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
     {"id":"CAP-0001","object_type":"CAPSULE","state":"ACTIVE","reserved_at":"2026-08-13"},
-    {"id":"RSET-0001","object_type":"RUN_SET","state":"RESERVED","reserved_at":"2026-08-13"}
+    {"id":"RSET-0001","object_type":"RUN_SET","state":"RESERVED","reserved_at":"2026-08-13"},
+    {"id":"RUN-0003","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RUN-0004","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RUN-0005","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RUN-0006","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RUN-0007","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RES-0003","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RES-0004","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RES-0005","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RES-0006","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RES-0007","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"CAP-0002","object_type":"CAPSULE","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RSET-0002","object_type":"RUN_SET","state":"RESERVED","reserved_at":"2026-08-13"}
   ]
 }

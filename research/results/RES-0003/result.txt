@@ -1,0 +1,29 @@
+HMS ENDEAVOUR
+RES-0003
+
+TITLE:
+Common Crawl body acquisition was blocked in the historical runtime
+
+STATUS:
+BOUNDED_NEGATIVE / HISTORICAL_ONLY
+
+CLAIM:
+Under the frozen E1605 contract, the historical runtime did not obtain parameterized CDX results or exact WARC response bytes, so zero captures entered the SHA-512 test and the required acquisition-blocked status applied.
+
+WHY IT MATTERS:
+It separates an infrastructure limitation from a false claim that the selected crawls contain no relevant capture.
+
+SUPPORTED BY:
+RUN-0003
+
+WHAT THIS DOES NOT CLAIM:
+- That Common Crawl contains no relevant Tor2web capture.
+- That any Page 73 external artifact has been recovered.
+- Any Liber Primus plaintext recovery.
+
+LIMITATIONS:
+- The result says nothing about whether relevant captures exist.
+- The historical network environment cannot be fully reconstructed from the preserved package.
+
+CURRENT INTERPRETATION:
+A valid acquisition null and provenance boundary, not a content-search negative.

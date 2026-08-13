@@ -1,0 +1,28 @@
+HMS ENDEAVOUR
+RES-0004
+
+TITLE:
+Negative Page 32 displacements did not support block reversal
+
+STATUS:
+BOUNDED_NEGATIVE / PARTIAL
+
+CLAIM:
+Within the frozen first-order GP29 holdout, reversing both blocks predicted by the final two negative displacements ranked third of four and failed both acceptance criteria.
+
+WHY IT MATTERS:
+It closes one precise interpretation without expanding the negative beyond the tested family.
+
+SUPPORTED BY:
+RUN-0004
+
+WHAT THIS DOES NOT CLAIM:
+- That negative displacement has no possible predeclared meaning.
+- That Page 32 has no structural role.
+- Any plaintext recovery.
+
+LIMITATIONS:
+- The original model implementation was not preserved, so score regeneration remains pending.
+
+CURRENT INTERPRETATION:
+Reject negative displacement as the exact final-block reversal instruction tested by E1606.

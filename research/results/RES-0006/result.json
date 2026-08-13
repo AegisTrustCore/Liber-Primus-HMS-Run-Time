@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0006",
+  "evidence_class": "BOUNDED_NEGATIVE",
+  "claim": "The exact signed displacement-transition residues matched zero of fifteen consecutive payload-junction residues positionwise; the upper-tail probability under the frozen p=1/29 null is 1.0.",
+  "current_interpretation": "Reproduced bounded negative for the declared signed-gap vector mapping."
+}

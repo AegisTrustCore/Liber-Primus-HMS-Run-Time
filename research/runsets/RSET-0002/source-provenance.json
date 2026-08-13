@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "source_archive": {
+    "original_identifier": "E1605_E1609_COMMON_CRAWL_AND_PAGE32_MANIFEST_CLOSURES_2026-08-06.zip",
+    "sha256": "09d74906474b95c56f7eb9035ed832196ec438d9212ad0bb0cc2697bfeaae127",
+    "size_bytes": 61765,
+    "nested_package_count": 5,
+    "nested_checksums_verified": true
+  },
+  "public_migration": {
+    "mode": "SANITIZED_NORMALIZED_SUBSET",
+    "excluded_classes": [
+      "FULL_RUNE_TRANSCRIPTION",
+      "FORWARD_NEXT_SLICE_INSTRUCTIONS"
+    ],
+    "reason": "The public package contains the evidence required to evaluate each released conclusion without redistributing an unreviewed corpus transcription or disclosing forward research instructions.",
+    "original_archives_publicly_distributed": false
+  }
+}

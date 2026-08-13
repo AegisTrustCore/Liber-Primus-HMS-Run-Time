@@ -1,0 +1,4 @@
+{
+  "description": "Calculate overlap of the two frozen six-position subsets and the exact hypergeometric upper tail over all six-position subsets of sixteen.",
+  "implementation": "scripts/reproduce_rset_0002.py"
+}
