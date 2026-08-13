@@ -12,6 +12,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 
 ## Start here
 
+- [**LIBER PRIMUS: START HERE**](corpus/liber-primus/START-HERE.md) — complete 75-page working-corpus map, timeline, page index, and verification path
 - [**EXPLORE RESULTS**](research/results/README.md) — GitHub-native Result objects with supporting runs and downloads
 - [Research Archive](research/README.md) — Runs, Results, Capsules, and curated Run Sets
 - [Browse Runs](research/runs/README.md) — inputs, parameters, outputs, controls, provenance, and reproduction
@@ -53,6 +54,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 | Component | State |
 |---|---|
 | Foundation | **RELEASED — v0.1.0** |
+| Liber Primus corpus navigation | **PUBLIC — 75/75 pages registered; source image bytes external pending rights clearance** |
 | Research Archive | **PUBLISHED ON `main` — 8 Runs, 8 Results, 3 Capsules; RSET-0001 staged, RSET-0002 and RSET-0003 published** |
 | GP29 Calculator | IN DEVELOPMENT |
 | Expedition 001 | RELEASE CANDIDATE — CLOSED |
@@ -71,6 +73,8 @@ The public foundation currently distributes developer-source utilities and porta
 ## Current public position
 
 The repository foundation is released. The existing HMS research workspace contains extensive experiments, reports, runtime outputs, and handoff material. Those artifacts are **source material for an audit**, not automatically published findings.
+
+The [Liber Primus corpus guide](corpus/liber-primus/README.md) now maps the complete HMS 75-page working set: 17 LP1/earlier pages (`00`-`16`) plus the 58 LP2 pages (`17`-`74`). Every page links to its public E1059 extraction ledger and exact carrier identity. The third-party JPEG bytes are not copied into this repository because their redistribution rights have not been established.
 
 Pages 32, 72, and 73 are the first priority dossiers. The supplied Personal Research tree has now been hash-inventoried and its text records scanned. That audit found known-control replays, structural candidates, bounded negative results, and a required correction—but no reviewed structured record explicitly reporting newly recovered plaintext, key material, locator, or endpoint. No page-level translation claim is listed as verified here until its precise claim and reproduction package pass the release gate.
 
