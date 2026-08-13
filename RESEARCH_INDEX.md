@@ -9,16 +9,17 @@ This index answers three different questions separately: what is publicly verifi
 | Class | Current public position | Supporting location |
 |---|---|---|
 | Historical PGP identity artifact | Bundled key bytes and full parsed fingerprint verified; provenance claim remains narrowly scoped | [OBS-0001](research/records/OBS-0001.json) |
-| Public Results | Seven Results: one provenance result, one software control, four bounded negative/null Results, and one correction; none is an LP plaintext recovery | [Browse Results](research/results/README.md) |
-| Public reproduction runs | Seven Runs across artifact verification, synthetic controls, acquisition boundaries, Page 32 holdouts, and correction auditing | [Browse Runs](research/runs/README.md) |
-| Research Capsules | Two Capsules covering the public verification foundation and Page 32 manifest-interpretation closures | [Browse Capsules](research/capsules/README.md) |
+| Public Results | Eight Results: one provenance result, one software control, five bounded negative/null Results, and one correction; none is an LP plaintext recovery | [Browse Results](research/results/README.md) |
+| Public reproduction runs | Eight Runs across artifact verification, synthetic controls, acquisition boundaries, Page 32 holdouts, correction auditing, and the E1059 default-key OutGuess calibration | [Browse Runs](research/runs/README.md) |
+| Research Capsules | Three Capsules covering the public verification foundation, Page 32 manifest-interpretation closures, and E1059 OutGuess closure | [Browse Capsules](research/capsules/README.md) |
 | New HMS-originated LP plaintext | None published | [Verified results](VERIFIED_RESULTS.md) |
 | Known solved-material controls | Strong reproduction candidates identified; public packages pending | [Known controls](KNOWN_CONTROLS.md) |
 | Page 32 | Structural candidates and bounded negative results; rune prose remains unsolved | [Page 32 dossier](pages/page-032/README.md) |
 | Page 72 | Structural/register candidates; no reviewed record explicitly reports plaintext recovery | [Page 72 dossier](pages/page-072/README.md) |
 | Page 73 | Known-control replay candidate; selector interpretation corrected | [Page 73 dossier](pages/page-073/README.md) |
 | Published closure run set | Five reviewed historical closure runs: acquisition null, three Page 32 negatives, and one anti-post-hoc correction | [RSET-0002](research/runsets/RSET-0002/README.md) |
-| Negative results | Four structured bounded negative/null Results are published in RSET-0002; the Run Set is available on `main` but remains an untagged GitHub release | [Negative results](NEGATIVE_RESULTS.md) |
+| Staged OutGuess closure | E1059 closes only the frozen default-key OutGuess 0.13 lane; carrier-level reproduction remains partial | [RSET-0003](research/runsets/RSET-0003/START-HERE.md) |
+| Negative results | Five structured bounded negative/null Results are packaged; RSET-0002 is published and RSET-0003 remains staged | [Negative results](NEGATIVE_RESULTS.md) |
 | Corrections | Page 73 visible-hash causal-selector claim withdrawn; Page 32 terminal holdout eligibility narrowed | [Corrections](CORRECTIONS.md) |
 
 ## Public release roadmap

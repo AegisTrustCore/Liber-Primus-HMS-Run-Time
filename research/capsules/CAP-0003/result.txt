@@ -1,0 +1,12 @@
+HMS ENDEAVOUR
+CAP-0003
+
+E1059 default-key OutGuess branch closure
+
+A controlled corpus-wide calibration showing why complete FFFFFFFF LP2 outputs are capacity-bound artifacts under the exact default-key OutGuess 0.13 path.
+
+RUNS:
+RUN-0008
+
+RESULTS:
+RES-0008

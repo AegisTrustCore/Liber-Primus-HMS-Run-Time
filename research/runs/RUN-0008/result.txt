@@ -1,0 +1,53 @@
+HMS ENDEAVOUR
+RUN-0008
+
+TITLE:
+Corpus-wide default-key OutGuess calibration
+
+STATUS:
+BOUNDED_NEGATIVE / PARTIAL
+
+SUMMARY:
+Only the ten known LP1 positive controls separated. No tested LP2 page produced a non-attractor header, familywise anomaly, or detector-positive extraction under the frozen default-key OutGuess path.
+
+WHY THIS RUN EXISTS:
+To determine whether earlier complete LP2 OutGuess outputs were genuine page-specific embeddings or capacity-threshold completions of a repeated false-header attractor.
+
+TARGET:
+Whether any LP2 page separates from the repeated false-header distribution under the frozen default-key OutGuess 0.13 path
+
+METHOD:
+Verify the complete retained page and extraction ledgers, independent-retrieval agreement, false-header family counts, held-out control, false controls, LP2 familywise tests, and bounded branch-closing decision.
+
+PARAMETERS:
+{"command": "python research/runs/RUN-0008/evidence/verify_e1059.py", "detector_rule": "complete AND (non-FFFFFFFF header OR minimum familywise p <= 0.05)", "familywise_tests": 225, "key_mode": "default-key only", "lp1_pages": 17, "lp2_pages": 58, "matched_null_repetitions_per_page": 8191, "outguess_version": "0.13", "pages": 75, "predeclared_statistics": 3}
+
+RESULT:
+REMOVE_OUTGUESS_DEFAULT_KEY_EXTRACTION_FROM_ACTIVE_LP2_KEY_CHANNELS
+
+METRICS:
+- canonical_pages: 75 pages
+- independent_retrieval_matches: 75 of_75
+- dominant_FFFFFFFF_headers: 65 pages
+- known_control_detector_positives: 10 of_10
+- false_control_rejections: 6 of_6
+- lp2_detector_positives: 0 of_58
+
+CONTROLS:
+- Ten historically positive LP1 carriers, with Page 08 held out from detector construction.
+- Six frozen LP2 false controls: Pages 17, 18, 20, 21, 22, and 43.
+- 8,191 page-specific conditional randomizations with Bonferroni correction over 225 predeclared tests.
+- Independent retrieval records agree on all 75 headers, seeds, lengths, offsets, and output hashes.
+- No alternative keys, carrier transformations, or post-hoc decoding rules were admitted.
+
+INTERPRETATION:
+The repeated FFFFFFFF header and complete 58,152-byte LP2 outputs are capacity-bound artifacts under this exact path, not supported page-specific payload extractions. The tested default-key lane is retained only as a regression and carrier-provenance control.
+
+LIMITATIONS:
+- This closes only OutGuess 0.13 with its default-key path on the declared canonical carriers; it does not close other keys, carrier variants, tools, or steganography generally.
+- The normalized package distributes carrier identities, hashes, complete ledgers, controls, and source, but not the 75 JPEG files or large coefficient bitmaps.
+- The portable verifier reproduces the ledger checks and conclusion; full coefficient extraction therefore remains outside this package and the reproduction status is PARTIAL.
+- The result recovers no LP2 plaintext, key, locator, endpoint, or Page 73 preimage.
+
+SOURCE:
+HMS_ENDEAVOUR_PERSONAL_RESEARCH / HMS_Endeavour_ChatGPT_Delta_E1059_2026-07-31.zip

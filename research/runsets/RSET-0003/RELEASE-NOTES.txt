@@ -1,0 +1,27 @@
+HMS ENDEAVOUR — STAGED RESEARCH RELEASE
+RSET-0003
+
+E1059 DEFAULT-KEY OUTGUESS CLOSURE
+
+STATUS
+Staged. Human publication approval has not been granted.
+
+RESULT
+The frozen OutGuess 0.13 default-key path recognized all ten known LP1
+positive controls. No LP2 page separated from the repeated FFFFFFFF
+false-header distribution or its page-specific matched null.
+
+BOUNDARY
+This closes only the exact declared path on the hashed canonical carriers.
+It does not close other keys, carriers, tools, or steganography generally.
+It recovers no LP2 plaintext, key, locator, endpoint, or complete solve.
+
+REPRODUCTION
+The package verifies all 75 retained extraction ledgers and the bounded
+decision. Carrier-level extraction remains outside the package because the
+JPEG carriers and large coefficient bitmaps are not redistributed.
+
+VERIFY
+python research/runs/RUN-0008/evidence/verify_e1059.py
+
+Expected: 13 passed, 0 failed.

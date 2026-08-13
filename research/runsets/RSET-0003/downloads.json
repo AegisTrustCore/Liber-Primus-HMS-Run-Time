@@ -1,0 +1,23 @@
+{
+  "run_set_id": "RSET-0003",
+  "members": [
+    {
+      "id": "RUN-0008",
+      "type": "RUN",
+      "path": "bundles/RUN-0008.zip",
+      "sha256": "f1df281413ba097c65a972517ca4b103cf8cfc6be5fe9ec4d3e666d5af171724"
+    },
+    {
+      "id": "RES-0008",
+      "type": "RESULT",
+      "path": "bundles/RES-0008.zip",
+      "sha256": "a10cd3d2284b8cd6360042969ebfa61df056ae771472b3aecd531acd2e9be536"
+    },
+    {
+      "id": "CAP-0003",
+      "type": "CAPSULE",
+      "path": "bundles/CAP-0003.zip",
+      "sha256": "42636e8794bcd9d25bb9ac0660306291a5465dd6809f737ed399122cc0c5a026"
+    }
+  ]
+}

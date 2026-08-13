@@ -1,0 +1,12 @@
+{
+  "command": "python research/runs/RUN-0008/evidence/verify_e1059.py",
+  "pages": 75,
+  "lp1_pages": 17,
+  "lp2_pages": 58,
+  "outguess_version": "0.13",
+  "key_mode": "default-key only",
+  "matched_null_repetitions_per_page": 8191,
+  "predeclared_statistics": 3,
+  "familywise_tests": 225,
+  "detector_rule": "complete AND (non-FFFFFFFF header OR minimum familywise p <= 0.05)"
+}

@@ -1,0 +1,28 @@
+{
+  "source_system": "HMS_ENDEAVOUR_PERSONAL_RESEARCH",
+  "historical_source": {
+    "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+    "original_identifier": "HMS_Endeavour_ChatGPT_Delta_E1059_2026-07-31.zip",
+    "source_preserved": true,
+    "sha256": "fa0c6300cd0b887ea2b6aa7354457c37a581c2b9a46640afe225ea7473fae5db",
+    "size_bytes": 174043
+  },
+  "environment_manifest": "releases/environments/ENV-0003.json",
+  "parent_records": [
+    "E1058"
+  ],
+  "source_paths": [],
+  "migration": {
+    "historical": true,
+    "original_run": "E1059",
+    "original_source": "Personal Research",
+    "migrated_at": "2026-08-13T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Converted the historical result into the HMS Run and Result schemas.",
+      "Retained all 75 extraction ledgers, the complete detector ledger, controls, source hashes, and independent-retrieval crosscheck.",
+      "Added a portable non-mutating standard-library verifier because the historical verifier used a fixed Linux path and an incorrect ledger-directory name.",
+      "Excluded canonical JPEG carriers, large coefficient bitmaps, known-positive output bodies, and unrelated forward workbench material."
+    ]
+  }
+}

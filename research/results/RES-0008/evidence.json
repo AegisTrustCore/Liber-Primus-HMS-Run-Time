@@ -1,0 +1,16 @@
+{
+  "result_id": "RES-0008",
+  "controls": [
+    "Ten known LP1 positive carriers, including held-out Page 08.",
+    "Six frozen LP2 false controls.",
+    "Independent retrieval agreement on all 75 pages.",
+    "Page-specific matched nulls and familywise correction across 225 tests."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0008/manifest.json",
+    "research/runs/RUN-0008/historical/REPORT.md",
+    "research/runs/RUN-0008/historical/page_detector_ledger.json",
+    "research/runs/RUN-0008/evidence/verify_e1059.py"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schemas/capsule-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "CAP-0003",
+  "title": "E1059 default-key OutGuess branch closure",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "summary": "A controlled corpus-wide calibration showing why complete FFFFFFFF LP2 outputs are capacity-bound artifacts under the exact default-key OutGuess 0.13 path.",
+  "experiment_ids": ["E1059"],
+  "run_ids": ["RUN-0008"],
+  "result_ids": ["RES-0008"],
+  "control_ids": [],
+  "negative_result_ids": ["RES-0008"],
+  "correction_ids": [],
+  "limitations": [
+    "The package does not redistribute the 75 JPEG carriers or large coefficient bitmaps.",
+    "Its portable verifier checks the complete retained ledgers and decision but does not rerun coefficient extraction.",
+    "The closure applies only to the frozen default-key OutGuess path."
+  ],
+  "finding_tags": ["OUTGUESS", "LP2", "FALSE_ATTRACTOR", "BOUNDED_NEGATIVE"]
+}

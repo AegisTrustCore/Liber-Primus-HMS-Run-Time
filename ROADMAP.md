@@ -51,7 +51,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Capability | Status |
 |---|---|
 | Checksum and corpus-manifest verifier | IN DEVELOPMENT |
-| Public reproduction packages | ACTIVE — seven member Runs/Results published; RSET-0001 staged, RSET-0002 published on `main`; no separate tagged release |
+| Public reproduction packages | ACTIVE — eight member Runs/Results published; RSET-0001 and RSET-0003 staged, RSET-0002 published on `main`; no separate tagged release |
 | ProofLock and notary verification | PLANNED |
 | Authenticated sockets and API | PLANNED |
 | Add-on architecture and plugin SDK | PLANNED |

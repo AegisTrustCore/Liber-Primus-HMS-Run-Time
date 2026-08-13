@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "object_type": "RESULTS",
-  "count": 7,
+  "count": 8,
   "entries": [
     {
       "id": "RES-0001",
@@ -86,6 +86,18 @@
       "package": "RES-0007/RES-0007.zip",
       "package_sha256": "daa56df1792447804bb8d96df0140b3d9efeed25c6d665e31f9e153eba72e775",
       "result_page": "RES-0007/result.html"
+    },
+    {
+      "id": "RES-0008",
+      "title": "Default-key OutGuess does not separate an LP2 page",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "PARTIAL",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0003",
+      "package": "RES-0008/RES-0008.zip",
+      "package_sha256": "a10cd3d2284b8cd6360042969ebfa61df056ae771472b3aecd531acd2e9be536",
+      "result_page": "RES-0008/result.html"
     }
   ]
 }

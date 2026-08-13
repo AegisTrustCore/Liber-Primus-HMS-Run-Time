@@ -23,15 +23,16 @@ Last reviewed: 2026-08-13
 
 ## Published on `main` after the frozen foundation
 
-The Research Archive now contains 7 published Runs, 7 published Results, 2 published Capsules, and 2 curated Run Set packages:
+The Research Archive now contains 8 published Runs, 8 published Results, 3 published Capsules, and 3 curated Run Set packages:
 
 - `RSET-0001`: `RUN-0001`/`RES-0001`, the historical OpenPGP artifact-identity reproduction, and `RUN-0002`/`RES-0002`, the synthetic Expedition-verifier control.
 - `RSET-0002`: `RUN-0003` through `RUN-0007` and `RES-0003` through `RES-0007`, covering one historical acquisition null, three bounded Page 32 negatives, and one anti-post-hoc correction.
-- `CAP-0001` and `CAP-0002`: the public verification foundation and Page 32 manifest-interpretation closures.
+- `RSET-0003`: staged `RUN-0008`/`RES-0008`, the E1059 default-key OutGuess bounded closure with all 75 extraction ledgers and a portable non-mutating verifier.
+- `CAP-0001` through `CAP-0003`: the public verification foundation, Page 32 manifest-interpretation closures, and E1059 OutGuess closure.
 - Distribution and UX standards separating developer source from customer-ready applications.
 - An automated public-boundary scan rejecting workstation paths and local endpoints.
 
-The seven Runs, seven Results, and two Capsules are published through the `main`-branch Research Archive. `RSET-0001` remains `STAGED`; `RSET-0002` is `PUBLISHED` on `main`. Neither is a separately tagged GitHub Release asset. None claims an LP plaintext recovery, and Expedition 001 remains closed pending its exact-subject release approval.
+The eight Runs, eight Results, and three Capsules are published through the `main`-branch Research Archive. `RSET-0001` remains `STAGED`; `RSET-0003` remains `STAGED`; `RSET-0002` is `PUBLISHED` on `main`. None is a separately tagged GitHub Release asset. None claims an LP plaintext recovery, and Expedition 001 remains closed pending its exact-subject release approval.
 
 ## Source audit included in the foundation
 
@@ -59,14 +60,14 @@ The audit did identify publication candidates in four distinct classes:
 3. Negative results that reject named transformation families without claiming universal impossibility.
 4. A correction retracting an overly strong Page 73 causal-selector interpretation.
 
-Seven first-class Results are now packaged in the Research Archive. `RES-0001` is a narrowly verified provenance-artifact result, `RES-0002` is a software known control, `RES-0003` through `RES-0006` are bounded negative/null Results, and `RES-0007` is a correction. None is a recovery of previously unknown LP plaintext.
+Eight first-class Results are now packaged in the Research Archive. `RES-0001` is a narrowly verified provenance-artifact result, `RES-0002` is a software known control, `RES-0003` through `RES-0006` are bounded negative/null Results, `RES-0007` is a correction, and `RES-0008` is the bounded E1059 default-key OutGuess closure. None is a recovery of previously unknown LP plaintext.
 
 The 1,322-file inventory will be converted deliberately rather than bulk-published. The target is a small set of exceptionally reproducible public objects, not an inflated ledger of partially structured hypotheses.
 
 ## Immediate focus
 
 1. Keep every status surface synchronized with the canonical Research Archive indexes.
-2. Audit the next bounded-rejection and structural candidates without exposing the private assignment queue or promoting payload/plaintext semantics.
+2. Qualify staged `RSET-0003` through its exact-subject release gate, then normalize E1477 as the next bounded-rejection candidate.
 3. Reconcile Page 72/73 numbering, known-control provenance, and corpus-edition differences before another control publication.
 4. Complete GP29 as the reference customer-ready instrument and release it separately.
 5. Open Expedition 001 only after its Windows portable verifier is signed and bound to an approved campaign subject.
@@ -74,10 +75,10 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 
 ## Platform launch state
 
-- GitHub: `v0.1.0` public research foundation released; `RSET-0001` is staged and `RSET-0002` is published on `main` without a separate release tag.
+- GitHub: `v0.1.0` public research foundation released; `RSET-0001` and `RSET-0003` are staged, and `RSET-0002` is published on `main` without a separate release tag.
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
-- Public Research Archive: seven Runs, seven Results, and two Capsules are published; `RSET-0001` is staged and `RSET-0002` is published as a portable source-tree package.
+- Public Research Archive: eight Runs, eight Results, and three Capsules are published; `RSET-0001` and `RSET-0003` are staged, and `RSET-0002` is published as a portable source-tree package.
 - Public GP29 Calculator: in development and intentionally excluded from the frozen foundation candidate; planned as a separate tool release.
 - Expedition verifier: canonical core, GUI, CLI, tests, and a private Windows portable candidate exist; public download remains unavailable while the campaign is closed.
 - Endeavour Lite and Liber Runtime: architecture started; runnable applications remain planned.

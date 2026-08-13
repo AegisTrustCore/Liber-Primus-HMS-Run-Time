@@ -1,0 +1,23 @@
+{
+  "run_id": "RUN-0008",
+  "inputs": [
+    {
+      "id": "E1059-CANONICAL-PAGE-MANIFEST",
+      "path": "research/runs/RUN-0008/historical/canonical_page_manifest.csv",
+      "sha256": "fb5d657ca79b2c66beb272248c1bf5e495471635d17e1e5517105be7567d129b",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "E1059-PAGE-DETECTOR-LEDGER",
+      "path": "research/runs/RUN-0008/historical/page_detector_ledger.json",
+      "sha256": "4ca019f3f5b36242fd27d5e3b5677038d7a3794e4d38b9446a9f6090b96a438b",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "E1059-HISTORICAL-RESULT",
+      "path": "research/runs/RUN-0008/historical/E1059_RESULT.json",
+      "sha256": "1b3064b13d562f92ab582e2ca8fe8f1c27d16f05123bfd5a5afcf32ebc37e2ad",
+      "availability": "PUBLIC"
+    }
+  ]
+}

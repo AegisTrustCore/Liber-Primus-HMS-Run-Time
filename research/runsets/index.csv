@@ -1,3 +1,4 @@
 id,title,status,reproduction_status,page,method,capsule,package,package_sha256,result_page
 RSET-0001,Public Verification Foundations,STAGED,,,,,RSET-0001/RSET-0001.zip,ee9cced3189e23e53710b29c547365a03f4946b836bc7fcb441cb1d35a46cd83,RSET-0001/result.html
 RSET-0002,Page 32 Closures and Acquisition Boundaries,PUBLISHED,,,,,RSET-0002/RSET-0002.zip,86f4406c87d1a19146da48c7e05d3bd7b16f84fd5937d729aa37c14de1dea3e8,RSET-0002/result.html
+RSET-0003,E1059 Default-Key OutGuess Closure,STAGED,,,,,RSET-0003/RSET-0003.zip,3198a2ec50435cb0909fd683ccaad4dca7972f804d6cdc5aaf7e38a581bcd46f,RSET-0003/result.html

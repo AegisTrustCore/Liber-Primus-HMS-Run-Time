@@ -1,0 +1,31 @@
+HMS ENDEAVOUR
+RES-0008
+
+TITLE:
+Default-key OutGuess does not separate an LP2 page
+
+STATUS:
+BOUNDED_NEGATIVE / PARTIAL
+
+CLAIM:
+Across the declared 75 canonical carriers, the frozen default-key OutGuess 0.13 test recognized all ten known LP1 positive controls but no LP2 page separated from the repeated FFFFFFFF false-header distribution or its page-specific matched null.
+
+WHY IT MATTERS:
+It converts visually persuasive complete LP2 extractions into a controlled branch closure, preventing capacity-bound artifacts from being reused as payload evidence.
+
+SUPPORTED BY:
+RUN-0008
+
+WHAT THIS DOES NOT CLAIM:
+- That Liber Primus contains no steganography.
+- That every possible OutGuess key or carrier transformation has been tested.
+- Any LP2 plaintext, translation, cryptographic key, locator, endpoint, or complete solve.
+- That absence of a detector positive proves absence under methods outside the frozen test.
+
+LIMITATIONS:
+- The claim is restricted to OutGuess 0.13 with the default-key path and the hashed canonical carriers.
+- Carrier JPEGs and coefficient bitmaps are not redistributed, so the public package verifies the complete retained ledgers rather than rerunning extraction from pixels.
+- Other keys, recompressions, crops, rotations, steganographic systems, and independently frozen methods are outside scope.
+
+CURRENT INTERPRETATION:
+Remove the tested default-key OutGuess extraction path from active LP2 key channels and retain it only as a regression and canonical-carrier provenance control.

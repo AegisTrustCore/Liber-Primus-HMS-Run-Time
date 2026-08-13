@@ -1,0 +1,14 @@
+HMS ENDEAVOUR
+RSET-0003
+
+E1059 Default-Key OutGuess Closure
+
+STATUS: STAGED
+
+Prepare a portable, bounded, reader-friendly release candidate for the E1059 corpus-wide default-key OutGuess branch closure.
+
+RUNS:
+RUN-0008
+
+RESULTS:
+RES-0008

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "run_set_id": "RSET-0003",
+  "truth_rule": "Tier changes access, guidance, and timing—not evidence status.",
+  "public_github_after_approval": {
+    "objects": ["RUN-0008", "RES-0008", "CAP-0003"],
+    "materials": ["canonical manifests", "75 extraction ledgers", "complete detector ledger", "portable verifier", "controls", "readable result views", "checksums", "downloadable packages"]
+  },
+  "patreon_companions_after_approval": {
+    "PILGRIM": ["plain-language release orientation", "false-positive versus payload guide"],
+    "NAVIGATOR": ["detector and matched-null walkthrough", "guided ledger-reading exercise"],
+    "CARTOGRAPHER": ["full reproduction worksheet", "control-family and multiple-testing audit"],
+    "ADMIRAL": ["independent validation assignment", "release-boundary and migration review notes"]
+  },
+  "held_from_distribution": [
+    {"material": "canonical JPEG carrier bytes and large coefficient bitmaps", "reason": "Not present in the reviewed delta package; identities and SHA-256 hashes are retained."},
+    {"material": "unrelated forward workbench routes", "reason": "Outside the bounded E1059 release subject."}
+  ]
+}

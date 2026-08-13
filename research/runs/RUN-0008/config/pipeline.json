@@ -1,0 +1,4 @@
+{
+  "description": "Verify the complete retained page and extraction ledgers, independent-retrieval agreement, false-header family counts, held-out control, false controls, LP2 familywise tests, and bounded branch-closing decision.",
+  "implementation": "research/runs/RUN-0008/evidence/verify_e1059.py"
+}
