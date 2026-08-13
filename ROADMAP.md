@@ -13,7 +13,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Record validator and continuous integration | RELEASED — developer source |
 | Protected-main governance | RELEASED |
 | Membership and Patreon release boundary | RELEASED |
-| Corpus provenance and verification manifest | IN DEVELOPMENT |
+| Corpus provenance and verification manifest | INTERNAL TESTING — verifier development package locally qualified; canonical LP manifest pending |
 
 ## Research record
 

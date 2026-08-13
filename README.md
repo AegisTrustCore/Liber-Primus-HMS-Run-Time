@@ -59,7 +59,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 | Expedition Verifier | IN DEVELOPMENT — private Windows candidate qualified; no public download |
 | RC-0001 | REPRODUCTION PENDING |
 | Endeavour Lite | ARCHITECTURE |
-| Corpus Manifest Verifier | IN DEVELOPMENT |
+| Corpus Manifest Verifier | INTERNAL TESTING — read-only core, desktop/CLI development package locally qualified |
 | Liber Runtime | IN DEVELOPMENT — local job/result core runnable; hosted service unavailable |
 | Advanced GP Solver | PLANNED |
 | Batch Experiment Engine | PLANNED |

@@ -19,7 +19,7 @@ All notable public software and repository changes are recorded here. Research p
 - Canonical corpus manifest
 - Continued Page 32, 72, and 73 evidence audits and provenance reconciliation
 - First solved-material LP known-control reproduction package
-- Corpus manifest verifier
+- Corpus Manifest Verifier `v0.1.0-dev`: canonical manifest/report schemas, safe read-only verification core, CLI, desktop UI, deterministic Windows package builder, self-test, and tamper/path-safety tests implemented
 
 ## [0.1.0] — 2026-08-13
 

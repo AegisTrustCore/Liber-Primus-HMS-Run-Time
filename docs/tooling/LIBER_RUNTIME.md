@@ -34,8 +34,12 @@ python scripts/hms_runtime.py gp29 "F U/V TH" --mode tokens --job
 
 The local `RuntimeStore` demonstrates submit, execute, and retrieve behavior without accounts, persistence, networking, entitlements, or Vault access. Those omissions are intentional and remain required work before a hosted beta.
 
+The Corpus Manifest Verifier now emits `HMS_CORPUS_VERIFICATION_V1`. That portable report—not an implicit workstation crawl or local corpus-root path—is the planned Runtime ingestion boundary. Report sharing remains explicit and private by default.
+
 Canonical contracts:
 
 - `schemas/runtime-job.schema.json`
 - `schemas/runtime-result.schema.json`
 - `hms_tools/runtime.py`
+- `schemas/corpus-manifest.schema.json`
+- `schemas/corpus-verification.schema.json`
