@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "GP29-v0.1.0-rc.1",
+  "candidate_commit_sha": "68308cbf15273053ea9b6ffc2380c220322707a4",
+  "environment_id": "ENV-0004",
+  "artifact": {
+    "name": "HMS-GP29-v0.1.0-rc.1-Windows-x64-portable.zip",
+    "sha256": "bf082ee7af968f37c2205c19f37d792b59b8818c4be8235c809c8fa9f4dab436"
+  },
+  "qualification_date": "2026-08-13",
+  "build_reproducibility": {
+    "clean_builds": 2,
+    "byte_identical": true,
+    "source_date_epoch": "1786578000",
+    "python_hash_seed": "0"
+  },
+  "functional_checks": [
+    {"check": "packaged CLI frozen-vector self-test", "passed": true},
+    {"check": "packaged deterministic Runtime job", "passed": true},
+    {"check": "packaged GUI headless self-test", "passed": true},
+    {"check": "package internal SHA256SUMS", "passed": true},
+    {"check": "independent GitHub Windows build, reproducibility, and executable qualification", "passed": true}
+  ],
+  "security_scan": {
+    "scanner": "Microsoft Defender Antivirus",
+    "signature_version": "1.457.130.0",
+    "signature_last_updated": "2026-08-12T09:46:34-05:00",
+    "remediation": "disabled during explicit scan",
+    "targets": [
+      {"name": "HMS-GP29-v0.1.0-rc.1-Windows-x64-portable.zip", "sha256": "bf082ee7af968f37c2205c19f37d792b59b8818c4be8235c809c8fa9f4dab436", "result": "NO_THREATS", "exit_code": 0},
+      {"name": "HMS-GP29.exe", "sha256": "f0e01a66479f927415874eb09e02c3637e9f09158aeb7ff4891c3e73d043e135", "result": "NO_THREATS", "exit_code": 0},
+      {"name": "HMS-GP29-CLI.exe", "sha256": "50687d66ac83b483af1b5635eeb485d81235d607b09b7266ff1ecfdad56ed404", "result": "NO_THREATS", "exit_code": 0}
+    ]
+  },
+  "remaining_checks": [
+    "Independent ordinary-user clean-machine acceptance",
+    "Explicit human publication approval bound to the current manifest digest"
+  ]
+}

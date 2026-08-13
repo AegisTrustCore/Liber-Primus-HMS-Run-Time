@@ -16,6 +16,7 @@
 - [`RSET-0003` staged reader guide](../research/runsets/RSET-0003/START-HERE.md)
 - [`GP29-v0.1.0-rc.1` software manifest](manifests/GP29-v0.1.0-rc.1.json)
 - [Pending `GP29-v0.1.0-rc.1` software gate](gates/GP29-v0.1.0-rc.1.json)
+- [`GP29-v0.1.0-rc.1` qualification record](qualifications/GP29-v0.1.0-rc.1.json)
 - [`GP29` developer documentation](../docs/tooling/GP29.md)
 - [Pending `XPD-0001-v0.2.0` Expedition manifest](manifests/XPD-0001-v0.2.0.json)
 - [Pending `XPD-0001-v0.2.0` Expedition gate](gates/XPD-0001-v0.2.0.json)
