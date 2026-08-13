@@ -24,6 +24,7 @@ START
 - Double-click HMS-GP29.exe for the desktop interface.
 - Power users can run HMS-GP29-CLI.exe --help.
 - Run HMS-GP29-CLI.exe self-test before relying on a calculation.
+- The desktop executable also supports HMS-GP29.exe --self-test for package qualification.
 
 INPUT
 Use the 29 supported runes, or explicit sound tokens separated by spaces or commas. Continuous Latin is rejected because sound segmentation would be ambiguous.

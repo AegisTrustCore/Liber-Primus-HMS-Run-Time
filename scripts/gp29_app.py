@@ -115,6 +115,9 @@ class GP29App(tk.Tk):
 
 
 def main() -> int:
+    if sys.argv[1:] == ["--self-test"]:
+        report = self_test()
+        return 0 if report["failed"] == 0 else 1
     GP29App().mainloop()
     return 0
 
