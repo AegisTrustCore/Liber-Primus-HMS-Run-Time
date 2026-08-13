@@ -3,7 +3,7 @@
   "schema_version": "1.0.0",
   "release_id": "XPD-0001-v0.2.0",
   "release_type": "EXPEDITION",
-  "candidate_commit_sha": "a1e5c8e7cfbe61b7b8683436686a2429c6a910f8",
+  "candidate_commit_sha": "a848a97ad3fb297f9836a3d6977c42456d358acc",
   "intended_tag": "XPD-0001-v0.2.0",
   "environment_id": "ENV-0002",
   "release_notes": "challenges/expedition-001/README.md",

@@ -3,7 +3,7 @@
   "schema_version": "1.0.0",
   "release_id": "RR-0001",
   "release_type": "RESEARCH",
-  "candidate_commit_sha": "ce845dbe3e2f00e7dbab8111edf71d651d33add4",
+  "candidate_commit_sha": "a848a97ad3fb297f9836a3d6977c42456d358acc",
   "intended_tag": "RR-0001",
   "environment_id": "ENV-0002",
   "release_notes": "reports/PUBLIC_RUNS_001.md",

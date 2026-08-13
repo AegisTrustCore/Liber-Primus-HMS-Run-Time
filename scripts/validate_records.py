@@ -113,6 +113,12 @@ def canonical_json_sha256(value: dict) -> str:
     return hashlib.sha256(canonical).hexdigest()
 
 
+def canonical_text_sha256(path: Path) -> str:
+    """Hash UTF-8 text independently of the checkout's line endings."""
+    content = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(content).hexdigest()
+
+
 def validate_research_record(path: Path, seen_ids: set[str]) -> list[str]:
     errors: list[str] = []
     try:
@@ -434,7 +440,7 @@ def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
                 if resolved_hint is None or not resolved_hint.is_file():
                     errors.append(f"{hint_prefix}.path does not resolve to a file")
                 else:
-                    actual_hint_hash = hashlib.sha256(resolved_hint.read_bytes()).hexdigest()
+                    actual_hint_hash = canonical_text_sha256(resolved_hint)
                     if hint.get("sha256") != actual_hint_hash:
                         errors.append(f"{hint_prefix}.sha256 does not match the hint file")
 
