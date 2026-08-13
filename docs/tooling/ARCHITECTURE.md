@@ -25,4 +25,4 @@ GP29 data + corpus manifests + evidence schemas
 
 ## First implementation
 
-[`tools/gp29`](../../tools/gp29/README.md) is the first executable slice. Endeavour Lite and Liber Runtime begin as interface contracts around that core; their status remains planned until runnable code exists.
+GP29 is the first planned executable slice and will receive a separate public release after the foundation. Endeavour Lite and Liber Runtime begin as interface contracts around that core; their status remains planned until runnable code exists.

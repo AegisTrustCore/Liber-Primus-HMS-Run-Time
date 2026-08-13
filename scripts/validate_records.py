@@ -14,7 +14,7 @@ RECORD_DIR = ROOT / "research" / "records"
 PAGES_DIR = ROOT / "pages"
 INSTRUMENT_MANIFEST = ROOT / "instruments" / "manifest.json"
 RELEASE_STATE = ROOT / "releases" / "release-state.json"
-PATREON_POST_MANIFEST = ROOT / "patreon" / "posts" / "manifest.json"
+PATREON_POST_MANIFEST = ROOT / "patreon" / "public-manifest.json"
 CHALLENGE_MANIFEST = ROOT / "challenges" / "manifest.json"
 
 ID_PATTERN = re.compile(r"^(OBS|HYP|EXP|RES|NEG|RR|PL|COR|RET)-[0-9]{3,}$")
@@ -228,7 +228,6 @@ def validate_patreon_posts(path: Path, patreon_status: str | None) -> tuple[list
         return [f"{path.relative_to(ROOT)}: posts must be a list"], 0
 
     seen_ids: set[str] = set()
-    posts_root = path.parent.resolve()
     for index, post in enumerate(posts):
         prefix = f"post[{index}]"
         if not isinstance(post, dict):
@@ -260,13 +259,8 @@ def validate_patreon_posts(path: Path, patreon_status: str | None) -> tuple[list
                 "https://www.patreon.com/"
             ):
                 errors.append(f"{prefix}.url is required when POSTED")
-        relative_file = post.get("file")
-        if not isinstance(relative_file, str) or not relative_file:
-            errors.append(f"{prefix}.file must be a non-empty string")
-        else:
-            resolved = (posts_root / relative_file).resolve()
-            if not resolved.is_relative_to(posts_root) or not resolved.is_file():
-                errors.append(f"{prefix}.file does not resolve to a post draft")
+        if "file" in post or "body" in post or "content" in post:
+            errors.append(f"{prefix} must be metadata-only; post bodies and file pointers are private")
 
     return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(posts)
 

@@ -8,6 +8,8 @@ The Patreon creator page is live at [Aegis Trust Core](https://www.patreon.com/c
 
 Current and future material destinations are defined in the [Patreon release matrix](patreon/RELEASE_MATRIX.md). GitHub remains the authority for public releases; the [instrument registry](instruments/README.md) remains the authority for tool availability.
 
+GitHub may record that a member transmission exists in the [metadata-only Patreon manifest](patreon/public-manifest.json). Its full post body, gated clues, private attachments, and production material remain on Patreon or in private HMS staging.
+
 ## Membership ladder
 
 | Access level | Price | Member role |

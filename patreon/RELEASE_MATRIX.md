@@ -37,4 +37,4 @@ Public Expeditions use one answer and one evidence standard across every tier:
 | Cartographer | Structured worksheet and evidence ledger | Reusable research organization |
 | Admiral | Validation protocol and campaign review | Facilitated quality assurance, not Vault access |
 
-Tier-only content must not be committed to this public repository. Public-safe titles, states, and release descriptions may be recorded here; the actual member packet is staged privately and delivered through Patreon. Every completed campaign returns its final answer and reasoning to GitHub.
+Tier-only content must not be committed to this public repository. The metadata-only [public manifest](public-manifest.json) records that a transmission exists; Patreon delivers its body and approved attachments. Actual member packets, production documents, and gated clues are staged privately. Every completed campaign returns its final answer and reasoning to GitHub.

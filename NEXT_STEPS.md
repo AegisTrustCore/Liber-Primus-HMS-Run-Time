@@ -1,27 +1,27 @@
 # Next Steps
 
-## Research publication queue
+## Foundation freeze
 
-1. Freeze and hash canonical public corpus inputs, or publish import instructions where redistribution is inappropriate.
-2. Resolve the source archive's inconsistent Page 73/74 solution and numbering statements before citing either control.
-3. Reproduce E143-E145 from clean inputs: held-out F-decision and GP-token recovery on already-solved LP1 pages.
-4. Reproduce E156-E160 from clean inputs: segment boundaries and known-control replays on terminal material.
-5. Reproduce one Page 32 structural claim without using target-derived parameter selection.
-6. Publish the Page 73 hash-selector correction beside the narrower retained transform result.
-7. Package one bounded negative result with its full tested family and success criterion.
-8. Promote only the smallest claim supported by the resulting evidence bundle.
+PR #1 remains `v0.1.0-rc.1` for publication-boundary review. Its scope is frozen: no new research packages, application features, or challenge launch will be added before merge.
 
-## Platform queue
+Before `v0.1.0`:
 
-1. Review and merge the foundation draft through the protected `main` branch.
-2. Tag and publish `v0.1.0` only after the merged foundation passes its release checklist.
-3. Complete the Patreon pre-launch checklist and approve tier launch posts before publishing the creator page.
-4. Prepare the first Pilgrim Dispatch and Navigator research preview from approved source material.
-5. Add a checksum verifier for public evidence packages.
-6. Add corpus-manifest verification.
-7. Specify the public GP29 Calculator inputs, outputs, test vectors, and release boundary.
-8. Specify the Liber Runtime identity, entitlement, storage, and export contracts.
-9. Specify authenticated socket/API and capability-scoped add-on contracts before implementation.
-10. Publish the first stable Observer instrument only after its inputs and limitations are documented.
+1. Complete the public/private publication-boundary audit.
+2. Confirm that the public Patreon interface contains metadata, membership policy, and release boundaries—not member post bodies or operations material.
+3. Confirm that the public roadmap does not expose the active research queue, exact assignments, private datasets, or unreleased parameters.
+4. Review and merge through protected `main` after all required checks pass.
+5. Tag and publish `v0.1.0` only from the reviewed foundation merge.
+
+## Progressive public sequence after `v0.1.0`
+
+1. Release GP29 `v0.1` as a separately versioned free tool.
+2. Open Expedition 001 only after the foundation is live on the default branch.
+3. Publish `RC-001` as the first public known-control package after clean reproduction.
+4. Release HMS Endeavour Lite alpha after its own capability and evidence review.
+5. Continue with individually reviewed research, tool, and Runtime releases.
+
+## Boundary rule
+
+The public roadmap states what category of work is happening and what gate remains. The private research queue holds exact source experiments, assignments, parameters, datasets, candidate instructions, and active validation detail. A candidate enters GitHub in full only when it is intentionally promoted as a public package.
 
 Releases follow demonstrated capability, not arbitrary calendar promises.

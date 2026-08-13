@@ -13,4 +13,4 @@ Open research is not proof. Items appear here because they warrant structured re
 
 No entry on this page should be described elsewhere as verified merely because it appears in the public research queue.
 
-See the [source audit](audit/SOURCE_AUDIT_2026-08-12.md), [priority claim inventory](audit/PRIORITY_CLAIM_INVENTORY.md), and [release candidate queue](audit/RELEASE_CANDIDATE_QUEUE.md).
+See the [source audit](audit/SOURCE_AUDIT_2026-08-12.md) and [public release-candidate roadmap](audit/RELEASE_CANDIDATE_QUEUE.md). Exact active assignments and experimental details remain in the private research ledger.

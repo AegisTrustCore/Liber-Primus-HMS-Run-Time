@@ -17,12 +17,12 @@ This index answers three different questions separately: what is publicly verifi
 | Negative results | Multiple bounded candidates identified; none packaged as a final public record yet | [Negative results](NEGATIVE_RESULTS.md) |
 | Corrections | Page 73 visible-hash causal-selector claim withdrawn | [Corrections](CORRECTIONS.md) |
 
-## Strongest next releases
+## Public release roadmap
 
-1. E143-E145 held-out replay on already-solved LP1 material.
-2. E156-E160/E159 terminal known-control replay after provenance reconciliation.
-3. One independently implemented Page 32 structural observation.
-4. One fully scoped Page 32 or Page 72 negative-result package.
-5. The Page 73 selector correction linked to the narrower result it preserves.
+1. `RC-001` — package and reproduce a solved-material known control.
+2. `RC-002` — package one bounded negative result with its complete tested family.
+3. `RC-003` — reconcile provenance before publishing another known-control replay.
+4. `RC-004` — publish a correction beside the narrower result it preserves.
+5. `RC-005` — independently implement one structural observation.
 
-The candidate-level detail is maintained in the [priority claim inventory](audit/PRIORITY_CLAIM_INVENTORY.md) and [release candidate queue](audit/RELEASE_CANDIDATE_QUEUE.md).
+Exact assignments, parameters, and datasets belong to the private research queue. GitHub records only the [public release-candidate roadmap](audit/RELEASE_CANDIDATE_QUEUE.md) until a package passes the public gate.

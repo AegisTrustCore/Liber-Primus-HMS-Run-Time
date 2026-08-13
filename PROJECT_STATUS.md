@@ -16,8 +16,8 @@ Last reviewed: 2026-08-12
 - Patreon membership boundary and pre-launch publication kit
 - Machine-readable instrument status registry
 - Historical Cicada 3301 OpenPGP key, full-fingerprint record, and non-affiliation boundary
-- First executable public GP29 Calculator release candidate
-- Structured machine-readable queue for five LP research candidates
+- GP29 Calculator interface and release boundary; executable release held for post-foundation `v0.1`
+- Public status-level roadmap for five LP release candidates; exact research queue retained privately
 
 ## Source audit completed in the candidate branch
 
@@ -49,18 +49,19 @@ These candidates remain outside the verified ledger until their inputs, hashes, 
 
 ## Immediate focus
 
-1. Resolve corpus provenance and page-numbering differences.
-2. Package the E143-E145 solved-page decoder replay as a positive control.
-3. Package the E156-E160 Page 73 and Page 74 replays as known controls.
-4. Reproduce the strongest Page 32 structural claim from canonical input.
-5. Publish the Page 73 correction beside any retained transform result.
-6. Package the first bounded negative-result record.
+1. Complete the publication-boundary audit and merge the frozen foundation candidate.
+2. Tag the reviewed foundation as `v0.1.0`.
+3. Release GP29 `v0.1` separately.
+4. Open Expedition 001 after the foundation is live.
+5. Publish `RC-001` only after clean reproduction and evidence packaging.
+6. Release HMS Endeavour Lite alpha through a separate capability review.
 
 ## Platform launch state
 
 - GitHub: public repository connected; foundation changes remain in draft PR review.
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
-- Public GP29 Calculator: runnable release candidate in draft PR #1; not yet on `main` or tagged.
+- Public GP29 Calculator: in development and intentionally excluded from the frozen foundation candidate; planned as the next separate tool release.
 - Endeavour Lite and Liber Runtime: architecture started; runnable applications remain planned.
 - Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
+- Scope freeze: PR #1 accepts only foundation-boundary corrections until merge; Expedition 001 remains closed.

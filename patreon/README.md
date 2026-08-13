@@ -1,18 +1,13 @@
-# Patreon Publication Kit
+# Patreon Public Interface
 
-This directory contains public-safe copy and release templates for the Aegis Trust Core Patreon. It contains no member data, authentication material, private posts, or entitlement secrets.
+This directory documents the public boundary of the Aegis Trust Core Patreon. It intentionally contains no member post bodies, gated clues, packet-production documents, operational checklists, private datasets, or internal content plans.
 
-Current state: **creator page published; first controlled post round live**.
-
-- [Membership and tier boundary](../MEMBERSHIP.md)
-- [Cleaned tier copy](TIER_COPY.md)
-- [Dispatch 000 draft](DISPATCH_000.md)
-- [Capability release-post template](RELEASE_POST_TEMPLATE.md)
-- [Pre-launch checklist](PRELAUNCH_CHECKLIST.md)
+- [Membership roles, prices, and availability boundary](../MEMBERSHIP.md)
 - [Tier release matrix](RELEASE_MATRIX.md)
-- [Content plan](CONTENT_PLAN.md)
-- [Member material packaging](MATERIALS.md)
-- [Tier release checklist](TIER_RELEASE_CHECKLIST.md)
-- [Draft post registry](posts/README.md)
+- [Metadata-only publication manifest](public-manifest.json)
 
-Before each future Patreon release, confirm that every named tool is labeled with its real development status and that the tier-release checklist passes.
+## Publication boundary
+
+GitHub records that a member transmission exists. Patreon delivers the transmission to its intended audience. Private HMS operations staging holds working copy and packages before publication.
+
+The public manifest may contain an ID, title, audience, material type, publication state, date, public Patreon URL, and related released instrument. It must not contain the post body, private attachment locations, exact gated clues, unpublished experimental instructions, or entitlement data.

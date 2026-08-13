@@ -19,7 +19,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 - [Open research](OPEN_RESEARCH.md) — promising, unresolved, or unaudited work
 - [Negative results](NEGATIVE_RESULTS.md) — tested paths that did not establish their target claim
 - [Corrections](CORRECTIONS.md) — narrowed, superseded, and withdrawn interpretations
-- [Next steps](NEXT_STEPS.md) — the current research queue
+- [Next steps](NEXT_STEPS.md) — the public release sequence
 - [Methodology](METHODOLOGY.md) — what HMS means by verified
 - [Release policy](RELEASE_POLICY.md) — how material becomes public
 - [Roadmap](ROADMAP.md) — released, in-development, and planned capabilities
@@ -29,7 +29,8 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 - [Architecture](ARCHITECTURE.md) — GitHub, Patreon, Runtime, Aegis, and Vault separation
 - [Governance](GOVERNANCE.md) — protected-branch and merge policy
 - [Source audit](audit/SOURCE_AUDIT_2026-08-12.md) — what was inventoried and what the records actually support
-- [Release candidate queue](audit/RELEASE_CANDIDATE_QUEUE.md) — controls, structural claims, negatives, and corrections awaiting reproduction
+- [Publication-boundary audit](audit/PUBLICATION_BOUNDARY_AUDIT.md) — the final public/private gate for the foundation candidate
+- [Release-candidate roadmap](audit/RELEASE_CANDIDATE_QUEUE.md) — public status and gates without the private research queue
 
 ## Current public position
 
@@ -58,6 +59,8 @@ Current membership levels are Observer (public), Pilgrim ($3), Navigator ($8), C
 Stable approved evidence remains public. Patreon provides earlier, deeper, and more capable participation rather than a separate standard of truth.
 
 The first free puzzle, [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md), is included in the foundation branch as a release candidate. It is not open until its manifest status changes on the public default branch.
+
+PR #1 is scope-frozen as the foundation candidate. No additional research packages, tools, or challenge launch will be added before its publication-boundary review and merge.
 
 ## Release principle
 
