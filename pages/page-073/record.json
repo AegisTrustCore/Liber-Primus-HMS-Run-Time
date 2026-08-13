@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/page-record.schema.json",
+  "schema_version": "1.0.0",
+  "page": 73,
+  "dossier_status": "AUDIT_PENDING",
+  "audit_priority": 3,
+  "public_verified_claim_count": 0,
+  "last_reviewed": "2026-08-12",
+  "notes": "Priority audit dossier; terminal and cryptographic branches require reconciliation."
+}

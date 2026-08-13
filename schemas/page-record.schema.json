@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/page-record.schema.json",
+  "title": "HMS Page Audit Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "page",
+    "dossier_status",
+    "audit_priority",
+    "public_verified_claim_count",
+    "last_reviewed",
+    "notes"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0.0" },
+    "page": { "type": "integer", "minimum": 0 },
+    "dossier_status": {
+      "enum": ["AUDIT_PENDING", "AUDIT_IN_PROGRESS", "REVIEW_READY", "PUBLISHED"]
+    },
+    "audit_priority": { "type": "integer", "minimum": 1 },
+    "public_verified_claim_count": { "type": "integer", "minimum": 0 },
+    "last_reviewed": { "type": "string", "format": "date" },
+    "notes": { "type": "string", "minLength": 1 }
+  }
+}

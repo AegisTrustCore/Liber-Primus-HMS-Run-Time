@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/research-record.schema.json",
+  "title": "HMS Public Research Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "object_type",
+    "title",
+    "claim",
+    "scope",
+    "classification",
+    "publication_status",
+    "evidence_status",
+    "created_at",
+    "updated_at",
+    "authors",
+    "sources",
+    "reproduction",
+    "limitations",
+    "related_records",
+    "content_hash"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^(OBS|HYP|EXP|RES|NEG|RR|PL|COR|RET)-[0-9]{3,}$" },
+    "object_type": {
+      "enum": ["OBSERVATION", "HYPOTHESIS", "EXPERIMENT", "RESULT", "NEGATIVE_RESULT", "RESEARCH_REPORT", "PROOFLOCK", "CORRECTION", "RETRACTION"]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "claim": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "minLength": 1 },
+    "classification": { "const": "PUBLIC" },
+    "publication_status": { "const": "PUBLISHED" },
+    "evidence_status": {
+      "enum": ["OBSERVATION", "HYPOTHESIS", "EXPERIMENTAL", "PROVISIONAL", "REPRODUCED", "VERIFIED", "UNSUPPORTED", "REFUTED", "RETRACTED"]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "authors": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "sources": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "reproduction": { "type": "string", "minLength": 1 },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "related_records": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "content_hash": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" }
+  }
+}
