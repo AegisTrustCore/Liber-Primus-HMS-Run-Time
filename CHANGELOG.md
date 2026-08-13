@@ -4,9 +4,15 @@ All notable public software and repository changes are recorded here. Research p
 
 ## [Unreleased]
 
-### Release candidate
+### In development
 
-- `v0.1.0-rc.1` foundation candidate in draft PR review
+- GP29 `v0.1`
+- Canonical corpus manifest
+- Page 32, 72, and 73 evidence audits
+- First public known-control reproduction package
+- Corpus manifest verifier
+
+## [0.1.0] — 2026-08-13
 
 ### New
 
@@ -30,15 +36,11 @@ All notable public software and repository changes are recorded here. Research p
 - Private-by-default sharing, local research mode, compute-quota, and discovery-disclosure contracts
 - Standard public result view and Observer end-to-end workflow
 
-### In development
-
-- Canonical corpus manifest
-- Page 32, 72, and 73 evidence audits
-- First public known-control reproduction package
-- Corpus manifest verifier and GP29 Calculator specification
-
 ### Research changes
 
 - No HMS-originated translation claim has been promoted as verified.
 
-No stable `v0.1.0` release has been published yet.
+No HMS-originated recovery of previously unknown Liber Primus plaintext is published as verified in this release.
+
+[Unreleased]: https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0

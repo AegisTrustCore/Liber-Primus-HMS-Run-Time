@@ -2,7 +2,7 @@
   "$schema": "../../schemas/environment-manifest.schema.json",
   "schema_version": "1.0.0",
   "id": "ENV-0001",
-  "hms_version": "v0.1.0-rc.1",
+  "hms_version": "v0.1.0",
   "engine": "CPython 3.12",
   "operating_system": "Platform-independent standard-library validation; CI uses Ubuntu 24.04",
   "architecture": "x86_64 in CI",

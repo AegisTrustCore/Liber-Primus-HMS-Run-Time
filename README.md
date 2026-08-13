@@ -1,10 +1,10 @@
 # HMS Endeavour — Liber Primus Public Research Record
 
-> **HMS Endeavour is under active construction.** This repository is the stable public evidence and verification layer of the project. It is not a claim that the full Liber Primus corpus has been solved, and it is not the complete HMS Research Station.
+> **HMS Endeavour v0.1.0 is the released public research foundation.** The broader HMS platform remains under active construction. This repository is the stable public evidence and verification layer, not a claim that the full Liber Primus corpus has been solved and not the complete HMS Research Station.
 
 > **No affiliation:** HMS Endeavour is independent research. It does not represent Cicada 3301, has no endorsement from Cicada 3301, and does not possess Cicada 3301's private signing authority.
 
-> **Release status:** GitHub currently has no tagged HMS release. The expanded foundation is `v0.1.0-rc.1` under review in draft PR #1. See [Public releases](PUBLIC_RELEASES.md).
+> **Release status:** `v0.1.0` — Public Research Foundation. See [Public releases](PUBLIC_RELEASES.md) and the [approved release gate](releases/gates/v0.1.0.json).
 
 HMS Endeavour publishes bounded claims, reproducible evidence, negative results, unresolved questions, corrections, and public verification tools. Findings are released only after their scope, inputs, procedure, limitations, and evidence status have been recorded.
 
@@ -40,9 +40,25 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 - [Publication-boundary audit](audit/PUBLICATION_BOUNDARY_AUDIT.md) — the final public/private gate for the foundation candidate
 - [Release-candidate roadmap](audit/RELEASE_CANDIDATE_QUEUE.md) — public status and gates without the private research queue
 
+## HMS Endeavour status
+
+| Component | State |
+|---|---|
+| Foundation | **RELEASED — v0.1.0** |
+| GP29 Calculator | IN DEVELOPMENT |
+| Expedition 001 | RELEASE CANDIDATE — CLOSED |
+| RC-0001 | REPRODUCTION PENDING |
+| Endeavour Lite | ARCHITECTURE |
+| Corpus Manifest Verifier | IN DEVELOPMENT |
+| Liber Runtime | PLANNED |
+| Advanced GP Solver | PLANNED |
+| Batch Experiment Engine | PLANNED |
+
+**Verified HMS recoveries of previously unknown Liber Primus plaintext: 0**
+
 ## Current public position
 
-The initial repository foundation is being established. The existing HMS research workspace contains extensive experiments, reports, runtime outputs, and handoff material. Those artifacts are **source material for an audit**, not automatically published findings.
+The repository foundation is released. The existing HMS research workspace contains extensive experiments, reports, runtime outputs, and handoff material. Those artifacts are **source material for an audit**, not automatically published findings.
 
 Pages 32, 72, and 73 are the first priority dossiers. The supplied Personal Research tree has now been hash-inventoried and its text records scanned. That audit found known-control replays, structural candidates, bounded negative results, and a required correction—but no reviewed structured record explicitly reporting newly recovered plaintext, key material, locator, or endpoint. No page-level translation claim is listed as verified here until its precise claim and reproduction package pass the release gate.
 
@@ -68,9 +84,9 @@ Stable approved evidence remains public. Patreon provides earlier, deeper, and m
 
 Expedition and ship language is a storytelling layer. Canonical evidence records remain dry, permanently identified, provenance-linked objects. Every narrative claim must link to the evidence layer that supports it.
 
-The first free puzzle, [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md), is included in the foundation branch as a release candidate. It is not open until its manifest status changes on the public default branch.
+The first free puzzle, [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md), is included as a closed release candidate. It is not open until its manifest status changes through a separate release decision.
 
-PR #1 is scope-frozen as the foundation candidate. No additional research packages, tools, or challenge launch will be added before its publication-boundary review and merge.
+Foundation content was reviewed and merged in [PR #1](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/pull/1). Future research packages, tools, and challenge launches receive separate branches, reviews, and releases.
 
 ## Release principle
 
@@ -78,7 +94,7 @@ Only records marked `PUBLIC` and `PUBLISHED` may enter this repository. Private 
 
 ## Repository status
 
-This is the `v0.1.0-rc.1` foundation-candidate phase. It is not a released `v0.1.0` build. See [CHANGELOG.md](CHANGELOG.md) and the [release state](releases/README.md).
+This is the released `v0.1.0` public-research foundation. See [CHANGELOG.md](CHANGELOG.md) and the [release state](releases/README.md).
 
 ## License
 
