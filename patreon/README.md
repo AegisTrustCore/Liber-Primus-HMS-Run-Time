@@ -11,3 +11,5 @@ This directory documents the public boundary of the Aegis Trust Core Patreon. It
 GitHub records that a member transmission exists. Patreon delivers the transmission to its intended audience. Private HMS operations staging holds working copy and packages before publication.
 
 The public manifest may contain an ID, title, audience, material type, publication state, date, public Patreon URL, and related released instrument. It must not contain the post body, private attachment locations, exact gated clues, unpublished experimental instructions, or entitlement data.
+
+The current public availability report is [HMS STATUS 001 — Instruments on Deck](https://www.patreon.com/AegisTrustCore/posts/hms-status-001-166550733). It distinguishes released source-level utilities from instruments in development and planned systems; the instrument registry remains authoritative.
