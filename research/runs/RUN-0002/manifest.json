@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../schemas/run-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RUN-0002",
+  "title": "Synthetic acceptance and rejection tests for the Expedition verifier core",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "evidence_class": "KNOWN_CONTROL",
+  "reproduction_status": "REPRODUCED",
+  "migration_confidence": "COMPLETE",
+  "executed_at": "2026-08-13T02:15:23-05:00",
+  "target": {"type": "SOFTWARE_COMPONENT", "page": null, "region": null, "description": "Canonical local Expedition verifier core"},
+  "experiment_id": null,
+  "result_ids": ["RES-0002"],
+  "capsule_id": "CAP-0001",
+  "run_set_ids": ["RSET-0001"],
+  "method_family": "SYNTHETIC_SOFTWARE_VERIFICATION",
+  "pipeline_id": null,
+  "summary": "Five frozen synthetic tests established the verifier core's normalization, acceptance, rejection, empty-input, and unknown-challenge behavior without disclosing the sealed Expedition answer.",
+  "why_run": "To establish deterministic verifier behavior as a precondition for packaging Expedition 001.",
+  "inputs": [
+    {"id": "VERIFIER-CORE", "path": "hms_tools/challenge_verifier.py", "sha256": "b8084bd42c5bfbf712d8da4f6aa7480f15cee860a9cc44a5499a3fa25a3e01e2", "availability": "PUBLIC"},
+    {"id": "VERIFIER-TESTS", "path": "tests/test_challenge_verifier.py", "sha256": "9327850555864669d60efbece1b05ae9c2c7a53526684a1ad8e2f11feb741daf", "availability": "PUBLIC"}
+  ],
+  "parameters": {"command": "python -m unittest tests.test_challenge_verifier -v", "test_vector_class": "SYNTHETIC", "random_seed": null, "random_seed_status": "NOT_APPLICABLE"},
+  "pipeline": {"description": "Construct a temporary synthetic challenge manifest and exercise normalization, match, nonmatch, empty input, and unknown-ID paths.", "implementation": "tests/test_challenge_verifier.py"},
+  "output": {
+    "status": "COMPLETE",
+    "result_class": "KNOWN_CONTROL",
+    "summary": "All five frozen verifier-core tests passed.",
+    "acceptance": {"passed": true, "criterion": "Five specified synthetic test cases complete successfully."},
+    "metrics": [
+      {"name": "tests_run", "value": 5, "unit": "count"},
+      {"name": "tests_passed", "value": 5, "unit": "count"},
+      {"name": "tests_failed", "value": 0, "unit": "count"}
+    ],
+    "stdout": "Ran 5 tests; OK"
+  },
+  "controls": ["The positive vector must match its generated SHA-256 digest.", "The negative vector must not match.", "No XPD-0001 answer is stored in the tests."],
+  "interpretation": "The frozen verifier core behaved as specified under the public synthetic control suite.",
+  "limitations": ["Unit tests establish deterministic core behavior, not desktop usability.", "The sealed XPD-0001 acceptance test is performed privately against the packaged candidate.", "This is not Liber Primus source evidence or a plaintext claim."],
+  "provenance": {
+    "source_system": "HMS_ENDEAVOUR",
+    "historical_source": {"source_type": "PUBLIC_REPOSITORY_RUN", "original_identifier": "RUN-0002", "source_preserved": true},
+    "environment_manifest": "releases/environments/ENV-0002.json",
+    "parent_records": [],
+    "source_paths": ["research/records/RUN-0002.json"],
+    "migration": {"historical": true, "original_run": "RUN-0002", "original_source": "HMS public research record", "migrated_at": "2026-08-13T00:00:00-05:00", "migration_version": "1.0.0", "normalization_changes": ["Converted the flat public record into the canonical run-package schema.", "Preserved the original five-test execution separately from later repository test-suite growth.", "No measured output or claim was altered."]}
+  },
+  "raw_artifacts": {"availability": "NOT_AVAILABLE", "reason": "No separate historical test log was preserved; the exact summarized output remains in the canonical output object."},
+  "chronicle_events": [],
+  "finding_tags": ["EXPEDITION", "VERIFIER", "SYNTHETIC", "KNOWN_CONTROL"]
+}

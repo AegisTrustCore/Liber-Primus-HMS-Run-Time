@@ -1,7 +1,7 @@
-# Published Records
+# Legacy Published Record Snapshots
 
-No HMS-originated research record has passed the public release gate yet.
+These flat JSON objects are retained because they were part of an earlier public release subject. They are historical compatibility snapshots, not the canonical format for new Runs and Results.
 
-When added, each JSON record must validate against [`schemas/research-record.schema.json`](../../schemas/research-record.schema.json) and link to its public evidence package.
+Use the first-class [Run index](../runs/README.md) and [Result index](../results/README.md). Each package's `manifest.json` is authoritative and its other representations are generated.
 
 Records use permanent four-digit canonical IDs that are never reused. Each record presents Claim, Why it matters, Evidence/Sources, Method, Controls, Limitations, Reproduce, Status, and provenance linking it to a deterministic environment. Corrections, supersessions, and retractions preserve the original object and link in both directions. See [OBJECT_MODEL.md](../../OBJECT_MODEL.md).

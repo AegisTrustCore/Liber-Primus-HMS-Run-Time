@@ -1,0 +1,17 @@
+{
+  "run_id": "RUN-0001",
+  "inputs": [
+    {
+      "id": "KEY-2012",
+      "path": "keys/cicada-3301-2012.asc",
+      "sha256": "6e397c5c6ceeeb4da08535db74874989f193c914b8d2d87972dd282b24ea809f",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "KEY-MANIFEST",
+      "path": "keys/manifest.json",
+      "sha256": null,
+      "availability": "PUBLIC"
+    }
+  ]
+}

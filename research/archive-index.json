@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "source_artifact_count": 1322,
+  "source_artifact_count_note": "Hash-inventoried source artifacts; not a result count.",
+  "published_runs": 2,
+  "published_results": 2,
+  "published_capsules": 1,
+  "staged_run_sets": 1,
+  "indexes": {
+    "runs": "runs/index.json",
+    "results": "results/index.json",
+    "capsules": "capsules/index.json",
+    "runsets": "runsets/index.json"
+  }
+}

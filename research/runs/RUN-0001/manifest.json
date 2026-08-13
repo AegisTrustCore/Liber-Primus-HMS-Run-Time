@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../schemas/run-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RUN-0001",
+  "title": "Clean replay of the historical Cicada 3301 OpenPGP artifact verification",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "evidence_class": "KNOWN_CONTROL",
+  "reproduction_status": "REPRODUCED",
+  "migration_confidence": "COMPLETE",
+  "executed_at": "2026-08-13T02:15:23-05:00",
+  "target": {"type": "PUBLIC_KEY_ARTIFACT", "page": null, "region": null, "description": "Bundled historical Cicada 3301 OpenPGP public-key artifact"},
+  "experiment_id": null,
+  "result_ids": ["RES-0001"],
+  "capsule_id": "CAP-0001",
+  "run_set_ids": ["RSET-0001"],
+  "method_family": "ARTIFACT_IDENTITY_VERIFICATION",
+  "pipeline_id": null,
+  "summary": "The public verifier reproduced the recorded SHA-256 identity and both recorded OpenPGP fingerprints for the bundled historical key artifact.",
+  "why_run": "To establish a byte-verifiable historical identity reference while preserving the boundary between artifact identity and present-day authority.",
+  "inputs": [
+    {"id": "KEY-2012", "path": "keys/cicada-3301-2012.asc", "sha256": "6e397c5c6ceeeb4da08535db74874989f193c914b8d2d87972dd282b24ea809f", "availability": "PUBLIC"},
+    {"id": "KEY-MANIFEST", "path": "keys/manifest.json", "sha256": null, "availability": "PUBLIC"}
+  ],
+  "parameters": {"command": "python scripts/verify_cicada_key.py", "random_seed": null, "random_seed_status": "NOT_APPLICABLE"},
+  "pipeline": {"description": "Calculate the artifact SHA-256, parse primary and subkey fingerprints with GnuPG, then compare the ordered values with the public key manifest.", "implementation": "scripts/verify_cicada_key.py"},
+  "output": {
+    "status": "COMPLETE",
+    "result_class": "KNOWN_CONTROL",
+    "summary": "SHA-256 and two OpenPGP fingerprints matched the public manifest.",
+    "acceptance": {"passed": true, "criterion": "File digest and ordered fingerprint list exactly match the frozen manifest."},
+    "metrics": [
+      {"name": "sha256_match", "value": true, "unit": "boolean"},
+      {"name": "fingerprints_matched", "value": 2, "unit": "count"}
+    ],
+    "stdout": "PASS — SHA-256 and 2 OpenPGP fingerprint(s) match the manifest."
+  },
+  "controls": ["Reject a file-hash mismatch before fingerprint comparison.", "Compare the ordered parsed fingerprint list with the declared manifest values."],
+  "interpretation": "The bundled public-key bytes and recorded fingerprints are internally consistent and reproducible.",
+  "limitations": ["This is an artifact-identity reproduction, not a Liber Primus plaintext result.", "A public-key fingerprint does not prove possession of the private key or present-day authority.", "The intake history before the bundled bytes remains bounded by OBS-0001."],
+  "provenance": {
+    "source_system": "HMS_ENDEAVOUR",
+    "historical_source": {"source_type": "PUBLIC_REPOSITORY_RUN", "original_identifier": "RUN-0001", "source_preserved": true},
+    "environment_manifest": "releases/environments/ENV-0002.json",
+    "parent_records": ["OBS-0001"],
+    "source_paths": ["research/records/RUN-0001.json"],
+    "migration": {"historical": true, "original_run": "RUN-0001", "original_source": "HMS public research record", "migrated_at": "2026-08-13T00:00:00-05:00", "migration_version": "1.0.0", "normalization_changes": ["Converted the flat public record into the canonical run-package schema.", "No measured output or claim was altered."]}
+  },
+  "raw_artifacts": {"availability": "NOT_AVAILABLE", "reason": "No separate historical stdout artifact was preserved; the exact recorded output remains in the canonical output object."},
+  "chronicle_events": [],
+  "finding_tags": ["CICADA3301", "OPENPGP", "PROVENANCE", "KNOWN_CONTROL"]
+}

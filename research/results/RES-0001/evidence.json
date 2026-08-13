@@ -1,0 +1,12 @@
+{
+  "result_id": "RES-0001",
+  "controls": [
+    "File SHA-256 must match before fingerprint comparison.",
+    "Primary and subkey fingerprints must match the ordered frozen manifest."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "keys/manifest.json",
+    "research/runs/RUN-0001/manifest.json"
+  ]
+}

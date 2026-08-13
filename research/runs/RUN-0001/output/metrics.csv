@@ -1,0 +1,3 @@
+name,value,unit
+sha256_match,True,boolean
+fingerprints_matched,2,count

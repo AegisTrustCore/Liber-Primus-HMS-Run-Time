@@ -23,6 +23,10 @@ Current Patreon state: **PUBLISHED**. The creator page and first post round are 
 - An approved public truth claim is not permanently withheld to manufacture scarcity.
 - Vault material requires a separate release decision; Admiral is not automatic Vault access.
 
+Member research drops must include actual downloadable structured packages when they describe executions or results. A prose post may introduce the work, but it does not substitute for a tier-approved Run Set. Navigator receives more approved runs or analytical data, Cartographer receives reproduction-grade inputs/configuration/controls/output where available, and Admiral may receive prerelease validation packages after disclosure review. Higher access means more context or capability, not “more true.”
+
+Public and member packages use the same [`RUN → RES → CAP → RSET`](../docs/RESEARCH_ARCHIVE_STANDARD.md) object model so future HMS Runtime clients can ingest them without reinterpreting prose.
+
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
 
 As of 2026-08-13, no GP29 calculator, Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 is a tested release candidate, but its campaign is closed and its tiered hint, worksheet, validation, and solution releases are not live.

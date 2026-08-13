@@ -1,0 +1,45 @@
+HMS ENDEAVOUR
+RUN-0001
+
+TITLE:
+Clean replay of the historical Cicada 3301 OpenPGP artifact verification
+
+STATUS:
+KNOWN_CONTROL / REPRODUCED
+
+SUMMARY:
+The public verifier reproduced the recorded SHA-256 identity and both recorded OpenPGP fingerprints for the bundled historical key artifact.
+
+WHY THIS RUN EXISTS:
+To establish a byte-verifiable historical identity reference while preserving the boundary between artifact identity and present-day authority.
+
+TARGET:
+Bundled historical Cicada 3301 OpenPGP public-key artifact
+
+METHOD:
+Calculate the artifact SHA-256, parse primary and subkey fingerprints with GnuPG, then compare the ordered values with the public key manifest.
+
+PARAMETERS:
+{"command": "python scripts/verify_cicada_key.py", "random_seed": null, "random_seed_status": "NOT_APPLICABLE"}
+
+RESULT:
+SHA-256 and two OpenPGP fingerprints matched the public manifest.
+
+METRICS:
+- sha256_match: True boolean
+- fingerprints_matched: 2 count
+
+CONTROLS:
+- Reject a file-hash mismatch before fingerprint comparison.
+- Compare the ordered parsed fingerprint list with the declared manifest values.
+
+INTERPRETATION:
+The bundled public-key bytes and recorded fingerprints are internally consistent and reproducible.
+
+LIMITATIONS:
+- This is an artifact-identity reproduction, not a Liber Primus plaintext result.
+- A public-key fingerprint does not prove possession of the private key or present-day authority.
+- The intake history before the bundled bytes remains bounded by OBS-0001.
+
+SOURCE:
+HMS_ENDEAVOUR / RUN-0001

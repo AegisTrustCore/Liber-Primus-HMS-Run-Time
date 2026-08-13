@@ -1,0 +1,14 @@
+{
+  "run_id": "RUN-0001",
+  "status": "COMPLETE",
+  "result_class": "KNOWN_CONTROL",
+  "summary": "SHA-256 and two OpenPGP fingerprints matched the public manifest.",
+  "metrics": {
+    "sha256_match": true,
+    "fingerprints_matched": 2
+  },
+  "acceptance": {
+    "passed": true,
+    "criterion": "File digest and ordered fingerprint list exactly match the frozen manifest."
+  }
+}

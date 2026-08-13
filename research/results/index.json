@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "object_type": "RESULTS",
+  "count": 2,
+  "entries": [
+    {
+      "id": "RES-0001",
+      "title": "Bundled historical Cicada 3301 OpenPGP artifact identity",
+      "status": "VERIFIED",
+      "reproduction_status": "REPRODUCED",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0001",
+      "package": "RES-0001/RES-0001.zip",
+      "package_sha256": "68fa5be2ab1464e43e8f77059f9c36357cebeb604e28685dfa31a620f7d45d94",
+      "result_page": "RES-0001/result.html"
+    },
+    {
+      "id": "RES-0002",
+      "title": "Expedition verifier synthetic control behavior",
+      "status": "KNOWN_CONTROL",
+      "reproduction_status": "REPRODUCED",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0001",
+      "package": "RES-0002/RES-0002.zip",
+      "package_sha256": "1dae2ab6ebd522920b8b6cfd8bb52e85a283e00a4fdbfac48a88ae7d5436d461",
+      "result_page": "RES-0002/result.html"
+    }
+  ]
+}

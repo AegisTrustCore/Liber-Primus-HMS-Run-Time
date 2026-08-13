@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0002",
+  "evidence_class": "KNOWN_CONTROL",
+  "claim": "Under the frozen five-test synthetic suite, the canonical verifier core normalized answers consistently, accepted a matching digest, rejected a nonmatching digest, rejected empty normalized input, and rejected an unknown challenge ID.",
+  "current_interpretation": "A reproduced known control for the verifier core; broader product qualification remains separately gated."
+}
