@@ -16,11 +16,20 @@ from hms_tools.gp29 import GP29InputError, calculate, self_test
 from hms_tools.runtime import create_job, execute_job
 
 
+def configure_output() -> None:
+    """Make the JSON interface UTF-8 even on legacy Windows consoles."""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(encoding="utf-8")
+
+
 def emit(value: object) -> None:
     print(json.dumps(value, ensure_ascii=False, indent=2))
 
 
 def main() -> int:
+    configure_output()
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     gp29 = commands.add_parser("gp29", help="Calculate GP29 values")
