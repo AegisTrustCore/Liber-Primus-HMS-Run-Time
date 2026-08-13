@@ -1,6 +1,6 @@
 # Patreon Release Matrix
 
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-13
 
 Patreon is the member delivery and development-support layer. It points back to GitHub for stable public evidence and provides progressively deeper material only when that material exists and has been approved for the intended audience.
 
@@ -8,11 +8,11 @@ Current Patreon state: **PUBLISHED**. The creator page and first post round are 
 
 | Audience | Intended member material | Tooling destination | Current delivery state |
 |---|---|---|---|
-| Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch and Signal 3301 posts live |
-| Pilgrim — Follow | HMS Dispatch, member development updates, release alerts, research polls, LP community challenges, member hints, previews, and discussion | Selected entry-level Runtime tools and research utilities when released | Pilgrim Briefing 001 live |
-| Navigator — Investigate | 7–14 day early access to selected major releases, downloadable experiments, selected findings, challenge datasets and hints, research-direction previews | Runtime beta, solver datasets, and advanced GP/Gematria tools when released | Research Queue 001 live; tools planned |
-| Cartographer — Research | Complete research packets, deeper ledgers, bounded negative archives, structured datasets, briefings, group sessions, and hypothesis submission | Advanced Runtime modules, batch tools, operation-bank explorer, routing tools, and visual-analysis laboratory when released | Evidence Ledger 001 live; tools planned |
-| Admiral — Build and validate | Frontier reports, selected hypotheses, reproduced results, candidate validation, peer review, collaboration, proposals, and approved experimental exports | Prerelease builds, experimental instruments, beta solvers, expanded compute, API, Plugin SDK, and developer tools when released | Frontier Boundary 001 live; developer platform planned |
+| Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch, Signal 3301, and HMS Status 001 live |
+| Pilgrim — Follow | Dispatches, development updates, release alerts, selected previews, early notes, and discussion | Selected entry-level Runtime tools and research utilities when released | Pilgrim Briefing 001 live; challenge material campaign-gated; tools not available |
+| Navigator — Investigate | Research previews, discussion, and approved datasets or stronger hints during an open campaign | Runtime beta, solver datasets, and advanced GP/Gematria tools when released | Research Queue 001 live; Expedition 001 closed; tools not available |
+| Cartographer — Research | Research briefings and approved campaign packets, worksheets, datasets, and ledgers | Advanced Runtime modules, batch tools, operation-bank explorer, routing tools, and visual-analysis laboratory when released | Evidence Ledger 001 live; Expedition 001 worksheet staged; tools not available |
+| Admiral — Build and validate | Frontier briefings and approved validation, reproducibility, collaboration, and export packets | Prerelease builds, experimental instruments, beta solvers, expanded compute, API, Plugin SDK, and developer tools when released | Frontier Boundary 001 live; developer platform not available |
 
 ## Truth and access rule
 
@@ -24,6 +24,8 @@ Current Patreon state: **PUBLISHED**. The creator page and first post round are 
 - Vault material requires a separate release decision; Admiral is not automatic Vault access.
 
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
+
+As of 2026-08-13, no GP29 calculator, Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 is a tested release candidate, but its campaign is closed and its tiered hint, worksheet, validation, and solution releases are not live.
 
 ## Expedition release ladder
 
