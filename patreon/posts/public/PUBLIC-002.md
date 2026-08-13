@@ -1,6 +1,8 @@
 # PUBLIC-002 — SIGNAL 3301: Trust the Signature
 
-Status: **DRAFT**
+Status: **POSTED 2026-08-12**
+
+Live post: https://www.patreon.com/AegisTrustCore/posts/signal-3301-166541914
 
 > THE WAKE IS OPEN.
 >

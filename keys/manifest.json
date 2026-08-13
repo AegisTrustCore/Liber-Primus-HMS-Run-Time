@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "artifacts": [
+    {
+      "id": "cicada-3301-2012",
+      "path": "cicada-3301-2012.asc",
+      "sha256": "6e397c5c6ceeeb4da08535db74874989f193c914b8d2d87972dd282b24ea809f",
+      "primary_fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+      "subkey_fingerprints": ["DEC57731ACCBFD11EEBA13434D390ECF671DDEB1"]
+    }
+  ]
+}

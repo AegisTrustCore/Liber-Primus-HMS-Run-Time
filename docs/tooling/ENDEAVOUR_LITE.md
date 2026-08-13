@@ -1,6 +1,7 @@
 # HMS Endeavour Lite — initial contract
 
-Audience: Observer / public  
+Audience: Observer / public
+
 Status: Planned; architecture started
 
 Endeavour Lite will be the local, reduced HMS workstation:

@@ -12,9 +12,12 @@ The historical Cicada 3301 public key preserved in this repository has the full 
 6D85 4CD7 9333 22A6 01C3  286D 181F 01E5 7A35 090F
 ```
 
-Long key ID: `181F01E57A35090F`  
-User ID in the key: `Cicada 3301 (845145127)`  
-Created: `2012-01-05`  
+Long key ID: `181F01E57A35090F`
+
+User ID in the key: `Cicada 3301 (845145127)`
+
+Created: `2012-01-05`
+
 Bundled armored key: [`keys/cicada-3301-2012.asc`](keys/cicada-3301-2012.asc)
 
 Always compare the **full fingerprint**. A name, avatar, short key ID, cryptic tone, or copied key block is not proof that a new message came from Cicada 3301.
@@ -37,7 +40,7 @@ HMS messages and releases are HMS material. They must never be presented as sign
 With GnuPG installed:
 
 ```bash
-gpg --show-keys --with-fingerprint keys/cicada-3301-2012.asc
+python scripts/verify_cicada_key.py
 ```
 
 Expected primary fingerprint:

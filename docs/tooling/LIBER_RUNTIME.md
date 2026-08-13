@@ -1,6 +1,7 @@
 # Liber Runtime — initial contract
 
-Audience: Navigator beta and above, with public verification surfaces  
+Audience: Navigator beta and above, with public verification surfaces
+
 Status: Planned; architecture started
 
 Liber Runtime will attach to HMS Endeavour as the persistent experiment environment. Its first contract includes:

@@ -8,7 +8,7 @@ Current Patreon state: **PUBLISHED**. The creator page and first post round are 
 
 | Audience | Intended member material | Tooling destination | Current delivery state |
 |---|---|---|---|
-| Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch post live |
+| Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch and Signal 3301 posts live |
 | Pilgrim | HMS Dispatch, public challenge notices, polls, research timeline, release alerts | Entry member tools when released | Pilgrim Briefing 001 live |
 | Navigator | Early findings, extended reports, downloadable experiments, challenge hints, research polls | Runtime beta, datasets, GP Solver and automation when released | Research Queue 001 live; tools planned |
 | Cartographer | Complete research packets, deeper ledgers, bounded negative archives, structured datasets, briefings | Advanced GP Laboratory, batch and visual workbench when released | Evidence Ledger 001 live; tools planned |

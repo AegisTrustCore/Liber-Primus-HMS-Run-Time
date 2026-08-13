@@ -19,3 +19,7 @@ jobs:
           python-version: "3.12"
       - name: Validate records, releases, posts, and challenges
         run: python scripts/validate_records.py
+      - name: Verify historical OpenPGP artifact
+        run: python scripts/verify_cicada_key.py
+      - name: Test GP29 Calculator
+        run: python -m unittest discover -s tools/gp29/tests -v

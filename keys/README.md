@@ -17,6 +17,8 @@ This directory contains public cryptographic material used for provenance and si
 
 The source-intake copy was independently inspected with GnuPG before inclusion. Its filename or user ID was not treated as proof; the full parsed fingerprint and file digest are the recorded identifiers.
 
+Run `python scripts/verify_cicada_key.py` to check both the byte digest and parsed primary/subkey fingerprints against [`manifest.json`](manifest.json).
+
 ## Safety rule
 
 Importing a public key does not make it trusted. Verify the full fingerprint through an independent provenance chain before relying on a signature. HMS Endeavour does not possess the private key and cannot issue Cicada-authenticated messages.

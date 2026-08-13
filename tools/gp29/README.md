@@ -1,7 +1,9 @@
 # GP29 Calculator
 
-Status: **RELEASE CANDIDATE**  
-Version: `0.1.0-rc.1`  
+Status: **RELEASE CANDIDATE**
+
+Version: `0.1.0-rc.1`
+
 Access: Observer / public
 
 This is the first executable HMS Endeavour Lite component. It provides a strict, inspectable Gematria Primus lookup and summation engine for the 29-symbol ordering used by the project.
