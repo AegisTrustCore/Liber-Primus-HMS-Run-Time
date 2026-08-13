@@ -7,9 +7,9 @@
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
-    "candidate_commit_sha": "93e246d0f50913c926d3b55090610692427ab750",
+    "candidate_commit_sha": "68308cbf15273053ea9b6ffc2380c220322707a4",
     "release_manifest": "releases/manifests/GP29-v0.1.0-rc.1.json",
-    "release_manifest_sha256": "f7cc0e23a45867f7585d4fa40f4b39b8290d3dafa198a0eb6c5b78c47022d1d0",
+    "release_manifest_sha256": "159981216f6885d4717e9132bdc851da6ec5731554ce940be65891dc4870e3c7",
     "environment_id": "ENV-0004",
     "intended_tag": "GP29-v0.1.0-rc.1"
   },
