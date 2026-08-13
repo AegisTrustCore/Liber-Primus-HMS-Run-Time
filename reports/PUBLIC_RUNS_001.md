@@ -1,6 +1,6 @@
-# Public Reproduction Runs 001
+# Public Reproduction Runs 001 — Legacy Presentation
 
-This drop publishes two bounded, independently runnable proof records. It contains no candidate LP plaintext, active route, parameter family, private path, or paid-tier research packet.
+This Markdown page is retained as the original presentation layer. The canonical research objects now live in [`RSET-0001`](../research/runsets/RSET-0001/README.md). They contain no candidate LP plaintext, active route, parameter family, private path, or paid-tier research packet.
 
 ## RUN-0001 — OpenPGP artifact replay
 
@@ -30,8 +30,11 @@ Expected result: five tests pass, covering normalization, acceptance, rejection,
 
 The tests use a synthetic manifest and do not contain the sealed XPD-0001 answer. Desktop packaging and private sealed-answer acceptance remain separate gates.
 
-## Records
+## Structured packages
 
-- [RUN-0001](../research/records/RUN-0001.json)
-- [RUN-0002](../research/records/RUN-0002.json)
+- [RUN-0001](../research/runs/RUN-0001/README.md)
+- [RUN-0002](../research/runs/RUN-0002/README.md)
+- [RES-0001](../research/results/RES-0001/README.md)
+- [RES-0002](../research/results/RES-0002/README.md)
+- [RSET-0001 staged bundle](../research/runsets/RSET-0001/README.md)
 - [Environment ENV-0002](../releases/environments/ENV-0002.json)

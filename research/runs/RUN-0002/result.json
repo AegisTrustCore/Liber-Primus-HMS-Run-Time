@@ -1,0 +1,15 @@
+{
+  "run_id": "RUN-0002",
+  "status": "COMPLETE",
+  "result_class": "KNOWN_CONTROL",
+  "summary": "All five frozen verifier-core tests passed.",
+  "metrics": {
+    "tests_run": 5,
+    "tests_passed": 5,
+    "tests_failed": 0
+  },
+  "acceptance": {
+    "passed": true,
+    "criterion": "Five specified synthetic test cases complete successfully."
+  }
+}

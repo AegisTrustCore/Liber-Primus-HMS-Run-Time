@@ -1,0 +1,5 @@
+{
+  "command": "python scripts/verify_cicada_key.py",
+  "random_seed": null,
+  "random_seed_status": "NOT_APPLICABLE"
+}

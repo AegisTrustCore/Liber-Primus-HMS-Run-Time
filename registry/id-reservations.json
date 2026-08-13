@@ -6,6 +6,10 @@
     {"id":"OBS-0001","object_type":"OBSERVATION","state":"ACTIVE","reserved_at":"2026-08-12"},
     {"id":"RUN-0001","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
     {"id":"RUN-0002","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
-    {"id":"XPD-0001","object_type":"EXPEDITION","state":"ACTIVE","reserved_at":"2026-08-12"}
+    {"id":"XPD-0001","object_type":"EXPEDITION","state":"ACTIVE","reserved_at":"2026-08-12"},
+    {"id":"RES-0001","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RES-0002","object_type":"RESULT","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"CAP-0001","object_type":"CAPSULE","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RSET-0001","object_type":"RUN_SET","state":"RESERVED","reserved_at":"2026-08-13"}
   ]
 }

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "object_type": "RUNSETS",
+  "count": 1,
+  "entries": [
+    {
+      "id": "RSET-0001",
+      "title": "Public Verification Foundations",
+      "status": "STAGED",
+      "reproduction_status": null,
+      "page": null,
+      "method": null,
+      "capsule": null,
+      "package": "RSET-0001/RSET-0001.zip",
+      "package_sha256": "57b1b4e0499d5d2443865ff1438411be7982eb20adf333d9fd1a1c2641b7c6f9",
+      "result_page": "RSET-0001/result.html"
+    }
+  ]
+}

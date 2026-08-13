@@ -1,0 +1,12 @@
+{
+  "result_id": "RES-0002",
+  "controls": [
+    "Positive and negative vectors are independent synthetic values.",
+    "The sealed Expedition 001 answer is absent from the suite."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "tests/test_challenge_verifier.py",
+    "research/runs/RUN-0002/manifest.json"
+  ]
+}

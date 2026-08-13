@@ -1,0 +1,17 @@
+{
+  "run_id": "RUN-0002",
+  "inputs": [
+    {
+      "id": "VERIFIER-CORE",
+      "path": "hms_tools/challenge_verifier.py",
+      "sha256": "b8084bd42c5bfbf712d8da4f6aa7480f15cee860a9cc44a5499a3fa25a3e01e2",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "VERIFIER-TESTS",
+      "path": "tests/test_challenge_verifier.py",
+      "sha256": "9327850555864669d60efbece1b05ae9c2c7a53526684a1ad8e2f11feb741daf",
+      "availability": "PUBLIC"
+    }
+  ]
+}

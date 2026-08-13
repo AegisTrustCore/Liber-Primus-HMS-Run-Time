@@ -1,10 +1,32 @@
-# Public Research Record
+# HMS Endeavour Research Archive
 
-`records/` contains only machine-readable records that are both:
+Structured objects—not prose alone—are the public research record.
+
+[**EXPLORE RESULTS**](results/README.md) · [Browse runs](runs/README.md) · [Research capsules](capsules/README.md) · [Curated run sets](runsets/README.md) · [Searchable offline archive](index.html)
+
+## Current computed inventory
+
+| Category | Count |
+|---|---:|
+| Hash-inventoried source artifacts | 1,322 |
+| Published Runs | 2 |
+| Published Results | 2 |
+| Published Capsules | 1 |
+| Staged Run Sets | 1 |
+
+**1,322 source artifacts does not mean 1,322 results.** It is the audited file count in the supplied Personal Research tree.
+
+## Object hierarchy
 
 ```text
-classification = PUBLIC
-publication_status = PUBLISHED
+RAW EXECUTION → RUN-#### → RES-#### → CAP-#### → RSET-####
 ```
 
-Draft, under-review, supporter-only, and Vault records must remain outside this public repository. Human-readable indexes at the repository root summarize the released record.
+- A **Run** records what was executed.
+- A **Result** records what one or more runs support.
+- A **Capsule** groups a coherent investigation.
+- A **Run Set** is a curated distribution unit.
+
+`manifest.json` is authoritative inside each package. HTML, text, Markdown, CSV, indexes, checksums, and ZIP files are generated with `python scripts/build_research_archive.py`.
+
+Legacy flat objects under `records/` are retained as historical release snapshots. New consumers should use the package indexes above.

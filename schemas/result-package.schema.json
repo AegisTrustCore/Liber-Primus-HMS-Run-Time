@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/result-package.schema.json",
+  "title": "HMS Canonical Result Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "version", "classification", "publication_status", "evidence_class", "reproduction_status", "claim", "why_it_matters", "supporting_runs", "controls", "contradictions", "limitations", "does_not_claim", "current_interpretation", "corrections", "supersedes", "superseded_by", "prooflinks", "capsule_id", "finding_tags"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string", "pattern": "^RES-[0-9]{4,}$"},
+    "title": {"type": "string", "minLength": 1},
+    "version": {"type": "string"},
+    "classification": {"const": "PUBLIC"},
+    "publication_status": {"const": "PUBLISHED"},
+    "evidence_class": {"enum": ["VERIFIED", "KNOWN_CONTROL", "STRUCTURAL", "BOUNDED_NEGATIVE", "HYPOTHESIS", "RESEARCH_PATH", "CORRECTION", "RETRACTED"]},
+    "reproduction_status": {"enum": ["NOT_ATTEMPTED", "PARTIAL", "REPRODUCED", "FAILED_REPRODUCTION", "HISTORICAL_ONLY"]},
+    "claim": {"type": "string", "minLength": 1},
+    "why_it_matters": {"type": "string", "minLength": 1},
+    "supporting_runs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^RUN-[0-9]{4,}$"}},
+    "controls": {"type": "array", "items": {"type": "string"}},
+    "contradictions": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "does_not_claim": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "current_interpretation": {"type": "string", "minLength": 1},
+    "corrections": {"type": "array", "items": {"type": "string"}},
+    "supersedes": {"type": "array", "items": {"type": "string"}},
+    "superseded_by": {"type": "array", "items": {"type": "string"}},
+    "prooflinks": {"type": "array", "items": {"type": "string"}},
+    "capsule_id": {"type": ["string", "null"]},
+    "finding_tags": {"type": "array", "items": {"type": "string"}}
+  }
+}

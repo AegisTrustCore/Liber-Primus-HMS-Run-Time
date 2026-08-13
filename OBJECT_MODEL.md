@@ -6,6 +6,12 @@ This model is frozen before the first public release so the same identities and 
 
 ```text
 Corpus → Page → Region → PageSet → Pipeline → Experiment → Run → Result → Evidence → Claim → HashLock → ProofLock → Publication
+
+For browsable distribution, related Runs and Results may be grouped into a Research Capsule and one or more curated Run Sets:
+
+```text
+RUN-#### → RES-#### → CAP-#### → RSET-####
+```
 ```
 
 Every derived object records its direct parents. A public claim must be traceable backward to immutable source and environment manifests without relying on a filename, chat history, or prose description.
@@ -36,8 +42,10 @@ Every derived object records its direct parents. A public claim must be traceabl
 | `ENV` | Deterministic environment | `ENV-0001` |
 | `PUB` | Publication decision | `PUB-0001` |
 | `XPD` | Public Expedition | `XPD-0001` |
+| `CAP` | Research Capsule | `CAP-0001` |
+| `RSET` | Curated Run Set | `RSET-0001` |
 
-These namespace meanings are frozen as of `v0.1.0`. Identifiers use four or more digits, are never reassigned, and remain reserved after withdrawal or retraction. Patreon transmission IDs form a separate delivery namespace and do not identify scientific objects.
+The original namespace meanings are frozen as of `v0.1.0`; `CAP` and `RSET` are additive Research Archive 1.0 namespaces. Identifiers use four or more digits, are never reassigned, and remain reserved after withdrawal or retraction. Patreon transmission IDs form a separate delivery namespace and do not identify scientific objects.
 
 Every assigned object ID is retained in the [permanent ID registry](registry/id-reservations.json).
 
@@ -66,3 +74,5 @@ A source image, canonical transcription, alternative transcription, and user tra
 Runs that search a parameter family must preserve the family definition, total attempts, ranking rule, failures, and selected result. Publishing only an interesting output without its search denominator is not an admissible HMS evidence bundle.
 
 The machine-readable contract is [schemas/hms-object.schema.json](schemas/hms-object.schema.json).
+
+The package and generated-presentation contract is defined in the [Research Archive Standard](docs/RESEARCH_ARCHIVE_STANDARD.md).

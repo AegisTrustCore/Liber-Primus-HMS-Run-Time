@@ -21,6 +21,10 @@ jobs:
           python-version: "3.12"
       - name: Validate records, releases, posts, and challenges
         run: python scripts/validate_records.py
+      - name: Regenerate and verify the Research Archive
+        run: |
+          python scripts/build_research_archive.py
+          git diff --exit-code
       - name: Verify historical OpenPGP artifact
         run: python scripts/verify_cicada_key.py
       - name: Test challenge verifier core

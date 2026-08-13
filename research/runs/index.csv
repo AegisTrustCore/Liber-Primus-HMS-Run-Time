@@ -1,0 +1,3 @@
+id,title,status,reproduction_status,page,method,capsule,package,package_sha256,result_page
+RUN-0001,Clean replay of the historical Cicada 3301 OpenPGP artifact verification,KNOWN_CONTROL,REPRODUCED,,ARTIFACT_IDENTITY_VERIFICATION,CAP-0001,RUN-0001/RUN-0001.zip,c7f8997dfc332b0e4eb23ed6863336429b2ee3840da0dca2d6732dc469ae5e7e,RUN-0001/result.html
+RUN-0002,Synthetic acceptance and rejection tests for the Expedition verifier core,KNOWN_CONTROL,REPRODUCED,,SYNTHETIC_SOFTWARE_VERIFICATION,CAP-0001,RUN-0002/RUN-0002.zip,3d5f69a000757990c87f28041b2e993d85582c194de5c80facc7f89719396fab,RUN-0002/result.html

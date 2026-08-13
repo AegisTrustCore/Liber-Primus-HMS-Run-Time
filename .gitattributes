@@ -1,2 +1,11 @@
 # Preserve armored cryptographic artifacts byte-for-byte across platforms.
 *.asc -text
+
+# Research packages are hashed and zipped as portable LF text plus opaque binaries.
+research/**/*.json text eol=lf
+research/**/*.csv text eol=lf
+research/**/*.html text eol=lf
+research/**/*.txt text eol=lf
+research/**/*.md text eol=lf
+research/**/SHA256SUMS text eol=lf
+research/**/*.zip binary

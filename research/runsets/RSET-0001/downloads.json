@@ -1,0 +1,35 @@
+{
+  "run_set_id": "RSET-0001",
+  "members": [
+    {
+      "id": "RUN-0001",
+      "type": "RUN",
+      "path": "bundles/RUN-0001.zip",
+      "sha256": "c7f8997dfc332b0e4eb23ed6863336429b2ee3840da0dca2d6732dc469ae5e7e"
+    },
+    {
+      "id": "RUN-0002",
+      "type": "RUN",
+      "path": "bundles/RUN-0002.zip",
+      "sha256": "3d5f69a000757990c87f28041b2e993d85582c194de5c80facc7f89719396fab"
+    },
+    {
+      "id": "RES-0001",
+      "type": "RESULT",
+      "path": "bundles/RES-0001.zip",
+      "sha256": "346835bd2521825b187c988bf0a41520c6ef21a659c42459348f496a78a65caf"
+    },
+    {
+      "id": "RES-0002",
+      "type": "RESULT",
+      "path": "bundles/RES-0002.zip",
+      "sha256": "0c2f070b6a611dc3db8114a8c0f185d63dddc66aba5273ad60668d02deb1e64a"
+    },
+    {
+      "id": "CAP-0001",
+      "type": "CAPSULE",
+      "path": "bundles/CAP-0001.zip",
+      "sha256": "0916e542fdff927692a656b90fe6362a3549d240c052a6f3bc87539d1ea1bc90"
+    }
+  ]
+}

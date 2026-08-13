@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schemas/run-set.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RSET-0001",
+  "title": "Public Verification Foundations",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "STAGED",
+  "purpose": "Prove the canonical HMS research-package workflow with a curated, low-disclosure set of already-public executions.",
+  "run_ids": ["RUN-0001", "RUN-0002"],
+  "result_ids": ["RES-0001", "RES-0002"],
+  "capsule_ids": ["CAP-0001"],
+  "selection_notes": ["Only previously published and reproduced runs were selected.", "The set remains intentionally small because unaudited historical material was not promoted merely to meet a numerical target.", "No candidate plaintext, route, private parameter family, hidden endpoint, or paid-tier packet is included."],
+  "release_notes": "This staged set teaches the difference between an execution and a result. Its package is generated for review but is not a GitHub Release asset until a separate release gate is approved."
+}

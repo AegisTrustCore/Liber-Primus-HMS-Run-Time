@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schemas/capsule-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "CAP-0001",
+  "title": "Public verification foundation",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "summary": "A small teaching capsule showing how HMS connects reproducible executions to bounded results without presenting either as a Liber Primus solve.",
+  "experiment_ids": [],
+  "run_ids": ["RUN-0001", "RUN-0002"],
+  "result_ids": ["RES-0001", "RES-0002"],
+  "control_ids": ["RUN-0001", "RUN-0002"],
+  "negative_result_ids": [],
+  "correction_ids": [],
+  "limitations": ["This capsule is a data-model proof using the only two fully reviewed public runs available at migration time.", "It contains no page-level Liber Primus result."],
+  "finding_tags": ["PUBLIC_FOUNDATION", "PROVENANCE", "SOFTWARE_VERIFICATION"]
+}
