@@ -20,7 +20,7 @@
         "schema_version": {"const": "1.0.0"},
         "candidate_commit_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
         "release_manifest": {"type": "string", "pattern": "^releases/manifests/[^/]+\\.json$"},
-        "release_manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "release_manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$", "description": "SHA-256 of canonical JSON: UTF-8, sorted object keys, compact separators, and no insignificant whitespace."},
         "environment_id": {"type": "string", "pattern": "^ENV-[0-9]{4,}$"},
         "intended_tag": {"type": "string", "minLength": 1}
       }

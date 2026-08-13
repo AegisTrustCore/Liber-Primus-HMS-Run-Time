@@ -11,4 +11,4 @@
 
 Software and research releases are tracked separately. A Git branch or pull request is not a release. A Patreon preview is not a public research publication.
 
-Approval applies only to the manifest digest recorded in its gate. Changing any bound release-subject field invalidates the prior approval.
+Approval applies only to the canonical-JSON manifest digest recorded in its gate. Changing any bound release-subject content invalidates the prior approval; whitespace and platform line-ending changes do not.
