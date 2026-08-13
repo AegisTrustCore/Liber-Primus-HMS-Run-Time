@@ -9,16 +9,16 @@ This index answers three different questions separately: what is publicly verifi
 | Class | Current public position | Supporting location |
 |---|---|---|
 | Historical PGP identity artifact | Bundled key bytes and full parsed fingerprint verified; provenance claim remains narrowly scoped | [OBS-0001](research/records/OBS-0001.json) |
-| Public Results | Two bounded Results currently published; neither is an LP plaintext recovery | [Browse Results](research/results/README.md) |
-| Public reproduction runs | OpenPGP artifact replay and synthetic Expedition-verifier tests reproduced | [Browse Runs](research/runs/README.md) |
-| Research Capsules | Public verification foundation teaching the RUN → RESULT relationship | [Browse Capsules](research/capsules/README.md) |
+| Public Results | Seven Results: one provenance result, one software control, four bounded negative/null Results, and one correction; none is an LP plaintext recovery | [Browse Results](research/results/README.md) |
+| Public reproduction runs | Seven Runs across artifact verification, synthetic controls, acquisition boundaries, Page 32 holdouts, and correction auditing | [Browse Runs](research/runs/README.md) |
+| Research Capsules | Two Capsules covering the public verification foundation and Page 32 manifest-interpretation closures | [Browse Capsules](research/capsules/README.md) |
 | New HMS-originated LP plaintext | None published | [Verified results](VERIFIED_RESULTS.md) |
 | Known solved-material controls | Strong reproduction candidates identified; public packages pending | [Known controls](KNOWN_CONTROLS.md) |
 | Page 32 | Structural candidates and bounded negative results; rune prose remains unsolved | [Page 32 dossier](pages/page-032/README.md) |
 | Page 72 | Structural/register candidates; no reviewed record explicitly reports plaintext recovery | [Page 72 dossier](pages/page-072/README.md) |
 | Page 73 | Known-control replay candidate; selector interpretation corrected | [Page 73 dossier](pages/page-073/README.md) |
 | Published closure run set | Five reviewed historical closure runs: acquisition null, three Page 32 negatives, and one anti-post-hoc correction | [RSET-0002](research/runsets/RSET-0002/README.md) |
-| Negative results | Four structured bounded negative/null Results are published as source-tree objects; RSET-0002 remains untagged | [Negative results](NEGATIVE_RESULTS.md) |
+| Negative results | Four structured bounded negative/null Results are published in RSET-0002; the Run Set is available on `main` but remains an untagged GitHub release | [Negative results](NEGATIVE_RESULTS.md) |
 | Corrections | Page 73 visible-hash causal-selector claim withdrawn; Page 32 terminal holdout eligibility narrowed | [Corrections](CORRECTIONS.md) |
 
 ## Public release roadmap

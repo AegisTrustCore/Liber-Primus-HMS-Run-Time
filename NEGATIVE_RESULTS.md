@@ -15,7 +15,7 @@ Negative results are part of the evidence record. A failed candidate, rejected t
 
 ## Current ledger
 
-Four bounded negative/null Results now have structured public source-tree packages. Their curated Run Set remains staged until tagged-release approval.
+Four bounded negative/null Results now have structured public source-tree packages. Their curated Run Set, `RSET-0002`, is published on `main` with a portable ZIP but has not been promoted to a separately tagged GitHub Release asset.
 
 The source workspace contains many likely negative, null, control, and bounded-rejection outputs. They will be promoted only after the tested claim, parameters, success criterion, actual outcome, and limits of the rejection are documented.
 
