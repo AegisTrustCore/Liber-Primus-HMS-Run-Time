@@ -34,4 +34,4 @@ The first executable slice now lives in `hms_tools.gp29` and `hms_tools.runtime`
 - a reference in-memory queue; and
 - the developer CLI at `scripts/hms_runtime.py`.
 
-This is a runnable developer core, not yet the customer-ready GP29 application or hosted Runtime. Endeavour Lite, the portable CLI build, and the hosted service will wrap the same contracts rather than reimplementing them.
+The same core now drives the `v0.1.0-rc.1` GP29 desktop application, standalone CLI, and reproducible Windows portable-package builder. The package remains a release candidate until its software gate passes security review, clean-machine qualification, and human approval. Endeavour Lite and the hosted service will wrap these contracts rather than reimplementing them.

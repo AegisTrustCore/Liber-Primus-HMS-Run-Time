@@ -41,7 +41,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 
 | Capability | Status |
 |---|---|
-| Public GP29 calculator | INTERNAL TESTING — deterministic source core runnable; UI/package pending |
+| Public GP29 calculator | RELEASE CANDIDATE — Windows desktop/CLI package built and locally qualified; public gate pending |
 | Advanced GP Laboratory | PLANNED |
 | GP Solver | PLANNED |
 | Batch experiment engine and parameter sweeps | PLANNED |
@@ -60,7 +60,7 @@ The roadmap describes intended direction. A planned capability is not an entitle
 
 ## Implementation boundary
 
-- Public GP29 Calculator: held for a separate `v0.1` release after the foundation.
+- Public GP29 Calculator: `v0.1.0-rc.1` desktop/CLI candidate built for Windows x64; security review, clean-machine qualification, human approval, and publication remain pending.
 - HMS Endeavour Lite: local interface and portable-result contract documented; application not yet implemented.
 - Liber Runtime: deterministic local job/result core implemented; hosted persistence, auth, entitlements, quotas, and sockets remain pending.
 
