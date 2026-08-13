@@ -141,6 +141,35 @@ def verify_manifest(manifest: dict[str, Any], root: Path, strict: bool = False) 
     return {**report_core, "report_sha256": hashlib.sha256(canonical_json(report_core)).hexdigest()}
 
 
+def validate_verification_report(report: dict[str, Any]) -> dict[str, Any]:
+    """Validate a portable report without receiving its source corpus or root path."""
+    if not isinstance(report, dict) or report.get("schema") != REPORT_SCHEMA:
+        raise CorpusManifestError(f"report schema must be {REPORT_SCHEMA}")
+    claimed = report.get("report_sha256")
+    if not isinstance(claimed, str) or not SHA256_RE.fullmatch(claimed):
+        raise CorpusManifestError("report_sha256 must be lowercase SHA-256")
+    core = {key: value for key, value in report.items() if key != "report_sha256"}
+    actual = hashlib.sha256(canonical_json(core)).hexdigest()
+    if claimed != actual:
+        raise CorpusManifestError("verification report digest does not match its canonical content")
+    if report.get("status") not in {"PASS", "FAIL"}:
+        raise CorpusManifestError("report status must be PASS or FAIL")
+    for field in ("corpus_id", "version", "manifest_sha256"):
+        if not isinstance(report.get(field), str) or not report[field]:
+            raise CorpusManifestError(f"report {field} is missing")
+    if not SHA256_RE.fullmatch(report["manifest_sha256"]):
+        raise CorpusManifestError("manifest_sha256 must be lowercase SHA-256")
+    return {
+        "accepted": True,
+        "corpus_id": report["corpus_id"],
+        "version": report["version"],
+        "verification_status": report["status"],
+        "manifest_sha256": report["manifest_sha256"],
+        "report_sha256": claimed,
+        "summary": report.get("summary", {}),
+    }
+
+
 def create_manifest(root: Path, corpus_id: str, version: str, exclude: Iterable[str] = ()) -> dict[str, Any]:
     root = Path(root).resolve(strict=True)
     if not root.is_dir():

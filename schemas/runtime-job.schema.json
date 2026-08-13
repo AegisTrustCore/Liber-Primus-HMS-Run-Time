@@ -7,11 +7,31 @@
   "required": ["schema", "operation", "input", "parameters", "visibility", "job_id", "specification_sha256"],
   "properties": {
     "schema": {"const": "HMS_RUNTIME_JOB_V1"},
-    "operation": {"enum": ["gp29.calculate"]},
-    "input": {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}}},
-    "parameters": {"type": "object", "additionalProperties": false, "required": ["mode"], "properties": {"mode": {"enum": ["auto", "runes", "tokens"]}}},
+    "operation": {"enum": ["gp29.calculate", "corpus.report.validate"]},
+    "input": {"type": "object"},
+    "parameters": {"type": "object"},
     "visibility": {"enum": ["PRIVATE", "PROJECT", "GROUP", "HMS_REVIEW", "PUBLIC"]},
     "job_id": {"type": "string", "pattern": "^JOB-[A-F0-9]{16}$"},
     "specification_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
-  }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"operation": {"const": "gp29.calculate"}}},
+      "then": {
+        "properties": {
+          "input": {"additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}}},
+          "parameters": {"additionalProperties": false, "required": ["mode"], "properties": {"mode": {"enum": ["auto", "runes", "tokens"]}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"operation": {"const": "corpus.report.validate"}}},
+      "then": {
+        "properties": {
+          "input": {"additionalProperties": false, "required": ["report"], "properties": {"report": {"type": "object"}}},
+          "parameters": {"additionalProperties": false, "maxProperties": 0}
+        }
+      }
+    }
+  ]
 }

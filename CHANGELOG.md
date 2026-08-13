@@ -15,7 +15,7 @@ All notable public software and repository changes are recorded here. Research p
 ### In development
 
 - GP29 `v0.1.0-rc.1`: deterministic core, desktop UI, standalone CLI, JSON export, Runtime job/result contract, self-tests, and reproducible Windows x64 portable-package builder implemented; public software gate remains pending
-- Liber Runtime: first local submit/execute/retrieve reference engine implemented; hosted service, persistence, auth, quotas, and sockets remain pending
+- Liber Runtime: local GP29 calculation and digest-validated corpus-report ingestion operations implemented; hosted service, persistence, auth, quotas, and sockets remain pending
 - Canonical corpus manifest
 - Continued Page 32, 72, and 73 evidence audits and provenance reconciliation
 - First solved-material LP known-control reproduction package

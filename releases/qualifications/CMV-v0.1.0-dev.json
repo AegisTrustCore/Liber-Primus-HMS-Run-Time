@@ -14,7 +14,8 @@
     {"check": "exact packaged CLI verifies the strict known control", "passed": true},
     {"check": "exact packaged GUI positive-and-tampered self-test", "passed": true},
     {"check": "package internal SHA256SUMS", "passed": true},
-    {"check": "source tests cover mismatch, missing, unexpected, traversal, ordering, and CLI failure", "passed": true}
+    {"check": "source tests cover mismatch, missing, unexpected, traversal, ordering, and CLI failure", "passed": true},
+    {"check": "independent GitHub Windows runner double-build and exact packaged-interface qualification", "passed": true}
   ],
   "security_scan": {
     "scanner": "Microsoft Defender Antivirus",
@@ -26,5 +27,5 @@
       {"name": "HMS-Corpus-Verifier-CLI.exe", "sha256": "c52cb9cc0de4eb2691b5ce235f26a36b358f0b480bcde8fc6b24538baabaa1e2"}
     ]
   },
-  "remaining_checks": ["Independent Windows-runner package qualification", "Independent ordinary-user clean-machine acceptance", "Explicit human publication approval"]
+  "remaining_checks": ["Independent ordinary-user clean-machine acceptance", "Version promotion from development status", "Explicit human publication approval"]
 }

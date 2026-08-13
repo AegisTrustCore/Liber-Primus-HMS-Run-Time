@@ -7,7 +7,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from hms_tools.corpus_manifest import CorpusManifestError, create_manifest, validate_manifest, verify_manifest
+from hms_tools.corpus_manifest import CorpusManifestError, create_manifest, validate_manifest, validate_verification_report, verify_manifest
+from hms_tools.runtime import create_corpus_report_job, execute_job
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -68,6 +69,25 @@ class CorpusManifestTests(unittest.TestCase):
             completed = subprocess.run([sys.executable, "scripts/corpus_manifest.py", "verify", str(manifest_path), str(root)], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(completed.returncode, 1, completed.stderr)
             self.assertEqual(json.loads(completed.stdout)["status"], "FAIL")
+
+    def test_runtime_accepts_digest_valid_report_without_corpus_path(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "page.txt").write_text("control", encoding="utf-8")
+            report = verify_manifest(create_manifest(root, "TEST", "1"), root, strict=True)
+            result = execute_job(create_corpus_report_job(report))
+            self.assertEqual(result["evidence_label"], "PROVENANCE_ONLY")
+            self.assertEqual(result["output"]["verification_status"], "PASS")
+            self.assertNotIn(str(root), json.dumps(result))
+
+    def test_runtime_rejects_tampered_report(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "page.txt").write_text("control", encoding="utf-8")
+            report = verify_manifest(create_manifest(root, "TEST", "1"), root)
+            report["status"] = "FAIL"
+            with self.assertRaises(CorpusManifestError):
+                validate_verification_report(report)
 
 
 if __name__ == "__main__":

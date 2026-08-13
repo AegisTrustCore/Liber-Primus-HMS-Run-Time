@@ -34,7 +34,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Public page index | PLANNED |
 | Page regions and Page Sets | PLANNED |
 | Comparison workspace | PLANNED |
-| Experiment engine and pipeline builder | IN DEVELOPMENT — first local GP29 job contract runnable |
+| Experiment engine and pipeline builder | IN DEVELOPMENT — local GP29 and corpus-report validation jobs runnable |
 | Result comparison and saved research workspace | PLANNED |
 
 ## GP systems
@@ -62,6 +62,6 @@ The roadmap describes intended direction. A planned capability is not an entitle
 
 - Public GP29 Calculator: `v0.1.0-rc.1` desktop/CLI candidate built for Windows x64; security review, clean-machine qualification, human approval, and publication remain pending.
 - HMS Endeavour Lite: local interface and portable-result contract documented; application not yet implemented.
-- Liber Runtime: deterministic local job/result core implemented; hosted persistence, auth, entitlements, quotas, and sockets remain pending.
+- Liber Runtime: deterministic local GP29 and corpus-report job/result core implemented; hosted persistence, auth, entitlements, quotas, and sockets remain pending.
 
 See the [tool architecture](docs/tooling/ARCHITECTURE.md). The instrument registry remains authoritative when roadmap prose and promotional language differ.
