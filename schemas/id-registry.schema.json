@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/id-registry.schema.json",
+  "title": "HMS Permanent ID Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "last_reviewed", "reservations"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "reservations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "object_type", "state", "reserved_at"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|PUB|XPD)-[0-9]{4,}$"},
+          "object_type": {"type": "string", "minLength": 1},
+          "state": {"enum": ["RESERVED", "ACTIVE", "SUPERSEDED", "RETRACTED", "RETIRED"]},
+          "reserved_at": {"type": "string", "format": "date"}
+        }
+      }
+    }
+  }
+}

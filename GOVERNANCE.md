@@ -26,6 +26,10 @@ When a second trusted maintainer is active, the approval requirement should be r
 6. Move the pull request out of draft only when its public boundary has been reviewed.
 7. Merge through GitHub; do not push directly to `main`.
 
+## Human release authority
+
+CI and automated agents may validate, prepare, and reject release material. They may not mark a Public Release Gate `APPROVED`, provide the named human approval, create an official signing identity, or promote research merely because checks pass. Those are explicit human decisions recorded separately from mergeability.
+
 ## Authority
 
 A merged file is not automatically a verified scientific claim. Research records must also satisfy [METHODOLOGY.md](METHODOLOGY.md) and [RELEASE_POLICY.md](RELEASE_POLICY.md). Repository administration, software release approval, research publication approval, and Patreon entitlement changes are distinct decisions.

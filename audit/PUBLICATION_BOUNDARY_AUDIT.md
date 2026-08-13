@@ -31,6 +31,6 @@ Post bodies, gated clues, private attachments, datasets, exact experimental inst
 
 ## Release sequence
 
-`v0.1.0 Foundation` → `GP29 v0.1` → `Expedition 001` → `RC-001` → `HMS Endeavour Lite alpha`
+`v0.1.0 Foundation` → `GP29 v0.1` → `Expedition 001` → `RC-0001` → `HMS Endeavour Lite alpha`
 
 Each arrow represents a separate review and release decision.

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/release-gate.schema.json",
+  "title": "HMS Public Release Gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release_id", "release_type", "status", "classification", "checklist", "human_approval"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "release_id": {"type": "string", "minLength": 1},
+    "release_type": {"enum": ["SOFTWARE", "RESEARCH", "EXPEDITION", "PUBLICATION"]},
+    "status": {"enum": ["PENDING", "APPROVED", "REJECTED", "SUPERSEDED"]},
+    "classification": {"const": "PUBLIC"},
+    "checklist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publication_approved", "claims_bounded", "secret_scan_passed", "rights_reviewed", "hashes_present", "provenance_complete", "environment_recorded", "clean_reproduction_passed", "complete_family_retained", "corrections_linked", "links_tested", "automated_validation_passed"],
+      "properties": {
+        "publication_approved": {"type": "boolean"},
+        "claims_bounded": {"type": "boolean"},
+        "secret_scan_passed": {"type": "boolean"},
+        "rights_reviewed": {"type": "boolean"},
+        "hashes_present": {"type": "boolean"},
+        "provenance_complete": {"type": "boolean"},
+        "environment_recorded": {"type": "boolean"},
+        "clean_reproduction_passed": {"type": "boolean"},
+        "complete_family_retained": {"type": "boolean"},
+        "corrections_linked": {"type": "boolean"},
+        "links_tested": {"type": "boolean"},
+        "automated_validation_passed": {"type": "boolean"}
+      }
+    },
+    "human_approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approved", "approver", "approved_at"],
+      "properties": {
+        "approved": {"type": "boolean"},
+        "approver": {"type": ["string", "null"]},
+        "approved_at": {"type": ["string", "null"], "format": "date-time"}
+      }
+    },
+    "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}

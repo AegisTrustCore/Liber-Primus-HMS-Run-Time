@@ -1,0 +1,9 @@
+{
+  "$schema": "../schemas/id-registry.schema.json",
+  "schema_version": "1.0.0",
+  "last_reviewed": "2026-08-13",
+  "reservations": [
+    {"id":"OBS-0001","object_type":"OBSERVATION","state":"ACTIVE","reserved_at":"2026-08-12"},
+    {"id":"XPD-0001","object_type":"EXPEDITION","state":"ACTIVE","reserved_at":"2026-08-12"}
+  ]
+}

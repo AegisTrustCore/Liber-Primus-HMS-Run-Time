@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/release-state.schema.json",
   "schema_version": "1.0.0",
-  "last_reviewed": "2026-08-12",
+  "last_reviewed": "2026-08-13",
   "github": {
     "current_public_tag": null,
     "main_state": "INITIAL_SHELL",

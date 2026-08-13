@@ -37,7 +37,7 @@ Classify each entry with the most precise ledger label shown in the vocabulary b
 Verify locally without sending an answer anywhere:
 
 ```bash
-python scripts/verify_challenge.py EXP-001 YOUR_ANSWER
+python scripts/verify_challenge.py XPD-0001 YOUR_ANSWER
 ```
 
 The verifier normalizes the answer and compares its SHA-256 digest with the sealed digest in the public manifest. It stores nothing and makes no network request.

@@ -4,9 +4,9 @@ This ledger contains only HMS-originated claims that have passed the public rele
 
 ## Current ledger
 
-### OBS-001 — historical OpenPGP key fingerprint
+### OBS-0001 — historical OpenPGP key fingerprint
 
-The bundled public-key bytes parse to the fingerprint recorded in [`OBS-001`](research/records/OBS-001.json). This is a verified provenance artifact result, not a recovered Liber Primus plaintext result and not evidence of HMS affiliation with Cicada 3301.
+The bundled public-key bytes parse to the fingerprint recorded in [`OBS-0001`](research/records/OBS-0001.json). This is a verified provenance artifact result, not a recovered Liber Primus plaintext result and not evidence of HMS affiliation with Cicada 3301.
 
 ## Liber Primus plaintext ledger
 

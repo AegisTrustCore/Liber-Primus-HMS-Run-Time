@@ -1,10 +1,11 @@
 {
   "$schema": "../schemas/patreon-public-manifest.schema.json",
   "schema_version": "1.0.0",
-  "last_reviewed": "2026-08-12",
+  "last_reviewed": "2026-08-13",
   "posts": [
+    {"id":"PUBLIC-000","title":"Welcome To The Crew!","audience":"PUBLIC","material_type":"COMMUNITY","status":"CORRECTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/welcome-to-crew-166535096"},
     {"id":"PUBLIC-001","title":"The HMS Public Evidence Layer","audience":"PUBLIC","material_type":"COMMUNITY","status":"POSTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/hms-public-layer-166540390"},
-    {"id":"PUBLIC-002","title":"SIGNAL 3301 — Trust the Signature","audience":"PUBLIC","material_type":"COMMUNITY","status":"POSTED","related_instrument":"public-gp29-calculator","published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/signal-3301-166541914"},
+    {"id":"PUBLIC-002","title":"SIGNAL 3301 — Trust the Signature","audience":"PUBLIC","material_type":"COMMUNITY","status":"CORRECTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/signal-3301-166541914"},
     {"id":"PILGRIM-001","title":"Enter the Expedition — Pilgrim Briefing 001","audience":"PILGRIM","material_type":"DISPATCH","status":"POSTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/enter-expedition-166540431"},
     {"id":"NAVIGATOR-001","title":"The First Research Queue — Navigator 001","audience":"NAVIGATOR","material_type":"RESEARCH_PREVIEW","status":"POSTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/first-research-166540488"},
     {"id":"CARTOGRAPHER-001","title":"How the Evidence Ledger Will Work — Cartographer 001","audience":"CARTOGRAPHER","material_type":"RESEARCH_PACKET","status":"POSTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/how-evidence-001-166540550"},

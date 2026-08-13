@@ -13,6 +13,8 @@ publication_status: PUBLISHED
 
 No other combination may be committed under `research/records/`.
 
+Passing tests is necessary but never sufficient. Every release must also have an `APPROVED` machine-readable gate record with named human approval as defined in [PUBLIC_RELEASE_GATE.md](PUBLIC_RELEASE_GATE.md). Automation may reject publication but may not approve or promote it.
+
 ## Material that stays outside this repository
 
 - Unreleased or supporter-only research
@@ -39,6 +41,8 @@ IDEA → PROTOTYPE → INTERNAL → EXPERIMENTAL → BETA → STABLE → RELEASE
 ```
 
 These tracks are separate. A software release does not publish private research, and a research publication does not release private tool source.
+
+Software uses semantic versions. Research uses permanent canonical IDs. A software version must never be used as the identity of a research conclusion.
 
 ## Distribution decision
 
@@ -72,3 +76,8 @@ Before release, confirm:
 - [ ] Redistribution rights have been checked.
 - [ ] Related negative results, corrections, and superseded records are linked.
 - [ ] Automated validation passes.
+- [ ] The complete parameter/search family and selection denominator are preserved where applicable.
+- [ ] A deterministic environment manifest records engine, dependencies, encoding, seed, alphabet, page numbering, and corpus version.
+- [ ] Public links have been tested.
+- [ ] A named human has approved the machine-readable release gate.
+- [ ] Official software packages have hashes and a signed tag/release plan.

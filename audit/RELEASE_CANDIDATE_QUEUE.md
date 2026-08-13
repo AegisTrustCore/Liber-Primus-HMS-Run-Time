@@ -6,11 +6,11 @@ This is a public roadmap, not the HMS research queue. It records the existence, 
 
 | Public ID | Evidence class | Current state | Gate before public release |
 |---|---|---|---|
-| RC-001 | Known control | Reproduction pending | Freeze canonical inputs, package a clean implementation, and reproduce the declared comparison independently |
-| RC-002 | Bounded negative | Reproduction pending | Define the tested family and success criterion, rerun the controls, and state the exact rejection boundary |
-| RC-003 | Known control | Provenance reconciliation | Reconcile source identity and numbering, package the comparison family, and complete a clean replay |
-| RC-004 | Correction | Superseded-claim link pending | Identify the superseded interpretation, reproduce the narrowing evidence, and publish both together |
-| RC-005 | Structural observation | Independent implementation pending | Freeze canonical source material, document the rule and ambiguity boundary, and reproduce independently |
+| RC-0001 | Known control | Reproduction pending | Freeze canonical inputs, package a clean implementation, and reproduce the declared comparison independently |
+| RC-0002 | Bounded negative | Reproduction pending | Define the tested family and success criterion, rerun the controls, and state the exact rejection boundary |
+| RC-0003 | Known control | Provenance reconciliation | Reconcile source identity and numbering, package the comparison family, and complete a clean replay |
+| RC-0004 | Correction | Superseded-claim link pending | Identify the superseded interpretation, reproduce the narrowing evidence, and publish both together |
+| RC-0005 | Structural observation | Independent implementation pending | Freeze canonical source material, document the rule and ambiguity boundary, and reproduce independently |
 
 Exact source experiments, active hypotheses, parameters, datasets, and reproduction assignments remain in the private HMS ledger until a candidate is intentionally promoted through the public release gate.
 

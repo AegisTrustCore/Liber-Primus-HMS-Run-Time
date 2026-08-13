@@ -20,7 +20,7 @@ def normalize(value: str) -> str:
 
 def main() -> int:
     if len(sys.argv) != 3:
-        print("Usage: python scripts/verify_challenge.py EXP-001 YOUR_ANSWER")
+        print("Usage: python scripts/verify_challenge.py XPD-0001 YOUR_ANSWER")
         return 2
 
     challenge_id, submitted = sys.argv[1], normalize(sys.argv[2])

@@ -31,3 +31,9 @@ No item in this list is considered available merely because its architecture is 
 4. Public tools never embed production secrets, private datasets, or premium server logic.
 5. Research publication and software release remain separate approval tracks.
 6. User research remains exportable and is not silently promoted into public evidence.
+7. New user research is `PRIVATE` by default and moves through `PROJECT`, `GROUP`, `HMS_REVIEW`, and `PUBLIC` only by explicit action.
+8. Capability access and compute allowance are separate entitlements enforced server-side.
+9. Local/private projects do not upload source material, notes, or results without an explicit bundle submission.
+10. Locked-tool previews expose documentation and sample output, never protected execution or results.
+
+See [PRIVACY.md](PRIVACY.md) for the user-data, local-mode, sharing, and compute contract.

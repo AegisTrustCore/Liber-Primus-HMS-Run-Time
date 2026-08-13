@@ -24,6 +24,11 @@ All notable public software and repository changes are recorded here. Research p
 - Metadata-only Patreon publication manifest; member post bodies and operations material removed from the public candidate
 - Public release roadmap separated from the private HMS research queue
 - Foundation scope freeze and post-`v0.1.0` progressive release sequence
+- Canonical four-digit object namespaces and end-to-end provenance model
+- Mandatory machine-readable Public Release Gate with human-only approval
+- Deterministic environment manifest and signed-release policy
+- Private-by-default sharing, local research mode, compute-quota, and discovery-disclosure contracts
+- Standard public result view and Observer end-to-end workflow
 
 ### In development
 

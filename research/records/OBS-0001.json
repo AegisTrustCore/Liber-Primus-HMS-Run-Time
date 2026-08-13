@@ -1,27 +1,39 @@
 {
   "$schema": "../../schemas/research-record.schema.json",
   "schema_version": "1.0.0",
-  "id": "OBS-001",
+  "id": "OBS-0001",
   "object_type": "OBSERVATION",
   "title": "Bundled historical Cicada 3301 OpenPGP key fingerprint",
   "claim": "The bundled armored public-key file parses to primary OpenPGP fingerprint 6D854CD7933322A601C3286D181F01E57A35090F and encryption-subkey fingerprint DEC57731ACCBFD11EEBA13434D390ECF671DDEB1.",
+  "why_it_matters": "It gives HMS users a byte-verifiable historical identity reference while demonstrating that possession of a public key is not proof of present-day authority.",
   "scope": "Byte identity and OpenPGP packet metadata of keys/cicada-3301-2012.asc only; this record does not authenticate unrelated messages, accounts, or HMS material.",
   "classification": "PUBLIC",
   "publication_status": "PUBLISHED",
   "evidence_status": "VERIFIED",
   "created_at": "2026-08-12T22:45:00-05:00",
-  "updated_at": "2026-08-12T22:45:00-05:00",
+  "updated_at": "2026-08-13T00:00:00-05:00",
   "authors": ["HMS Endeavour"],
   "sources": [
     "keys/cicada-3301-2012.asc",
     "keys/README.md"
   ],
-  "reproduction": "Run `gpg --show-keys --with-fingerprint --with-subkey-fingerprint keys/cicada-3301-2012.asc`; independently calculate the file SHA-256 and compare it with keys/README.md.",
+  "method": "Parse the armored OpenPGP packets and independently calculate the file digest.",
+  "controls": ["Compare the primary and subkey fingerprints with the recorded manifest values."],
+  "reproduction": "Run `python scripts/verify_cicada_key.py`; alternatively run `gpg --show-keys --with-fingerprint --with-subkey-fingerprint keys/cicada-3301-2012.asc` and independently compare the file SHA-256 with keys/README.md.",
   "limitations": [
     "A matching fingerprint does not by itself establish the provenance of the intake copy.",
     "Possession of this public key does not imply possession of its private key.",
     "This record does not claim that HMS Endeavour is affiliated with Cicada 3301."
   ],
+  "provenance": {
+    "chain_complete": true,
+    "parents": [],
+    "input_hashes": ["sha256:6e397c5c6ceeeb4da08535db74874989f193c914b8d2d87972dd282b24ea809f"],
+    "environment_manifest": "releases/environments/ENV-0001.json",
+    "gap_reason": null
+  },
   "related_records": [],
+  "supersedes": [],
+  "superseded_by": [],
   "content_hash": "sha256:6e397c5c6ceeeb4da08535db74874989f193c914b8d2d87972dd282b24ea809f"
 }

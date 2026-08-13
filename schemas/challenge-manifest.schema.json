@@ -16,7 +16,7 @@
         "additionalProperties": false,
         "required": ["id", "title", "status", "classification", "access_level", "challenge_type", "entrypoint", "verifier", "answer_sha256", "solution_status", "public_solution", "research_claim", "last_updated"],
         "properties": {
-          "id": {"pattern": "^EXP-[0-9]{3,}$"},
+          "id": {"type": "string", "pattern": "^XPD-[0-9]{4,}$"},
           "title": {"type": "string", "minLength": 1},
           "status": {"enum": ["DRAFT", "RELEASE_CANDIDATE", "OPEN", "SOLVED", "ARCHIVED"]},
           "classification": {"const": "PUBLIC"},

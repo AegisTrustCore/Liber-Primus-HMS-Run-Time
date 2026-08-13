@@ -16,18 +16,26 @@ INSTRUMENT_MANIFEST = ROOT / "instruments" / "manifest.json"
 RELEASE_STATE = ROOT / "releases" / "release-state.json"
 PATREON_POST_MANIFEST = ROOT / "patreon" / "public-manifest.json"
 CHALLENGE_MANIFEST = ROOT / "challenges" / "manifest.json"
+RELEASE_GATE_DIR = ROOT / "releases" / "gates"
+ENVIRONMENT_DIR = ROOT / "releases" / "environments"
+ID_REGISTRY = ROOT / "registry" / "id-reservations.json"
 
-ID_PATTERN = re.compile(r"^(OBS|HYP|EXP|RES|NEG|RR|PL|COR|RET)-[0-9]{3,}$")
+ID_PATTERN = re.compile(r"^(OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|PUB)-[0-9]{4,}$")
 OBJECT_TYPES = {
     "OBSERVATION",
     "HYPOTHESIS",
     "EXPERIMENT",
+    "RUN",
     "RESULT",
     "NEGATIVE_RESULT",
     "RESEARCH_REPORT",
+    "EVIDENCE",
+    "CLAIM",
+    "HASHLOCK",
     "PROOFLOCK",
     "CORRECTION",
     "RETRACTION",
+    "PUBLICATION",
 }
 EVIDENCE_STATES = {
     "OBSERVATION",
@@ -63,6 +71,7 @@ REQUIRED_RECORD_FIELDS = {
     "object_type",
     "title",
     "claim",
+    "why_it_matters",
     "scope",
     "classification",
     "publication_status",
@@ -71,9 +80,14 @@ REQUIRED_RECORD_FIELDS = {
     "updated_at",
     "authors",
     "sources",
+    "method",
+    "controls",
     "reproduction",
     "limitations",
+    "provenance",
     "related_records",
+    "supersedes",
+    "superseded_by",
     "content_hash",
 }
 
@@ -99,7 +113,7 @@ def validate_research_record(path: Path, seen_ids: set[str]) -> list[str]:
 
     record_id = record.get("id")
     if not isinstance(record_id, str) or not ID_PATTERN.fullmatch(record_id):
-        errors.append("id must use a recognized prefix and at least three digits")
+        errors.append("id must use a canonical research prefix and at least four digits")
     elif record_id in seen_ids:
         errors.append(f"duplicate id: {record_id}")
     else:
@@ -117,6 +131,19 @@ def validate_research_record(path: Path, seen_ids: set[str]) -> list[str]:
         errors.append("authors must be a non-empty list")
     if not isinstance(record.get("sources"), list) or not record.get("sources"):
         errors.append("sources must be a non-empty list")
+    if not isinstance(record.get("controls"), list) or not record.get("controls"):
+        errors.append("controls must be a non-empty list")
+    provenance = record.get("provenance")
+    if not isinstance(provenance, dict):
+        errors.append("provenance must be an object")
+    else:
+        if not isinstance(provenance.get("chain_complete"), bool):
+            errors.append("provenance.chain_complete must be boolean")
+        if not isinstance(provenance.get("input_hashes"), list) or not provenance.get("input_hashes"):
+            errors.append("provenance.input_hashes must be a non-empty list")
+        environment = provenance.get("environment_manifest")
+        if not isinstance(environment, str) or not (ROOT / environment).is_file():
+            errors.append("provenance.environment_manifest must resolve to a public manifest")
 
     return [f"{path.relative_to(ROOT)}: {error}" for error in errors]
 
@@ -286,7 +313,7 @@ def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
             errors.append(f"{prefix} must be an object")
             continue
         challenge_id = challenge.get("id")
-        if not isinstance(challenge_id, str) or not re.fullmatch(r"EXP-[0-9]{3,}", challenge_id):
+        if not isinstance(challenge_id, str) or not re.fullmatch(r"XPD-[0-9]{4,}", challenge_id):
             errors.append(f"{prefix}.id is invalid")
         elif challenge_id in seen_ids:
             errors.append(f"duplicate challenge id: {challenge_id}")
@@ -330,6 +357,100 @@ def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
     return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(challenges)
 
 
+def validate_environment_manifests(directory: Path) -> tuple[list[str], int]:
+    errors: list[str] = []
+    count = 0
+    for path in sorted(directory.glob("ENV-*.json")):
+        count += 1
+        try:
+            manifest = load_json(path)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            errors.append(f"{path.relative_to(ROOT)}: {exc}")
+            continue
+        if manifest.get("schema_version") != "1.0.0":
+            errors.append(f"{path.relative_to(ROOT)}: schema_version must be 1.0.0")
+        if not re.fullmatch(r"ENV-[0-9]{4,}", str(manifest.get("id", ""))):
+            errors.append(f"{path.relative_to(ROOT)}: id must use ENV and at least four digits")
+        for field in ("hms_version", "engine", "operating_system", "architecture", "encoding", "alphabet_mapping", "page_numbering"):
+            if not isinstance(manifest.get(field), str) or not manifest[field]:
+                errors.append(f"{path.relative_to(ROOT)}: {field} must be a non-empty string")
+        if not isinstance(manifest.get("dependencies"), list):
+            errors.append(f"{path.relative_to(ROOT)}: dependencies must be a list")
+    return errors, count
+
+
+def validate_release_gates(directory: Path) -> tuple[list[str], dict[str, dict]]:
+    errors: list[str] = []
+    gates: dict[str, dict] = {}
+    required_checks = {
+        "publication_approved", "claims_bounded", "secret_scan_passed",
+        "rights_reviewed", "hashes_present", "provenance_complete",
+        "environment_recorded", "clean_reproduction_passed",
+        "complete_family_retained", "corrections_linked", "links_tested",
+        "automated_validation_passed",
+    }
+    for path in sorted(directory.glob("*.json")):
+        try:
+            gate = load_json(path)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            errors.append(f"{path.relative_to(ROOT)}: {exc}")
+            continue
+        release_id = gate.get("release_id")
+        if not isinstance(release_id, str) or not release_id:
+            errors.append(f"{path.relative_to(ROOT)}: release_id is required")
+            continue
+        if release_id in gates:
+            errors.append(f"{path.relative_to(ROOT)}: duplicate release gate {release_id}")
+        gates[release_id] = gate
+        checklist = gate.get("checklist")
+        approval = gate.get("human_approval")
+        if gate.get("classification") != "PUBLIC":
+            errors.append(f"{path.relative_to(ROOT)}: classification must be PUBLIC")
+        if gate.get("status") not in {"PENDING", "APPROVED", "REJECTED", "SUPERSEDED"}:
+            errors.append(f"{path.relative_to(ROOT)}: status is unrecognized")
+        if not isinstance(checklist, dict) or required_checks - checklist.keys():
+            errors.append(f"{path.relative_to(ROOT)}: checklist is incomplete")
+        if not isinstance(approval, dict) or not isinstance(approval.get("approved"), bool):
+            errors.append(f"{path.relative_to(ROOT)}: human_approval is incomplete")
+        if gate.get("status") == "APPROVED":
+            if not all(checklist.get(item) is True for item in required_checks):
+                errors.append(f"{path.relative_to(ROOT)}: APPROVED gate requires every checklist item")
+            if approval.get("approved") is not True or not approval.get("approver") or not approval.get("approved_at"):
+                errors.append(f"{path.relative_to(ROOT)}: APPROVED gate requires named human approval")
+        elif isinstance(approval, dict) and approval.get("approved") is True:
+            errors.append(f"{path.relative_to(ROOT)}: human approval true requires APPROVED status")
+    return errors, gates
+
+
+def validate_id_registry(path: Path, required_ids: set[str]) -> tuple[list[str], int]:
+    try:
+        registry = load_json(path)
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        return [f"{path.relative_to(ROOT)}: {exc}"], 0
+    errors: list[str] = []
+    reservations = registry.get("reservations")
+    if registry.get("schema_version") != "1.0.0":
+        errors.append("schema_version must be 1.0.0")
+    if not isinstance(reservations, list):
+        return [f"{path.relative_to(ROOT)}: reservations must be a list"], 0
+    seen: set[str] = set()
+    canonical = re.compile(r"^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|PUB|XPD)-[0-9]{4,}$")
+    for index, reservation in enumerate(reservations):
+        item_id = reservation.get("id") if isinstance(reservation, dict) else None
+        if not isinstance(item_id, str) or not canonical.fullmatch(item_id):
+            errors.append(f"reservation[{index}].id is invalid")
+        elif item_id in seen:
+            errors.append(f"duplicate reserved ID: {item_id}")
+        else:
+            seen.add(item_id)
+        if not isinstance(reservation, dict) or reservation.get("state") not in {"RESERVED", "ACTIVE", "SUPERSEDED", "RETRACTED", "RETIRED"}:
+            errors.append(f"reservation[{index}].state is invalid")
+    missing = sorted(required_ids - seen)
+    if missing:
+        errors.append("active public objects lack permanent ID reservations: " + ", ".join(missing))
+    return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(reservations)
+
+
 def main() -> int:
     errors: list[str] = []
     seen_ids: set[str] = set()
@@ -347,6 +468,16 @@ def main() -> int:
     errors.extend(post_errors)
     challenge_errors, challenge_count = validate_challenge_manifest(CHALLENGE_MANIFEST)
     errors.extend(challenge_errors)
+    environment_errors, environment_count = validate_environment_manifests(ENVIRONMENT_DIR)
+    errors.extend(environment_errors)
+    gate_errors, release_gates = validate_release_gates(RELEASE_GATE_DIR)
+    errors.extend(gate_errors)
+    challenge_ids = {
+        item.get("id") for item in load_json(CHALLENGE_MANIFEST).get("challenges", [])
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+    registry_errors, reservation_count = validate_id_registry(ID_REGISTRY, seen_ids | challenge_ids)
+    errors.extend(registry_errors)
 
     if release_state.get("github", {}).get("current_public_tag") is None:
         instrument_manifest = load_json(INSTRUMENT_MANIFEST)
@@ -363,6 +494,9 @@ def main() -> int:
         "published_at"
     ):
         errors.append("releases/release-state.json: published Patreon requires published_at")
+    public_tag = release_state.get("github", {}).get("current_public_tag")
+    if public_tag is not None and release_gates.get(public_tag, {}).get("status") != "APPROVED":
+        errors.append("releases/release-state.json: current public tag requires an APPROVED release gate")
 
     if errors:
         print("Public record validation failed:")
@@ -374,7 +508,8 @@ def main() -> int:
         f"Validated {len(seen_ids)} published research record(s) and "
         f"{len(list(PAGES_DIR.glob('page-*/record.json')))} page dossier(s), and "
         f"{instrument_count} instrument status record(s), and {post_count} Patreon post record(s)."
-        f" Validated {challenge_count} public challenge record(s)."
+        f" Validated {challenge_count} public challenge record(s), {environment_count} environment manifest(s),"
+        f" {len(release_gates)} release gate(s), and {reservation_count} permanent ID reservation(s)."
     )
     return 0
 

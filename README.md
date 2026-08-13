@@ -2,6 +2,8 @@
 
 > **HMS Endeavour is under active construction.** This repository is the stable public evidence and verification layer of the project. It is not a claim that the full Liber Primus corpus has been solved, and it is not the complete HMS Research Station.
 
+> **No affiliation:** HMS Endeavour is independent research. It does not represent Cicada 3301, has no endorsement from Cicada 3301, and does not possess Cicada 3301's private signing authority.
+
 > **Release status:** GitHub currently has no tagged HMS release. The expanded foundation is `v0.1.0-rc.1` under review in draft PR #1. See [Public releases](PUBLIC_RELEASES.md).
 
 HMS Endeavour publishes bounded claims, reproducible evidence, negative results, unresolved questions, corrections, and public verification tools. Findings are released only after their scope, inputs, procedure, limitations, and evidence status have been recorded.
@@ -21,7 +23,13 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 - [Corrections](CORRECTIONS.md) — narrowed, superseded, and withdrawn interpretations
 - [Next steps](NEXT_STEPS.md) — the public release sequence
 - [Methodology](METHODOLOGY.md) — what HMS means by verified
+- [Canonical object model](OBJECT_MODEL.md) — permanent IDs and end-to-end provenance
 - [Release policy](RELEASE_POLICY.md) — how material becomes public
+- [Public Release Gate](PUBLIC_RELEASE_GATE.md) — mandatory human-controlled publication approval
+- [Official release signing](SIGNING.md) — tags, hashes, signatures, and signing identity
+- [Discovery disclosure](DISCLOSURE_POLICY.md) — what happens when a significant result appears
+- [Research privacy](PRIVACY.md) — private-by-default sharing, local mode, and compute boundaries
+- [Observer workflow](FREE_WORKFLOW.md) — the first complete free research path
 - [Roadmap](ROADMAP.md) — released, in-development, and planned capabilities
 - [Instrument registry](instruments/README.md) — the authoritative public tool-status page
 - [Public Expeditions](challenges/README.md) — free clues, puzzles, verifiers, and eventual solutions
@@ -57,6 +65,8 @@ Current membership levels are Observer (public), Pilgrim ($3), Navigator ($8), C
 - Patreon is live; individual advanced capabilities remain unavailable until their instrument status changes.
 
 Stable approved evidence remains public. Patreon provides earlier, deeper, and more capable participation rather than a separate standard of truth.
+
+Expedition and ship language is a storytelling layer. Canonical evidence records remain dry, permanently identified, provenance-linked objects. Every narrative claim must link to the evidence layer that supports it.
 
 The first free puzzle, [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md), is included in the foundation branch as a release candidate. It is not open until its manifest status changes on the public default branch.
 

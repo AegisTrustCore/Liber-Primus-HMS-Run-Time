@@ -40,20 +40,18 @@ Reproduction proves repeatability of the procedure. It does not by itself prove 
 HMS maintains traceability across:
 
 ```text
-OBSERVATION → HYPOTHESIS → EXPERIMENT → RESULT → REPRODUCTION → REVIEW → RELEASE
+CORPUS → PAGE → REGION → PAGE SET → PIPELINE → EXPERIMENT → RUN → RESULT → EVIDENCE → CLAIM → HASHLOCK → PROOFLOCK → PUBLICATION
 ```
 
-Permanent identifiers use these prefixes:
+Permanent namespaces and provenance requirements are frozen in [OBJECT_MODEL.md](OBJECT_MODEL.md). Identifiers are never reused, including after retraction.
 
-- `OBS` — observation
-- `HYP` — hypothesis
-- `EXP` — experiment
-- `RES` — result
-- `NEG` — negative result
-- `RR` — research report
-- `PL` — ProofLock
-- `COR` — correction
-- `RET` — retraction
+## Selection and search-family disclosure
+
+An experiment that tests multiple parameters, transforms, keys, orderings, or scoring rules must retain the complete declared family, attempt count, ranking method, and failed outputs needed to evaluate selection effects. A promoted output without its denominator cannot be `VERIFIED`.
+
+## Standard public result view
+
+Every public result provides Claim, Why it matters, Evidence, Method, Controls, Limitations, Reproduce, and Status. Narrative or expedition copy may link to a result but is not itself an evidence record.
 
 ## Negative results
 

@@ -16,7 +16,7 @@ The machine-readable authority is [manifest.json](manifest.json). A challenge ap
 
 | ID | Title | Type | State |
 |---|---|---|---|
-| EXP-001 | The Evidence Ledger | Synthetic method-training puzzle | Release candidate |
+| XPD-0001 | The Evidence Ledger | Synthetic method-training puzzle | Release candidate |
 
 Start with [Expedition 001](expedition-001/README.md). Its local verifier is usable during review, but the campaign begins only after the status changes to `OPEN` on the public branch.
 

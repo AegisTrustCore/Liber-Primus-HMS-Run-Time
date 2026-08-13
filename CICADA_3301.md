@@ -49,4 +49,4 @@ Expected primary fingerprint:
 6D854CD7933322A601C3286D181F01E57A35090F
 ```
 
-The structured verification record is [`OBS-001`](research/records/OBS-001.json). See [`keys/README.md`](keys/README.md) for file integrity information and safe usage notes.
+The structured verification record is [`OBS-0001`](research/records/OBS-0001.json). See [`keys/README.md`](keys/README.md) for file integrity information and safe usage notes.

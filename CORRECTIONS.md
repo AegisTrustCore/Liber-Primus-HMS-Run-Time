@@ -2,6 +2,8 @@
 
 Corrections are permanent parts of the public evidence history. They are linked to the affected claim rather than silently replacing it.
 
+Published objects are never silently rewritten to change a material conclusion. The original becomes `SUPERSEDED` or `RETRACTED`, the correction receives its own permanent ID, and both objects link to each other. Their underlying inputs, environments, and hashes remain preserved.
+
 ## COR candidate — Page 73 visible-hash selector
 
 Status: **PUBLIC PACKAGING PENDING**

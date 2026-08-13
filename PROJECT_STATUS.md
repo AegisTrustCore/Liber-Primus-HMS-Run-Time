@@ -18,6 +18,8 @@ Last reviewed: 2026-08-12
 - Historical Cicada 3301 OpenPGP key, full-fingerprint record, and non-affiliation boundary
 - GP29 Calculator interface and release boundary; executable release held for post-foundation `v0.1`
 - Public status-level roadmap for five LP release candidates; exact research queue retained privately
+- Canonical object/provenance model, deterministic environment manifest, and mandatory human-controlled Public Release Gate
+- Research privacy, compute-entitlement, discovery disclosure, release-signing, and free-workflow contracts
 
 ## Source audit completed in the candidate branch
 
@@ -47,13 +49,15 @@ The audit did identify publication candidates in four distinct classes:
 
 These candidates remain outside the verified ledger until their inputs, hashes, implementation, controls, and clean reproduction are packaged here.
 
+The 1,322-file inventory will be converted deliberately rather than bulk-published. The target is a small set of exceptionally reproducible public objects, not an inflated ledger of partially structured hypotheses.
+
 ## Immediate focus
 
 1. Complete the publication-boundary audit and merge the frozen foundation candidate.
 2. Tag the reviewed foundation as `v0.1.0`.
 3. Release GP29 `v0.1` separately.
 4. Open Expedition 001 after the foundation is live.
-5. Publish `RC-001` only after clean reproduction and evidence packaging.
+5. Publish `RC-0001` only after clean reproduction and evidence packaging.
 6. Release HMS Endeavour Lite alpha through a separate capability review.
 
 ## Platform launch state
