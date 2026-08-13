@@ -41,7 +41,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 
 | Capability | Status |
 |---|---|
-| Public GP29 calculator | PLANNED |
+| Public GP29 calculator | RELEASE CANDIDATE |
 | Advanced GP Laboratory | PLANNED |
 | GP Solver | PLANNED |
 | Batch experiment engine and parameter sweeps | PLANNED |
@@ -57,3 +57,11 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Add-on architecture and plugin SDK | PLANNED |
 
 The roadmap describes intended direction. A planned capability is not an entitlement, release-date promise, or claim that the tool already exists.
+
+## Implementation boundary
+
+- Public GP29 Calculator: strict CLI implemented and under release-candidate review.
+- HMS Endeavour Lite: local interface and portable-result contract documented; application not yet implemented.
+- Liber Runtime: hosted job, workspace, entitlement, and verification boundaries documented; service not yet implemented.
+
+See the [tool architecture](docs/tooling/ARCHITECTURE.md). The instrument registry remains authoritative when roadmap prose and promotional language differ.

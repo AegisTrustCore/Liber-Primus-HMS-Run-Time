@@ -8,6 +8,7 @@ This index answers three different questions separately: what is publicly verifi
 
 | Class | Current public position | Supporting location |
 |---|---|---|
+| Historical PGP identity artifact | Bundled key bytes and full parsed fingerprint verified; provenance claim remains narrowly scoped | [OBS-001](research/records/OBS-001.json) |
 | New HMS-originated LP plaintext | None published | [Verified results](VERIFIED_RESULTS.md) |
 | Known solved-material controls | Strong reproduction candidates identified; public packages pending | [Known controls](KNOWN_CONTROLS.md) |
 | Page 32 | Structural candidates and bounded negative results; rune prose remains unsolved | [Page 32 dossier](pages/page-032/README.md) |

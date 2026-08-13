@@ -1,0 +1,2 @@
+# Preserve armored cryptographic artifacts byte-for-byte across platforms.
+*.asc -text

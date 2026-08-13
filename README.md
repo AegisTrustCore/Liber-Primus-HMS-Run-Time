@@ -6,9 +6,12 @@
 
 HMS Endeavour publishes bounded claims, reproducible evidence, negative results, unresolved questions, corrections, and public verification tools. Findings are released only after their scope, inputs, procedure, limitations, and evidence status have been recorded.
 
+HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 material. It is not Cicada 3301 and claims no affiliation or endorsement. See [Cicada 3301 and the historical OpenPGP key](CICADA_3301.md).
+
 ## Start here
 
 - [Project status](PROJECT_STATUS.md) — what exists today
+- [Cicada 3301 / PGP provenance](CICADA_3301.md) — historical identity reference and non-affiliation boundary
 - [Public releases](PUBLIC_RELEASES.md) — what is actually available on GitHub now
 - [Research index](RESEARCH_INDEX.md) — verified, control, open, negative, and corrected work
 - [Verified results](VERIFIED_RESULTS.md) — claims that have passed the public release gate

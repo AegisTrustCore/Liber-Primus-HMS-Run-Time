@@ -15,6 +15,9 @@ Last reviewed: 2026-08-12
 - Public research index, known-control ledger, and correction ledger
 - Patreon membership boundary and pre-launch publication kit
 - Machine-readable instrument status registry
+- Historical Cicada 3301 OpenPGP key, full-fingerprint record, and non-affiliation boundary
+- First executable public GP29 Calculator release candidate
+- Structured machine-readable queue for five LP research candidates
 
 ## Source audit completed in the candidate branch
 
@@ -58,4 +61,6 @@ These candidates remain outside the verified ledger until their inputs, hashes, 
 - GitHub: public repository connected; foundation changes remain in draft PR review.
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
-- Runtime, GP Calculator, sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
+- Public GP29 Calculator: runnable release candidate in draft PR #1; not yet on `main` or tagged.
+- Endeavour Lite and Liber Runtime: architecture started; runnable applications remain planned.
+- Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.

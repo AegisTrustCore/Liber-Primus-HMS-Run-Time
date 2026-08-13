@@ -21,6 +21,8 @@ The candidate contains the public research boundary, source-audit summary, page 
 
 [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md) is a synthetic method-training puzzle with a local, no-telemetry verifier. Its status is `RELEASE_CANDIDATE`, not `OPEN`. It introduces no new Liber Primus research claim and will receive a complete public solution after its campaign window.
 
+The candidate branch now also contains the historical Cicada 3301 public-key reference, verified fingerprint record `OBS-001`, a structured five-item LP release-candidate queue, and the runnable public GP29 Calculator `0.1.0-rc.1`. None is a tagged release until the foundation PR is merged and the release state is changed.
+
 ## GitHub release destinations
 
 Approved GitHub releases may contain:

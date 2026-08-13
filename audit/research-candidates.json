@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "last_reviewed": "2026-08-12",
+  "publication_warning": "These are structured audit candidates, not published research records or claims of new plaintext.",
+  "candidates": [
+    {
+      "id": "RC-001",
+      "source_experiment": "E143-E145",
+      "evidence_class": "KNOWN_CONTROL",
+      "state": "REPRODUCTION_PENDING",
+      "smallest_defensible_claim": "The reported decoder recovers the declared F decisions and physical GP tokens on two already-solved LP1 sections under the recorded cross-section tests.",
+      "reported_metrics": ["I:KOAN 5/5 F decisions and 319/319 physical tokens", "WELCOME 25/25 F decisions and 515/515 physical tokens"],
+      "source_artifacts": ["E143_E145_MASTER_REPORT.md", "e144_e145_boundary_f_generalization_result.json", "run_e144_e145_boundary_f_decoder.py"],
+      "release_gate": ["Remove hard-coded source paths", "Package canonical public inputs", "Run in a clean environment", "Compare exact expected and actual output"],
+      "excluded_claims": ["New LP plaintext", "Transfer to an unsolved LP2 page"]
+    },
+    {
+      "id": "RC-002",
+      "source_experiment": "E145",
+      "evidence_class": "BOUNDED_NEGATIVE",
+      "state": "REPRODUCTION_PENDING",
+      "smallest_defensible_claim": "The declared F-rule transfer to the Page 72 tree did not earn linguistic promotion under the recorded matched-shuffle controls.",
+      "reported_metrics": ["vocabulary coverage 0.0", "score-shuffle p=0.8902195608782435", "coverage-shuffle p=1.0", "decision NO_LINGUISTIC_PROMOTION"],
+      "source_artifacts": ["e144_e145_boundary_f_generalization_result.json", "E145_PAGE72_MATCHED_SHUFFLE_CONTROLS.csv"],
+      "release_gate": ["Freeze the Page 72 transcription", "Disclose the complete operator and scoring family", "Reproduce all 500 controls", "State the rejection boundary"],
+      "excluded_claims": ["Page 72 is impossible to solve", "All F-rule variants fail"]
+    },
+    {
+      "id": "RC-003",
+      "source_experiment": "E159",
+      "evidence_class": "KNOWN_CONTROL",
+      "state": "PROVENANCE_RECONCILIATION",
+      "smallest_defensible_claim": "The recorded E118 transform ranks first among six declared operators when replaying independently known terminal text on the source labeled Page 73 segment 9.",
+      "reported_metrics": ["85 runes", "rank 1 of 6", "vocabulary coverage 0.5604395604395604", "decision NO_NEW_LP2_PLAINTEXT"],
+      "source_artifacts": ["e159_result.json", "E159_LP2_SEGMENT_WIDE_PRIMITIVE_REPLAY.csv", "E159_TERMINAL_FULL_FAMILY_CONTROLS.csv"],
+      "release_gate": ["Resolve page numbering", "Establish canonical source provenance", "Package the six-operator comparison", "Clean replay"],
+      "excluded_claims": ["HMS first recovered the text", "The result solves an unknown page", "A printed hash selects the transform"]
+    },
+    {
+      "id": "RC-004",
+      "source_experiment": "E160",
+      "evidence_class": "CORRECTION",
+      "state": "SUPERSEDED_CLAIM_LINK_PENDING",
+      "smallest_defensible_claim": "PGP state alone does not select the recorded LP1 segment operation in the seven-segment audit because every observed PGP-state value collides across operations.",
+      "reported_metrics": ["3 distinct PGP-state values", "3 cross-operation collisions", "pure_as_single_selector=0"],
+      "source_artifacts": ["e160_result.json", "E160_SINGLE_FEATURE_SELECTOR_AUDIT.csv", "E156_E160_MASTER_REPORT.md"],
+      "release_gate": ["Identify the superseded causal-selector statement", "Reproduce collision table", "Publish correction beside retained control result"],
+      "excluded_claims": ["PGP metadata has no role anywhere", "The retained transform replay is invalid"]
+    },
+    {
+      "id": "RC-005",
+      "source_experiment": "E163",
+      "evidence_class": "STRUCTURAL",
+      "state": "INDEPENDENT_IMPLEMENTATION_PENDING",
+      "smallest_defensible_claim": "Under the frozen transcription and grouping rule, the Page 32 material yields five red quartets, black-state widths 75|4|28|3|23|6, and a following payload count of 1744 runes, equal to 16×109.",
+      "reported_metrics": ["20 red runes", "139 lower black runes", "1744 payload runes", "16 blocks of 109"],
+      "source_artifacts": ["e163_result.json", "E163_PAGE32_FIVE_RED_QUARTETS.csv", "E163_PAGE32_SIX_BLACK_STATES.csv", "E163_PAGE32_PAYLOAD_16X109_BLOCKS.csv"],
+      "release_gate": ["Freeze canonical image and transcription hashes", "Publish the grouping rule", "Implement independently", "Audit ambiguity and target leakage"],
+      "excluded_claims": ["Recovered Page 32 plaintext", "The 16×109 relation selects a cipher"]
+    }
+  ]
+}
