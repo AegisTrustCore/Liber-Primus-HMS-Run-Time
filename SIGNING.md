@@ -10,6 +10,8 @@ The `v0.1.x` release series uses OpenPGP fingerprint:
 
 This HMS release key is distinct from the historical Cicada 3301 evidence key. Verification material is attached to the GitHub Release; the private key remains outside the repository and publication workflow.
 
+The public identity, creation date, algorithm, intended usage, and verification procedure are recorded in [HMS Release Signing Identity](keys/HMS_RELEASE_SIGNING.md).
+
 ## Required artifacts
 
 - Annotated, cryptographically signed Git tag.

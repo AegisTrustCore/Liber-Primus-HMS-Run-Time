@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -382,12 +383,28 @@ def validate_environment_manifests(directory: Path) -> tuple[list[str], int]:
 def validate_release_gates(directory: Path) -> tuple[list[str], dict[str, dict]]:
     errors: list[str] = []
     gates: dict[str, dict] = {}
-    required_checks = {
-        "publication_approved", "claims_bounded", "secret_scan_passed",
-        "rights_reviewed", "hashes_present", "provenance_complete",
-        "environment_recorded", "clean_reproduction_passed",
-        "complete_family_retained", "corrections_linked", "links_tested",
+    common_checks = {
+        "publication_approved", "secret_scan_passed", "rights_reviewed",
+        "provenance_complete", "environment_recorded", "links_tested",
         "automated_validation_passed",
+    }
+    type_checks = {
+        "SOFTWARE": ("software", {
+            "tests_passed", "package_hashes_present", "dependency_manifest_present",
+            "security_scan_passed", "build_reproducible", "release_notes_complete",
+        }),
+        "RESEARCH": ("research", {
+            "claims_bounded", "complete_family_retained", "controls_recorded",
+            "corrections_linked", "clean_reproduction_passed",
+        }),
+        "EXPEDITION": ("expedition", {
+            "solution_state_valid", "verifier_tested", "challenge_status_consistent",
+            "research_claims_bounded",
+        }),
+        "PUBLICATION": ("publication", {
+            "claims_bounded", "sources_cited", "corrections_linked",
+            "evidence_links_complete",
+        }),
     }
     for path in sorted(directory.glob("*.json")):
         try:
@@ -402,21 +419,114 @@ def validate_release_gates(directory: Path) -> tuple[list[str], dict[str, dict]]
         if release_id in gates:
             errors.append(f"{path.relative_to(ROOT)}: duplicate release gate {release_id}")
         gates[release_id] = gate
-        checklist = gate.get("checklist")
+        release_type = gate.get("release_type")
+        common = gate.get("common_checks")
+        selected = gate.get("type_checks")
+        subject = gate.get("release_subject")
         approval = gate.get("human_approval")
+        if gate.get("schema_version") != "1.1.0":
+            errors.append(f"{path.relative_to(ROOT)}: schema_version must be 1.1.0")
         if gate.get("classification") != "PUBLIC":
             errors.append(f"{path.relative_to(ROOT)}: classification must be PUBLIC")
         if gate.get("status") not in {"PENDING", "APPROVED", "REJECTED", "SUPERSEDED"}:
             errors.append(f"{path.relative_to(ROOT)}: status is unrecognized")
-        if not isinstance(checklist, dict) or required_checks - checklist.keys():
-            errors.append(f"{path.relative_to(ROOT)}: checklist is incomplete")
+        if not isinstance(common, dict) or set(common) != common_checks:
+            errors.append(f"{path.relative_to(ROOT)}: common_checks is incomplete or contains unknown checks")
+        expected = type_checks.get(release_type)
+        if expected is None:
+            errors.append(f"{path.relative_to(ROOT)}: release_type is unrecognized")
+            selected_key, required_type_checks = None, set()
+        else:
+            selected_key, required_type_checks = expected
+        if not isinstance(selected, dict) or set(selected) != {selected_key}:
+            errors.append(f"{path.relative_to(ROOT)}: type_checks must contain only the {selected_key!r} gate")
+            selected_checks = {}
+        else:
+            selected_checks = selected.get(selected_key)
+            if not isinstance(selected_checks, dict) or set(selected_checks) != required_type_checks:
+                errors.append(f"{path.relative_to(ROOT)}: {selected_key} checks are incomplete or contain unknown checks")
+                selected_checks = {}
+
+        subject_digest = None
+        if not isinstance(subject, dict):
+            errors.append(f"{path.relative_to(ROOT)}: release_subject is required")
+        else:
+            if subject.get("schema_version") != "1.0.0":
+                errors.append(f"{path.relative_to(ROOT)}: release_subject.schema_version must be 1.0.0")
+            candidate_sha = subject.get("candidate_commit_sha")
+            if not isinstance(candidate_sha, str) or not re.fullmatch(r"[a-f0-9]{40}", candidate_sha):
+                errors.append(f"{path.relative_to(ROOT)}: candidate_commit_sha must be a full lowercase Git SHA")
+            subject_digest = subject.get("release_manifest_sha256")
+            if not isinstance(subject_digest, str) or not re.fullmatch(r"[a-f0-9]{64}", subject_digest):
+                errors.append(f"{path.relative_to(ROOT)}: release_manifest_sha256 must be a lowercase SHA-256 digest")
+            manifest_rel = subject.get("release_manifest")
+            manifest_path = (ROOT / manifest_rel).resolve() if isinstance(manifest_rel, str) else None
+            manifest_root = (ROOT / "releases" / "manifests").resolve()
+            if manifest_path is None or not manifest_path.is_relative_to(manifest_root) or not manifest_path.is_file():
+                errors.append(f"{path.relative_to(ROOT)}: release_manifest must resolve under releases/manifests")
+            else:
+                actual_digest = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+                if subject_digest != actual_digest:
+                    errors.append(f"{path.relative_to(ROOT)}: release subject changed; human approval is invalid")
+                try:
+                    manifest = load_json(manifest_path)
+                except (OSError, json.JSONDecodeError, ValueError) as exc:
+                    errors.append(f"{manifest_path.relative_to(ROOT)}: {exc}")
+                    manifest = {}
+                comparisons = {
+                    "release_id": release_id,
+                    "release_type": release_type,
+                    "candidate_commit_sha": candidate_sha,
+                    "intended_tag": subject.get("intended_tag"),
+                    "environment_id": subject.get("environment_id"),
+                }
+                for field, expected_value in comparisons.items():
+                    if manifest.get(field) != expected_value:
+                        errors.append(f"{path.relative_to(ROOT)}: release subject {field} disagrees with its manifest")
+                notes_path = manifest.get("release_notes")
+                if not isinstance(notes_path, str) or not (ROOT / notes_path).resolve().is_file():
+                    errors.append(f"{manifest_path.relative_to(ROOT)}: release_notes must resolve to a file")
+                artifacts = manifest.get("artifacts")
+                if not isinstance(artifacts, list) or not artifacts:
+                    errors.append(f"{manifest_path.relative_to(ROOT)}: artifacts must be a non-empty list")
+                else:
+                    names: set[str] = set()
+                    for index, artifact in enumerate(artifacts):
+                        name = artifact.get("name") if isinstance(artifact, dict) else None
+                        digest = artifact.get("sha256") if isinstance(artifact, dict) else None
+                        if not isinstance(name, str) or not name or name in names:
+                            errors.append(f"{manifest_path.relative_to(ROOT)}: artifact[{index}] name is missing or duplicated")
+                        else:
+                            names.add(name)
+                        if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
+                            errors.append(f"{manifest_path.relative_to(ROOT)}: artifact[{index}] sha256 is invalid")
+            environment_id = subject.get("environment_id")
+            if not isinstance(environment_id, str) or not (ROOT / "releases" / "environments" / f"{environment_id}.json").is_file():
+                errors.append(f"{path.relative_to(ROOT)}: environment_id does not resolve to a public manifest")
+            if subject.get("intended_tag") != release_id:
+                errors.append(f"{path.relative_to(ROOT)}: intended_tag must equal release_id")
+
         if not isinstance(approval, dict) or not isinstance(approval.get("approved"), bool):
             errors.append(f"{path.relative_to(ROOT)}: human_approval is incomplete")
         if gate.get("status") == "APPROVED":
-            if not all(checklist.get(item) is True for item in required_checks):
-                errors.append(f"{path.relative_to(ROOT)}: APPROVED gate requires every checklist item")
+            if not all(common.get(item) is True for item in common_checks):
+                errors.append(f"{path.relative_to(ROOT)}: APPROVED gate requires every common check")
+            if not all(selected_checks.get(item) is True for item in required_type_checks):
+                errors.append(f"{path.relative_to(ROOT)}: APPROVED gate requires every type-specific check")
             if approval.get("approved") is not True or not approval.get("approver") or not approval.get("approved_at"):
                 errors.append(f"{path.relative_to(ROOT)}: APPROVED gate requires named human approval")
+            if approval.get("approved_subject_sha256") != subject_digest:
+                errors.append(f"{path.relative_to(ROOT)}: approval is not bound to the current release subject")
+        elif gate.get("status") == "PENDING":
+            if isinstance(common, dict) and common.get("publication_approved") is not False:
+                errors.append(f"{path.relative_to(ROOT)}: PENDING gate requires publication_approved false")
+            if isinstance(approval, dict) and (
+                approval.get("approved") is not False
+                or approval.get("approver") is not None
+                or approval.get("approved_at") is not None
+                or approval.get("approved_subject_sha256") is not None
+            ):
+                errors.append(f"{path.relative_to(ROOT)}: PENDING gate cannot contain human approval")
         elif isinstance(approval, dict) and approval.get("approved") is True:
             errors.append(f"{path.relative_to(ROOT)}: human approval true requires APPROVED status")
     return errors, gates
@@ -434,7 +544,7 @@ def validate_id_registry(path: Path, required_ids: set[str]) -> tuple[list[str],
     if not isinstance(reservations, list):
         return [f"{path.relative_to(ROOT)}: reservations must be a list"], 0
     seen: set[str] = set()
-    canonical = re.compile(r"^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|PUB|XPD)-[0-9]{4,}$")
+    canonical = re.compile(r"^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|RC|ENV|PUB|XPD)-[0-9]{4,}$")
     for index, reservation in enumerate(reservations):
         item_id = reservation.get("id") if isinstance(reservation, dict) else None
         if not isinstance(item_id, str) or not canonical.fullmatch(item_id):

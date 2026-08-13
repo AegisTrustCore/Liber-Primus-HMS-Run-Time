@@ -4,43 +4,153 @@
   "title": "HMS Public Release Gate",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "release_id", "release_type", "status", "classification", "checklist", "human_approval"],
+  "required": ["schema_version", "release_id", "release_type", "status", "classification", "release_subject", "common_checks", "type_checks", "human_approval"],
   "properties": {
     "$schema": {"type": "string"},
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"const": "1.1.0"},
     "release_id": {"type": "string", "minLength": 1},
     "release_type": {"enum": ["SOFTWARE", "RESEARCH", "EXPEDITION", "PUBLICATION"]},
     "status": {"enum": ["PENDING", "APPROVED", "REJECTED", "SUPERSEDED"]},
     "classification": {"const": "PUBLIC"},
-    "checklist": {
+    "release_subject": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["publication_approved", "claims_bounded", "secret_scan_passed", "rights_reviewed", "hashes_present", "provenance_complete", "environment_recorded", "clean_reproduction_passed", "complete_family_retained", "corrections_linked", "links_tested", "automated_validation_passed"],
+      "required": ["schema_version", "candidate_commit_sha", "release_manifest", "release_manifest_sha256", "environment_id", "intended_tag"],
+      "properties": {
+        "schema_version": {"const": "1.0.0"},
+        "candidate_commit_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        "release_manifest": {"type": "string", "pattern": "^releases/manifests/[^/]+\\.json$"},
+        "release_manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "environment_id": {"type": "string", "pattern": "^ENV-[0-9]{4,}$"},
+        "intended_tag": {"type": "string", "minLength": 1}
+      }
+    },
+    "common_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publication_approved", "secret_scan_passed", "rights_reviewed", "provenance_complete", "environment_recorded", "links_tested", "automated_validation_passed"],
       "properties": {
         "publication_approved": {"type": "boolean"},
-        "claims_bounded": {"type": "boolean"},
         "secret_scan_passed": {"type": "boolean"},
         "rights_reviewed": {"type": "boolean"},
-        "hashes_present": {"type": "boolean"},
         "provenance_complete": {"type": "boolean"},
         "environment_recorded": {"type": "boolean"},
-        "clean_reproduction_passed": {"type": "boolean"},
-        "complete_family_retained": {"type": "boolean"},
-        "corrections_linked": {"type": "boolean"},
         "links_tested": {"type": "boolean"},
         "automated_validation_passed": {"type": "boolean"}
+      }
+    },
+    "type_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "software": {"$ref": "#/$defs/softwareChecks"},
+        "research": {"$ref": "#/$defs/researchChecks"},
+        "expedition": {"$ref": "#/$defs/expeditionChecks"},
+        "publication": {"$ref": "#/$defs/publicationChecks"}
       }
     },
     "human_approval": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["approved", "approver", "approved_at"],
+      "required": ["approved", "approver", "approved_at", "approved_subject_sha256"],
       "properties": {
         "approved": {"type": "boolean"},
         "approver": {"type": ["string", "null"]},
-        "approved_at": {"type": ["string", "null"], "format": "date-time"}
+        "approved_at": {"type": ["string", "null"], "format": "date-time"},
+        "approved_subject_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
       }
     },
     "notes": {"type": "array", "items": {"type": "string"}}
-  }
+  },
+  "$defs": {
+    "softwareChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tests_passed", "package_hashes_present", "dependency_manifest_present", "security_scan_passed", "build_reproducible", "release_notes_complete"],
+      "properties": {
+        "tests_passed": {"type": "boolean"},
+        "package_hashes_present": {"type": "boolean"},
+        "dependency_manifest_present": {"type": "boolean"},
+        "security_scan_passed": {"type": "boolean"},
+        "build_reproducible": {"type": "boolean"},
+        "release_notes_complete": {"type": "boolean"}
+      }
+    },
+    "researchChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claims_bounded", "complete_family_retained", "controls_recorded", "corrections_linked", "clean_reproduction_passed"],
+      "properties": {
+        "claims_bounded": {"type": "boolean"},
+        "complete_family_retained": {"type": "boolean"},
+        "controls_recorded": {"type": "boolean"},
+        "corrections_linked": {"type": "boolean"},
+        "clean_reproduction_passed": {"type": "boolean"}
+      }
+    },
+    "expeditionChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["solution_state_valid", "verifier_tested", "challenge_status_consistent", "research_claims_bounded"],
+      "properties": {
+        "solution_state_valid": {"type": "boolean"},
+        "verifier_tested": {"type": "boolean"},
+        "challenge_status_consistent": {"type": "boolean"},
+        "research_claims_bounded": {"type": "boolean"}
+      }
+    },
+    "publicationChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claims_bounded", "sources_cited", "corrections_linked", "evidence_links_complete"],
+      "properties": {
+        "claims_bounded": {"type": "boolean"},
+        "sources_cited": {"type": "boolean"},
+        "corrections_linked": {"type": "boolean"},
+        "evidence_links_complete": {"type": "boolean"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "APPROVED"}}},
+      "then": {
+        "properties": {
+          "common_checks": {"properties": {"publication_approved": {"const": true}, "secret_scan_passed": {"const": true}, "rights_reviewed": {"const": true}, "provenance_complete": {"const": true}, "environment_recorded": {"const": true}, "links_tested": {"const": true}, "automated_validation_passed": {"const": true}}},
+          "human_approval": {"properties": {"approved": {"const": true}, "approver": {"type": "string", "minLength": 1}, "approved_at": {"type": "string", "format": "date-time"}, "approved_subject_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "PENDING"}}},
+      "then": {
+        "properties": {
+          "common_checks": {"properties": {"publication_approved": {"const": false}}},
+          "human_approval": {"properties": {"approved": {"const": false}, "approver": {"const": null}, "approved_at": {"const": null}, "approved_subject_sha256": {"const": null}}}
+        }
+      }
+    },
+    {"if": {"properties": {"release_type": {"const": "SOFTWARE"}}}, "then": {"properties": {"type_checks": {"required": ["software"]}}}},
+    {"if": {"properties": {"release_type": {"const": "RESEARCH"}}}, "then": {"properties": {"type_checks": {"required": ["research"]}}}},
+    {"if": {"properties": {"release_type": {"const": "EXPEDITION"}}}, "then": {"properties": {"type_checks": {"required": ["expedition"]}}}},
+    {"if": {"properties": {"release_type": {"const": "PUBLICATION"}}}, "then": {"properties": {"type_checks": {"required": ["publication"]}}}},
+    {
+      "if": {"properties": {"status": {"const": "APPROVED"}, "release_type": {"const": "SOFTWARE"}}},
+      "then": {"properties": {"type_checks": {"properties": {"software": {"properties": {"tests_passed": {"const": true}, "package_hashes_present": {"const": true}, "dependency_manifest_present": {"const": true}, "security_scan_passed": {"const": true}, "build_reproducible": {"const": true}, "release_notes_complete": {"const": true}}}}}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "APPROVED"}, "release_type": {"const": "RESEARCH"}}},
+      "then": {"properties": {"type_checks": {"properties": {"research": {"properties": {"claims_bounded": {"const": true}, "complete_family_retained": {"const": true}, "controls_recorded": {"const": true}, "corrections_linked": {"const": true}, "clean_reproduction_passed": {"const": true}}}}}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "APPROVED"}, "release_type": {"const": "EXPEDITION"}}},
+      "then": {"properties": {"type_checks": {"properties": {"expedition": {"properties": {"solution_state_valid": {"const": true}, "verifier_tested": {"const": true}, "challenge_status_consistent": {"const": true}, "research_claims_bounded": {"const": true}}}}}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "APPROVED"}, "release_type": {"const": "PUBLICATION"}}},
+      "then": {"properties": {"type_checks": {"properties": {"publication": {"properties": {"claims_bounded": {"const": true}, "sources_cited": {"const": true}, "corrections_linked": {"const": true}, "evidence_links_complete": {"const": true}}}}}}}
+    }
+  ]
 }

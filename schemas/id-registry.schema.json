@@ -16,7 +16,7 @@
         "additionalProperties": false,
         "required": ["id", "object_type", "state", "reserved_at"],
         "properties": {
-          "id": {"type": "string", "pattern": "^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|PUB|XPD)-[0-9]{4,}$"},
+          "id": {"type": "string", "pattern": "^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|RC|ENV|PUB|XPD)-[0-9]{4,}$"},
           "object_type": {"type": "string", "minLength": 1},
           "state": {"enum": ["RESERVED", "ACTIVE", "SUPERSEDED", "RETRACTED", "RETIRED"]},
           "reserved_at": {"type": "string", "format": "date"}

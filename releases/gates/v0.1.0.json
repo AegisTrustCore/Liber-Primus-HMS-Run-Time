@@ -1,31 +1,46 @@
 {
   "$schema": "../../schemas/release-gate.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "release_id": "v0.1.0",
   "release_type": "SOFTWARE",
   "status": "APPROVED",
   "classification": "PUBLIC",
-  "checklist": {
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "4bcef7e5b86cfca29fff96f720887a6f64285346",
+    "release_manifest": "releases/manifests/v0.1.0.json",
+    "release_manifest_sha256": "beb8b3c95d64cbf7de9e7434a98a416f78786691a508533d10557be3a4c69fa8",
+    "environment_id": "ENV-0001",
+    "intended_tag": "v0.1.0"
+  },
+  "common_checks": {
     "publication_approved": true,
-    "claims_bounded": true,
     "secret_scan_passed": true,
     "rights_reviewed": true,
-    "hashes_present": true,
     "provenance_complete": true,
     "environment_recorded": true,
-    "clean_reproduction_passed": true,
-    "complete_family_retained": true,
-    "corrections_linked": true,
     "links_tested": true,
     "automated_validation_passed": true
+  },
+  "type_checks": {
+    "software": {
+      "tests_passed": true,
+      "package_hashes_present": true,
+      "dependency_manifest_present": true,
+      "security_scan_passed": true,
+      "build_reproducible": true,
+      "release_notes_complete": true
+    }
   },
   "human_approval": {
     "approved": true,
     "approver": "coreystilwell3-eng (repository owner)",
-    "approved_at": "2026-08-13T06:10:00Z"
+    "approved_at": "2026-08-13T06:10:00Z",
+    "approved_subject_sha256": "beb8b3c95d64cbf7de9e7434a98a416f78786691a508533d10557be3a4c69fa8"
   },
   "notes": [
     "Approval records the repository owner's explicit instruction to complete the v0.1.0 release after PR #1 passed the final boundary audit.",
-    "Codex recorded the named human decision; automated validation did not originate or substitute for the approval."
+    "Codex recorded the named human decision; automated validation did not originate or substitute for the approval.",
+    "This post-release hardening record binds that approval to the immutable v0.1.0 tag target and canonical release manifest."
   ]
 }

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/release-manifest.schema.json",
+  "title": "HMS Immutable Release Subject Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release_id", "release_type", "candidate_commit_sha", "intended_tag", "environment_id", "release_notes", "artifacts"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "release_id": {"type": "string", "minLength": 1},
+    "release_type": {"enum": ["SOFTWARE", "RESEARCH", "EXPEDITION", "PUBLICATION"]},
+    "candidate_commit_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "intended_tag": {"type": "string", "minLength": 1},
+    "environment_id": {"type": "string", "pattern": "^ENV-[0-9]{4,}$"},
+    "release_notes": {"type": "string", "minLength": 1},
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "sha256"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    }
+  }
+}
