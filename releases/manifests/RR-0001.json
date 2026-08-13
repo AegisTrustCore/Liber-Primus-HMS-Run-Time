@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "RR-0001",
+  "release_type": "RESEARCH",
+  "candidate_commit_sha": "ce845dbe3e2f00e7dbab8111edf71d651d33add4",
+  "intended_tag": "RR-0001",
+  "environment_id": "ENV-0002",
+  "release_notes": "reports/PUBLIC_RUNS_001.md",
+  "artifacts": [
+    {"name":"research/records/RUN-0001.json","sha256":"0f8ffc7656d8ededb8e58f92d477af482319664e3479d77a5bcc0ae66781c6c5"},
+    {"name":"research/records/RUN-0002.json","sha256":"6cd1ddcb5e158e8ea18913eda029fa87ce1464bb76b0862f25b0972872608f1e"},
+    {"name":"reports/PUBLIC_RUNS_001.md","sha256":"6beb2449357ad876de2e42ec4c4f79b6d93f3dd997d3a16ebc799991f532c0a4"},
+    {"name":"releases/environments/ENV-0002.json","sha256":"97ec2ae339338093fda4b3f6badeb327af764006d6e84b931c7e4d4aa2484f6f"}
+  ]
+}

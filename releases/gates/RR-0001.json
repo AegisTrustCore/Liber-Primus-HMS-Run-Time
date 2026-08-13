@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "RR-0001",
+  "release_type": "RESEARCH",
+  "status": "APPROVED",
+  "classification": "PUBLIC",
+  "release_subject": {"schema_version":"1.0.0","candidate_commit_sha":"ce845dbe3e2f00e7dbab8111edf71d651d33add4","release_manifest":"releases/manifests/RR-0001.json","release_manifest_sha256":"5fb261398e73e93c3cd810c037cb2736ba95754e8259053f97abbd2d34681829","environment_id":"ENV-0002","intended_tag":"RR-0001"},
+  "common_checks": {"publication_approved":true,"secret_scan_passed":true,"rights_reviewed":true,"provenance_complete":true,"environment_recorded":true,"links_tested":true,"automated_validation_passed":true},
+  "type_checks": {"research":{"claims_bounded":true,"complete_family_retained":true,"controls_recorded":true,"corrections_linked":true,"clean_reproduction_passed":true}},
+  "human_approval": {"approved":true,"approver":"coreystilwell3-eng (repository owner)","approved_at":"2026-08-13T02:23:56-05:00","approved_subject_sha256":"5fb261398e73e93c3cd810c037cb2736ba95754e8259053f97abbd2d34681829"},
+  "notes": [
+    "The repository owner explicitly requested publication of bounded run and proof evidence while withholding structured advanced routes, candidate solves, and tier-only material.",
+    "RUN-0001 reproduces an already-public provenance artifact claim; RUN-0002 uses synthetic vectors and stores no sealed Expedition answer.",
+    "No LP plaintext, candidate route, private dataset, or paid-tier packet is part of this release subject. Corrections are not applicable to either run and the records state their nearest overclaim boundaries.",
+    "Codex recorded and bound the owner's publication decision to the exact canonical manifest; automation did not originate the approval."
+  ]
+}

@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -539,6 +540,17 @@ def validate_release_gates(directory: Path) -> tuple[list[str], dict[str, dict]]
                             names.add(name)
                         if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
                             errors.append(f"{manifest_path.relative_to(ROOT)}: artifact[{index}] sha256 is invalid")
+                        elif isinstance(name, str) and "/" in name and isinstance(candidate_sha, str):
+                            completed = subprocess.run(
+                                ["git", "show", f"{candidate_sha}:{name}"],
+                                cwd=ROOT,
+                                check=False,
+                                capture_output=True,
+                            )
+                            if completed.returncode != 0:
+                                errors.append(f"{manifest_path.relative_to(ROOT)}: artifact[{index}] is absent from candidate commit")
+                            elif hashlib.sha256(completed.stdout).hexdigest() != digest:
+                                errors.append(f"{manifest_path.relative_to(ROOT)}: artifact[{index}] hash disagrees with candidate commit")
             environment_id = subject.get("environment_id")
             if not isinstance(environment_id, str) or not (ROOT / "releases" / "environments" / f"{environment_id}.json").is_file():
                 errors.append(f"{path.relative_to(ROOT)}: environment_id does not resolve to a public manifest")
