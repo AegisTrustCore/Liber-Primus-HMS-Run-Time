@@ -12,7 +12,7 @@
       "method": null,
       "capsule": "CAP-0001",
       "package": "RES-0001/RES-0001.zip",
-      "package_sha256": "68fa5be2ab1464e43e8f77059f9c36357cebeb604e28685dfa31a620f7d45d94",
+      "package_sha256": "195919555c706e38eaddd6a81cf108740ea54153526209739804c0815b676d16",
       "result_page": "RES-0001/result.html"
     },
     {
@@ -24,7 +24,7 @@
       "method": null,
       "capsule": "CAP-0001",
       "package": "RES-0002/RES-0002.zip",
-      "package_sha256": "1dae2ab6ebd522920b8b6cfd8bb52e85a283e00a4fdbfac48a88ae7d5436d461",
+      "package_sha256": "eb60a2ed2506a64d60e50213841b810a19a225b2b299df6eddaf7f237ca1bd18",
       "result_page": "RES-0002/result.html"
     }
   ]
