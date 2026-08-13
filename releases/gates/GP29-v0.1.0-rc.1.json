@@ -7,9 +7,9 @@
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
-    "candidate_commit_sha": "3f5a90d9bd3ddc4132201ccdff3d288cf0b787b0",
+    "candidate_commit_sha": "3f4587d289c5f1f9bb8e07dc6ca3a83033b25774",
     "release_manifest": "releases/manifests/GP29-v0.1.0-rc.1.json",
-    "release_manifest_sha256": "bc6440c7cac1ca6591b9d64004784f2eec1e7190fe4432a7cb22647f31fc709d",
+    "release_manifest_sha256": "fc83c3799f2d1b525616b1195ea4bbef461bf197b651fe66ff6153820308d3ee",
     "environment_id": "ENV-0004",
     "intended_tag": "GP29-v0.1.0-rc.1"
   },
@@ -25,10 +25,10 @@
   "type_checks": {
     "software": {
       "tests_passed": true,
-      "package_hashes_present": false,
+      "package_hashes_present": true,
       "dependency_manifest_present": true,
       "security_scan_passed": false,
-      "build_reproducible": false,
+      "build_reproducible": true,
       "release_notes_complete": true
     }
   },
@@ -39,9 +39,9 @@
     "approved_subject_sha256": null
   },
   "notes": [
-    "This candidate is runnable developer source for the GP29 calculation engine and the first deterministic local Runtime job contract.",
-    "It is not yet a customer-ready download: no installer, portable application, browser interface, or hosted service is included.",
-    "The gate remains pending until distributable package hashes, a security scan, reproducible packaging, cross-platform ordinary-user qualification, and explicit human approval are recorded.",
+    "This candidate includes the GP29 core, first deterministic local Runtime job contract, Windows x64 desktop application, standalone CLI, and a portable package builder.",
+    "The exact candidate ZIP passed packaged CLI and GUI self-tests, deterministic Runtime-job execution, and internal checksum verification on the declared build workstation; two clean builds were byte-identical.",
+    "The gate remains pending until a security scan, independent clean-machine ordinary-user qualification, and explicit human approval are recorded.",
     "Calculation output is evidence labeled CALCULATION_ONLY and makes no decoder, plaintext, route, or Liber Primus solve claim."
   ]
 }
