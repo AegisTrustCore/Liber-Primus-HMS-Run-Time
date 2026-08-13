@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/challenge-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "last_reviewed": "2026-08-13",
+  "challenges": [
+    {
+      "id": "XPD-0001",
+      "title": "The Evidence Ledger",
+      "status": "RELEASE_CANDIDATE",
+      "classification": "PUBLIC",
+      "access_level": "OBSERVER",
+      "challenge_type": "SYNTHETIC_METHOD_TRAINING",
+      "entrypoint": "expedition-001/README.md",
+      "verifier": "../scripts/verify_challenge.py",
+      "answer_sha256": "c92bcb2ea7bb84e1c56bd8e0f16b9f01fc8fb928de8ce5f71ca91cb84cc753dd",
+      "solution_status": "SEALED",
+      "public_solution": null,
+      "research_claim": false,
+      "last_updated": "2026-08-13"
+    }
+  ]
+}

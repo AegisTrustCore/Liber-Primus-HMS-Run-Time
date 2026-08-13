@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/release-state.schema.json",
+  "title": "HMS Release State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "last_reviewed", "github", "research", "patreon"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "github": {
+      "type": "object",
+      "required": ["current_public_tag", "main_state", "available_now", "release_candidate"],
+      "properties": {
+        "current_public_tag": {"type": ["string", "null"]},
+        "main_state": {"enum": ["INITIAL_SHELL", "FOUNDATION", "ACTIVE"]},
+        "available_now": {"type": "array", "items": {"type": "string"}},
+        "release_candidate": {
+          "type": ["object", "null"],
+          "properties": {
+            "version": {"type": "string"},
+            "status": {"const": "RELEASE_CANDIDATE"},
+            "pull_request": {"type": "string"}
+          },
+          "required": ["version", "status", "pull_request"]
+        }
+      }
+    },
+    "research": {
+      "type": "object",
+      "required": ["published_record_count", "verified_hms_plaintext_record_count"],
+      "properties": {
+        "published_record_count": {"type": "integer", "minimum": 0},
+        "verified_hms_plaintext_record_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "patreon": {
+      "type": "object",
+      "required": ["status", "creator_url"],
+      "properties": {
+        "status": {"enum": ["PRE_LAUNCH_UNPUBLISHED", "PUBLISHED", "PAUSED"]},
+        "published_at": {"type": "string", "format": "date"},
+        "creator_url": {"type": "string"}
+      }
+    }
+  }
+}

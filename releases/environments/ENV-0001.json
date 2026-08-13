@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schemas/environment-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "id": "ENV-0001",
+  "hms_version": "v0.1.0-rc.1",
+  "engine": "CPython 3.12",
+  "operating_system": "Platform-independent standard-library validation; CI uses Ubuntu 24.04",
+  "architecture": "x86_64 in CI",
+  "dependencies": [],
+  "encoding": "UTF-8",
+  "alphabet_mapping": "Not applicable to foundation record validation",
+  "page_numbering": "Repository page dossiers use displayed page identifiers; unresolved corpus conventions remain explicit",
+  "corpus_manifest_id": null,
+  "random_seed": null,
+  "container_or_lock_hash": null
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "v0.1.0",
+  "release_type": "SOFTWARE",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "checklist": {
+    "publication_approved": false,
+    "claims_bounded": true,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "hashes_present": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "clean_reproduction_passed": true,
+    "complete_family_retained": true,
+    "corrections_linked": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "human_approval": {
+    "approved": false,
+    "approver": null,
+    "approved_at": null
+  },
+  "notes": [
+    "Automation must not change this record to APPROVED.",
+    "Final human approval remains pending until PR #1 leaves draft review."
+  ]
+}

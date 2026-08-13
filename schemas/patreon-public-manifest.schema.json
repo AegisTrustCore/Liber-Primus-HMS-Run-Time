@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/patreon-public-manifest.schema.json",
+  "title": "HMS Patreon Public Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "last_reviewed", "posts"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "audience", "material_type", "status", "related_instrument"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^(PUBLIC|PILGRIM|NAVIGATOR|CARTOGRAPHER|ADMIRAL)-[0-9]{3,}$"},
+          "title": {"type": "string", "minLength": 1},
+          "audience": {"enum": ["PUBLIC", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL"]},
+          "material_type": {"enum": ["COMMUNITY", "DISPATCH", "BUILD_RELEASE", "RESEARCH_PREVIEW", "RESEARCH_PACKET", "CORRECTION", "FRONTIER_BRIEFING"]},
+          "status": {"enum": ["DRAFT", "INTERNAL_REVIEW", "APPROVED", "SCHEDULED", "POSTED", "CORRECTED", "ARCHIVED"]},
+          "related_instrument": {"type": ["string", "null"]},
+          "published_at": {"type": "string", "format": "date"},
+          "url": {"type": "string"}
+        }
+      }
+    }
+  }
+}

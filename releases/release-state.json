@@ -1,0 +1,27 @@
+{
+  "$schema": "../schemas/release-state.schema.json",
+  "schema_version": "1.0.0",
+  "last_reviewed": "2026-08-13",
+  "github": {
+    "current_public_tag": null,
+    "main_state": "INITIAL_SHELL",
+    "available_now": [
+      "Initial repository README",
+      "Apache License 2.0"
+    ],
+    "release_candidate": {
+      "version": "v0.1.0-rc.1",
+      "status": "RELEASE_CANDIDATE",
+      "pull_request": "https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/pull/1"
+    }
+  },
+  "research": {
+    "published_record_count": 1,
+    "verified_hms_plaintext_record_count": 0
+  },
+  "patreon": {
+    "status": "PUBLISHED",
+    "published_at": "2026-08-12",
+    "creator_url": "https://www.patreon.com/c/AegisTrustCore"
+  }
+}

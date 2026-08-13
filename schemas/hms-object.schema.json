@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/hms-object.schema.json",
+  "title": "Canonical HMS Object",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "object_type", "visibility", "state", "created_at", "created_by", "parents", "content_hash", "provenance"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string", "pattern": "^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|PUB|XPD)-[0-9]{4,}$"},
+    "object_type": {"enum": ["CORPUS", "PAGE", "REGION", "PAGE_SET", "PIPELINE", "OBSERVATION", "HYPOTHESIS", "EXPERIMENT", "RUN", "RESULT", "NEGATIVE_RESULT", "EVIDENCE", "CLAIM", "HASHLOCK", "PROOFLOCK", "RESEARCH_REPORT", "CORRECTION", "RETRACTION", "PUBLICATION", "EXPEDITION"]},
+    "visibility": {"enum": ["PRIVATE", "PROJECT", "GROUP", "HMS_REVIEW", "PUBLIC"]},
+    "state": {"enum": ["DRAFT", "FROZEN", "REVIEW", "APPROVED", "PUBLISHED", "SUPERSEDED", "RETRACTED"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "created_by": {"type": "string", "minLength": 1},
+    "parents": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|PUB|XPD)-[0-9]{4,}$"}},
+    "content_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chain_complete", "input_manifest_ids", "environment_manifest_id", "numbering_convention", "encoding", "alphabet_mapping", "random_seed"],
+      "properties": {
+        "chain_complete": {"type": "boolean"},
+        "gap_reason": {"type": ["string", "null"]},
+        "input_manifest_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "environment_manifest_id": {"type": ["string", "null"]},
+        "numbering_convention": {"type": ["string", "null"]},
+        "encoding": {"type": ["string", "null"]},
+        "alphabet_mapping": {"type": ["string", "null"]},
+        "random_seed": {"type": ["integer", "string", "null"]}
+      }
+    },
+    "supersedes": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "superseded_by": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/research-record.schema.json",
+  "title": "HMS Public Research Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "object_type",
+    "title",
+    "claim",
+    "why_it_matters",
+    "scope",
+    "classification",
+    "publication_status",
+    "evidence_status",
+    "created_at",
+    "updated_at",
+    "authors",
+    "sources",
+    "method",
+    "controls",
+    "reproduction",
+    "limitations",
+    "provenance",
+    "related_records",
+    "supersedes",
+    "superseded_by",
+    "content_hash"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^(OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|PUB)-[0-9]{4,}$" },
+    "object_type": {
+      "enum": ["OBSERVATION", "HYPOTHESIS", "EXPERIMENT", "RUN", "RESULT", "NEGATIVE_RESULT", "EVIDENCE", "CLAIM", "HASHLOCK", "PROOFLOCK", "RESEARCH_REPORT", "CORRECTION", "RETRACTION", "PUBLICATION"]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "claim": { "type": "string", "minLength": 1 },
+    "why_it_matters": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "minLength": 1 },
+    "classification": { "const": "PUBLIC" },
+    "publication_status": { "const": "PUBLISHED" },
+    "evidence_status": {
+      "enum": ["OBSERVATION", "HYPOTHESIS", "EXPERIMENTAL", "PROVISIONAL", "REPRODUCED", "VERIFIED", "UNSUPPORTED", "REFUTED", "RETRACTED"]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "authors": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "sources": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "method": { "type": "string", "minLength": 1 },
+    "controls": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "reproduction": { "type": "string", "minLength": 1 },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chain_complete", "parents", "input_hashes", "environment_manifest", "gap_reason"],
+      "properties": {
+        "chain_complete": { "type": "boolean" },
+        "parents": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "input_hashes": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" } },
+        "environment_manifest": { "type": "string", "minLength": 1 },
+        "gap_reason": { "type": ["string", "null"] }
+      }
+    },
+    "related_records": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "supersedes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "superseded_by": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "content_hash": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" }
+  }
+}
