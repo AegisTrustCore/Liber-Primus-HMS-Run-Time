@@ -1,41 +1,99 @@
 # Patreon Tier Copy
 
+This file is the approved source copy for the live membership page.
+
 ## Front-page message
 
-**Membership supports the ongoing construction of HMS Endeavour.**
+**HMS Endeavour is being built in public and released progressively.**
 
-HMS is being developed and released progressively. Members receive the benefits and tools currently available to their tier, while additional laboratories, solvers, Runtime systems, proof infrastructure, add-ons, and research capabilities will be released only after they reach an appropriate development stage.
+GitHub will continue to grow with free tools, documentation, public research, verification systems, and stable public releases. Patreon members receive progressively deeper access to the HMS Research Station, datasets, research builds, and advanced tools as they are completed and validated. Not every HMS tool, dataset, or research result will be released publicly.
 
-You are not paying to be told “the answer.” You are supporting—and participating in—a controlled research expedition.
+**You're not paying to be told the answer. You're supporting the expedition and receiving deeper access to the instruments, data, experiments, and research process used to search for it.**
 
 ## Pilgrim — $3/month; 7-day trial
 
-**Enter the Expedition.**
+**Follow: Enter the Expedition.**
 
-Follow the public research record, receive the monthly HMS Dispatch, GitHub release alerts, public LP challenges, community posts and polls, the public research timeline, and announcements as new Runtime tools are released.
+Pilgrim is for supporters who want to follow HMS Endeavour as it grows and take part in the research community.
 
-The trial provides the Pilgrim benefits that exist when the trial begins. Planned future tools are not guaranteed during a particular trial period.
+### Available now
+
+- Monthly HMS Dispatch
+- Member development updates
+- GitHub and Runtime release alerts
+- Member research polls
+- LP community challenges and member-only hints
+- Selected research previews and early release notes
+- Member research discussion
+- Public research timeline
+
+### As HMS expands
+
+Selected entry-level Runtime tools and research utilities will be added only after they are completed, tested, and released. The trial provides the Pilgrim benefits available when it begins; planned future tools are not guaranteed during a particular trial period.
 
 ## Navigator — $8/month
 
-**Follow the Hidden Routes.**
+**Investigate: Follow the Hidden Routes.**
 
-Navigator includes Pilgrim benefits plus early research access, downloadable experiment material selected for member release, research polls, member challenge hints, early release notes, member discussion, and previews of upcoming work.
+Navigator is for members who want to go beyond following the project and begin examining the data, experiments, and early research output themselves.
 
-The Navigator Runtime, solver datasets, and advanced GP/Gematria capabilities are planned and will be added as they are completed and tested.
+### Available now
+
+Everything in Pilgrim, plus:
+
+- 7–14 day early access to selected major research releases
+- Downloadable experiment results as released
+- Selected findings and research teasers
+- Member challenge datasets and hints
+- First looks at research directions
+- Navigator research discussion
+
+### As HMS expands
+
+HMS Runtime beta, solver datasets, and advanced GP/Gematria tools will be added only after their modules are completed, tested, and released.
 
 ## Cartographer — $20/month
 
-**Help Map the Machine.**
+**Research: Use HMS as a Researcher.**
 
-Cartographer is for members who want to research with HMS Endeavour, not merely watch. Its scope includes deeper research packets and ledgers, bounded negative results, structured datasets, Cartographer briefings, group research sessions, hypothesis submission, and contributor credit when work enters a public release.
+Cartographer is for people who want to research with HMS Endeavour, not merely watch.
 
-Advanced Runtime modules, batch tools, Page 32/state-routing instruments, operation-bank exploration, and visual-analysis modules will appear only when their status reaches an appropriate member release stage.
+### Available now
+
+Everything in Navigator, plus:
+
+- Complete monthly research packets
+- Deeper experiment ledgers
+- Bounded negative and rejected-result archives
+- Structured research datasets as released
+- Monthly Cartographer Briefing
+- Group research sessions and early challenge datasets
+- Structured hypothesis submission
+- Contributor credit when qualifying work enters a public HMS release
+
+### As HMS expands
+
+The Cartographer workspace will add advanced Runtime modules, batch experiment tools, the operation-bank explorer, page-state and routing tools, and the visual-analysis laboratory only after each module is completed, tested, and released.
 
 ## Admiral — $40/month
 
-**Help Direct the Expedition.**
+**Build and Validate at the Frontier.**
 
-Admiral is the planned frontier environment for experimental instruments, beta solvers, collaboration and peer review, proposal submission, validation queues, expanded compute, API access, experimental exports, and future plugin development.
+Admiral is the frontier research tier for members who want to participate in testing what HMS Endeavour becomes next.
 
-Admiral does not grant automatic access to the Vault, every unpublished hypothesis, or every internal system.
+### Available now
+
+Everything in Cartographer, plus:
+
+- Frontier research reports
+- Selected unpublished hypotheses
+- Early reproduced results
+- Candidate validation and peer review
+- Research collaboration and proposal submission
+- Experimental exports when approved packets become available
+
+### As the developer platform comes online
+
+Admiral access will expand to include experimental instruments, prerelease HMS builds, beta solver modules, expanded compute, the Plugin SDK, HMS API access, research-branch previews, developer tooling, and advanced collaboration systems only after each capability is completed, tested, and released.
+
+Vault access is never automatic.

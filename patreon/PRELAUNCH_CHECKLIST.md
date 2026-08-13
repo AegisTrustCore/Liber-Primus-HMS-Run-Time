@@ -6,14 +6,14 @@ The creator page was published on 2026-08-12 after tier names, shared benefits, 
 
 - [ ] Complete creator name, image, description, layout, header, and page colors.
 - [x] Correct public copy and spelling, including `HMS Dispatch`, `GitHub`, `Runtime`, `GP/Gematria`, `experimental`, and `Admiral`.
-- [ ] Replace duplicated inherited benefit lists with concise tier-specific benefits.
+- [x] Replace duplicated tier descriptions with concise role-specific copy using “everything in the prior tier.”
 - [x] Mark Runtime, solver, API, SDK, batch, add-on, socket, and advanced laboratory benefits as planned or in development.
 - [x] Confirm that the Pilgrim seven-day trial language describes current Pilgrim access only.
 - [ ] Add the public GitHub link after the foundation PR is merged.
 - [ ] Link the public research index, roadmap, and instrument registry.
 - [ ] Review the existing welcome post against the evidence language in this repository.
 - [x] Prepare Dispatch 000 and verify every numerical statement against the source-audit report.
-- [ ] Preview the page as a visitor and verify all tier prices and benefits.
+- [x] Preview the live membership page and verify all tier prices, descriptions, and current-versus-planned labels.
 - [x] Publish only after the public page accurately distinguishes current capability from planned scope.
 
 ## Immediately after publication

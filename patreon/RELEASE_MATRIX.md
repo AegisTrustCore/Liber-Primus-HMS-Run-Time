@@ -9,17 +9,18 @@ Current Patreon state: **PUBLISHED**. The creator page and first post round are 
 | Audience | Intended member material | Tooling destination | Current delivery state |
 |---|---|---|---|
 | Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch and Signal 3301 posts live |
-| Pilgrim | HMS Dispatch, public challenge notices, polls, research timeline, release alerts | Entry member tools when released | Pilgrim Briefing 001 live |
-| Navigator | Early findings, extended reports, downloadable experiments, challenge hints, research polls | Runtime beta, datasets, GP Solver and automation when released | Research Queue 001 live; tools planned |
-| Cartographer | Complete research packets, deeper ledgers, bounded negative archives, structured datasets, briefings | Advanced GP Laboratory, batch and visual workbench when released | Evidence Ledger 001 live; tools planned |
-| Admiral | Frontier previews, collaboration, candidate review, experimental exports | Sockets/API, add-on SDK, experimental solvers when released | Frontier Boundary 001 live; tools planned |
+| Pilgrim — Follow | HMS Dispatch, member development updates, release alerts, research polls, LP community challenges, member hints, previews, and discussion | Selected entry-level Runtime tools and research utilities when released | Pilgrim Briefing 001 live |
+| Navigator — Investigate | 7–14 day early access to selected major releases, downloadable experiments, selected findings, challenge datasets and hints, research-direction previews | Runtime beta, solver datasets, and advanced GP/Gematria tools when released | Research Queue 001 live; tools planned |
+| Cartographer — Research | Complete research packets, deeper ledgers, bounded negative archives, structured datasets, briefings, group sessions, and hypothesis submission | Advanced Runtime modules, batch tools, operation-bank explorer, routing tools, and visual-analysis laboratory when released | Evidence Ledger 001 live; tools planned |
+| Admiral — Build and validate | Frontier reports, selected hypotheses, reproduced results, candidate validation, peer review, collaboration, proposals, and approved experimental exports | Prerelease builds, experimental instruments, beta solvers, expanded compute, API, Plugin SDK, and developer tools when released | Frontier Boundary 001 live; developer platform planned |
 
 ## Truth and access rule
 
 - GitHub receives stable public claims, corrections, controls, verifiers, and approved public tools.
 - Patreon may receive early access, extended supporting material, member discussion, larger datasets, and advanced hosted capability.
 - A result does not become more true because it is in a higher tier.
-- A verified public claim is not permanently withheld to manufacture scarcity.
+- Not every working file, dataset, tool, or research candidate is public.
+- An approved public truth claim is not permanently withheld to manufacture scarcity.
 - Vault material requires a separate release decision; Admiral is not automatic Vault access.
 
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
