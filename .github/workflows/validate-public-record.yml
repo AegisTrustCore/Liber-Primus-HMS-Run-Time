@@ -1,4 +1,4 @@
-name: Validate public research record
+name: Validate public records
 
 on:
   push:
@@ -17,5 +17,5 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate public records
+      - name: Validate records, releases, posts, and challenges
         run: python scripts/validate_records.py

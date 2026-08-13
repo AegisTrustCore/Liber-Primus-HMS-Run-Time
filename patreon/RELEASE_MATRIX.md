@@ -23,3 +23,17 @@ Current Patreon state: **PUBLISHED**. The creator page and first post round are 
 - Vault material requires a separate release decision; Admiral is not automatic Vault access.
 
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
+
+## Expedition release ladder
+
+Public Expeditions use one answer and one evidence standard across every tier:
+
+| Layer | Expedition material | Release relation |
+|---|---|---|
+| Observer / GitHub | Complete puzzle, public clue, local verifier, eventual full solution | Opens the campaign and closes it publicly |
+| Pilgrim | Orientation hint and expedition dispatch | Earlier guided entry |
+| Navigator | Stronger analytical hint and result preview | Earlier/deeper analysis |
+| Cartographer | Structured worksheet and evidence ledger | Reusable research organization |
+| Admiral | Validation protocol and campaign review | Facilitated quality assurance, not Vault access |
+
+Tier-only content must not be committed to this public repository. Public-safe titles, states, and release descriptions may be recorded here; the actual member packet is staged privately and delivered through Patreon. Every completed campaign returns its final answer and reasoning to GitHub.

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.example/schemas/challenge-manifest.schema.json",
+  "title": "HMS public challenge manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "last_reviewed", "challenges"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "challenges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "status", "classification", "access_level", "challenge_type", "entrypoint", "verifier", "answer_sha256", "solution_status", "public_solution", "research_claim", "last_updated"],
+        "properties": {
+          "id": {"pattern": "^EXP-[0-9]{3,}$"},
+          "title": {"type": "string", "minLength": 1},
+          "status": {"enum": ["DRAFT", "RELEASE_CANDIDATE", "OPEN", "SOLVED", "ARCHIVED"]},
+          "classification": {"const": "PUBLIC"},
+          "access_level": {"const": "OBSERVER"},
+          "challenge_type": {"enum": ["SYNTHETIC_METHOD_TRAINING", "PUBLIC_RESEARCH_REPRODUCTION", "PUBLIC_PUZZLE"]},
+          "entrypoint": {"type": "string", "minLength": 1},
+          "verifier": {"type": "string", "minLength": 1},
+          "answer_sha256": {"pattern": "^[a-f0-9]{64}$"},
+          "solution_status": {"enum": ["SEALED", "PUBLISHED"]},
+          "public_solution": {"type": ["string", "null"]},
+          "research_claim": {"type": "boolean"},
+          "last_updated": {"type": "string", "format": "date"}
+        }
+      }
+    }
+  }
+}

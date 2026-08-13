@@ -12,6 +12,7 @@ Member material is packaged by purpose and release status, not by copying the pr
 | Structured dataset | Schema, provenance, license/rights note, checksum manifest, data dictionary | Cartographer+ |
 | Frontier preview | Experimental interface, instability warning, feedback channel, expiration/supersession note | Admiral |
 | Build package | Version, access level, installation/use notes, limitations, support boundary | Eligible tool tier |
+| Expedition packet | Public challenge link, audience-specific hint or worksheet, spoiler boundary, public-solution gate | Tier named in campaign matrix |
 
 ## Excluded from member uploads
 
@@ -23,3 +24,5 @@ Member material is packaged by purpose and release status, not by copying the pr
 - Claims presented without their evidence status and limitations
 
 Every downloadable package should have a durable package ID, version, SHA-256 manifest, audience, status, and related public record where one exists.
+
+Actual tier-only expedition clues and answer keys are staged outside this public repository. The public repository may contain only their release states and non-spoiler descriptions until the public solution gate opens.

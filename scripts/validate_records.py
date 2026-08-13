@@ -15,6 +15,7 @@ PAGES_DIR = ROOT / "pages"
 INSTRUMENT_MANIFEST = ROOT / "instruments" / "manifest.json"
 RELEASE_STATE = ROOT / "releases" / "release-state.json"
 PATREON_POST_MANIFEST = ROOT / "patreon" / "posts" / "manifest.json"
+CHALLENGE_MANIFEST = ROOT / "challenges" / "manifest.json"
 
 ID_PATTERN = re.compile(r"^(OBS|HYP|EXP|RES|NEG|RR|PL|COR|RET)-[0-9]{3,}$")
 OBJECT_TYPES = {
@@ -54,6 +55,8 @@ INSTRUMENT_STATES = {
 ACCESS_LEVELS = {"OBSERVER", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL", "INTERNAL"}
 POST_AUDIENCES = {"PUBLIC", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL"}
 POST_STATES = {"DRAFT", "INTERNAL_REVIEW", "APPROVED", "SCHEDULED", "POSTED", "CORRECTED", "ARCHIVED"}
+CHALLENGE_STATES = {"DRAFT", "RELEASE_CANDIDATE", "OPEN", "SOLVED", "ARCHIVED"}
+CHALLENGE_TYPES = {"SYNTHETIC_METHOD_TRAINING", "PUBLIC_RESEARCH_REPRODUCTION", "PUBLIC_PUZZLE"}
 REQUIRED_RECORD_FIELDS = {
     "schema_version",
     "id",
@@ -268,6 +271,71 @@ def validate_patreon_posts(path: Path, patreon_status: str | None) -> tuple[list
     return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(posts)
 
 
+def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
+    try:
+        manifest = load_json(path)
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        return [f"{path.relative_to(ROOT)}: {exc}"], 0
+
+    errors: list[str] = []
+    challenges = manifest.get("challenges")
+    if manifest.get("schema_version") != "1.0.0":
+        errors.append("schema_version must be 1.0.0")
+    if not isinstance(challenges, list):
+        return [f"{path.relative_to(ROOT)}: challenges must be a list"], 0
+
+    seen_ids: set[str] = set()
+    manifest_root = path.parent.resolve()
+    for index, challenge in enumerate(challenges):
+        prefix = f"challenge[{index}]"
+        if not isinstance(challenge, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+        challenge_id = challenge.get("id")
+        if not isinstance(challenge_id, str) or not re.fullmatch(r"EXP-[0-9]{3,}", challenge_id):
+            errors.append(f"{prefix}.id is invalid")
+        elif challenge_id in seen_ids:
+            errors.append(f"duplicate challenge id: {challenge_id}")
+        else:
+            seen_ids.add(challenge_id)
+        if challenge.get("status") not in CHALLENGE_STATES:
+            errors.append(f"{prefix}.status is unrecognized")
+        if challenge.get("classification") != "PUBLIC":
+            errors.append(f"{prefix}.classification must be PUBLIC")
+        if challenge.get("access_level") != "OBSERVER":
+            errors.append(f"{prefix}.access_level must be OBSERVER")
+        if challenge.get("challenge_type") not in CHALLENGE_TYPES:
+            errors.append(f"{prefix}.challenge_type is unrecognized")
+        digest = challenge.get("answer_sha256")
+        if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
+            errors.append(f"{prefix}.answer_sha256 must be a lowercase SHA-256 digest")
+        for field in ("entrypoint", "verifier"):
+            relative_file = challenge.get(field)
+            if not isinstance(relative_file, str) or not relative_file:
+                errors.append(f"{prefix}.{field} must be a non-empty string")
+                continue
+            resolved = (manifest_root / relative_file).resolve()
+            if not resolved.is_file():
+                errors.append(f"{prefix}.{field} does not resolve to a file")
+        solution_status = challenge.get("solution_status")
+        public_solution = challenge.get("public_solution")
+        if solution_status not in {"SEALED", "PUBLISHED"}:
+            errors.append(f"{prefix}.solution_status is unrecognized")
+        if solution_status == "SEALED" and public_solution is not None:
+            errors.append(f"{prefix}.public_solution must be null while SEALED")
+        if solution_status == "PUBLISHED":
+            if not isinstance(public_solution, str) or not public_solution:
+                errors.append(f"{prefix}.public_solution is required when PUBLISHED")
+            elif not (manifest_root / public_solution).resolve().is_file():
+                errors.append(f"{prefix}.public_solution does not resolve to a file")
+        if challenge.get("status") == "SOLVED" and solution_status != "PUBLISHED":
+            errors.append(f"{prefix} cannot be SOLVED while its solution is sealed")
+        if not isinstance(challenge.get("research_claim"), bool):
+            errors.append(f"{prefix}.research_claim must be boolean")
+
+    return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(challenges)
+
+
 def main() -> int:
     errors: list[str] = []
     seen_ids: set[str] = set()
@@ -283,6 +351,8 @@ def main() -> int:
     patreon_status = release_state.get("patreon", {}).get("status")
     post_errors, post_count = validate_patreon_posts(PATREON_POST_MANIFEST, patreon_status)
     errors.extend(post_errors)
+    challenge_errors, challenge_count = validate_challenge_manifest(CHALLENGE_MANIFEST)
+    errors.extend(challenge_errors)
 
     if release_state.get("github", {}).get("current_public_tag") is None:
         instrument_manifest = load_json(INSTRUMENT_MANIFEST)
@@ -310,6 +380,7 @@ def main() -> int:
         f"Validated {len(seen_ids)} published research record(s) and "
         f"{len(list(PAGES_DIR.glob('page-*/record.json')))} page dossier(s), and "
         f"{instrument_count} instrument status record(s), and {post_count} Patreon post record(s)."
+        f" Validated {challenge_count} public challenge record(s)."
     )
     return 0
 

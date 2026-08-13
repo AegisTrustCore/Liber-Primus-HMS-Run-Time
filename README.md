@@ -21,6 +21,7 @@ HMS Endeavour publishes bounded claims, reproducible evidence, negative results,
 - [Release policy](RELEASE_POLICY.md) — how material becomes public
 - [Roadmap](ROADMAP.md) — released, in-development, and planned capabilities
 - [Instrument registry](instruments/README.md) — the authoritative public tool-status page
+- [Public Expeditions](challenges/README.md) — free clues, puzzles, verifiers, and eventual solutions
 - [Membership](MEMBERSHIP.md) — Patreon tiers and the current/planned capability boundary
 - [Architecture](ARCHITECTURE.md) — GitHub, Patreon, Runtime, Aegis, and Vault separation
 - [Governance](GOVERNANCE.md) — protected-branch and merge policy
@@ -52,6 +53,8 @@ Current membership levels are Observer (public), Pilgrim ($3), Navigator ($8), C
 - Patreon is live; individual advanced capabilities remain unavailable until their instrument status changes.
 
 Stable approved evidence remains public. Patreon provides earlier, deeper, and more capable participation rather than a separate standard of truth.
+
+The first free puzzle, [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md), is included in the foundation branch as a release candidate. It is not open until its manifest status changes on the public default branch.
 
 ## Release principle
 

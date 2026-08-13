@@ -15,7 +15,11 @@ There is currently **no tagged GitHub release** and no released public research 
 
 `v0.1.0-rc.1` is under review in [draft PR #1](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/pull/1).
 
-The candidate contains the public research boundary, source-audit summary, page dossiers, evidence ledgers, record validation, governance, membership documentation, and instrument registry. Material in a draft branch is not described as released until it is merged and a release decision is recorded.
+The candidate contains the public research boundary, source-audit summary, page dossiers, evidence ledgers, record validation, governance, membership documentation, instrument registry, and the first synthetic Public Expedition. Material in a draft branch is not described as released until it is merged and a release decision is recorded.
+
+### First free-drop candidate
+
+[Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md) is a synthetic method-training puzzle with a local, no-telemetry verifier. Its status is `RELEASE_CANDIDATE`, not `OPEN`. It introduces no new Liber Primus research claim and will receive a complete public solution after its campaign window.
 
 ## GitHub release destinations
 

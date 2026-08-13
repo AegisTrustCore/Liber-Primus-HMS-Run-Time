@@ -21,6 +21,8 @@ DRAFT → INTERNAL REVIEW → APPROVED → SCHEDULED → POSTED → CORRECTED/AR
 
 No draft is a member entitlement. `POSTED` must be confirmed from Patreon before a manifest status changes.
 
+Per-campaign non-spoiler release plans are recorded in [`campaigns/`](campaigns/). The first is [EXP-001](campaigns/EXP-001.md). Actual tier-only clue copy remains in private staging until posted.
+
 ## Required post sections
 
 1. Audience and access level
