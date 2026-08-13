@@ -22,7 +22,9 @@
           "material_type": {"enum": ["COMMUNITY", "DISPATCH", "BUILD_RELEASE", "RESEARCH_PREVIEW", "RESEARCH_PACKET", "CORRECTION", "FRONTIER_BRIEFING"]},
           "status": {"enum": ["DRAFT", "INTERNAL_REVIEW", "APPROVED", "SCHEDULED", "POSTED", "CORRECTED", "ARCHIVED"]},
           "file": {"type": "string", "minLength": 1},
-          "related_instrument": {"type": ["string", "null"]}
+          "related_instrument": {"type": ["string", "null"]},
+          "published_at": {"type": "string", "format": "date"},
+          "url": {"type": "string"}
         }
       }
     }

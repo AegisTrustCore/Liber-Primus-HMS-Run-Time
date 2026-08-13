@@ -40,6 +40,7 @@
       "required": ["status", "creator_url"],
       "properties": {
         "status": {"enum": ["PRE_LAUNCH_UNPUBLISHED", "PUBLISHED", "PAUSED"]},
+        "published_at": {"type": "string", "format": "date"},
         "creator_url": {"type": "string"}
       }
     }

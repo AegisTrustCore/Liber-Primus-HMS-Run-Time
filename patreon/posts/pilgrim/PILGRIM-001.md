@@ -1,6 +1,8 @@
 # PILGRIM-001 — Enter the Expedition
 
-Status: **DRAFT — NOT POSTED**
+Status: **POSTED 2026-08-12**
+
+Live post: https://www.patreon.com/AegisTrustCore/posts/enter-expedition-166540431
 
 Pilgrim is the first member deck of HMS Endeavour. The opening phase is about visibility and disciplined progress: HMS Dispatches, GitHub release alerts, public LP challenges, community polls, the research timeline, and notices when real tools move into release.
 

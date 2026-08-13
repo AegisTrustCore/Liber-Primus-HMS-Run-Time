@@ -1,6 +1,8 @@
 # PUBLIC-001 — The HMS Public Evidence Layer
 
-Status: **DRAFT — NOT POSTED**
+Status: **POSTED 2026-08-12**
+
+Live post: https://www.patreon.com/AegisTrustCore/posts/hms-public-layer-166540390
 
 HMS Endeavour is building a public evidence layer for Liber Primus research. GitHub will show what is actually released, how claims are classified, what controls reproduce known material, what remains unresolved, and what has been corrected.
 

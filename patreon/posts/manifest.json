@@ -3,10 +3,10 @@
   "schema_version": "1.0.0",
   "last_reviewed": "2026-08-12",
   "posts": [
-    {"id":"PUBLIC-001","title":"The HMS Public Evidence Layer","audience":"PUBLIC","material_type":"COMMUNITY","status":"DRAFT","file":"public/PUBLIC-001.md","related_instrument":null},
-    {"id":"PILGRIM-001","title":"Enter the Expedition","audience":"PILGRIM","material_type":"DISPATCH","status":"DRAFT","file":"pilgrim/PILGRIM-001.md","related_instrument":null},
-    {"id":"NAVIGATOR-001","title":"The First Research Queue","audience":"NAVIGATOR","material_type":"RESEARCH_PREVIEW","status":"DRAFT","file":"navigator/NAVIGATOR-001.md","related_instrument":null},
-    {"id":"CARTOGRAPHER-001","title":"How the Evidence Ledger Will Work","audience":"CARTOGRAPHER","material_type":"RESEARCH_PACKET","status":"DRAFT","file":"cartographer/CARTOGRAPHER-001.md","related_instrument":null},
-    {"id":"ADMIRAL-001","title":"The Frontier Boundary","audience":"ADMIRAL","material_type":"FRONTIER_BRIEFING","status":"DRAFT","file":"admiral/ADMIRAL-001.md","related_instrument":null}
+    {"id":"PUBLIC-001","title":"The HMS Public Evidence Layer","audience":"PUBLIC","material_type":"COMMUNITY","status":"POSTED","file":"public/PUBLIC-001.md","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/hms-public-layer-166540390"},
+    {"id":"PILGRIM-001","title":"Enter the Expedition — Pilgrim Briefing 001","audience":"PILGRIM","material_type":"DISPATCH","status":"POSTED","file":"pilgrim/PILGRIM-001.md","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/enter-expedition-166540431"},
+    {"id":"NAVIGATOR-001","title":"The First Research Queue — Navigator 001","audience":"NAVIGATOR","material_type":"RESEARCH_PREVIEW","status":"POSTED","file":"navigator/NAVIGATOR-001.md","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/first-research-166540488"},
+    {"id":"CARTOGRAPHER-001","title":"How the Evidence Ledger Will Work — Cartographer 001","audience":"CARTOGRAPHER","material_type":"RESEARCH_PACKET","status":"POSTED","file":"cartographer/CARTOGRAPHER-001.md","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/how-evidence-001-166540550"},
+    {"id":"ADMIRAL-001","title":"The Frontier Boundary — Admiral 001","audience":"ADMIRAL","material_type":"FRONTIER_BRIEFING","status":"POSTED","file":"admiral/ADMIRAL-001.md","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/frontier-admiral-166540610"}
   ]
 }

@@ -2,7 +2,7 @@
 
 [`manifest.json`](manifest.json) records public-safe metadata for prepared Patreon posts. The Markdown drafts are organized by audience.
 
-All included posts are currently `DRAFT`. Their presence in GitHub does not mean they were posted, scheduled, or promised to members.
+The five initial posts are `POSTED`; their verified URLs and audiences are recorded in the manifest. Future drafts must remain labeled until Patreon publication is confirmed.
 
 - [`public/`](public/) — public orientation and release notices
 - [`pilgrim/`](pilgrim/) — expedition dispatches

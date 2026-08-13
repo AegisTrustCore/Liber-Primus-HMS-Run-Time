@@ -250,6 +250,13 @@ def validate_patreon_posts(path: Path, patreon_status: str | None) -> tuple[list
             errors.append(f"{prefix}.status is unrecognized")
         if patreon_status == "PRE_LAUNCH_UNPUBLISHED" and status == "POSTED":
             errors.append(f"{prefix} cannot be POSTED while Patreon is unpublished")
+        if status == "POSTED":
+            if not isinstance(post.get("published_at"), str):
+                errors.append(f"{prefix}.published_at is required when POSTED")
+            if not isinstance(post.get("url"), str) or not post["url"].startswith(
+                "https://www.patreon.com/"
+            ):
+                errors.append(f"{prefix}.url is required when POSTED")
         relative_file = post.get("file")
         if not isinstance(relative_file, str) or not relative_file:
             errors.append(f"{prefix}.file must be a non-empty string")
@@ -288,6 +295,10 @@ def main() -> int:
                 "instruments/manifest.json: RELEASED instruments require a current public tag: "
                 + ", ".join(released)
             )
+    if patreon_status == "PUBLISHED" and not release_state.get("patreon", {}).get(
+        "published_at"
+    ):
+        errors.append("releases/release-state.json: published Patreon requires published_at")
 
     if errors:
         print("Public record validation failed:")
@@ -298,7 +309,7 @@ def main() -> int:
     print(
         f"Validated {len(seen_ids)} published research record(s) and "
         f"{len(list(PAGES_DIR.glob('page-*/record.json')))} page dossier(s), and "
-        f"{instrument_count} instrument status record(s), and {post_count} Patreon post draft(s)."
+        f"{instrument_count} instrument status record(s), and {post_count} Patreon post record(s)."
     )
     return 0
 

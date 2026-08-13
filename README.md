@@ -38,18 +38,18 @@ Pages 32, 72, and 73 are the first priority dossiers. The supplied Personal Rese
 | Layer | Purpose |
 |---|---|
 | GitHub / Observer | Public evidence, methodology, verification, stable free tools, and published research |
-| Patreon | Membership, development support, tier communication, previews, and reports; currently pre-launch |
+| Patreon | Live membership, development support, tier communication, previews, and reports |
 | HMS Runtime | The living research workstation and tier-controlled capabilities |
 | Vault | Unreleased research, private data, active validation, credentials, and proprietary systems |
 
-Current configured membership levels are Observer (public), Pilgrim ($3), Navigator ($8), Cartographer ($20), and Admiral ($40). The Patreon page is not yet published. Membership buys capability, organization, computation, participation, and early access—not ownership of truth. See [MEMBERSHIP.md](MEMBERSHIP.md) for availability boundaries.
+Current membership levels are Observer (public), Pilgrim ($3), Navigator ($8), Cartographer ($20), and Admiral ($40). The [Aegis Trust Core Patreon](https://www.patreon.com/c/AegisTrustCore) is live. Membership buys capability, organization, computation, participation, and early access—not ownership of truth. See [MEMBERSHIP.md](MEMBERSHIP.md) for availability boundaries.
 
 ## Public releases and advanced material
 
 - Use the [public release catalog](PUBLIC_RELEASES.md) to confirm what is actually available through GitHub.
 - Use the [instrument registry](instruments/README.md) to distinguish released, candidate, developing, and planned tools.
 - Advanced packets, extended datasets, early builds, deeper computation, member workspaces, sockets/API access, and experimental add-ons belong to [Aegis Trust Core on Patreon](https://www.patreon.com/c/AegisTrustCore) and the hosted HMS Runtime when released for an eligible tier.
-- Patreon is presently unpublished; this link is informational until the pre-launch checklist is complete.
+- Patreon is live; individual advanced capabilities remain unavailable until their instrument status changes.
 
 Stable approved evidence remains public. Patreon provides earlier, deeper, and more capable participation rather than a separate standard of truth.
 

@@ -2,7 +2,7 @@
 
 This directory contains public-safe copy and release templates for the Aegis Trust Core Patreon. It contains no member data, authentication material, private posts, or entitlement secrets.
 
-Current state: **creator page configured but unpublished**.
+Current state: **creator page published; first controlled post round live**.
 
 - [Membership and tier boundary](../MEMBERSHIP.md)
 - [Cleaned tier copy](TIER_COPY.md)
@@ -15,4 +15,4 @@ Current state: **creator page configured but unpublished**.
 - [Tier release checklist](TIER_RELEASE_CHECKLIST.md)
 - [Draft post registry](posts/README.md)
 
-Before publishing Patreon, confirm that every tool named in tier copy is labeled with its real development status and that enrollment links resolve publicly.
+Before each future Patreon release, confirm that every named tool is labeled with its real development status and that the tier-release checklist passes.

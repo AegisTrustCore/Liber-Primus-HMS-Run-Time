@@ -1,6 +1,8 @@
 # CARTOGRAPHER-001 — How the Evidence Ledger Will Work
 
-Status: **DRAFT — NOT POSTED**
+Status: **POSTED 2026-08-12**
+
+Live post: https://www.patreon.com/AegisTrustCore/posts/how-evidence-001-166540550
 
 Cartographer material will go deeper than a progress update. A complete research packet is intended to include:
 

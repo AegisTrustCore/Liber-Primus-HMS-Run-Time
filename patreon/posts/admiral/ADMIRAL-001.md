@@ -1,6 +1,8 @@
 # ADMIRAL-001 — The Frontier Boundary
 
-Status: **DRAFT — NOT POSTED**
+Status: **POSTED 2026-08-12**
+
+Live post: https://www.patreon.com/AegisTrustCore/posts/frontier-admiral-166540610
 
 Admiral is intended for experimental collaboration, not automatic access to every internal file. Frontier releases may eventually include unstable instruments, beta solver modules, review queues, expanded compute, authenticated API/socket access, experimental exports, and an add-on SDK.
 

@@ -20,6 +20,7 @@ All notable public software and repository changes are recorded here. Research p
 - Protected-main governance and research label taxonomy
 - Patreon membership boundary, tier copy, and pre-launch publication kit
 - Public and member release catalogs
+- Patreon creator page launch and first controlled five-post round
 
 ### In development
 

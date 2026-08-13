@@ -1,6 +1,8 @@
 # NAVIGATOR-001 — The First Research Queue
 
-Status: **DRAFT — NOT POSTED**
+Status: **POSTED 2026-08-12**
+
+Live post: https://www.patreon.com/AegisTrustCore/posts/first-research-166540488
 
 Navigator will receive earlier and more systematic access to approved research material. The first queue is deliberately narrow:
 

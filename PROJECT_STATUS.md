@@ -57,5 +57,5 @@ These candidates remain outside the verified ledger until their inputs, hashes, 
 
 - GitHub: public repository connected; foundation changes remain in draft PR review.
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
-- Patreon: tiers configured, creator page still unpublished.
+- Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
 - Runtime, GP Calculator, sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.

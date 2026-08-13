@@ -4,9 +4,9 @@ Last verified against the Patreon configuration: 2026-08-12
 
 The public GitHub repository is the permanent **Observer** layer. Patreon supports continued development and progressively more capable member environments. Membership purchases access, organization, computation, participation, and development support—not ownership of a result and not a promise that an unsolved page has been solved.
 
-The Patreon creator page is configured at [Aegis Trust Core](https://www.patreon.com/c/AegisTrustCore), but it is currently **pre-launch and unpublished**. This repository must not describe enrollment as open until Patreon is published.
+The Patreon creator page is live at [Aegis Trust Core](https://www.patreon.com/c/AegisTrustCore). The first controlled round of public and tier-specific posts was published on 2026-08-12.
 
-The publication gate is tracked in the [Patreon pre-launch checklist](patreon/PRELAUNCH_CHECKLIST.md).
+Launch history and remaining presentation work are tracked in the [Patreon pre-launch checklist](patreon/PRELAUNCH_CHECKLIST.md).
 
 Current and future material destinations are defined in the [Patreon release matrix](patreon/RELEASE_MATRIX.md). GitHub remains the authority for public releases; the instrument registry remains the authority for tool availability.
 
