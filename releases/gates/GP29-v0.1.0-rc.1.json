@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "GP29-v0.1.0-rc.1",
+  "release_type": "SOFTWARE",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "3f5a90d9bd3ddc4132201ccdff3d288cf0b787b0",
+    "release_manifest": "releases/manifests/GP29-v0.1.0-rc.1.json",
+    "release_manifest_sha256": "bc6440c7cac1ca6591b9d64004784f2eec1e7190fe4432a7cb22647f31fc709d",
+    "environment_id": "ENV-0004",
+    "intended_tag": "GP29-v0.1.0-rc.1"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "software": {
+      "tests_passed": true,
+      "package_hashes_present": false,
+      "dependency_manifest_present": true,
+      "security_scan_passed": false,
+      "build_reproducible": false,
+      "release_notes_complete": true
+    }
+  },
+  "human_approval": {
+    "approved": false,
+    "approver": null,
+    "approved_at": null,
+    "approved_subject_sha256": null
+  },
+  "notes": [
+    "This candidate is runnable developer source for the GP29 calculation engine and the first deterministic local Runtime job contract.",
+    "It is not yet a customer-ready download: no installer, portable application, browser interface, or hosted service is included.",
+    "The gate remains pending until distributable package hashes, a security scan, reproducible packaging, cross-platform ordinary-user qualification, and explicit human approval are recorded.",
+    "Calculation output is evidence labeled CALCULATION_ONLY and makes no decoder, plaintext, route, or Liber Primus solve claim."
+  ]
+}

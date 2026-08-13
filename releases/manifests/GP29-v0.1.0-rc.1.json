@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "GP29-v0.1.0-rc.1",
+  "release_type": "SOFTWARE",
+  "candidate_commit_sha": "3f5a90d9bd3ddc4132201ccdff3d288cf0b787b0",
+  "intended_tag": "GP29-v0.1.0-rc.1",
+  "environment_id": "ENV-0004",
+  "release_notes": "docs/tooling/GP29.md",
+  "artifacts": [
+    {"name": "hms_tools/gp29.py", "sha256": "e0ad44ef33c3764b5a18306f0fa563d4db3974c5e17732f9915137a0f270b905"},
+    {"name": "hms_tools/runtime.py", "sha256": "65223815f31cee40a03c39cc9a865e8f85effb5034b5faabce67c914ae53336a"},
+    {"name": "scripts/hms_runtime.py", "sha256": "2702c2bfd4ea15cee7970265c45359c16d422e0e121c4599019ed74e50791670"},
+    {"name": "schemas/runtime-job.schema.json", "sha256": "9abf066aa99e881aa9d64de87ac79842d5827bbdc8770c5fbb37825d94323fb6"},
+    {"name": "schemas/runtime-result.schema.json", "sha256": "e7b4cd92a62e3aad7605e0c2d58c00b69fc99f650ffa1923622fa74c50662b28"},
+    {"name": "docs/tooling/GP29.md", "sha256": "374051937695385bd35568de7182d59bf49269393324d4deae7822e687fa2658"}
+  ]
+}

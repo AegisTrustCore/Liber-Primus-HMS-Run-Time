@@ -12,8 +12,11 @@
 - [Pending `RR-0001` research gate](gates/RR-0001.json)
 - [`RR-0001` public reproduction report](../reports/PUBLIC_RUNS_001.md)
 - [`RR-0002` E1059 release manifest](manifests/RR-0002.json)
-- [Pending `RR-0002` E1059 research gate](gates/RR-0002.json)
+- [Approved `RR-0002` E1059 research gate](gates/RR-0002.json)
 - [`RSET-0003` staged reader guide](../research/runsets/RSET-0003/START-HERE.md)
+- [`GP29-v0.1.0-rc.1` software manifest](manifests/GP29-v0.1.0-rc.1.json)
+- [Pending `GP29-v0.1.0-rc.1` software gate](gates/GP29-v0.1.0-rc.1.json)
+- [`GP29` developer documentation](../docs/tooling/GP29.md)
 - [Pending `XPD-0001-v0.2.0` Expedition manifest](manifests/XPD-0001-v0.2.0.json)
 - [Pending `XPD-0001-v0.2.0` Expedition gate](gates/XPD-0001-v0.2.0.json)
 
