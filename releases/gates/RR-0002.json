@@ -7,9 +7,9 @@
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
-    "candidate_commit_sha": "f987c4f26e3953242fce1460fd9caca8ad3b7275",
+    "candidate_commit_sha": "88c4e0cecdf34e5493af2d09ca3cd7c3ef95c8be",
     "release_manifest": "releases/manifests/RR-0002.json",
-    "release_manifest_sha256": "9acb3f90fd206cfeba29256c1ec90cc7fa2faf7fcabf01318fb90c459530f780",
+    "release_manifest_sha256": "66ab69cd91fa8692ac60c6883ff717294db53b1d7865bd7ca2c89fa7b0f4e5ae",
     "environment_id": "ENV-0003",
     "intended_tag": "RR-0002"
   },
@@ -35,7 +35,7 @@
     "approved": true,
     "approver": "coreystilwell3-eng",
     "approved_at": "2026-08-13T13:28:14-05:00",
-    "approved_subject_sha256": "9acb3f90fd206cfeba29256c1ec90cc7fa2faf7fcabf01318fb90c459530f780"
+    "approved_subject_sha256": "66ab69cd91fa8692ac60c6883ff717294db53b1d7865bd7ca2c89fa7b0f4e5ae"
   },
   "notes": [
     "The exact release subject is the normalized E1059 ledger-verification package bound by RR-0002.json; no other active research route is included.",

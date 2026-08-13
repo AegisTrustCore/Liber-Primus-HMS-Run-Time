@@ -57,7 +57,7 @@ class ResearchArchiveTests(unittest.TestCase):
         )
         self.assertIn(summary, project_status)
         self.assertIn("`RSET-0001` remains `STAGED`", project_status)
-        self.assertIn("`RSET-0002` is `PUBLISHED`", project_status)
+        self.assertIn("`RSET-0002` and `RSET-0003` are `PUBLISHED`", project_status)
         self.assertIn("`RSET-0002` and `RSET-0003` are `PUBLISHED`", project_status)
         self.assertIn("Eight Results", research_index)
         self.assertNotIn("draft PR #6", project_status)
