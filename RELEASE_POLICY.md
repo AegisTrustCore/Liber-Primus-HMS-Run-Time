@@ -73,6 +73,8 @@ Before release, confirm:
 - [ ] Reproduction instructions have been run from a clean environment.
 - [ ] Controls and limitations are documented.
 - [ ] No private paths, credentials, personal data, or Vault references are present.
+- [ ] The gate names an immutable release subject and its manifest SHA-256.
+- [ ] Human approval is bound to that exact subject digest; changed subjects return to `PENDING`.
 - [ ] Redistribution rights have been checked.
 - [ ] Related negative results, corrections, and superseded records are linked.
 - [ ] Automated validation passes.

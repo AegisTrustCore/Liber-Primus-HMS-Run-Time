@@ -22,3 +22,5 @@ Run `python scripts/verify_cicada_key.py` to check both the byte digest and pars
 ## Safety rule
 
 Importing a public key does not make it trusted. Verify the full fingerprint through an independent provenance chain before relying on a signature. HMS Endeavour does not possess the private key and cannot issue Cicada-authenticated messages.
+
+The separate [HMS Release Signing Identity](HMS_RELEASE_SIGNING.md) documents the public trust root used for official HMS tags and checksum signatures. The Cicada evidence key and HMS release key have different identities, purposes, and trust chains.

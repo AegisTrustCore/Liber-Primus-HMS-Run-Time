@@ -32,10 +32,12 @@ Every derived object records its direct parents. A public claim must be traceabl
 | `RR` | Research report | `RR-0001` |
 | `COR` | Correction | `COR-0001` |
 | `RET` | Retraction | `RET-0001` |
+| `RC` | Release candidate package | `RC-0001` |
+| `ENV` | Deterministic environment | `ENV-0001` |
 | `PUB` | Publication decision | `PUB-0001` |
 | `XPD` | Public Expedition | `XPD-0001` |
 
-Identifiers use four or more digits, are never reassigned, and remain reserved after withdrawal or retraction. Patreon transmission IDs form a separate delivery namespace and do not identify scientific objects.
+These namespace meanings are frozen as of `v0.1.0`. Identifiers use four or more digits, are never reassigned, and remain reserved after withdrawal or retraction. Patreon transmission IDs form a separate delivery namespace and do not identify scientific objects.
 
 Every assigned object ID is retained in the [permanent ID registry](registry/id-reservations.json).
 

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "v0.1.0",
+  "release_type": "SOFTWARE",
+  "candidate_commit_sha": "4bcef7e5b86cfca29fff96f720887a6f64285346",
+  "intended_tag": "v0.1.0",
+  "environment_id": "ENV-0001",
+  "release_notes": "releases/v0.1.0.md",
+  "artifacts": [
+    {"name": "HMS-Endeavour-v0.1.0-source.zip", "sha256": "92a72016399b494f0fd64075dfebcb9d505c81a0ff7e09f46fe1fa6e1edb1370"},
+    {"name": "HMS-Endeavour-v0.1.0-signing-key.asc", "sha256": "5ce1b4c536bcc7aedfe57853b970002678dfba997c3868adecd571e84e4a2c20"},
+    {"name": "SHA256SUMS", "sha256": "c4d40482f1f991f1ba96e8f3e8876d9c3e0d6ba088d8552f8fda86b425bfc6b0"},
+    {"name": "SHA256SUMS.asc", "sha256": "86390826782f6f4b282613fb356c26305d7756a9260a7eeff7fb39916f422a5b"}
+  ]
+}
