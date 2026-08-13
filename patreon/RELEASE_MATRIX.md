@@ -8,11 +8,11 @@ Current Patreon state: **PUBLISHED**. The creator page and first post round are 
 
 | Audience | Intended member material | Tooling destination | Current delivery state |
 |---|---|---|---|
-| Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch, Signal 3301, and HMS Status 001 live |
-| Pilgrim — Follow | Dispatches, development updates, release alerts, selected previews, early notes, and discussion | Selected entry-level Runtime tools and research utilities when released | Pilgrim Briefing 001 live; challenge material campaign-gated; tools not available |
-| Navigator — Investigate | Research previews, discussion, and approved datasets or stronger hints during an open campaign | Runtime beta, solver datasets, and advanced GP/Gematria tools when released | Research Queue 001 live; Expedition 001 closed; tools not available |
-| Cartographer — Research | Research briefings and approved campaign packets, worksheets, datasets, and ledgers | Advanced Runtime modules, batch tools, operation-bank explorer, routing tools, and visual-analysis laboratory when released | Evidence Ledger 001 live; Expedition 001 worksheet staged; tools not available |
-| Admiral — Build and validate | Frontier briefings and approved validation, reproducibility, collaboration, and export packets | Prerelease builds, experimental instruments, beta solvers, expanded compute, API, Plugin SDK, and developer tools when released | Frontier Boundary 001 live; developer platform not available |
+| Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch, Signal 3301, HMS Status 001, and PUBLIC-004 live |
+| Pilgrim — Follow | Dispatches, development updates, release alerts, selected previews, early notes, and discussion | Selected entry-level Runtime tools and research utilities when released | Pilgrim Briefing 001 and PILGRIM-005 orientation live; challenge material campaign-gated; tools not available |
+| Navigator — Investigate | Research previews, discussion, and approved datasets or stronger hints during an open campaign | Runtime beta, solver datasets, and advanced GP/Gematria tools when released | Research Queue 001 and NAVIGATOR-005 analysis live; Expedition 001 closed; tools not available |
+| Cartographer — Research | Research briefings and approved campaign packets, worksheets, datasets, and ledgers | Advanced Runtime modules, batch tools, operation-bank explorer, routing tools, and visual-analysis laboratory when released | Evidence Ledger 001 and CARTOGRAPHER-005 reproduction assignment live; tools not available |
+| Admiral — Build and validate | Frontier briefings and approved validation, reproducibility, collaboration, and export packets | Prerelease builds, experimental instruments, beta solvers, expanded compute, API, Plugin SDK, and developer tools when released | Frontier Boundary 001 and ADMIRAL-005 disclosure validation live; developer platform not available |
 
 ## Truth and access rule
 
