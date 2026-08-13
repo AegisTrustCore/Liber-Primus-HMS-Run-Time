@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/instrument-manifest.schema.json",
+  "title": "HMS Instrument Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "last_reviewed", "instruments"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "instruments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "purpose", "status", "current_version", "access_level", "last_updated"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "name": {"type": "string", "minLength": 1},
+          "purpose": {"type": "string", "minLength": 1},
+          "status": {"enum": ["PLANNED", "IN_DEVELOPMENT", "INTERNAL_TESTING", "EXPERIMENTAL", "BETA", "RELEASE_CANDIDATE", "STABLE", "RELEASED", "DEPRECATED"]},
+          "current_version": {"type": ["string", "null"]},
+          "access_level": {"enum": ["OBSERVER", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL", "INTERNAL"]},
+          "last_updated": {"type": "string", "format": "date"}
+        }
+      }
+    }
+  }
+}

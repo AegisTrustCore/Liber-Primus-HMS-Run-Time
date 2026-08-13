@@ -2,21 +2,58 @@
 
 Legend: **RELEASED**, **IN DEVELOPMENT**, **PLANNED**
 
-| Area | Capability | Status |
-|---|---|---|
-| Foundation | Public repository boundary | RELEASED |
-| Foundation | Research methodology | RELEASED |
-| Foundation | Publication schemas and validator | RELEASED |
-| Foundation | Corpus verification manifest | IN DEVELOPMENT |
-| Research record | Page 32 dossier | IN DEVELOPMENT |
-| Research record | Page 72 dossier | IN DEVELOPMENT |
-| Research record | Page 73 dossier | IN DEVELOPMENT |
-| Research record | Negative-result archive | IN DEVELOPMENT |
-| Atlas | Public page index | PLANNED |
-| Tools | Hash and manifest verifier | PLANNED |
-| Tools | Basic rune statistics | PLANNED |
-| Tools | Public GP calculator subset | PLANNED |
-| Proof system | Public reproduction packages | PLANNED |
-| Proof system | Public ProofLock verifier | PLANNED |
+The machine-readable [instrument manifest](instruments/manifest.json) is authoritative for individual tool status.
 
-The roadmap describes intended direction. A planned capability is not an entitlement or a claim that the tool already exists.
+## Foundation
+
+| Capability | Status |
+|---|---|
+| Public repository and release boundary | RELEASED |
+| Research methodology and publication schemas | RELEASED |
+| Record validator and continuous integration | RELEASED |
+| Protected-main governance | RELEASED |
+| Membership and Patreon release boundary | RELEASED |
+| Corpus provenance and verification manifest | IN DEVELOPMENT |
+
+## Research record
+
+| Capability | Status |
+|---|---|
+| Source inventory and sanitized audit | RELEASED |
+| Page 32 dossier | IN DEVELOPMENT |
+| Page 72 dossier | IN DEVELOPMENT |
+| Page 73 dossier and selector correction | IN DEVELOPMENT |
+| Known-control reproduction packages | IN DEVELOPMENT |
+| Negative-result archive | IN DEVELOPMENT |
+| First HMS-originated verified-result record | PLANNED |
+
+## Atlas and laboratory
+
+| Capability | Status |
+|---|---|
+| Public page index | PLANNED |
+| Page regions and Page Sets | PLANNED |
+| Comparison workspace | PLANNED |
+| Experiment engine and pipeline builder | PLANNED |
+| Result comparison and saved research workspace | PLANNED |
+
+## GP systems
+
+| Capability | Status |
+|---|---|
+| Public GP29 calculator | PLANNED |
+| Advanced GP Laboratory | PLANNED |
+| GP Solver | PLANNED |
+| Batch experiment engine and parameter sweeps | PLANNED |
+
+## Proof and integration
+
+| Capability | Status |
+|---|---|
+| Checksum and corpus-manifest verifier | IN DEVELOPMENT |
+| Public reproduction packages | PLANNED |
+| ProofLock and notary verification | PLANNED |
+| Authenticated sockets and API | PLANNED |
+| Add-on architecture and plugin SDK | PLANNED |
+
+The roadmap describes intended direction. A planned capability is not an entitlement, release-date promise, or claim that the tool already exists.

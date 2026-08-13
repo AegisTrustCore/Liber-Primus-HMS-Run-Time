@@ -4,11 +4,22 @@ All notable public software and repository changes are recorded here. Research p
 
 ## [Unreleased]
 
+### New
+
+- Protected-main governance documentation
+- Public research index, known-control ledger, and correction ledger
+- Patreon membership boundary and pre-launch publication kit
+- Public architecture boundary for GitHub, Patreon, Runtime, Aegis, and Vault
+- Machine-readable instrument registry and schema
+- Instrument-manifest validation in continuous integration
+
 ### In development
 
 - Canonical corpus manifest
 - Page 32, 72, and 73 evidence audits
 - First public reproduction package
+- Patreon creator-page publication
+- Corpus manifest verifier and GP29 Calculator specification
 
 ## [0.1.0] — 2026-08-12
 

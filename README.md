@@ -7,13 +7,20 @@ HMS Endeavour publishes bounded claims, reproducible evidence, negative results,
 ## Start here
 
 - [Project status](PROJECT_STATUS.md) — what exists today
+- [Research index](RESEARCH_INDEX.md) — verified, control, open, negative, and corrected work
 - [Verified results](VERIFIED_RESULTS.md) — claims that have passed the public release gate
+- [Known controls](KNOWN_CONTROLS.md) — solved material used to validate HMS behavior
 - [Open research](OPEN_RESEARCH.md) — promising, unresolved, or unaudited work
 - [Negative results](NEGATIVE_RESULTS.md) — tested paths that did not establish their target claim
+- [Corrections](CORRECTIONS.md) — narrowed, superseded, and withdrawn interpretations
 - [Next steps](NEXT_STEPS.md) — the current research queue
 - [Methodology](METHODOLOGY.md) — what HMS means by verified
 - [Release policy](RELEASE_POLICY.md) — how material becomes public
 - [Roadmap](ROADMAP.md) — released, in-development, and planned capabilities
+- [Instrument registry](instruments/README.md) — the authoritative public tool-status page
+- [Membership](MEMBERSHIP.md) — Patreon tiers and the current/planned capability boundary
+- [Architecture](ARCHITECTURE.md) — GitHub, Patreon, Runtime, Aegis, and Vault separation
+- [Governance](GOVERNANCE.md) — protected-branch and merge policy
 - [Source audit](audit/SOURCE_AUDIT_2026-08-12.md) — what was inventoried and what the records actually support
 - [Release candidate queue](audit/RELEASE_CANDIDATE_QUEUE.md) — controls, structural claims, negatives, and corrections awaiting reproduction
 
@@ -28,11 +35,11 @@ Pages 32, 72, and 73 are the first priority dossiers. The supplied Personal Rese
 | Layer | Purpose |
 |---|---|
 | GitHub / Observer | Public evidence, methodology, verification, stable free tools, and published research |
-| Patreon | Membership, development support, tier communication, previews, and reports |
+| Patreon | Membership, development support, tier communication, previews, and reports; currently pre-launch |
 | HMS Runtime | The living research workstation and tier-controlled capabilities |
 | Vault | Unreleased research, private data, active validation, credentials, and proprietary systems |
 
-Current membership levels are Observer (public), Pilgrim, Navigator, Cartographer, and Admiral. Membership buys capability, organization, computation, participation, and early access—not ownership of truth.
+Current configured membership levels are Observer (public), Pilgrim ($3), Navigator ($8), Cartographer ($20), and Admiral ($40). The Patreon page is not yet published. Membership buys capability, organization, computation, participation, and early access—not ownership of truth. See [MEMBERSHIP.md](MEMBERSHIP.md) for availability boundaries.
 
 ## Release principle
 

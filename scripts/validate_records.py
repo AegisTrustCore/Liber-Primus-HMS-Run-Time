@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RECORD_DIR = ROOT / "research" / "records"
 PAGES_DIR = ROOT / "pages"
+INSTRUMENT_MANIFEST = ROOT / "instruments" / "manifest.json"
 
 ID_PATTERN = re.compile(r"^(OBS|HYP|EXP|RES|NEG|RR|PL|COR|RET)-[0-9]{3,}$")
 OBJECT_TYPES = {
@@ -37,6 +38,18 @@ EVIDENCE_STATES = {
     "RETRACTED",
 }
 DOSSIER_STATES = {"AUDIT_PENDING", "AUDIT_IN_PROGRESS", "REVIEW_READY", "PUBLISHED"}
+INSTRUMENT_STATES = {
+    "PLANNED",
+    "IN_DEVELOPMENT",
+    "INTERNAL_TESTING",
+    "EXPERIMENTAL",
+    "BETA",
+    "RELEASE_CANDIDATE",
+    "STABLE",
+    "RELEASED",
+    "DEPRECATED",
+}
+ACCESS_LEVELS = {"OBSERVER", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL", "INTERNAL"}
 REQUIRED_RECORD_FIELDS = {
     "schema_version",
     "id",
@@ -122,6 +135,50 @@ def validate_page_record(path: Path) -> list[str]:
     return [f"{path.relative_to(ROOT)}: {error}" for error in errors]
 
 
+def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
+    try:
+        manifest = load_json(path)
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        return [f"{path.relative_to(ROOT)}: {exc}"], 0
+
+    errors: list[str] = []
+    instruments = manifest.get("instruments")
+    if manifest.get("schema_version") != "1.0.0":
+        errors.append("schema_version must be 1.0.0")
+    if not isinstance(instruments, list):
+        return [f"{path.relative_to(ROOT)}: instruments must be a list"], 0
+
+    seen_ids: set[str] = set()
+    for index, instrument in enumerate(instruments):
+        prefix = f"instrument[{index}]"
+        if not isinstance(instrument, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+        instrument_id = instrument.get("id")
+        if not isinstance(instrument_id, str) or not re.fullmatch(
+            r"[a-z0-9]+(?:-[a-z0-9]+)*", instrument_id
+        ):
+            errors.append(f"{prefix}.id must be a lowercase kebab-case identifier")
+        elif instrument_id in seen_ids:
+            errors.append(f"duplicate instrument id: {instrument_id}")
+        else:
+            seen_ids.add(instrument_id)
+        if instrument.get("status") not in INSTRUMENT_STATES:
+            errors.append(f"{prefix}.status is unrecognized")
+        if instrument.get("access_level") not in ACCESS_LEVELS:
+            errors.append(f"{prefix}.access_level is unrecognized")
+        for field in ("name", "purpose", "last_updated"):
+            if not isinstance(instrument.get(field), str) or not instrument[field]:
+                errors.append(f"{prefix}.{field} must be a non-empty string")
+        version = instrument.get("current_version")
+        if instrument.get("status") == "RELEASED" and not isinstance(version, str):
+            errors.append(f"{prefix}.current_version is required when RELEASED")
+        if instrument.get("status") == "PLANNED" and version is not None:
+            errors.append(f"{prefix}.current_version must be null when PLANNED")
+
+    return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(instruments)
+
+
 def main() -> int:
     errors: list[str] = []
     seen_ids: set[str] = set()
@@ -130,6 +187,8 @@ def main() -> int:
         errors.extend(validate_research_record(path, seen_ids))
     for path in sorted(PAGES_DIR.glob("page-*/record.json")):
         errors.extend(validate_page_record(path))
+    instrument_errors, instrument_count = validate_instrument_manifest(INSTRUMENT_MANIFEST)
+    errors.extend(instrument_errors)
 
     if errors:
         print("Public record validation failed:")
@@ -139,7 +198,8 @@ def main() -> int:
 
     print(
         f"Validated {len(seen_ids)} published research record(s) and "
-        f"{len(list(PAGES_DIR.glob('page-*/record.json')))} page dossier(s)."
+        f"{len(list(PAGES_DIR.glob('page-*/record.json')))} page dossier(s), and "
+        f"{instrument_count} instrument status record(s)."
     )
     return 0
 

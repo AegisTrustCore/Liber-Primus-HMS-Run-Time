@@ -13,9 +13,13 @@
 
 ## Platform queue
 
-1. Validate all public records in continuous integration.
-2. Add a checksum verifier for public evidence packages.
-3. Add corpus-manifest verification.
-4. Publish the first stable Observer tool only after its inputs and limitations are documented.
+1. Review and merge the foundation draft through the protected `main` branch.
+2. Complete the Patreon pre-launch checklist and publish the creator page only after current/planned benefits are clearly labeled.
+3. Add a checksum verifier for public evidence packages.
+4. Add corpus-manifest verification.
+5. Specify the public GP29 Calculator inputs, outputs, test vectors, and release boundary.
+6. Specify the Liber Runtime identity, entitlement, storage, and export contracts.
+7. Specify authenticated socket/API and capability-scoped add-on contracts before implementation.
+8. Publish the first stable Observer instrument only after its inputs and limitations are documented.
 
 Releases follow demonstrated capability, not arbitrary calendar promises.

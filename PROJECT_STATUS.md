@@ -11,6 +11,10 @@ Last reviewed: 2026-08-12
 - Audit dossiers for Pages 32, 72, and 73
 - Separate ledgers for verified, open, negative, corrected, and retracted work
 - A reproducible source-inventory tool and sanitized intake report
+- Protected-branch and pull-request governance
+- Public research index, known-control ledger, and correction ledger
+- Patreon membership boundary and pre-launch publication kit
+- Machine-readable instrument status registry
 
 ## Source audit completed
 
@@ -48,3 +52,10 @@ These candidates remain outside the verified ledger until their inputs, hashes, 
 4. Reproduce the strongest Page 32 structural claim from canonical input.
 5. Publish the Page 73 correction beside any retained transform result.
 6. Package the first bounded negative-result record.
+
+## Platform launch state
+
+- GitHub: public repository connected; foundation changes remain in draft PR review.
+- `main`: protected by an active ruleset requiring pull requests and the `validate` check.
+- Patreon: tiers configured, creator page still unpublished.
+- Runtime, GP Calculator, sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
