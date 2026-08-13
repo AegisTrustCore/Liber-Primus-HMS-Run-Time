@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "XPD-0001-v0.2.0",
+  "release_type": "EXPEDITION",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "a1e5c8e7cfbe61b7b8683436686a2429c6a910f8",
+    "release_manifest": "releases/manifests/XPD-0001-v0.2.0.json",
+    "release_manifest_sha256": "8bc4aee54011dce0e92ddd9e7502ffd55a4811378b09d5df777e8b65f497f836",
+    "environment_id": "ENV-0002",
+    "intended_tag": "XPD-0001-v0.2.0"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "expedition": {
+      "solution_state_valid": true,
+      "verifier_tested": true,
+      "challenge_status_consistent": true,
+      "research_claims_bounded": true
+    }
+  },
+  "human_approval": {
+    "approved": false,
+    "approver": null,
+    "approved_at": null,
+    "approved_subject_sha256": null
+  },
+  "notes": [
+    "The puzzle has a discoverable beginner entry, public worksheet, progressive hints, canonical sealed answer, and local verifier.",
+    "The exact Windows GUI and CLI binaries passed private sealed-answer acceptance, deliberate nonmatch rejection, instruction rendering, and hint rendering.",
+    "The campaign remains CLOSED and the Windows assets remain private. Approval of this subject is required before merge, tag, asset upload, campaign opening, or Patreon launch.",
+    "This synthetic training Expedition contains no Liber Primus research claim, unknown plaintext, candidate route, key, endpoint, identity claim, or tier-only packet."
+  ]
+}

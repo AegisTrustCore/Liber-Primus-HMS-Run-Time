@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "XPD-0001-v0.2.0",
+  "release_type": "EXPEDITION",
+  "candidate_commit_sha": "a1e5c8e7cfbe61b7b8683436686a2429c6a910f8",
+  "intended_tag": "XPD-0001-v0.2.0",
+  "environment_id": "ENV-0002",
+  "release_notes": "challenges/expedition-001/README.md",
+  "artifacts": [
+    {"name":"challenges/expedition-001/README.md","sha256":"03ef0b2a0a52f4fd9de59dd7302ce90dec9e657f6c3baae9a0c1ad2404dad7ea"},
+    {"name":"challenges/expedition-001/HINTS.md","sha256":"c5b34f2d70f1b2b6a14985f8ff8827d59be43057e85e11de6e98a61a9b2213fe"},
+    {"name":"challenges/manifest.json","sha256":"f65148685d2c5343dc4d74e3b4f45d9d7c0e40ce8e08aab5f4f74373566cfb9c"},
+    {"name":"hms_tools/challenge_verifier.py","sha256":"b8084bd42c5bfbf712d8da4f6aa7480f15cee860a9cc44a5499a3fa25a3e01e2"},
+    {"name":"hms_tools/expedition_001.py","sha256":"5c78c9eaacb12e1fd560d07e6f4940474572f33a069a79295a2336e8e31ac653"},
+    {"name":"scripts/verify_challenge.py","sha256":"70ae34a85e2d83b8ce9f18de2067b9775a925b255dcc96fdbb02cc069af7afe0"},
+    {"name":"scripts/verify_challenge_gui.py","sha256":"57b77e608ac1fd0be40acb8a8c88513b3106b20b5ebd32943b915d584d463925"},
+    {"name":"HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip","sha256":"d358b674fc37cc56693237f9b523add7135ee0a5600337596098506fa16c99bb"},
+    {"name":"HMS-XPD-0001-Verifier-CLI-v0.2.0-Windows-x64.exe","sha256":"24f64d2011211d2ebe13766d348108cdcceca1c930893293cdf5844976ffcd60"},
+    {"name":"HMS-XPD-0001-Verifier-v0.2.0-Windows-x64.exe","sha256":"0d80db99177caa4adcabdbb3f9304eef7245c5269b1cd98c331db1c3b131c90b"},
+    {"name":"SHA256SUMS","sha256":"3f4454deb0791e6d0f59d77e814d9100bfd1f687711da057b0146a7dfd739e41"}
+  ]
+}

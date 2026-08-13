@@ -11,6 +11,8 @@
 - [`RR-0001` public run manifest](manifests/RR-0001.json)
 - [Pending `RR-0001` research gate](gates/RR-0001.json)
 - [`RR-0001` public reproduction report](../reports/PUBLIC_RUNS_001.md)
+- [Pending `XPD-0001-v0.2.0` Expedition manifest](manifests/XPD-0001-v0.2.0.json)
+- [Pending `XPD-0001-v0.2.0` Expedition gate](gates/XPD-0001-v0.2.0.json)
 
 Software and research releases are tracked separately. A Git branch or pull request is not a release. A Patreon preview is not a public research publication.
 
