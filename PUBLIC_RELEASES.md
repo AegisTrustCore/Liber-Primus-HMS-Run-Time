@@ -18,7 +18,7 @@ The public source tree exposes actual [Runs](research/runs/README.md), [Results]
 
 [`RSET-0002`](research/runsets/RSET-0002/START-HERE.md) is **PUBLISHED** through the main-branch Research Archive: five reviewed historical closure runs, four bounded negative/null Results, and one anti-post-hoc correction. Start with the plain-language breakdown, then use its [portable ZIP](research/runsets/RSET-0002/RSET-0002.zip) for the complete evidence package. The package records original archive hashes while excluding the unreviewed full rune transcription and forward experimental instructions embedded in the source ZIPs.
 
-[`RSET-0003`](research/runsets/RSET-0003/START-HERE.md) is **STAGED**, not approved: the E1059 default-key OutGuess bounded closure, complete retained 75-page ledger family, portable verifier, and partial-reproduction boundary. It must pass pending gate `RR-0002` before it becomes an approved research release or tagged asset.
+[`RSET-0003`](research/runsets/RSET-0003/START-HERE.md) is **PUBLISHED** through owner-approved gate [`RR-0002`](releases/gates/RR-0002.json): the E1059 default-key OutGuess bounded closure, complete retained 75-page ledger family, portable verifier, and explicit partial-reproduction boundary.
 
 ### First free-drop candidate
 

@@ -1,6 +1,6 @@
 # RSET-0003 — E1059 Default-Key OutGuess Closure
 
-**Status: STAGED**
+**Status: PUBLISHED**
 
 Prepare a portable, bounded, reader-friendly release candidate for the E1059 corpus-wide default-key OutGuess branch closure.
 
@@ -8,4 +8,4 @@ Prepare a portable, bounded, reader-friendly release candidate for the E1059 cor
 - [Plain-text release notes](RELEASE-NOTES.txt)
 - [Readable evidence overview](result.html)
 - [Member downloads and hashes](downloads.json)
-- [Download complete staged run set](RSET-0003.zip)
+- [Download complete public run set](RSET-0003.zip)

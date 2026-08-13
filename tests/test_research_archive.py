@@ -41,9 +41,9 @@ class ResearchArchiveTests(unittest.TestCase):
         run_set = self.load("research/runsets/RSET-0002/manifest.json")
         self.assertEqual(run_set["publication_status"], "PUBLISHED")
 
-    def test_e1059_run_set_remains_staged(self):
+    def test_e1059_run_set_is_published(self):
         run_set = self.load("research/runsets/RSET-0003/manifest.json")
-        self.assertEqual(run_set["publication_status"], "STAGED")
+        self.assertEqual(run_set["publication_status"], "PUBLISHED")
 
     def test_public_status_matches_archive_counts_and_run_set_states(self):
         archive = self.load("research/archive-index.json")
@@ -57,8 +57,8 @@ class ResearchArchiveTests(unittest.TestCase):
         )
         self.assertIn(summary, project_status)
         self.assertIn("`RSET-0001` remains `STAGED`", project_status)
-        self.assertIn("`RSET-0002` is `PUBLISHED`", project_status)
-        self.assertIn("`RSET-0003` remains `STAGED`", project_status)
+        self.assertIn("`RSET-0002` and `RSET-0003` are `PUBLISHED`", project_status)
+        self.assertIn("`RSET-0002` and `RSET-0003` are `PUBLISHED`", project_status)
         self.assertIn("Eight Results", research_index)
         self.assertNotIn("draft PR #6", project_status)
 

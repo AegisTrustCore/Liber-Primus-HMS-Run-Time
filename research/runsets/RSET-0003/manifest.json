@@ -5,7 +5,7 @@
   "title": "E1059 Default-Key OutGuess Closure",
   "version": "1.0.0",
   "classification": "PUBLIC",
-  "publication_status": "STAGED",
+  "publication_status": "PUBLISHED",
   "purpose": "Prepare a portable, bounded, reader-friendly release candidate for the E1059 corpus-wide default-key OutGuess branch closure.",
   "run_ids": ["RUN-0008"],
   "result_ids": ["RES-0008"],
@@ -15,7 +15,7 @@
     "All 75 extraction ledgers and the complete detector ledger are retained.",
     "The historical source archive was verified before normalization and is bound by SHA-256 in RUN-0008.",
     "Reproduction is labeled PARTIAL because carrier images and coefficient bitmaps are not redistributed.",
-    "This Run Set remains staged until its exact release subject receives human approval."
+    "The repository owner approved the exact bounded release subject through RR-0002."
   ],
-  "release_notes": "Generated for review and clean-package qualification. It is not a tagged GitHub Release or an approved public research drop while the RR-0002 gate remains pending."
+  "release_notes": "Published through approved gate RR-0002 as a portable public evidence package. The release remains a bounded negative with PARTIAL reproduction and no plaintext claim."
 }

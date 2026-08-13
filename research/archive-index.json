@@ -5,8 +5,8 @@
   "published_runs": 8,
   "published_results": 8,
   "published_capsules": 3,
-  "published_run_sets": 1,
-  "staged_run_sets": 2,
+  "published_run_sets": 2,
+  "staged_run_sets": 1,
   "indexes": {
     "runs": "runs/index.json",
     "results": "results/index.json",

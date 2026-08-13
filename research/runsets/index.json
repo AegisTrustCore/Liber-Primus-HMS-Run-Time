@@ -30,13 +30,13 @@
     {
       "id": "RSET-0003",
       "title": "E1059 Default-Key OutGuess Closure",
-      "status": "STAGED",
+      "status": "PUBLISHED",
       "reproduction_status": null,
       "page": null,
       "method": null,
       "capsule": null,
       "package": "RSET-0003/RSET-0003.zip",
-      "package_sha256": "3198a2ec50435cb0909fd683ccaad4dca7972f804d6cdc5aaf7e38a581bcd46f",
+      "package_sha256": "8c9503e7b9f02f4e9afad9bddfab79c5be1cba85fd0cfef47bfc5375df480500",
       "result_page": "RSET-0003/result.html"
     }
   ]
