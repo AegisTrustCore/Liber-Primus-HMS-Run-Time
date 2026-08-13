@@ -40,6 +40,23 @@ IDEA → PROTOTYPE → INTERNAL → EXPERIMENTAL → BETA → STABLE → RELEASE
 
 These tracks are separate. A software release does not publish private research, and a research publication does not release private tool source.
 
+## Distribution decision
+
+Every approved item also receives an explicit destination:
+
+```text
+PUBLIC GITHUB
+PATREON — PILGRIM
+PATREON — NAVIGATOR
+PATREON — CARTOGRAPHER
+PATREON — ADMIRAL
+HOSTED RUNTIME
+KEEP INTERNAL
+KEEP IN VAULT
+```
+
+GitHub is the stable public evidence and public-tool layer. Patreon is the advanced material, early-access, participation, and member-build layer. Patreon access does not replace public publication review for an approved truth claim.
+
 ## Publication checklist
 
 Before release, confirm:

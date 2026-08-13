@@ -8,6 +8,8 @@ The Patreon creator page is configured at [Aegis Trust Core](https://www.patreon
 
 The publication gate is tracked in the [Patreon pre-launch checklist](patreon/PRELAUNCH_CHECKLIST.md).
 
+Current and future material destinations are defined in the [Patreon release matrix](patreon/RELEASE_MATRIX.md). GitHub remains the authority for public releases; the instrument registry remains the authority for tool availability.
+
 ## Configured tiers
 
 | Access level | Price | Current position |

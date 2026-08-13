@@ -2,11 +2,14 @@
 
 > **HMS Endeavour is under active construction.** This repository is the stable public evidence and verification layer of the project. It is not a claim that the full Liber Primus corpus has been solved, and it is not the complete HMS Research Station.
 
+> **Release status:** GitHub currently has no tagged HMS release. The expanded foundation is `v0.1.0-rc.1` under review in draft PR #1. See [Public releases](PUBLIC_RELEASES.md).
+
 HMS Endeavour publishes bounded claims, reproducible evidence, negative results, unresolved questions, corrections, and public verification tools. Findings are released only after their scope, inputs, procedure, limitations, and evidence status have been recorded.
 
 ## Start here
 
 - [Project status](PROJECT_STATUS.md) — what exists today
+- [Public releases](PUBLIC_RELEASES.md) — what is actually available on GitHub now
 - [Research index](RESEARCH_INDEX.md) — verified, control, open, negative, and corrected work
 - [Verified results](VERIFIED_RESULTS.md) — claims that have passed the public release gate
 - [Known controls](KNOWN_CONTROLS.md) — solved material used to validate HMS behavior
@@ -41,13 +44,22 @@ Pages 32, 72, and 73 are the first priority dossiers. The supplied Personal Rese
 
 Current configured membership levels are Observer (public), Pilgrim ($3), Navigator ($8), Cartographer ($20), and Admiral ($40). The Patreon page is not yet published. Membership buys capability, organization, computation, participation, and early access—not ownership of truth. See [MEMBERSHIP.md](MEMBERSHIP.md) for availability boundaries.
 
+## Public releases and advanced material
+
+- Use the [public release catalog](PUBLIC_RELEASES.md) to confirm what is actually available through GitHub.
+- Use the [instrument registry](instruments/README.md) to distinguish released, candidate, developing, and planned tools.
+- Advanced packets, extended datasets, early builds, deeper computation, member workspaces, sockets/API access, and experimental add-ons belong to [Aegis Trust Core on Patreon](https://www.patreon.com/c/AegisTrustCore) and the hosted HMS Runtime when released for an eligible tier.
+- Patreon is presently unpublished; this link is informational until the pre-launch checklist is complete.
+
+Stable approved evidence remains public. Patreon provides earlier, deeper, and more capable participation rather than a separate standard of truth.
+
 ## Release principle
 
 Only records marked `PUBLIC` and `PUBLISHED` may enter this repository. Private application code, premium datasets, raw experiment exhaust, active notebooks, credentials, and Vault material must remain outside it.
 
 ## Repository status
 
-This is the `v0.1.0` foundation phase. See [CHANGELOG.md](CHANGELOG.md) for the public build history.
+This is the `v0.1.0-rc.1` foundation-candidate phase. It is not a released `v0.1.0` build. See [CHANGELOG.md](CHANGELOG.md) and the [release state](releases/README.md).
 
 ## License
 

@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-08-12
 
-## Available now
+## Present in the foundation release candidate
 
 - Public repository boundary and release philosophy
 - Evidence, publication, and access-status definitions
@@ -16,7 +16,7 @@ Last reviewed: 2026-08-12
 - Patreon membership boundary and pre-launch publication kit
 - Machine-readable instrument status registry
 
-## Source audit completed
+## Source audit completed in the candidate branch
 
 The first-pass audit covered the complete supplied Personal Research tree, including its nested More research collection:
 

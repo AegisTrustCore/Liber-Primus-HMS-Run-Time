@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schemas/patreon-post-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "last_reviewed": "2026-08-12",
+  "posts": [
+    {"id":"PUBLIC-001","title":"The HMS Public Evidence Layer","audience":"PUBLIC","material_type":"COMMUNITY","status":"DRAFT","file":"public/PUBLIC-001.md","related_instrument":null},
+    {"id":"PILGRIM-001","title":"Enter the Expedition","audience":"PILGRIM","material_type":"DISPATCH","status":"DRAFT","file":"pilgrim/PILGRIM-001.md","related_instrument":null},
+    {"id":"NAVIGATOR-001","title":"The First Research Queue","audience":"NAVIGATOR","material_type":"RESEARCH_PREVIEW","status":"DRAFT","file":"navigator/NAVIGATOR-001.md","related_instrument":null},
+    {"id":"CARTOGRAPHER-001","title":"How the Evidence Ledger Will Work","audience":"CARTOGRAPHER","material_type":"RESEARCH_PACKET","status":"DRAFT","file":"cartographer/CARTOGRAPHER-001.md","related_instrument":null},
+    {"id":"ADMIRAL-001","title":"The Frontier Boundary","audience":"ADMIRAL","material_type":"FRONTIER_BRIEFING","status":"DRAFT","file":"admiral/ADMIRAL-001.md","related_instrument":null}
+  ]
+}

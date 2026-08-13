@@ -1,6 +1,6 @@
 # HMS Endeavour Public Roadmap
 
-Legend: **RELEASED**, **IN DEVELOPMENT**, **PLANNED**
+Legend: **RELEASED**, **RELEASE CANDIDATE**, **IN DEVELOPMENT**, **PLANNED**
 
 The machine-readable [instrument manifest](instruments/manifest.json) is authoritative for individual tool status.
 
@@ -8,18 +8,18 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 
 | Capability | Status |
 |---|---|
-| Public repository and release boundary | RELEASED |
-| Research methodology and publication schemas | RELEASED |
-| Record validator and continuous integration | RELEASED |
+| Public repository and release boundary | RELEASE CANDIDATE |
+| Research methodology and publication schemas | RELEASE CANDIDATE |
+| Record validator and continuous integration | RELEASE CANDIDATE |
 | Protected-main governance | RELEASED |
-| Membership and Patreon release boundary | RELEASED |
+| Membership and Patreon release boundary | RELEASE CANDIDATE |
 | Corpus provenance and verification manifest | IN DEVELOPMENT |
 
 ## Research record
 
 | Capability | Status |
 |---|---|
-| Source inventory and sanitized audit | RELEASED |
+| Source inventory and sanitized audit | RELEASE CANDIDATE |
 | Page 32 dossier | IN DEVELOPMENT |
 | Page 72 dossier | IN DEVELOPMENT |
 | Page 73 dossier and selector correction | IN DEVELOPMENT |
