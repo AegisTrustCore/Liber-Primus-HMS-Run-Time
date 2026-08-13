@@ -16,7 +16,7 @@ The public source tree exposes actual [Runs](research/runs/README.md), [Results]
 
 `RSET-0001` is a **STAGED** curated distribution package. Its member Runs and Results are published research objects, but the Run Set is not a tagged GitHub Release asset until it receives its own exact-subject release approval.
 
-[`RSET-0002`](research/runsets/RSET-0002/README.md) is **PUBLISHED** through the main-branch Research Archive: five reviewed historical closure runs, four bounded negative/null Results, and one anti-post-hoc correction. Its [portable ZIP](research/runsets/RSET-0002/RSET-0002.zip) records original archive hashes while excluding the unreviewed full rune transcription and forward experimental instructions embedded in the source ZIPs.
+[`RSET-0002`](research/runsets/RSET-0002/START-HERE.md) is **PUBLISHED** through the main-branch Research Archive: five reviewed historical closure runs, four bounded negative/null Results, and one anti-post-hoc correction. Start with the plain-language breakdown, then use its [portable ZIP](research/runsets/RSET-0002/RSET-0002.zip) for the complete evidence package. The package records original archive hashes while excluding the unreviewed full rune transcription and forward experimental instructions embedded in the source ZIPs.
 
 ### First free-drop candidate
 

@@ -1,0 +1,51 @@
+HMS ENDEAVOUR — RSET-0002
+PAGE 32 CLOSURES AND ACQUISITION BOUNDARIES
+
+STATUS
+Public. No new Liber Primus plaintext recovery is claimed.
+
+RESULT 1 — RUN-0003 / RES-0003
+Question: Could exact Common Crawl response bodies be acquired and hashed?
+Answer: No response body reached the hash test because acquisition was blocked.
+Level: Historical-only acquisition boundary.
+Does not prove: That Common Crawl contains no useful capture.
+Next: Reconstruct a provenance-safe acquisition environment.
+
+RESULT 2 — RUN-0004 / RES-0004
+Question: Did negative displacement mean reverse the final rune blocks?
+Answer: The exact frozen interpretation failed its score comparison.
+Level: Partial bounded negative.
+Does not prove: That every meaning of sign or displacement fails.
+Next: Recover or reconstruct the original scoring implementation.
+
+RESULT 3 — RUN-0005 / RES-0005
+Question: Did spiral turns align strongly enough with page boundaries?
+Answer: No. Exact hypergeometric p = 0.0919080919.
+Level: Reproduced bounded negative.
+Does not prove: That every spiral or shifted-turn definition fails.
+Next: Declare any altered construction as a new experiment before scoring.
+
+RESULT 4 — RUN-0006 / RES-0006
+Question: Did the signed-gap vector match the payload-junction vector?
+Answer: No. Zero of fifteen positions matched.
+Level: Reproduced bounded negative.
+Does not prove: That every transform or related gap construction fails.
+Next: Preregister any new transform before testing it.
+
+RESULT 5 — RUN-0007 / RES-0007
+Question: Was a clean terminal holdout available?
+Answer: No. Zero of six candidates were eligible.
+Level: Reproduced correction.
+Does not prove: That the earlier retrospective observation is independently false.
+Next: Use a genuinely new source-authorized feature or retain retrospective status.
+
+READING HINTS
+1. Read what the result does not prove.
+2. Check whether replay support is REPRODUCED, PARTIAL, or HISTORICAL_ONLY.
+3. Follow RUN -> RES -> CAP to move from execution to conclusion to investigation.
+
+WHAT COMES NEXT
+1. Independent reproductions for RUN-0005 through RUN-0007.
+2. Environment and implementation reconstruction for RUN-0003 and RUN-0004.
+3. One-by-one review of the remaining research ZIP inventory.
+4. More public evidence only after full provenance and disclosure review.

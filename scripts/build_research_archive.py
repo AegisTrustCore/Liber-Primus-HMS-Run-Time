@@ -295,7 +295,9 @@ def package_runset(path: Path, item: dict, objects: dict[str, dict]) -> None:
     body = f'''<section><h2>PURPOSE</h2><p>{html.escape(item['purpose'])}</p></section><section><h2>RUNS</h2>{list_html(item['run_ids'])}</section><section><h2>RESULTS</h2>{list_html(item['result_ids'])}</section><section><h2>CAPSULES</h2>{list_html(item['capsule_ids'])}</section><section><h2>SELECTION NOTES</h2>{list_html(item['selection_notes'])}</section><section><h2>RELEASE STATE</h2><p>{html.escape(item['release_notes'])}</p></section><section><h2>DOWNLOAD</h2><p><a href="{item['id']}.zip">{bundle_label}</a> · <a href="downloads.json">Member hashes</a></p></section>'''
     write_text(path / "result.html", shell(item["title"], item["id"], item["publication_status"], body))
     write_text(path / "result.txt", f"HMS ENDEAVOUR\n{item['id']}\n\n{item['title']}\n\nSTATUS: {item['publication_status']}\n\n{item['purpose']}\n\nRUNS:\n" + "\n".join(item["run_ids"]) + "\n\nRESULTS:\n" + "\n".join(item["result_ids"]))
-    write_text(path / "README.md", f"# {item['id']} — {item['title']}\n\n**Status: {item['publication_status']}**\n\n{item['purpose']}\n\n- [Readable overview](result.html)\n- [Member downloads and hashes](downloads.json)\n- [{bundle_label}]({item['id']}.zip)")
+    start_here = "\n- [Start with the plain-language breakdown](START-HERE.md)" if (path / "START-HERE.md").exists() else ""
+    plain_text = "\n- [Plain-text release notes](RELEASE-NOTES.txt)" if (path / "RELEASE-NOTES.txt").exists() else ""
+    write_text(path / "README.md", f"# {item['id']} — {item['title']}\n\n**Status: {item['publication_status']}**\n\n{item['purpose']}\n{start_here}{plain_text}\n- [Readable evidence overview](result.html)\n- [Member downloads and hashes](downloads.json)\n- [{bundle_label}]({item['id']}.zip)")
     finalize_package(path, f"{item['id']}.zip")
 
 
