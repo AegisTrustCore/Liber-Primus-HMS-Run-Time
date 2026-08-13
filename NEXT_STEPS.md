@@ -19,8 +19,8 @@ The [release gate](releases/gates/v0.1.0.json) records the repository owner's na
 ## Current public sequence
 
 1. Keep `PROJECT_STATUS.md`, `RESEARCH_INDEX.md`, `ROADMAP.md`, and the generated archive indexes synchronized with the eight published Runs and Results.
-2. Complete the pending exact-subject gate for staged `RSET-0003`; do not describe it as an approved release before that decision.
-3. Normalize E1477 as the next bounded-rejection candidate, retaining its missing-original-scorer limitation.
+2. Keep approved `RSET-0003` and its RR-0002 release assets synchronized.
+3. Normalize E1477 as the next bounded-rejection candidate, retaining its missing-original-scorer limitation, while implementing the shared GP29/Runtime core.
 4. Reconcile Page 72/73 numbering, corpus edition, and known-control provenance before publishing another solved-material control.
 5. Complete GP29 as a separately versioned, customer-ready free instrument.
 6. Sign and approve the tested Expedition 001 portable package, then open the campaign through its own immutable release gate.

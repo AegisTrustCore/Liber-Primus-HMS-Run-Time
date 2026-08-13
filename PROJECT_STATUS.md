@@ -27,12 +27,12 @@ The Research Archive now contains 8 published Runs, 8 published Results, 3 publi
 
 - `RSET-0001`: `RUN-0001`/`RES-0001`, the historical OpenPGP artifact-identity reproduction, and `RUN-0002`/`RES-0002`, the synthetic Expedition-verifier control.
 - `RSET-0002`: `RUN-0003` through `RUN-0007` and `RES-0003` through `RES-0007`, covering one historical acquisition null, three bounded Page 32 negatives, and one anti-post-hoc correction.
-- `RSET-0003`: staged `RUN-0008`/`RES-0008`, the E1059 default-key OutGuess bounded closure with all 75 extraction ledgers and a portable non-mutating verifier.
+- `RSET-0003`: published `RUN-0008`/`RES-0008`, the E1059 default-key OutGuess bounded closure with all 75 extraction ledgers and a portable non-mutating verifier.
 - `CAP-0001` through `CAP-0003`: the public verification foundation, Page 32 manifest-interpretation closures, and E1059 OutGuess closure.
 - Distribution and UX standards separating developer source from customer-ready applications.
 - An automated public-boundary scan rejecting workstation paths and local endpoints.
 
-The eight Runs, eight Results, and three Capsules are published through the `main`-branch Research Archive. `RSET-0001` remains `STAGED`; `RSET-0003` remains `STAGED`; `RSET-0002` is `PUBLISHED` on `main`. None is a separately tagged GitHub Release asset. None claims an LP plaintext recovery, and Expedition 001 remains closed pending its exact-subject release approval.
+The eight Runs, eight Results, and three Capsules are published through the `main`-branch Research Archive. `RSET-0001` remains `STAGED`; `RSET-0002` and `RSET-0003` are `PUBLISHED` on `main`. `RSET-0003` is also bound to approved gate `RR-0002`. None claims an LP plaintext recovery, and Expedition 001 remains closed pending its exact-subject release approval.
 
 ## Source audit included in the foundation
 
@@ -67,7 +67,7 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 ## Immediate focus
 
 1. Keep every status surface synchronized with the canonical Research Archive indexes.
-2. Qualify staged `RSET-0003` through its exact-subject release gate, then normalize E1477 as the next bounded-rejection candidate.
+2. Normalize E1477 as the next bounded-rejection candidate while beginning the GP29/Runtime implementation slice.
 3. Reconcile Page 72/73 numbering, known-control provenance, and corpus-edition differences before another control publication.
 4. Complete GP29 as the reference customer-ready instrument and release it separately.
 5. Open Expedition 001 only after its Windows portable verifier is signed and bound to an approved campaign subject.
@@ -75,10 +75,10 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 
 ## Platform launch state
 
-- GitHub: `v0.1.0` public research foundation released; `RSET-0001` and `RSET-0003` are staged, and `RSET-0002` is published on `main` without a separate release tag.
+- GitHub: `v0.1.0` public research foundation released; `RSET-0001` is staged, and `RSET-0002` and approved `RSET-0003` are published.
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
-- Public Research Archive: eight Runs, eight Results, and three Capsules are published; `RSET-0001` and `RSET-0003` are staged, and `RSET-0002` is published as a portable source-tree package.
+- Public Research Archive: eight Runs, eight Results, and three Capsules are published; `RSET-0001` is staged, while `RSET-0002` and `RSET-0003` are published portable packages.
 - Public GP29 Calculator: in development and intentionally excluded from the frozen foundation candidate; planned as a separate tool release.
 - Expedition verifier: canonical core, GUI, CLI, tests, and a private Windows portable candidate exist; public download remains unavailable while the campaign is closed.
 - Endeavour Lite and Liber Runtime: architecture started; runnable applications remain planned.

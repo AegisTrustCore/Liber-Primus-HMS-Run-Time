@@ -12,6 +12,7 @@
       "Historical Cicada 3301 OpenPGP provenance verifier",
       "RUN-0001/RES-0001 and RUN-0002/RES-0002 public verification foundation packages",
       "RSET-0002 bounded closure and correction packages",
+      "RSET-0003 E1059 default-key OutGuess closure package",
       "Public record validator and release schemas",
       "Synthetic Expedition 001 release candidate"
     ],

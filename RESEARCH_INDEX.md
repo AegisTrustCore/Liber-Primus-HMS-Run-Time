@@ -18,8 +18,8 @@ This index answers three different questions separately: what is publicly verifi
 | Page 72 | Structural/register candidates; no reviewed record explicitly reports plaintext recovery | [Page 72 dossier](pages/page-072/README.md) |
 | Page 73 | Known-control replay candidate; selector interpretation corrected | [Page 73 dossier](pages/page-073/README.md) |
 | Published closure run set | Five reviewed historical closure runs: acquisition null, three Page 32 negatives, and one anti-post-hoc correction | [RSET-0002](research/runsets/RSET-0002/README.md) |
-| Staged OutGuess closure | E1059 closes only the frozen default-key OutGuess 0.13 lane; carrier-level reproduction remains partial | [RSET-0003](research/runsets/RSET-0003/START-HERE.md) |
-| Negative results | Five structured bounded negative/null Results are packaged; RSET-0002 is published and RSET-0003 remains staged | [Negative results](NEGATIVE_RESULTS.md) |
+| Published OutGuess closure | E1059 closes only the frozen default-key OutGuess 0.13 lane; carrier-level reproduction remains partial | [RSET-0003](research/runsets/RSET-0003/START-HERE.md) |
+| Negative results | Five structured bounded negative/null Results are packaged; RSET-0002 and RSET-0003 are published | [Negative results](NEGATIVE_RESULTS.md) |
 | Corrections | Page 73 visible-hash causal-selector claim withdrawn; Page 32 terminal holdout eligibility narrowed | [Corrections](CORRECTIONS.md) |
 
 ## Public release roadmap
