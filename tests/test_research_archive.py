@@ -40,6 +40,15 @@ class ResearchArchiveTests(unittest.TestCase):
         self.assertIn("RSET-0001/bundles/RUN-0001.zip", names)
         self.assertIn("RSET-0001/bundles/RES-0001.zip", names)
 
+    def test_published_run_set_contains_reader_guide(self):
+        import zipfile
+
+        bundle = ROOT / "research/runsets/RSET-0002/RSET-0002.zip"
+        with zipfile.ZipFile(bundle) as archive:
+            names = set(archive.namelist())
+        self.assertIn("RSET-0002/START-HERE.md", names)
+        self.assertIn("RSET-0002/RELEASE-NOTES.txt", names)
+
 
 if __name__ == "__main__":
     unittest.main()
