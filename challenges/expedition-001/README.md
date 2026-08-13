@@ -1,7 +1,9 @@
 # Expedition 001 — The Evidence Ledger
 
-Status: **RELEASE CANDIDATE — NOT YET OPEN**  
-Access: **Observer / free GitHub**  
+Status: **RELEASE CANDIDATE — NOT YET OPEN**
+
+Access: **Observer / free GitHub**
+
 Material: **synthetic method-training puzzle**
 
 This expedition teaches the vocabulary used to separate a verified result from a control, unresolved idea, bounded negative result, or correction. The scenarios are fictionalized training records. They are not source evidence and do not assert a Liber Primus solution.
