@@ -21,6 +21,15 @@ Last reviewed: 2026-08-13
 - Canonical object/provenance model, deterministic environment manifest, and mandatory human-controlled Public Release Gate
 - Research privacy, compute-entitlement, discovery disclosure, release-signing, and free-workflow contracts
 
+## Prepared after the frozen foundation
+
+- `RUN-0001`: bounded reproduction candidate for the already-public historical OpenPGP artifact verification.
+- `RUN-0002`: five synthetic acceptance and rejection tests for the canonical Expedition verifier core.
+- Distribution and UX standard separating developer source from customer-ready applications.
+- Automated public-boundary scan rejecting workstation paths and local endpoints.
+
+These additions are staged in draft PR #6. They do not modify the `v0.1.0` assets or claim an LP plaintext recovery, and `RR-0001` remains pending exact-subject approval.
+
 ## Source audit included in the foundation
 
 The first-pass audit covered the complete supplied Personal Research tree, including its nested More research collection:
@@ -53,8 +62,8 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 
 ## Immediate focus
 
-1. Release GP29 `v0.1` separately.
-2. Open Expedition 001 through its own release decision.
+1. Complete GP29 as the reference customer-ready instrument and release it separately.
+2. Open Expedition 001 only after its already-built Windows portable verifier is signed and bound to an approved campaign subject.
 3. Publish `RC-0001` only after clean reproduction and evidence packaging.
 4. Release HMS Endeavour Lite alpha through a separate capability review.
 
@@ -64,6 +73,7 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
 - Public GP29 Calculator: in development and intentionally excluded from the frozen foundation candidate; planned as the next separate tool release.
+- Expedition verifier: canonical core, GUI, CLI, tests, and a private Windows portable candidate exist; public download remains unavailable while the campaign is closed.
 - Endeavour Lite and Liber Runtime: architecture started; runnable applications remain planned.
 - Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
 - Scope: foundation content merged through PR #1; Expedition 001 remains closed pending its own release.

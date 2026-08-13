@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -189,8 +190,8 @@ def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
 
     errors: list[str] = []
     instruments = manifest.get("instruments")
-    if manifest.get("schema_version") != "1.0.0":
-        errors.append("schema_version must be 1.0.0")
+    if manifest.get("schema_version") != "1.1.0":
+        errors.append("schema_version must be 1.1.0")
     if not isinstance(instruments, list):
         return [f"{path.relative_to(ROOT)}: instruments must be a list"], 0
 
@@ -213,6 +214,34 @@ def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
             errors.append(f"{prefix}.status is unrecognized")
         if instrument.get("access_level") not in ACCESS_LEVELS:
             errors.append(f"{prefix}.access_level is unrecognized")
+        if instrument.get("product_class") not in {
+            "DEVELOPER_TOOL", "USER_INSTRUMENT", "PUZZLE_PACKAGE", "PLUGIN", "HOSTED_SERVICE"
+        }:
+            errors.append(f"{prefix}.product_class is unrecognized")
+        if not isinstance(instrument.get("customer_ready"), bool):
+            errors.append(f"{prefix}.customer_ready must be boolean")
+        delivery_modes = {
+            "WEB", "DESKTOP_INSTALLER", "DESKTOP_PORTABLE", "CLI_BINARY",
+            "RUNTIME", "PLUGIN", "DEVELOPER_SOURCE",
+        }
+        targets = instrument.get("target_delivery_modes")
+        released = instrument.get("released_delivery_modes")
+        if not isinstance(targets, list) or not targets or any(mode not in delivery_modes for mode in targets):
+            errors.append(f"{prefix}.target_delivery_modes must contain recognized modes")
+        if not isinstance(released, list) or any(mode not in delivery_modes for mode in released):
+            errors.append(f"{prefix}.released_delivery_modes must contain only recognized modes")
+        if isinstance(released, list) and isinstance(targets, list) and not set(released).issubset(targets):
+            errors.append(f"{prefix}.released_delivery_modes must be a subset of target_delivery_modes")
+        if instrument.get("customer_ready") and not released:
+            errors.append(f"{prefix}.customer_ready requires a released delivery mode")
+        platforms = instrument.get("supported_platforms")
+        if not isinstance(platforms, list) or any(not isinstance(item, str) or not item for item in platforms):
+            errors.append(f"{prefix}.supported_platforms must be a string array")
+        if instrument.get("customer_ready") and not platforms:
+            errors.append(f"{prefix}.customer_ready requires at least one supported platform")
+        download_page = instrument.get("download_page")
+        if download_page is not None and (not isinstance(download_page, str) or not download_page.startswith("https://")):
+            errors.append(f"{prefix}.download_page must be null or an HTTPS URL")
         for field in ("name", "purpose", "last_updated"):
             if not isinstance(instrument.get(field), str) or not instrument[field]:
                 errors.append(f"{prefix}.{field} must be a non-empty string")
@@ -339,6 +368,22 @@ def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
             errors.append(f"{prefix}.access_level must be OBSERVER")
         if challenge.get("challenge_type") not in CHALLENGE_TYPES:
             errors.append(f"{prefix}.challenge_type is unrecognized")
+        if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", str(challenge.get("version", ""))):
+            errors.append(f"{prefix}.version must be semantic x.y.z")
+        if challenge.get("difficulty") not in {"DECKHAND", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL"}:
+            errors.append(f"{prefix}.difficulty is unrecognized")
+        if challenge.get("source_class") not in {"SYNTHETIC", "KNOWN_CONTROL", "PUBLIC_STRUCTURAL", "PUBLIC_RESEARCH"}:
+            errors.append(f"{prefix}.source_class is unrecognized")
+        if challenge.get("evidence_ceiling") not in {"TRAINING", "KNOWN_CONTROL", "STRUCTURAL", "BOUNDED_NEGATIVE", "HYPOTHESIS"}:
+            errors.append(f"{prefix}.evidence_ceiling is unrecognized")
+        if not isinstance(challenge.get("beginner_entry"), bool):
+            errors.append(f"{prefix}.beginner_entry must be boolean")
+        for field in ("research_concept", "skill_taught"):
+            if not isinstance(challenge.get(field), str) or not challenge[field]:
+                errors.append(f"{prefix}.{field} must be a non-empty string")
+        instrument_used = challenge.get("instrument_used")
+        if instrument_used is not None and (not isinstance(instrument_used, str) or not instrument_used):
+            errors.append(f"{prefix}.instrument_used must be null or a non-empty string")
         digest = challenge.get("answer_sha256")
         if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
             errors.append(f"{prefix}.answer_sha256 must be a lowercase SHA-256 digest")
@@ -365,6 +410,33 @@ def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
             errors.append(f"{prefix} cannot be SOLVED while its solution is sealed")
         if not isinstance(challenge.get("research_claim"), bool):
             errors.append(f"{prefix}.research_claim must be boolean")
+        hints = challenge.get("public_hints")
+        if not isinstance(hints, list) or not hints:
+            errors.append(f"{prefix}.public_hints must contain at least one hint record")
+        else:
+            hint_ids: set[str] = set()
+            for hint_index, hint in enumerate(hints):
+                hint_prefix = f"{prefix}.public_hints[{hint_index}]"
+                if not isinstance(hint, dict):
+                    errors.append(f"{hint_prefix} must be an object")
+                    continue
+                hint_id = hint.get("id")
+                if not isinstance(hint_id, str) or not re.fullmatch(r"HINT-[0-9]+", hint_id):
+                    errors.append(f"{hint_prefix}.id is invalid")
+                elif hint_id in hint_ids:
+                    errors.append(f"{hint_prefix}.id is duplicated")
+                else:
+                    hint_ids.add(hint_id)
+                if hint.get("release_state") not in {"PUBLIC", "DELAYED", "SEALED"}:
+                    errors.append(f"{hint_prefix}.release_state is unrecognized")
+                hint_path = hint.get("path")
+                resolved_hint = (manifest_root / hint_path).resolve() if isinstance(hint_path, str) else None
+                if resolved_hint is None or not resolved_hint.is_file():
+                    errors.append(f"{hint_prefix}.path does not resolve to a file")
+                else:
+                    actual_hint_hash = hashlib.sha256(resolved_hint.read_bytes()).hexdigest()
+                    if hint.get("sha256") != actual_hint_hash:
+                        errors.append(f"{hint_prefix}.sha256 does not match the hint file")
 
     return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(challenges)
 
@@ -511,6 +583,17 @@ def validate_release_gates(directory: Path) -> tuple[list[str], dict[str, dict]]
                             names.add(name)
                         if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
                             errors.append(f"{manifest_path.relative_to(ROOT)}: artifact[{index}] sha256 is invalid")
+                        elif isinstance(name, str) and "/" in name and isinstance(candidate_sha, str):
+                            completed = subprocess.run(
+                                ["git", "show", f"{candidate_sha}:{name}"],
+                                cwd=ROOT,
+                                check=False,
+                                capture_output=True,
+                            )
+                            if completed.returncode != 0:
+                                errors.append(f"{manifest_path.relative_to(ROOT)}: artifact[{index}] is absent from candidate commit")
+                            elif hashlib.sha256(completed.stdout).hexdigest() != digest:
+                                errors.append(f"{manifest_path.relative_to(ROOT)}: artifact[{index}] hash disagrees with candidate commit")
             environment_id = subject.get("environment_id")
             if not isinstance(environment_id, str) or not (ROOT / "releases" / "environments" / f"{environment_id}.json").is_file():
                 errors.append(f"{path.relative_to(ROOT)}: environment_id does not resolve to a public manifest")

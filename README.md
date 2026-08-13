@@ -15,6 +15,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 - [Project status](PROJECT_STATUS.md) — what exists today
 - [Cicada 3301 / PGP provenance](CICADA_3301.md) — historical identity reference and non-affiliation boundary
 - [Public releases](PUBLIC_RELEASES.md) — what is actually available on GitHub now
+- [Public reproduction runs 001](reports/PUBLIC_RUNS_001.md) — bounded, runnable proof records with no advanced LP route disclosure
 - [Research index](RESEARCH_INDEX.md) — verified, control, open, negative, and corrected work
 - [Verified results](VERIFIED_RESULTS.md) — claims that have passed the public release gate
 - [Known controls](KNOWN_CONTROLS.md) — solved material used to validate HMS behavior
@@ -32,7 +33,9 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 - [Observer workflow](FREE_WORKFLOW.md) — the first complete free research path
 - [Roadmap](ROADMAP.md) — released, in-development, and planned capabilities
 - [Instrument registry](instruments/README.md) — the authoritative public tool-status page
+- [Distribution standard](docs/DISTRIBUTION_STANDARD.md) — when source becomes a usable customer release
 - [Public Expeditions](challenges/README.md) — free clues, puzzles, verifiers, and eventual solutions
+- [Expedition standard](docs/EXPEDITION_STANDARD.md) — beginner entry, hints, verification, and campaign quality gate
 - [Membership](MEMBERSHIP.md) — Patreon tiers and the current/planned capability boundary
 - [Architecture](ARCHITECTURE.md) — GitHub, Patreon, Runtime, Aegis, and Vault separation
 - [Governance](GOVERNANCE.md) — protected-branch and merge policy
@@ -47,6 +50,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 | Foundation | **RELEASED — v0.1.0** |
 | GP29 Calculator | IN DEVELOPMENT |
 | Expedition 001 | RELEASE CANDIDATE — CLOSED |
+| Expedition Verifier | IN DEVELOPMENT — private Windows candidate qualified; no public download |
 | RC-0001 | REPRODUCTION PENDING |
 | Endeavour Lite | ARCHITECTURE |
 | Corpus Manifest Verifier | IN DEVELOPMENT |
@@ -55,6 +59,8 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 | Batch Experiment Engine | PLANNED |
 
 **Verified HMS recoveries of previously unknown Liber Primus plaintext: 0**
+
+The public foundation currently distributes developer-source utilities, not customer applications. The first [public run drop](reports/PUBLIC_RUNS_001.md) is reproducible from source; the first Windows puzzle-verifier package remains private until Expedition 001 receives its own release approval.
 
 ## Current public position
 

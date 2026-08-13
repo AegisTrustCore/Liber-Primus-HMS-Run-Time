@@ -7,14 +7,14 @@
   "required": ["schema_version", "last_reviewed", "instruments"],
   "properties": {
     "$schema": {"type": "string"},
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"const": "1.1.0"},
     "last_reviewed": {"type": "string", "format": "date"},
     "instruments": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name", "purpose", "status", "current_version", "access_level", "last_updated"],
+        "required": ["id", "name", "purpose", "status", "current_version", "access_level", "product_class", "customer_ready", "target_delivery_modes", "released_delivery_modes", "supported_platforms", "download_page", "last_updated"],
         "properties": {
           "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
           "name": {"type": "string", "minLength": 1},
@@ -22,6 +22,12 @@
           "status": {"enum": ["PLANNED", "IN_DEVELOPMENT", "INTERNAL_TESTING", "EXPERIMENTAL", "BETA", "RELEASE_CANDIDATE", "STABLE", "RELEASED", "DEPRECATED"]},
           "current_version": {"type": ["string", "null"]},
           "access_level": {"enum": ["OBSERVER", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL", "INTERNAL"]},
+          "product_class": {"enum": ["DEVELOPER_TOOL", "USER_INSTRUMENT", "PUZZLE_PACKAGE", "PLUGIN", "HOSTED_SERVICE"]},
+          "customer_ready": {"type": "boolean"},
+          "target_delivery_modes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["WEB", "DESKTOP_INSTALLER", "DESKTOP_PORTABLE", "CLI_BINARY", "RUNTIME", "PLUGIN", "DEVELOPER_SOURCE"]}},
+          "released_delivery_modes": {"type": "array", "uniqueItems": true, "items": {"enum": ["WEB", "DESKTOP_INSTALLER", "DESKTOP_PORTABLE", "CLI_BINARY", "RUNTIME", "PLUGIN", "DEVELOPER_SOURCE"]}},
+          "supported_platforms": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "download_page": {"type": ["string", "null"]},
           "last_updated": {"type": "string", "format": "date"}
         }
       }

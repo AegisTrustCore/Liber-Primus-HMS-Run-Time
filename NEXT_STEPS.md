@@ -18,8 +18,8 @@ The [release gate](releases/gates/v0.1.0.json) records the repository owner's na
 
 ## Progressive public sequence
 
-1. Release GP29 `v0.1` as a separately versioned free tool.
-2. Open Expedition 001 only after the foundation is live on the default branch.
+1. Complete GP29 as a separately versioned, customer-ready free instrument.
+2. Sign and approve the tested Expedition 001 portable package, then open the campaign through its own immutable release gate.
 3. Publish `RC-0001` as the first public known-control package after clean reproduction.
 4. Release HMS Endeavour Lite alpha after its own capability and evidence review.
 5. Continue with individually reviewed research, tool, and Runtime releases.
@@ -29,3 +29,5 @@ The [release gate](releases/gates/v0.1.0.json) records the repository owner's na
 The public roadmap states what category of work is happening and what gate remains. The private research queue holds exact source experiments, assignments, parameters, datasets, candidate instructions, and active validation detail. A candidate enters GitHub in full only when it is intentionally promoted as a public package.
 
 Releases follow demonstrated capability, not arbitrary calendar promises.
+
+The [Distribution and User Experience Standard](docs/DISTRIBUTION_STANDARD.md) is now part of every software and puzzle gate. Public source satisfies only a declared developer workflow; an ordinary-user download must be packaged and tested separately.

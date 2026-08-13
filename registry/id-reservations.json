@@ -4,6 +4,8 @@
   "last_reviewed": "2026-08-13",
   "reservations": [
     {"id":"OBS-0001","object_type":"OBSERVATION","state":"ACTIVE","reserved_at":"2026-08-12"},
+    {"id":"RUN-0001","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
+    {"id":"RUN-0002","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
     {"id":"XPD-0001","object_type":"EXPEDITION","state":"ACTIVE","reserved_at":"2026-08-12"}
   ]
 }

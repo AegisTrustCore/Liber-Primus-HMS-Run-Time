@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "RR-0001",
+  "release_type": "RESEARCH",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {"schema_version":"1.0.0","candidate_commit_sha":"ce845dbe3e2f00e7dbab8111edf71d651d33add4","release_manifest":"releases/manifests/RR-0001.json","release_manifest_sha256":"5fb261398e73e93c3cd810c037cb2736ba95754e8259053f97abbd2d34681829","environment_id":"ENV-0002","intended_tag":"RR-0001"},
+  "common_checks": {"publication_approved":false,"secret_scan_passed":true,"rights_reviewed":true,"provenance_complete":true,"environment_recorded":true,"links_tested":true,"automated_validation_passed":true},
+  "type_checks": {"research":{"claims_bounded":true,"complete_family_retained":true,"controls_recorded":true,"corrections_linked":true,"clean_reproduction_passed":true}},
+  "human_approval": {"approved":false,"approver":null,"approved_at":null,"approved_subject_sha256":null},
+  "notes": [
+    "The repository owner requested preparation of bounded run and proof evidence while withholding structured advanced routes, candidate solves, and tier-only material. Exact-subject publication approval remains pending.",
+    "RUN-0001 reproduces an already-public provenance artifact claim; RUN-0002 uses synthetic vectors and stores no sealed Expedition answer.",
+    "No LP plaintext, candidate route, private dataset, or paid-tier packet is part of this release subject. Corrections are not applicable to either run and the records state their nearest overclaim boundaries.",
+    "Automation prepared and validated this exact release subject but did not approve it."
+  ]
+}

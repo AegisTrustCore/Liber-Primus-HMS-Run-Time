@@ -1,20 +1,21 @@
 # HMS Instrument Registry
 
-The machine-readable registry is [`manifest.json`](manifest.json). It is the authoritative public answer to “does this tool exist yet?”
+The machine-readable registry is [`manifest.json`](manifest.json). It is the authoritative public answer to “does this tool exist yet, and how can it actually be used?”
 
-| Instrument | Purpose | Status | Intended access |
+| Instrument | Status | Delivery reality | Intended access |
 |---|---|---|---|
-| Public Record Validator | Enforce public record and dossier invariants | RELEASED — 0.1.0 | Observer |
-| LP Source Audit Inventory | Hash and classify private intake without publishing raw paths | RELEASED — 0.1.0 | Observer |
-| Corpus Manifest Verifier | Verify canonical corpus inputs and hashes | IN DEVELOPMENT | Observer |
-| Public GP29 Calculator | Strict rune/token GP lookup and summation CLI | IN DEVELOPMENT | Observer |
-| Advanced GP Laboratory | Saved calculations, comparisons, and advanced analysis | PLANNED | Cartographer |
-| Liber Runtime Beta | Hosted personal research workspace | PLANNED | Navigator |
-| GP Solver | Automated candidate and parameter exploration | PLANNED | Navigator |
-| Batch Experiment Engine | Queued runs, sweeps, and comparisons | PLANNED | Navigator |
-| Socket/API Integration Layer | Authenticated programmatic Runtime access | PLANNED | Admiral |
-| Add-on and Plugin SDK | Capability-scoped instrument extensions | PLANNED | Admiral |
+| Public Record Validator | RELEASED — 0.1.0 | Developer source; not a customer application | Observer |
+| LP Source Audit Inventory | RELEASED — 0.1.0 | Developer source; not a customer application | Observer |
+| HMS Expedition Verifier | IN DEVELOPMENT | GUI/CLI portable package being qualified | Observer |
+| Corpus Manifest Verifier | IN DEVELOPMENT | No download | Observer |
+| Public GP29 Calculator | IN DEVELOPMENT | No download | Observer |
+| Advanced GP Laboratory | PLANNED | No service | Cartographer |
+| Liber Runtime Beta | PLANNED | No service | Navigator |
+| GP Solver | PLANNED | No service | Navigator |
+| Batch Experiment Engine | PLANNED | No service | Navigator |
+| Socket/API Integration Layer | PLANNED | No service | Admiral |
+| Add-on and Plugin SDK | PLANNED | No package | Admiral |
 
-`PLANNED` is not availability. Access levels describe the current intended destination and may be revised before implementation.
+The validator and source-audit inventory were released in `v0.1.0` specifically as developer tools. They require CPython and are not customer-ready applications. GP29 is intentionally held for a separate release, and Expedition 001 remains closed until its packaged verifier passes the customer release gate.
 
-The validator and source-audit inventory are released in `v0.1.0`. GP29 is intentionally held for a separate `v0.1` release.
+`PLANNED` is not availability. Access levels describe the intended destination; delivery modes describe packaging. See the [Distribution and User Experience Standard](../docs/DISTRIBUTION_STANDARD.md). `customer_ready: true` requires an actual tested user delivery, not merely public source.

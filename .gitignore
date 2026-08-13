@@ -12,3 +12,5 @@ private/
 vault/
 secrets/
 raw-exhaust/
+build/
+dist/
