@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "CMV-v0.1.0-dev",
+  "release_type": "SOFTWARE",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "687975e488e57d97491a3b5585f4e25a41d63dff",
+    "release_manifest": "releases/manifests/CMV-v0.1.0-dev.json",
+    "release_manifest_sha256": "3d238d5bf285c8d6409a682d0ebd89393835c5f8adc9d61cff1253aab03968c3",
+    "environment_id": "ENV-0005",
+    "intended_tag": "CMV-v0.1.0-dev"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "software": {
+      "tests_passed": true,
+      "package_hashes_present": true,
+      "dependency_manifest_present": true,
+      "security_scan_passed": true,
+      "build_reproducible": true,
+      "release_notes_complete": true
+    }
+  },
+  "human_approval": {"approved": false, "approver": null, "approved_at": null, "approved_subject_sha256": null},
+  "notes": [
+    "This development candidate is read-only and offline; it creates or verifies path/hash/byte-count manifests and exports portable verification reports.",
+    "No canonical Liber Primus corpus, source image, third-party transcription, private filename inventory, or workstation path is included.",
+    "The gate remains pending until independent Windows-runner package qualification, ordinary-user clean-machine acceptance, version promotion from dev, and explicit human approval.",
+    "A PASS verifies declared local byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution."
+  ]
+}

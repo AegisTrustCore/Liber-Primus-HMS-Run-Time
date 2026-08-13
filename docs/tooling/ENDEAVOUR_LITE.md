@@ -2,7 +2,7 @@
 
 Audience: Observer / public
 
-Status: Planned; architecture started
+Status: In development; shared calculation core runnable, local UI pending
 
 Endeavour Lite will be the local, reduced HMS workstation:
 
@@ -17,3 +17,5 @@ Endeavour Lite will be the local, reduced HMS workstation:
 - no automated declaration that text is solved.
 
 The first milestone wraps the GP29 calculator in a small local interface and exports the same structured result contract used by the Runtime.
+
+The shared GP29 and Runtime job/result cores now exist, and GP29 has its own release-candidate desktop interface, file loading, JSON export, and Windows portable package. Endeavour Lite still requires its unified shell, page/corpus views, side-by-side experiment workspace, multi-instrument export workflow, and ordinary-user qualification before it can be called runnable or released.

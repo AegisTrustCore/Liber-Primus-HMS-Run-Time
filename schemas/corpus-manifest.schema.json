@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/corpus-manifest.schema.json",
+  "title": "HMS Corpus Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "corpus_id", "version", "files"],
+  "properties": {
+    "schema": {"const": "HMS_CORPUS_MANIFEST_V1"},
+    "corpus_id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes", "role"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0},
+          "role": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

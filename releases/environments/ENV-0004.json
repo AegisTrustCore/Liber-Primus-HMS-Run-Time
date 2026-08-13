@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schemas/environment-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "id": "ENV-0004",
+  "hms_version": "GP29 0.1.0-rc.1 and Runtime core 0.0.1",
+  "engine": "CPython 3.12.10 core; PyInstaller 6.22.0 Windows bundler",
+  "operating_system": "Windows 10 22H2 x64 package build and local qualification; source tests on GitHub Actions Ubuntu",
+  "architecture": "Windows x64 standalone executables; architecture-independent Python source",
+  "dependencies": ["PyInstaller==6.22.0 (build only); packaged calculation/runtime code uses the Python standard library"],
+  "encoding": "UTF-8",
+  "alphabet_mapping": "Frozen 29-rune GP29 table in hms_tools/gp29.py; first 29 primes from 2 through 109",
+  "page_numbering": "Not applicable",
+  "corpus_manifest_id": null,
+  "random_seed": null,
+  "container_or_lock_hash": null
+}

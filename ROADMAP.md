@@ -13,7 +13,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Record validator and continuous integration | RELEASED — developer source |
 | Protected-main governance | RELEASED |
 | Membership and Patreon release boundary | RELEASED |
-| Corpus provenance and verification manifest | IN DEVELOPMENT |
+| Corpus provenance and verification manifest | INTERNAL TESTING — verifier development package locally qualified; canonical LP manifest pending |
 
 ## Research record
 
@@ -34,14 +34,14 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Public page index | PLANNED |
 | Page regions and Page Sets | PLANNED |
 | Comparison workspace | PLANNED |
-| Experiment engine and pipeline builder | PLANNED |
+| Experiment engine and pipeline builder | IN DEVELOPMENT — local GP29 and corpus-report validation jobs runnable |
 | Result comparison and saved research workspace | PLANNED |
 
 ## GP systems
 
 | Capability | Status |
 |---|---|
-| Public GP29 calculator | IN DEVELOPMENT |
+| Public GP29 calculator | RELEASE CANDIDATE — Windows desktop/CLI package built and locally qualified; public gate pending |
 | Advanced GP Laboratory | PLANNED |
 | GP Solver | PLANNED |
 | Batch experiment engine and parameter sweeps | PLANNED |
@@ -60,8 +60,8 @@ The roadmap describes intended direction. A planned capability is not an entitle
 
 ## Implementation boundary
 
-- Public GP29 Calculator: held for a separate `v0.1` release after the foundation.
+- Public GP29 Calculator: `v0.1.0-rc.1` desktop/CLI candidate built for Windows x64; security review, clean-machine qualification, human approval, and publication remain pending.
 - HMS Endeavour Lite: local interface and portable-result contract documented; application not yet implemented.
-- Liber Runtime: hosted job, workspace, entitlement, and verification boundaries documented; service not yet implemented.
+- Liber Runtime: deterministic local GP29 and corpus-report job/result core implemented; hosted persistence, auth, entitlements, quotas, and sockets remain pending.
 
 See the [tool architecture](docs/tooling/ARCHITECTURE.md). The instrument registry remains authoritative when roadmap prose and promotional language differ.

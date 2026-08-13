@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schemas/environment-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "id": "ENV-0005",
+  "hms_version": "Corpus Manifest Verifier 0.1.0-dev",
+  "engine": "CPython 3.12.10 core; PyInstaller 6.22.0 Windows bundler",
+  "operating_system": "Windows 10 22H2 x64 local package qualification; source tests on GitHub Actions Ubuntu",
+  "architecture": "Windows x64 standalone executables; architecture-independent Python source",
+  "dependencies": ["Pinned build environment in requirements-build.txt; packaged verifier uses the Python standard library"],
+  "encoding": "UTF-8 JSON and relative POSIX manifest paths",
+  "alphabet_mapping": "Not applicable",
+  "page_numbering": "Manifest-defined filenames; verifier does not infer page numbers",
+  "corpus_manifest_id": null,
+  "random_seed": null,
+  "container_or_lock_hash": null
+}
