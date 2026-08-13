@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/capsule-package.schema.json",
+  "title": "HMS Research Capsule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "version", "classification", "publication_status", "summary", "experiment_ids", "run_ids", "result_ids", "control_ids", "negative_result_ids", "correction_ids", "limitations", "finding_tags"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string", "pattern": "^CAP-[0-9]{4,}$"},
+    "title": {"type": "string", "minLength": 1},
+    "version": {"type": "string"},
+    "classification": {"const": "PUBLIC"},
+    "publication_status": {"const": "PUBLISHED"},
+    "summary": {"type": "string", "minLength": 1},
+    "experiment_ids": {"type": "array", "items": {"type": "string"}},
+    "run_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^RUN-[0-9]{4,}$"}},
+    "result_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^RES-[0-9]{4,}$"}},
+    "control_ids": {"type": "array", "items": {"type": "string"}},
+    "negative_result_ids": {"type": "array", "items": {"type": "string"}},
+    "correction_ids": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "finding_tags": {"type": "array", "items": {"type": "string"}}
+  }
+}

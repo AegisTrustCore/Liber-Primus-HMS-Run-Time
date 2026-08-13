@@ -1,0 +1,4 @@
+{
+  "description": "Calculate the artifact SHA-256, parse primary and subkey fingerprints with GnuPG, then compare the ordered values with the public key manifest.",
+  "implementation": "scripts/verify_cicada_key.py"
+}

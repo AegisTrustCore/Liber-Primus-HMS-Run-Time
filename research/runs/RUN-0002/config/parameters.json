@@ -1,0 +1,6 @@
+{
+  "command": "python -m unittest tests.test_challenge_verifier -v",
+  "test_vector_class": "SYNTHETIC",
+  "random_seed": null,
+  "random_seed_status": "NOT_APPLICABLE"
+}

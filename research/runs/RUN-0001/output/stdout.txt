@@ -1,0 +1,1 @@
+PASS — SHA-256 and 2 OpenPGP fingerprint(s) match the manifest.

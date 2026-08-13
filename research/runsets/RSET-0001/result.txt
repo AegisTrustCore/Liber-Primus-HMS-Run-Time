@@ -1,0 +1,16 @@
+HMS ENDEAVOUR
+RSET-0001
+
+Public Verification Foundations
+
+STATUS: STAGED
+
+Prove the canonical HMS research-package workflow with a curated, low-disclosure set of already-public executions.
+
+RUNS:
+RUN-0001
+RUN-0002
+
+RESULTS:
+RES-0001
+RES-0002

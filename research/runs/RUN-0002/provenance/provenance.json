@@ -1,0 +1,25 @@
+{
+  "source_system": "HMS_ENDEAVOUR",
+  "historical_source": {
+    "source_type": "PUBLIC_REPOSITORY_RUN",
+    "original_identifier": "RUN-0002",
+    "source_preserved": true
+  },
+  "environment_manifest": "releases/environments/ENV-0002.json",
+  "parent_records": [],
+  "source_paths": [
+    "research/records/RUN-0002.json"
+  ],
+  "migration": {
+    "historical": true,
+    "original_run": "RUN-0002",
+    "original_source": "HMS public research record",
+    "migrated_at": "2026-08-13T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Converted the flat public record into the canonical run-package schema.",
+      "Preserved the original five-test execution separately from later repository test-suite growth.",
+      "No measured output or claim was altered."
+    ]
+  }
+}

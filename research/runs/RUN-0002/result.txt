@@ -1,0 +1,47 @@
+HMS ENDEAVOUR
+RUN-0002
+
+TITLE:
+Synthetic acceptance and rejection tests for the Expedition verifier core
+
+STATUS:
+KNOWN_CONTROL / REPRODUCED
+
+SUMMARY:
+Five frozen synthetic tests established the verifier core's normalization, acceptance, rejection, empty-input, and unknown-challenge behavior without disclosing the sealed Expedition answer.
+
+WHY THIS RUN EXISTS:
+To establish deterministic verifier behavior as a precondition for packaging Expedition 001.
+
+TARGET:
+Canonical local Expedition verifier core
+
+METHOD:
+Construct a temporary synthetic challenge manifest and exercise normalization, match, nonmatch, empty input, and unknown-ID paths.
+
+PARAMETERS:
+{"command": "python -m unittest tests.test_challenge_verifier -v", "random_seed": null, "random_seed_status": "NOT_APPLICABLE", "test_vector_class": "SYNTHETIC"}
+
+RESULT:
+All five frozen verifier-core tests passed.
+
+METRICS:
+- tests_run: 5 count
+- tests_passed: 5 count
+- tests_failed: 0 count
+
+CONTROLS:
+- The positive vector must match its generated SHA-256 digest.
+- The negative vector must not match.
+- No XPD-0001 answer is stored in the tests.
+
+INTERPRETATION:
+The frozen verifier core behaved as specified under the public synthetic control suite.
+
+LIMITATIONS:
+- Unit tests establish deterministic core behavior, not desktop usability.
+- The sealed XPD-0001 acceptance test is performed privately against the packaged candidate.
+- This is not Liber Primus source evidence or a plaintext claim.
+
+SOURCE:
+HMS_ENDEAVOUR / RUN-0002

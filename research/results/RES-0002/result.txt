@@ -1,0 +1,29 @@
+HMS ENDEAVOUR
+RES-0002
+
+TITLE:
+Expedition verifier synthetic control behavior
+
+STATUS:
+KNOWN_CONTROL / REPRODUCED
+
+CLAIM:
+Under the frozen five-test synthetic suite, the canonical verifier core normalized answers consistently, accepted a matching digest, rejected a nonmatching digest, rejected empty normalized input, and rejected an unknown challenge ID.
+
+WHY IT MATTERS:
+It establishes an inspectable software-control result before any Expedition package is opened to users.
+
+SUPPORTED BY:
+RUN-0002
+
+WHAT THIS DOES NOT CLAIM:
+- That Expedition 001 is open.
+- That the Windows package is publicly released.
+- Any Liber Primus plaintext recovery.
+
+LIMITATIONS:
+- This result covers the verifier core, not desktop usability or packaging.
+- It does not validate the sealed Expedition answer.
+
+CURRENT INTERPRETATION:
+A reproduced known control for the verifier core; broader product qualification remains separately gated.

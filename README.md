@@ -12,10 +12,13 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 
 ## Start here
 
+- [**EXPLORE RESULTS**](research/results/README.md) — GitHub-native Result objects with supporting runs and downloads
+- [Research Archive](research/README.md) — Runs, Results, Capsules, and curated Run Sets
+- [Browse Runs](research/runs/README.md) — inputs, parameters, outputs, controls, provenance, and reproduction
 - [Project status](PROJECT_STATUS.md) — what exists today
 - [Cicada 3301 / PGP provenance](CICADA_3301.md) — historical identity reference and non-affiliation boundary
 - [Public releases](PUBLIC_RELEASES.md) — what is actually available on GitHub now
-- [Public reproduction runs 001](reports/PUBLIC_RUNS_001.md) — bounded, runnable proof records with no advanced LP route disclosure
+- [Public reproduction runs 001](research/runsets/RSET-0001/README.md) — structured, downloadable proof packages with no advanced LP route disclosure
 - [Research index](RESEARCH_INDEX.md) — verified, control, open, negative, and corrected work
 - [Verified results](VERIFIED_RESULTS.md) — claims that have passed the public release gate
 - [Known controls](KNOWN_CONTROLS.md) — solved material used to validate HMS behavior

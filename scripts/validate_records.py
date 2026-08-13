@@ -10,6 +10,11 @@ import subprocess
 import sys
 from pathlib import Path
 
+try:
+    from scripts.build_research_archive import validate_archive
+except ModuleNotFoundError:
+    from build_research_archive import validate_archive
+
 
 ROOT = Path(__file__).resolve().parents[1]
 RECORD_DIR = ROOT / "research" / "records"
@@ -644,7 +649,7 @@ def validate_id_registry(path: Path, required_ids: set[str]) -> tuple[list[str],
     if not isinstance(reservations, list):
         return [f"{path.relative_to(ROOT)}: reservations must be a list"], 0
     seen: set[str] = set()
-    canonical = re.compile(r"^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|RC|ENV|PUB|XPD)-[0-9]{4,}$")
+    canonical = re.compile(r"^(CORP|PAGE|REG|PSET|PIPE|OBS|HYP|EXP|RUN|RES|NEG|EVD|CLM|HL|PL|RR|COR|RET|RC|ENV|PUB|XPD|CAP|RSET)-[0-9]{4,}$")
     for index, reservation in enumerate(reservations):
         item_id = reservation.get("id") if isinstance(reservation, dict) else None
         if not isinstance(item_id, str) or not canonical.fullmatch(item_id):
@@ -686,8 +691,16 @@ def main() -> int:
         item.get("id") for item in load_json(CHALLENGE_MANIFEST).get("challenges", [])
         if isinstance(item, dict) and isinstance(item.get("id"), str)
     }
-    registry_errors, reservation_count = validate_id_registry(ID_REGISTRY, seen_ids | challenge_ids)
+    archive_ids = {
+        path.parent.name
+        for kind in ("runs", "results", "capsules", "runsets")
+        for path in (ROOT / "research" / kind).glob("*/manifest.json")
+    }
+    registry_errors, reservation_count = validate_id_registry(
+        ID_REGISTRY, seen_ids | challenge_ids | archive_ids
+    )
     errors.extend(registry_errors)
+    errors.extend(f"research archive: {error}" for error in validate_archive())
 
     if release_state.get("github", {}).get("current_public_tag") is None:
         instrument_manifest = load_json(INSTRUMENT_MANIFEST)

@@ -10,6 +10,12 @@ This page is the human-readable authority for what HMS Endeavour has actually re
 
 The foundation publishes one verified provenance record, `OBS-0001`. It publishes **zero** HMS-originated recoveries of previously unknown Liber Primus plaintext.
 
+## Structured Research Archive
+
+The public source tree exposes actual [Runs](research/runs/README.md), [Results](research/results/README.md), and [Research Capsules](research/capsules/README.md). Each published object includes an authoritative manifest, portable HTML and text views, structured JSON/CSV where applicable, provenance, checksums, and a downloadable ZIP.
+
+`RSET-0001` is a **STAGED** curated distribution package. Its member Runs and Results are published research objects, but the Run Set is not a tagged GitHub Release asset until it receives its own exact-subject release approval.
+
 ### First free-drop candidate
 
 [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md) is a synthetic method-training puzzle with a local, no-telemetry verifier. Its status is `RELEASE_CANDIDATE`, not `OPEN`. It introduces no new Liber Primus research claim and will receive a complete public solution after its campaign window.

@@ -1,0 +1,4 @@
+{
+  "description": "Construct a temporary synthetic challenge manifest and exercise normalization, match, nonmatch, empty input, and unknown-ID paths.",
+  "implementation": "tests/test_challenge_verifier.py"
+}

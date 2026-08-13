@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "object_type": "RUNS",
+  "count": 2,
+  "entries": [
+    {
+      "id": "RUN-0001",
+      "title": "Clean replay of the historical Cicada 3301 OpenPGP artifact verification",
+      "status": "KNOWN_CONTROL",
+      "reproduction_status": "REPRODUCED",
+      "page": null,
+      "method": "ARTIFACT_IDENTITY_VERIFICATION",
+      "capsule": "CAP-0001",
+      "package": "RUN-0001/RUN-0001.zip",
+      "package_sha256": "f05014dc56c102f9b9d65c162b8814a46479f95631e24904d1039c8210cdb172",
+      "result_page": "RUN-0001/result.html"
+    },
+    {
+      "id": "RUN-0002",
+      "title": "Synthetic acceptance and rejection tests for the Expedition verifier core",
+      "status": "KNOWN_CONTROL",
+      "reproduction_status": "REPRODUCED",
+      "page": null,
+      "method": "SYNTHETIC_SOFTWARE_VERIFICATION",
+      "capsule": "CAP-0001",
+      "package": "RUN-0002/RUN-0002.zip",
+      "package_sha256": "1cdea40c56de908241e1afcfb30291aaa654016a4aebb0047defd890f5f0149d",
+      "result_page": "RUN-0002/result.html"
+    }
+  ]
+}

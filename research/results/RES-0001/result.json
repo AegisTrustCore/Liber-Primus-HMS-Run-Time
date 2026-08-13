@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0001",
+  "evidence_class": "VERIFIED",
+  "claim": "The bundled armored public-key file has SHA-256 6e397c5c6ceeeb4da08535db74874989f193c914b8d2d87972dd282b24ea809f and parses to primary fingerprint 6D854CD7933322A601C3286D181F01E57A35090F plus encryption-subkey fingerprint DEC57731ACCBFD11EEBA13434D390ECF671DDEB1.",
+  "current_interpretation": "Verified artifact identity and packet metadata; authority remains explicitly unclaimed."
+}

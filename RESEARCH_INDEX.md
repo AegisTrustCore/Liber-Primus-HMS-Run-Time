@@ -9,7 +9,9 @@ This index answers three different questions separately: what is publicly verifi
 | Class | Current public position | Supporting location |
 |---|---|---|
 | Historical PGP identity artifact | Bundled key bytes and full parsed fingerprint verified; provenance claim remains narrowly scoped | [OBS-0001](research/records/OBS-0001.json) |
-| Public reproduction runs | OpenPGP artifact replay and synthetic Expedition-verifier tests reproduced | [RUN-0001 and RUN-0002](reports/PUBLIC_RUNS_001.md) |
+| Public Results | Two bounded Results currently published; neither is an LP plaintext recovery | [Browse Results](research/results/README.md) |
+| Public reproduction runs | OpenPGP artifact replay and synthetic Expedition-verifier tests reproduced | [Browse Runs](research/runs/README.md) |
+| Research Capsules | Public verification foundation teaching the RUN → RESULT relationship | [Browse Capsules](research/capsules/README.md) |
 | New HMS-originated LP plaintext | None published | [Verified results](VERIFIED_RESULTS.md) |
 | Known solved-material controls | Strong reproduction candidates identified; public packages pending | [Known controls](KNOWN_CONTROLS.md) |
 | Page 32 | Structural candidates and bounded negative results; rune prose remains unsolved | [Page 32 dossier](pages/page-032/README.md) |
@@ -27,3 +29,5 @@ This index answers three different questions separately: what is publicly verifi
 5. `RC-0005` — independently implement one structural observation.
 
 Exact assignments, parameters, and datasets belong to the private research queue. GitHub records only the [public release-candidate roadmap](audit/RELEASE_CANDIDATE_QUEUE.md) until a package passes the public gate.
+
+The structured [Research Archive](research/README.md) is the canonical publication surface. Markdown ledgers explain the record; package manifests and their linked artifacts are the record.
