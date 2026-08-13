@@ -37,6 +37,8 @@ The release then supplies exactly one matching type gate:
 - **Expedition:** solution state, verifier, challenge-state consistency, and bounded research claims.
 - **Publication:** bounded claims, cited sources, corrections, and evidence links.
 
+Customer applications and puzzle packages also follow the [Distribution and User Experience Standard](docs/DISTRIBUTION_STANDARD.md). Public source alone satisfies only a declared developer-source delivery. A customer-ready release requires a tested user artifact and supported launch path.
+
 Research-only checks are not forced onto software releases, and software packaging checks are not used as substitutes for research evidence.
 
 ## Enforced state machine

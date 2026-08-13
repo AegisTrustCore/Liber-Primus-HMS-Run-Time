@@ -8,11 +8,11 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 
 | Capability | Status |
 |---|---|
-| Public repository and release boundary | RELEASE CANDIDATE |
-| Research methodology and publication schemas | RELEASE CANDIDATE |
-| Record validator and continuous integration | RELEASE CANDIDATE |
+| Public repository and release boundary | RELEASED |
+| Research methodology and publication schemas | RELEASED |
+| Record validator and continuous integration | RELEASED — developer source |
 | Protected-main governance | RELEASED |
-| Membership and Patreon release boundary | RELEASE CANDIDATE |
+| Membership and Patreon release boundary | RELEASED |
 | Corpus provenance and verification manifest | IN DEVELOPMENT |
 
 ## Research record
@@ -51,7 +51,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Capability | Status |
 |---|---|
 | Checksum and corpus-manifest verifier | IN DEVELOPMENT |
-| Public reproduction packages | PLANNED |
+| Public reproduction packages | RELEASED — RUN-0001 and RUN-0002 |
 | ProofLock and notary verification | PLANNED |
 | Authenticated sockets and API | PLANNED |
 | Add-on architecture and plugin SDK | PLANNED |

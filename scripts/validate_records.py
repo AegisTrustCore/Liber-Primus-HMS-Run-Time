@@ -189,8 +189,8 @@ def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
 
     errors: list[str] = []
     instruments = manifest.get("instruments")
-    if manifest.get("schema_version") != "1.0.0":
-        errors.append("schema_version must be 1.0.0")
+    if manifest.get("schema_version") != "1.1.0":
+        errors.append("schema_version must be 1.1.0")
     if not isinstance(instruments, list):
         return [f"{path.relative_to(ROOT)}: instruments must be a list"], 0
 
@@ -213,6 +213,34 @@ def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
             errors.append(f"{prefix}.status is unrecognized")
         if instrument.get("access_level") not in ACCESS_LEVELS:
             errors.append(f"{prefix}.access_level is unrecognized")
+        if instrument.get("product_class") not in {
+            "DEVELOPER_TOOL", "USER_INSTRUMENT", "PUZZLE_PACKAGE", "PLUGIN", "HOSTED_SERVICE"
+        }:
+            errors.append(f"{prefix}.product_class is unrecognized")
+        if not isinstance(instrument.get("customer_ready"), bool):
+            errors.append(f"{prefix}.customer_ready must be boolean")
+        delivery_modes = {
+            "WEB", "DESKTOP_INSTALLER", "DESKTOP_PORTABLE", "CLI_BINARY",
+            "RUNTIME", "PLUGIN", "DEVELOPER_SOURCE",
+        }
+        targets = instrument.get("target_delivery_modes")
+        released = instrument.get("released_delivery_modes")
+        if not isinstance(targets, list) or not targets or any(mode not in delivery_modes for mode in targets):
+            errors.append(f"{prefix}.target_delivery_modes must contain recognized modes")
+        if not isinstance(released, list) or any(mode not in delivery_modes for mode in released):
+            errors.append(f"{prefix}.released_delivery_modes must contain only recognized modes")
+        if isinstance(released, list) and isinstance(targets, list) and not set(released).issubset(targets):
+            errors.append(f"{prefix}.released_delivery_modes must be a subset of target_delivery_modes")
+        if instrument.get("customer_ready") and not released:
+            errors.append(f"{prefix}.customer_ready requires a released delivery mode")
+        platforms = instrument.get("supported_platforms")
+        if not isinstance(platforms, list) or any(not isinstance(item, str) or not item for item in platforms):
+            errors.append(f"{prefix}.supported_platforms must be a string array")
+        if instrument.get("customer_ready") and not platforms:
+            errors.append(f"{prefix}.customer_ready requires at least one supported platform")
+        download_page = instrument.get("download_page")
+        if download_page is not None and (not isinstance(download_page, str) or not download_page.startswith("https://")):
+            errors.append(f"{prefix}.download_page must be null or an HTTPS URL")
         for field in ("name", "purpose", "last_updated"):
             if not isinstance(instrument.get(field), str) or not instrument[field]:
                 errors.append(f"{prefix}.{field} must be a non-empty string")

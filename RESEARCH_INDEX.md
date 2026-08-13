@@ -1,6 +1,6 @@
 # Public Research Index
 
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-13
 
 This index answers three different questions separately: what is publicly verified, what is a known control, and what is still being tested. A promising result does not move between these categories by wording alone.
 
@@ -9,6 +9,7 @@ This index answers three different questions separately: what is publicly verifi
 | Class | Current public position | Supporting location |
 |---|---|---|
 | Historical PGP identity artifact | Bundled key bytes and full parsed fingerprint verified; provenance claim remains narrowly scoped | [OBS-0001](research/records/OBS-0001.json) |
+| Public reproduction runs | OpenPGP artifact replay and synthetic Expedition-verifier tests reproduced | [RUN-0001 and RUN-0002](reports/PUBLIC_RUNS_001.md) |
 | New HMS-originated LP plaintext | None published | [Verified results](VERIFIED_RESULTS.md) |
 | Known solved-material controls | Strong reproduction candidates identified; public packages pending | [Known controls](KNOWN_CONTROLS.md) |
 | Page 32 | Structural candidates and bounded negative results; rune prose remains unsolved | [Page 32 dossier](pages/page-032/README.md) |
