@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/runtime-job.schema.json",
+  "title": "HMS Runtime Job v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "operation", "input", "parameters", "visibility", "job_id", "specification_sha256"],
+  "properties": {
+    "schema": {"const": "HMS_RUNTIME_JOB_V1"},
+    "operation": {"enum": ["gp29.calculate"]},
+    "input": {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}}},
+    "parameters": {"type": "object", "additionalProperties": false, "required": ["mode"], "properties": {"mode": {"enum": ["auto", "runes", "tokens"]}}},
+    "visibility": {"enum": ["PRIVATE", "PROJECT", "GROUP", "HMS_REVIEW", "PUBLIC"]},
+    "job_id": {"type": "string", "pattern": "^JOB-[A-F0-9]{16}$"},
+    "specification_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
