@@ -6,8 +6,8 @@
     {
       "id": "XPD-0001",
       "title": "The Evidence Ledger",
-      "version": "0.2.0",
-      "status": "RELEASE_CANDIDATE",
+      "version": "0.3.0",
+      "status": "DRAFT",
       "classification": "PUBLIC",
       "access_level": "OBSERVER",
       "challenge_type": "SYNTHETIC_METHOD_TRAINING",
@@ -20,14 +20,15 @@
       "beginner_entry": true,
       "entrypoint": "expedition-001/README.md",
       "verifier": "../scripts/verify_challenge.py",
-      "answer_sha256": "c92bcb2ea7bb84e1c56bd8e0f16b9f01fc8fb928de8ce5f71ca91cb84cc753dd",
+      "verification_mode": "REMOTE_SEALED",
+      "verification_endpoint": null,
       "public_hints": [
-        {"id":"HINT-0","path":"expedition-001/HINTS.md","sha256":"cc14816295e05f541398d002c40bd0616dc6848d46c8782bba01ef18eb79876f","release_state":"PUBLIC"}
+        {"id":"HINT-0","path":"expedition-001/HINTS.md","sha256":"507d2976f9593fe9e91bce338ebfe51e22861cdd9d5b63a531bb91808fa6b2d1","release_state":"PUBLIC"}
       ],
       "solution_status": "SEALED",
       "public_solution": null,
       "research_claim": false,
-      "last_updated": "2026-08-13"
+      "last_updated": "2026-08-14"
     }
   ]
 }

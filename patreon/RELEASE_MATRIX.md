@@ -29,7 +29,7 @@ Public and member packages use the same [`RUN → RES → CAP → RSET`](../docs
 
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
 
-As of 2026-08-14, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. No Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 is a tested release candidate, but its campaign is closed and its tiered hint, worksheet, validation, and solution releases are not live.
+As of 2026-08-14, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. No Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit, its sealed-service replacement is in development, and no tiered hint, worksheet, validation, or solution release is live.
 
 ## Expedition release ladder
 
@@ -37,7 +37,7 @@ Public Expeditions use one answer and one evidence standard across every tier:
 
 | Layer | Expedition material | Release relation |
 |---|---|---|
-| Observer / GitHub | Complete puzzle, public clue, local verifier, eventual full solution | Opens the campaign and closes it publicly |
+| Observer / GitHub | Complete puzzle, public clue, packaged verifier client, eventual full solution | Opens the campaign and closes it publicly |
 | Pilgrim | Orientation hint and expedition dispatch | Earlier guided entry |
 | Navigator | Stronger analytical hint and result preview | Earlier/deeper analysis |
 | Cartographer | Structured worksheet and evidence ledger | Reusable research organization |

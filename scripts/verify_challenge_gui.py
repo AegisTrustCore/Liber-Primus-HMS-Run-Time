@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline desktop interface for HMS Expedition verification."""
+"""Desktop interface for HMS Expedition sealed-service verification."""
 
 from __future__ import annotations
 
@@ -13,8 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from hms_tools.challenge_verifier import verify_answer
-from hms_tools.expedition_verifier import build_receipt, packaged_self_test
+from hms_tools.challenge_verifier import application_root
+from hms_tools.expedition_client import ExpeditionClientError, configured_endpoint, verify_remote
+from hms_tools.expedition_verifier import packaged_self_test
 from hms_tools.expedition_001 import CHALLENGE_ID, HINTS, VERSION, hint_text, instructions_text
 
 
@@ -30,7 +31,7 @@ class VerifierApp:
         frame.pack(fill="both", expand=True)
         ttk.Label(frame, text="HMS ENDEAVOUR", font=("Segoe UI", 10, "bold")).pack(anchor="w")
         ttk.Label(frame, text="Expedition Verifier", font=("Segoe UI", 18, "bold")).pack(anchor="w")
-        ttk.Label(frame, text="Local verifier · no account · no telemetry · no network request").pack(anchor="w", pady=(4, 20))
+        ttk.Label(frame, text="Sealed verification service · no account · no telemetry").pack(anchor="w", pady=(4, 20))
 
         ttk.Label(frame, text="Expedition").pack(anchor="w")
         ttk.Label(frame, text="XPD-0001 — The Evidence Ledger").pack(anchor="w", pady=(2, 12))
@@ -57,14 +58,17 @@ class VerifierApp:
         self.answer.focus_set()
 
     def verify(self) -> None:
-        result = verify_answer(CHALLENGE_ID, self.answer.get())
-        if result.code == 2:
+        try:
+            endpoint = configured_endpoint(application_root() / "challenges" / "manifest.json")
+            if endpoint is None:
+                raise ExpeditionClientError("Verification is not active; the campaign remains closed.")
+            self.receipt = verify_remote(endpoint, CHALLENGE_ID, self.answer.get(), VERSION)
+        except ExpeditionClientError as error:
             self.receipt = None
-            self.status.set("INPUT ERROR")
-            self.details.set(result.message)
+            self.status.set("SERVICE UNAVAILABLE")
+            self.details.set(str(error))
             return
-        self.receipt = build_receipt(CHALLENGE_ID, self.answer.get(), result, VERSION)
-        if result.matched:
+        if self.receipt["accepted"]:
             self.status.set("VALID STAGE RESULT")
             self.details.set(f"Verifier: {VERSION}\nProof receipt: {self.receipt['receipt_id']}")
         else:

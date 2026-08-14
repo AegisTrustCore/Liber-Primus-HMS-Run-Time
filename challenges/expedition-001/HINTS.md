@@ -32,7 +32,7 @@ After choosing the labels, do not count punctuation or underscores. For example:
 BOUNDED_NEGATIVE → BOUNDEDNEGATIVE
 ```
 
-Now count characters from 1, not 0. Use positions `2, 3, 3, 9, 1` in log order and join the extracted characters without separators.
+Now count characters from 1, not 0. Use positions `2, 3, 11, 6, 7` in log order and join the extracted characters without separators.
 
 ## Signal 4 — Return to the ledger
 

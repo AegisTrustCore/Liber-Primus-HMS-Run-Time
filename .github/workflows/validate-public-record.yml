@@ -237,7 +237,7 @@ jobs:
         shell: pwsh
         run: |
           python scripts/build_expedition_verifier_windows.py
-          $zip = 'dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip'
+          $zip = 'dist/HMS-XPD-0001-v0.3.0-Windows-x64-portable.zip'
           $first = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
           python scripts/build_expedition_verifier_windows.py
           $second = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
@@ -246,7 +246,7 @@ jobs:
       - name: Qualify customer interfaces without exposing the sealed answer
         shell: pwsh
         run: |
-          $zip = Resolve-Path 'dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip'
+          $zip = Resolve-Path 'dist/HMS-XPD-0001-v0.3.0-Windows-x64-portable.zip'
           $qual = Join-Path $env:RUNNER_TEMP 'expedition-verifier-qualification'
           Expand-Archive -LiteralPath $zip -DestinationPath $qual
           & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --self-test
@@ -255,14 +255,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Packaged instructions failed' }
           & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --hint 1 | Out-Null
           if ($LASTEXITCODE -ne 0) { throw 'Packaged hint failed' }
-          $rejectedOutput = Join-Path $env:RUNNER_TEMP 'expedition-deliberate-nonmatch.json'
-          $reject = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') -ArgumentList '--json', 'deliberate-nonmatch' -RedirectStandardOutput $rejectedOutput -Wait -PassThru
-          $rejected = Get-Content $rejectedOutput | ConvertFrom-Json
-          if ($reject.ExitCode -ne 1 -or $rejected.accepted -ne $false -or $rejected.solution_disclosed -ne $false) { throw 'Nonmatch contract failed' }
+          $closedOutput = Join-Path $env:RUNNER_TEMP 'expedition-closed-output.txt'
+          $closedError = Join-Path $env:RUNNER_TEMP 'expedition-closed-error.txt'
+          $closed = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') -ArgumentList '--json', 'deliberate-nonmatch' -RedirectStandardOutput $closedOutput -RedirectStandardError $closedError -Wait -PassThru
+          if ($closed.ExitCode -ne 2 -or (Get-Content $closedError -Raw) -notmatch 'campaign remains closed') { throw 'Unconfigured client did not fail closed' }
           $gui = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier.exe') -ArgumentList '--self-test' -Wait -PassThru
           if ($gui.ExitCode -ne 0) { throw 'Packaged GUI self-test failed' }
           $manifest = Get-Content (Join-Path $qual 'manifest.json') | ConvertFrom-Json
-          if ($manifest.status -ne 'IN_DEVELOPMENT' -or $manifest.package_state -ne 'QUALIFICATION_CANDIDATE_NOT_FOR_RELEASE' -or $manifest.campaign_state -ne 'CLOSED' -or $manifest.solution_disclosed -ne $false) { throw 'Package boundary is not closed, non-disclosing, and development-only' }
+          if ($manifest.status -ne 'IN_DEVELOPMENT' -or $manifest.package_state -ne 'SECURE_SERVICE_CANDIDATE_NOT_FOR_RELEASE' -or $manifest.campaign_state -ne 'CLOSED' -or $manifest.solution_disclosed -ne $false -or $manifest.verification_endpoint_configured -ne $false) { throw 'Package boundary is not closed, non-disclosing, and development-only' }
           Push-Location $qual
           Get-Content SHA256SUMS | ForEach-Object {
             $parts = $_ -split '  ', 2
@@ -274,6 +274,6 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: expedition-verifier-windows-candidate-not-for-release
-          path: dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip
+          path: dist/HMS-XPD-0001-v0.3.0-Windows-x64-portable.zip
           if-no-files-found: error
           retention-days: 7

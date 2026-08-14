@@ -486,9 +486,21 @@ def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
         instrument_used = challenge.get("instrument_used")
         if instrument_used is not None and (not isinstance(instrument_used, str) or not instrument_used):
             errors.append(f"{prefix}.instrument_used must be null or a non-empty string")
+        verification_mode = challenge.get("verification_mode")
+        endpoint = challenge.get("verification_endpoint")
         digest = challenge.get("answer_sha256")
-        if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
-            errors.append(f"{prefix}.answer_sha256 must be a lowercase SHA-256 digest")
+        if verification_mode == "LOCAL_DIGEST":
+            if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
+                errors.append(f"{prefix}.answer_sha256 must be a lowercase SHA-256 digest in LOCAL_DIGEST mode")
+        elif verification_mode == "REMOTE_SEALED":
+            if "answer_sha256" in challenge:
+                errors.append(f"{prefix}.answer_sha256 must be absent in REMOTE_SEALED mode")
+            if endpoint is not None and (not isinstance(endpoint, str) or not endpoint.startswith("https://")):
+                errors.append(f"{prefix}.verification_endpoint must be null or HTTPS in REMOTE_SEALED mode")
+            if challenge.get("status") == "OPEN" and endpoint is None:
+                errors.append(f"{prefix}.verification_endpoint is required before a REMOTE_SEALED campaign opens")
+        else:
+            errors.append(f"{prefix}.verification_mode is unrecognized")
         for field in ("entrypoint", "verifier"):
             relative_file = challenge.get(field)
             if not isinstance(relative_file, str) or not relative_file:

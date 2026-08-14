@@ -13,13 +13,13 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 PACKAGE_NAME = f"HMS-XPD-0001-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 14, 0, 0, 0)
 
-QUICK_START = """HMS ENDEAVOUR — EXPEDITION 001 VERIFIER v0.2.0
+QUICK_START = """HMS ENDEAVOUR — EXPEDITION 001 VERIFIER v0.3.0
 
-PRACTICE PREVIEW — CAMPAIGN CLOSED — OBSERVER / PUBLIC
+SECURE-SERVICE DEVELOPMENT CANDIDATE — CAMPAIGN CLOSED — NOT FOR RELEASE
 
 1. Double-click HMS-XPD-0001-Verifier.exe.
 2. Solve the five synthetic Evidence Ledger classifications.
@@ -33,16 +33,16 @@ Power users:
   HMS-XPD-0001-Verifier-CLI.exe --hint 1
   HMS-XPD-0001-Verifier-CLI.exe --json YOUR_ANSWER
 
-The verifier is offline, local-only, and contains no account, telemetry, or network path.
-It returns PASS/FAIL only and discloses no proximity or protected solution material.
+Instructions and self-tests work offline. Answer verification requires the configured official
+HTTPS service. This development package has no endpoint and must fail closed.
 """
 
 SECURITY = """PUBLIC CLIENT SECURITY BOUNDARY
 
 The package must not contain plaintext solutions, future-stage secrets, unreleased hints,
 private key material, reversible answer representations, private research routes, credentials,
-or tier-only material. The verifier compares normalized input to the frozen public digest and
-returns PASS/FAIL plus a receipt containing only the submission hash.
+or tier-only material. No answer digest or equivalent acceptance predicate may ship publicly.
+The configured HTTPS service returns a signed receipt containing only the submission hash.
 """
 
 
@@ -90,9 +90,10 @@ def main() -> int:
         "expedition_id": "XPD-0001",
         "version": VERSION,
         "status": "IN_DEVELOPMENT",
-        "package_state": "QUALIFICATION_CANDIDATE_NOT_FOR_RELEASE",
+        "package_state": "SECURE_SERVICE_CANDIDATE_NOT_FOR_RELEASE",
         "campaign_state": "CLOSED",
-        "network_access": False,
+        "network_access": True,
+        "verification_endpoint_configured": False,
         "telemetry": False,
         "solution_disclosed": False,
     }

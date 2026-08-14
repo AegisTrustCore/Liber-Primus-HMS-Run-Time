@@ -17,7 +17,7 @@ class ExpeditionGuidanceChecks(unittest.TestCase):
         self.assertIn("LOGS", instructions)
         self.assertIn("VOCABULARY", instructions)
         self.assertIn("STEPS", instructions)
-        self.assertIn("2, 3, 3, 9, and 1", instructions)
+        self.assertIn("2, 3, 11, 6, and 7", instructions)
         self.assertNotIn("PASS — XPD-0001", instructions)
 
     def test_progressive_hints_are_available_without_answer(self) -> None:
