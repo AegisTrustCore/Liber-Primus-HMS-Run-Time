@@ -7,7 +7,7 @@ All challenges follow the [Expedition Design Standard](../docs/EXPEDITION_STANDA
 ## Release states
 
 - `DRAFT` — being written; not available to participants
-- `RELEASE_CANDIDATE` — complete in a review branch; not yet released
+- `RELEASE_CANDIDATE` — complete and visible for review or practice; formal campaign and customer package not yet released
 - `OPEN` — playable from the public default branch
 - `SOLVED` — solution and reasoning have been published
 - `ARCHIVED` — retained as a historical record
