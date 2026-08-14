@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Windows GP29 GUI/CLI release-candidate package."""
+"""Build the Windows GP29 v0.1.0 release-candidate package."""
 
 from __future__ import annotations
 
@@ -12,11 +12,11 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.1.0-rc.2"
+VERSION = "0.1.0"
 PACKAGE_NAME = f"HMS-GP29-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 13, 0, 0, 0)
 
-START_HERE = """HMS GP29 Calculator v0.1.0-rc.2
+START_HERE = """HMS GP29 Calculator v0.1.0
 
 WHAT IT IS
 A deterministic Gematria Primus calculator. It is not a decoder and makes no Liber Primus solve claim.
@@ -54,7 +54,7 @@ VERIFY
 Compare each included file with SHA256SUMS. Compare this ZIP with the checksum on the official GitHub release page.
 
 STATUS
-Release candidate. Do not redistribute it as an approved HMS release until its public software gate is APPROVED.
+Release candidate. This exact ZIP is not an approved HMS release until its public software gate is APPROVED and the official GitHub release is published.
 """
 
 

@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
 from hms_tools.gp29 import GP29InputError, calculate, format_human, self_test
 
 PRODUCT = "HMS GP29 Calculator"
-VERSION = "0.1.0-rc.2"
+VERSION = "0.1.0"
 
 
 class GP29App(tk.Tk):

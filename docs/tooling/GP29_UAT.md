@@ -38,7 +38,7 @@ Acceptance requires all steps to pass and `tester_help_required` to be `false`.
   "schema": "HMS_GP29_UAT_V1",
   "test_id": "UAT-GP29-0001",
   "instrument": "GP29",
-  "candidate": "0.1.0-rc.2",
+  "candidate": "0.1.0",
   "os": "",
   "architecture": "x64",
   "fresh_machine": true,
