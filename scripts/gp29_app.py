@@ -13,10 +13,10 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from hms_tools.gp29 import GP29InputError, calculate, self_test
+from hms_tools.gp29 import GP29InputError, calculate, format_human, self_test
 
 PRODUCT = "HMS GP29 Calculator"
-VERSION = "0.1.0-rc.1"
+VERSION = "0.1.0-rc.2"
 
 
 class GP29App(tk.Tk):
@@ -39,14 +39,14 @@ class GP29App(tk.Tk):
         bar = ttk.Frame(frame)
         bar.pack(fill="x")
         ttk.Label(bar, text="Input mode:").pack(side="left")
-        ttk.Combobox(bar, textvariable=self.mode, values=("auto", "runes", "tokens"), width=10, state="readonly").pack(side="left", padx=6)
+        ttk.Combobox(bar, textvariable=self.mode, values=("auto", "runes", "latin", "tokens"), width=10, state="readonly").pack(side="left", padx=6)
         ttk.Button(bar, text="Load UTF-8 file", command=self.load_file).pack(side="left", padx=4)
         ttk.Button(bar, text="Calculate", command=self.run_calculation).pack(side="left", padx=4)
         ttk.Button(bar, text="Export JSON", command=self.export_json).pack(side="left", padx=4)
         ttk.Button(bar, text="Self-test", command=self.run_self_test).pack(side="left", padx=4)
         ttk.Button(bar, text="About", command=self.show_about).pack(side="right")
 
-        ttk.Label(frame, text="Runes, or explicit tokens separated by spaces/commas (example: F U/V TH):").pack(anchor="w", pady=(12, 4))
+        ttk.Label(frame, text="Latin text, runes, or explicit tokens (examples: THING or F U/V TH):").pack(anchor="w", pady=(12, 4))
         self.input_text = tk.Text(frame, height=7, wrap="word", undo=True)
         self.input_text.pack(fill="x")
 
@@ -57,6 +57,9 @@ class GP29App(tk.Tk):
 
     def _display(self, value: object) -> None:
         rendered = json.dumps(value, ensure_ascii=False, indent=2)
+        self._display_text(rendered)
+
+    def _display_text(self, rendered: str) -> None:
         self.output_text.configure(state="normal")
         self.output_text.delete("1.0", "end")
         self.output_text.insert("1.0", rendered)
@@ -69,7 +72,7 @@ class GP29App(tk.Tk):
             self.status.set(f"Input error: {error}")
             messagebox.showerror("GP29 input error", str(error), parent=self)
             return
-        self._display(self.result)
+        self._display_text(format_human(self.result))
         self.status.set(f"Calculated {self.result['rune_count']} runes; GP sum {self.result['gp_sum']}.")
 
     def load_file(self) -> None:

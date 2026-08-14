@@ -6,7 +6,7 @@ import sys
 import unittest
 from pathlib import Path
 
-from hms_tools.gp29 import GP29InputError, PRIMES, RUNES, calculate, parse_tokens, self_test
+from hms_tools.gp29 import GP29InputError, PRIMES, RUNES, calculate, format_human, parse_latin, parse_tokens, self_test
 from hms_tools.runtime import RuntimeStore, create_job, execute_job
 
 
@@ -23,17 +23,36 @@ class GP29Tests(unittest.TestCase):
         result = calculate("F V TH K J IA Z ING", "tokens")
         self.assertEqual(result["normalized_tokens"], ["F", "U/V", "TH", "C/K", "I/J", "IO/IA", "S/Z", "NG/ING"])
 
-    def test_continuous_latin_is_rejected_as_ambiguous(self):
+    def test_token_mode_rejects_unseparated_tokens(self):
         with self.assertRaises(GP29InputError):
             parse_tokens("FUTH")
+
+    def test_continuous_latin_uses_frozen_longest_alias(self):
+        self.assertEqual([entry.sound for entry in parse_latin("THING")], ["TH", "NG/ING"])
+        self.assertEqual(calculate("CICADA", "latin")["normalized_tokens"], ["C/K", "I/J", "C/K", "A", "D", "A"])
+
+    def test_lr_prime_nq_registers(self):
+        result = calculate("F U/V TH", "tokens")
+        self.assertEqual(
+            [(entry["L"], entry["R"], entry["prime"], entry["N"], entry["Q"]) for entry in result["entries"]],
+            [(0, 0, 2, 2, 0), (1, 28, 3, 3, 0), (2, 27, 5, 5, 0)],
+        )
+        self.assertEqual(result["prime_sum"], 10)
+        self.assertEqual(result["gp_sum"], result["prime_sum"])
 
     def test_result_digest_is_deterministic(self):
         self.assertEqual(calculate("F U TH"), calculate("F U TH"))
 
+    def test_human_output_explains_registers_and_scope(self):
+        rendered = format_human(calculate("CICADA", "latin"))
+        self.assertIn("Prime / GP sum: 340", rendered)
+        self.assertIn("PER-RUNE VALUES", rendered)
+        self.assertIn("not a Liber Primus decode", rendered)
+
     def test_self_test(self):
         result = self_test()
         self.assertEqual(result["failed"], 0)
-        self.assertEqual(result["passed"], 3)
+        self.assertEqual(result["passed"], 4)
 
 
 class RuntimeTests(unittest.TestCase):

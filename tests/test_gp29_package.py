@@ -18,6 +18,7 @@ class GP29PackageTests(unittest.TestCase):
             (stage / "HMS-GP29.exe").write_bytes(b"gui")
             (stage / "HMS-GP29-CLI.exe").write_bytes(b"cli")
             (stage / "START-HERE.txt").write_text("start\n", encoding="utf-8")
+            (stage / "EXAMPLE.txt").write_text("CICADA\n", encoding="utf-8")
             first = write_package(stage, root / "first.zip")
             first_digest = hashlib.sha256(first.read_bytes()).hexdigest()
             second = write_package(stage, root / "second.zip")
@@ -27,6 +28,7 @@ class GP29PackageTests(unittest.TestCase):
                 sums = archive.read("SHA256SUMS").decode("utf-8")
                 self.assertIn(hashlib.sha256(b"gui").hexdigest(), sums)
                 self.assertIn("HMS-GP29-CLI.exe", sums)
+                self.assertIn("EXAMPLE.txt", sums)
 
 
 if __name__ == "__main__":
