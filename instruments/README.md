@@ -8,7 +8,7 @@ The machine-readable registry is [`manifest.json`](manifest.json). It is the aut
 | LP Source Audit Inventory | RELEASED — 0.1.0 | Developer source; not a customer application | Observer |
 | HMS Expedition Verifier | IN DEVELOPMENT | GUI/CLI portable package being qualified | Observer |
 | Corpus Manifest Verifier | IN DEVELOPMENT | No download | Observer |
-| Public GP29 Calculator | IN DEVELOPMENT — 0.1.0-rc.2 source candidate | Frozen scope; developer source only; no customer download | Observer |
+| Public GP29 Calculator | RELEASE CANDIDATE — 0.1.0 | Engineering qualification passed; clean-machine UAT and approval pending; no customer download | Observer |
 | Advanced GP Laboratory | PLANNED | No service | Cartographer |
 | Liber Runtime Beta | IN DEVELOPMENT | Local developer core only; no hosted service | Navigator |
 | GP Solver | PLANNED | No service | Navigator |
@@ -16,6 +16,6 @@ The machine-readable registry is [`manifest.json`](manifest.json). It is the aut
 | Socket/API Integration Layer | PLANNED | No service | Admiral |
 | Add-on and Plugin SDK | PLANNED | No package | Admiral |
 
-The validator and source-audit inventory were released in `v0.1.0` specifically as developer tools. They require CPython and are not customer-ready applications. The shared GP29/Runtime core is runnable as developer source, but GP29 RC1 was superseded when the final v0.1.0 scope was frozen. RC2 still requires a build from merged `main`, package qualification, clean-machine ordinary-user acceptance, and human approval. Expedition 001 remains closed until its packaged verifier passes the customer release gate.
+The validator and source-audit inventory were released in `v0.1.0` specifically as developer tools. They require CPython and are not customer-ready applications. The shared GP29/Runtime core is runnable as developer source. GP29 RC1 was superseded, and the frozen v0.1.0 Windows package has passed engineering qualification. It still requires clean-machine ordinary-user acceptance and human approval. Expedition 001 remains closed until its packaged verifier passes the customer release gate.
 
 `PLANNED` is not availability. Access levels describe the intended destination; delivery modes describe packaging. See the [Distribution and User Experience Standard](../docs/DISTRIBUTION_STANDARD.md). `customer_ready: true` requires an actual tested user delivery, not merely public source.

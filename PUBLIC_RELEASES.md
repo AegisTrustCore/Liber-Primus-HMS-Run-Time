@@ -10,6 +10,12 @@ This page is the human-readable authority for what HMS Endeavour has actually re
 
 The foundation publishes one verified provenance record, `OBS-0001`. It publishes **zero** HMS-originated recoveries of previously unknown Liber Primus plaintext.
 
+## Pending customer instrument
+
+The Public GP29 Calculator v0.1.0 is a frozen, reproducibly built **RELEASE CANDIDATE**. Engineering qualification is complete, but it is not downloadable and is not listed as released. Its remaining gates are independent clean-machine ordinary-user acceptance and explicit owner approval bound to the final manifest digest.
+
+GP29 remains an offline deterministic calculator, not a decoder or Liber Primus solve claim.
+
 ## Structured Research Archive
 
 The public source tree exposes actual [Runs](research/runs/README.md), [Results](research/results/README.md), and [Research Capsules](research/capsules/README.md). Each published object includes an authoritative manifest, portable HTML and text views, structured JSON/CSV where applicable, provenance, checksums, and a downloadable ZIP.
