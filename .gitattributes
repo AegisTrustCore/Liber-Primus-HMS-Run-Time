@@ -9,3 +9,8 @@ research/**/*.txt text eol=lf
 research/**/*.md text eol=lf
 research/**/SHA256SUMS text eol=lf
 research/**/*.zip binary
+
+# Synthetic verifier controls are byte-identity test vectors and must not change on Windows checkout.
+demo/corpus-verifier/**/*.txt text eol=lf
+demo/corpus-verifier/**/*.json text eol=lf
+demo/corpus-verifier/**/*.md text eol=lf
