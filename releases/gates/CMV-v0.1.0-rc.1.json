@@ -36,7 +36,8 @@
   "notes": [
     "The exact local candidate passed source tests, packaged self-tests, internal checksums, all five synthetic controls, and strict verification of the bound 75-page local set.",
     "The canonical manifest publishes byte identities only and does not redistribute page images.",
-    "The gate remains pending until independent GitHub Windows qualification, clean-environment human UAT, and explicit owner approval of this exact subject.",
+    "Two independent GitHub Windows workflow runs passed package reproduction and exact packaged-interface qualification.",
+    "The gate remains pending until clean-environment human UAT and explicit owner approval of this exact subject.",
     "A PASS establishes declared byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution."
   ]
 }
