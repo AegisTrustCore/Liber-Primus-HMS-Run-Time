@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "RR-0003",
+  "release_type": "RESEARCH",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "95de550523831d0228df1283b4bff220a43645a3",
+    "release_manifest": "releases/manifests/RR-0003.json",
+    "release_manifest_sha256": "4f1290cb1e0fa2dac4692cc48da5c0fdbbfce2260a3c48067c302d2385fd4635",
+    "environment_id": "ENV-0007",
+    "intended_tag": "RR-0003"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "research": {
+      "claims_bounded": true,
+      "complete_family_retained": true,
+      "controls_recorded": true,
+      "corrections_linked": true,
+      "clean_reproduction_passed": true
+    }
+  },
+  "human_approval": {
+    "approved": false,
+    "approver": null,
+    "approved_at": null,
+    "approved_subject_sha256": null
+  },
+  "notes": [
+    "The exact subject contains three normalized public objects: E1477 direct complete-board closure, E156 solved-LP1 segment-frame structure, and E159 Page 73/Page 74 terminal known controls.",
+    "The clean audit reran E1477 from the frozen source ZIP and reproduced its result semantically across all three calibrated models.",
+    "The public E156 and E159 verifiers reproduce retained ledger logic, cross-file consistency, combinatorial controls, and empirical-p arithmetic; source-glyph reproduction remains PARTIAL because third-party corpus transcriptions and private typed event streams are not redistributed.",
+    "Exploratory modulus signals, unsolved best-output ledgers, operation-selector hypotheses, active route details, and forward experiment queues are excluded.",
+    "No subject claims a newly recovered LP2 plaintext, key, locator, endpoint, wallet, or complete solve.",
+    "Automation prepared and validated this pending gate but did not supply the required exact-subject owner approval."
+  ]
+}
