@@ -53,5 +53,5 @@ All notable public software and repository changes are recorded here. Research p
 
 No HMS-originated recovery of previously unknown Liber Primus plaintext is published as verified in this release.
 
-[Unreleased]: https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0
+[Unreleased]: https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0

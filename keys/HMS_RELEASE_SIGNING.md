@@ -11,12 +11,12 @@ This is the public trust root for the HMS Endeavour `v0.1.x` release series. It 
 | Primary usage | Certification and signing |
 | Release-series scope | `v0.1.x` |
 
-The public key is attached to the [`v0.1.0` GitHub Release](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0) as `HMS-Endeavour-v0.1.0-signing-key.asc`. Private key material is not stored in GitHub, CI, Patreon, the Runtime, or Codex context.
+The public key is attached to the [`v0.1.0` GitHub Release](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0) as `HMS-Endeavour-v0.1.0-signing-key.asc`. Private key material is not stored in GitHub, CI, Patreon, the Runtime, or Codex context.
 
 ## Verify the release assets
 
 ```bash
-gh release download v0.1.0 -R coreystilwell3-eng/Liber-Primus-HMS-Run-Time
+gh release download v0.1.0 -R AegisTrustCore/Liber-Primus-HMS-Run-Time
 gpg --import HMS-Endeavour-v0.1.0-signing-key.asc
 gpg --verify SHA256SUMS.asc SHA256SUMS
 sha256sum --check SHA256SUMS

@@ -3,7 +3,7 @@
 **Audience:** Public / Observer  
 **Access:** Free  
 **Release class:** Deterministic calculator  
-**Canonical download:** https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1
+**Canonical download:** https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1
 
 29 marks on the rail.  
 29 primes in order.  
