@@ -4,7 +4,7 @@
   "last_reviewed": "2026-08-14",
   "status_vocabulary": ["PLANNED", "IN_DEVELOPMENT", "INTERNAL_TESTING", "RELEASE_CANDIDATE", "RELEASED", "DEPRECATED", "RETIRED"],
   "release_channels": ["DEVELOPMENT", "EXPERIMENTAL", "BETA", "RC", "STABLE"],
-  "current_release_objective": "public-gp29-calculator",
+  "current_release_objective": "corpus-manifest-verifier",
   "parallel_preparation": ["corpus-manifest-verifier", "expedition-verifier"],
   "build_order": [
     "public-gp29-calculator",
@@ -51,12 +51,12 @@
       "id": "public-gp29-calculator",
       "name": "Public GP29 Calculator",
       "purpose": "Provide deterministic GP29 calculation and inspection without implying cryptanalytic meaning.",
-      "status": "RELEASE_CANDIDATE",
-      "release_channel": "RC",
+      "status": "RELEASED",
+      "release_channel": "STABLE",
       "access_level": "OBSERVER",
       "current_version": "0.1.1",
-      "target_next_state": "RELEASED",
-      "required_gate": "Build and qualify the v0.1.1 usability candidate, complete independent clean-machine ordinary-user UAT, and bind human approval to its exact manifest.",
+      "target_next_state": null,
+      "required_gate": "Maintain the approved GP29-v0.1.1 public boundary; all future changes require a new immutable software subject.",
       "depends_on": ["public-foundation"]
     },
     {

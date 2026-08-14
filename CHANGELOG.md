@@ -4,6 +4,8 @@ All notable public software and repository changes are recorded here. Research p
 
 ## [Unreleased]
 
+- Released GP29 `v0.1.1`: public Windows desktop and CLI calculator with English-letter input, searchable alphabet, results dashboard, session history, JSON/CSV export, self-tests, reproducible package, and an approved exact-subject gate.
+
 ### Public research archive
 
 - Staged `RSET-0001` with the published OpenPGP artifact replay and Expedition-verifier synthetic control.

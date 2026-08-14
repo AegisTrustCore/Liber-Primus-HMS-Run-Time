@@ -41,7 +41,7 @@ The machine-readable [product ladder](products/manifest.json) is authoritative f
 
 | Capability | Status |
 |---|---|
-| Public GP29 calculator | RELEASE CANDIDATE — v0.1.0 engineering qualification passed; clean-machine UAT and approval pending |
+| Public GP29 calculator | RELEASED — v0.1.1 public Windows desktop and CLI package |
 | Advanced GP Laboratory | PLANNED |
 | GP Solver | PLANNED |
 | Batch experiment engine and parameter sweeps | PLANNED |
@@ -60,7 +60,7 @@ The roadmap describes intended direction. A planned capability is not an entitle
 
 ## Implementation boundary
 
-- Public GP29 Calculator: the v0.1.0 contract is frozen at Latin/token/rune input and deterministic `L/R/prime/N/Q` output. The exact Windows package has passed reproducible engineering qualification. It must still be accepted on a clean ordinary-user machine, approved by manifest hash, and released under instrument-specific tag `GP29-v0.1.0`.
+- Public GP29 Calculator: v0.1.1 is released under instrument-specific tag `GP29-v0.1.1` with English-letter, Latin-sound, token, and rune input plus deterministic `L/R/prime/N/Q` output. Its exact ZIP, qualification, acceptance limitation, and approval are bound by the public gate.
 - HMS Endeavour Lite: local interface and portable-result contract documented; application not yet implemented.
 - Liber Runtime: deterministic local GP29 and corpus-report job/result core implemented; hosted persistence, auth, entitlements, quotas, and sockets remain pending.
 

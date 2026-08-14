@@ -31,7 +31,7 @@ The arrows describe dependency maturity, not a requirement that all engineering 
 |---|---|---|---|
 | Public Foundation | RELEASED | — | Continue admitting material only through public evidence and release gates |
 | Expedition Verifier | IN_DEVELOPMENT | RELEASE_CANDIDATE | Customer package, solution-leak audit, synthetic/public tests, exact-subject approval |
-| Public GP29 Calculator | RELEASE_CANDIDATE | RELEASED | Independent clean-machine UAT and exact-manifest human approval |
+| Public GP29 Calculator | RELEASED | Maintain | Approved exact-subject gate; future changes require a new release subject |
 | Corpus Manifest Verifier | INTERNAL_TESTING | RELEASE_CANDIDATE | Promoted version, five-case synthetic corpus, canonical manifest, UAT, approval |
 | Endeavour Lite | PLANNED | IN_DEVELOPMENT | Begin after GP29 release and Corpus Verifier RC |
 | Liber Runtime Beta | IN_DEVELOPMENT developer core | INTERNAL_TESTING | Atlas → Rune Workbench → Experiments → Auto Explore → Evidence |

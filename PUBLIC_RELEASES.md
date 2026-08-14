@@ -1,6 +1,6 @@
 # Public Release Catalog
 
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-14
 
 This page is the human-readable authority for what HMS Endeavour has actually released through GitHub.
 
@@ -10,9 +10,9 @@ This page is the human-readable authority for what HMS Endeavour has actually re
 
 The foundation publishes one verified provenance record, `OBS-0001`. It publishes **zero** HMS-originated recoveries of previously unknown Liber Primus plaintext.
 
-## Pending customer instrument
+## Public customer instrument
 
-The Public GP29 Calculator v0.1.0 is a frozen, reproducibly built **RELEASE CANDIDATE**. Engineering qualification is complete, but it is not downloadable and is not listed as released. Its remaining gates are independent clean-machine ordinary-user acceptance and explicit owner approval bound to the final manifest digest.
+[`GP29-v0.1.1 — HMS GP29 Calculator`](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) is the released free Observer-level Windows desktop and CLI calculator. The release includes the exact portable ZIP, checksums, self-tests, a visible Gematria Primus alphabet, readable dashboard, raw JSON, and CSV export.
 
 GP29 remains an offline deterministic calculator, not a decoder or Liber Primus solve claim.
 
@@ -32,9 +32,9 @@ The public source tree exposes actual [Runs](research/runs/README.md), [Results]
 
 [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md) is a synthetic method-training puzzle with a local, no-telemetry verifier. Its status is `RELEASE_CANDIDATE`, not `OPEN`. It introduces no new Liber Primus research claim and will receive a complete public solution after its campaign window.
 
-The release contains the historical Cicada 3301 public-key reference, verified fingerprint record `OBS-0001`, and a status-level five-item LP release roadmap. Exact research assignments and experimental details remain private. GP29 is intentionally held for its own post-foundation `v0.1` release.
+The release contains the historical Cicada 3301 public-key reference, verified fingerprint record `OBS-0001`, and a status-level five-item LP release roadmap. Exact research assignments and experimental details remain private. GP29 is distributed separately through its approved `GP29-v0.1.1` release.
 
-Foundation content was frozen and merged in [PR #1](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/pull/1); release state was activated separately. GP29, Expedition 001, `RC-0001`, and HMS Endeavour Lite receive separate release decisions in that order.
+Foundation content was frozen and merged in [PR #1](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/pull/1); release state was activated separately. GP29 received its own approved release decision; Expedition 001, `RC-0001`, and HMS Endeavour Lite remain separately gated.
 
 ## GitHub release destinations
 

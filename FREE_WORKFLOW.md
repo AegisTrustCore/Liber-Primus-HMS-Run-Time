@@ -21,7 +21,7 @@ Import or identify public material
 
 ## What remains
 
-The customer-ready chain remains incomplete until GP29 v0.1.0 and the Corpus Manifest Verifier pass their independent clean-machine UAT and human-controlled release gates. Public source does not substitute for an approved ordinary-user download.
+GP29 v0.1.1 is now the approved ordinary-user download. The broader customer-ready chain remains incomplete until the Corpus Manifest Verifier and Expedition Verifier pass their own release gates. Public source does not substitute for an approved ordinary-user download.
 
 Every public result page uses the same approachable layer:
 

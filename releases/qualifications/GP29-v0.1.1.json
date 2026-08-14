@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "GP29-v0.1.1",
+  "candidate_commit_sha": "ffedc95afc366d80083a3dc2e2f58c7d9d25c54b",
+  "environment_id": "ENV-0008",
+  "artifact": {
+    "name": "HMS-GP29-v0.1.1-Windows-x64-portable.zip",
+    "sha256": "4c3b86e21d46cda2050720131301686651b5182c6c17a5c5be814f25f5fac252"
+  },
+  "qualification_date": "2026-08-14",
+  "build_reproducibility": {
+    "clean_builds": 2,
+    "byte_identical": true,
+    "source_date_epoch": "1786578000",
+    "python_hash_seed": "0"
+  },
+  "functional_checks": [
+    {"check": "51 source unit and integration tests", "passed": true},
+    {"check": "public record and boundary validation", "passed": true},
+    {"check": "packaged CLI frozen-vector self-test (5 of 5)", "passed": true},
+    {"check": "packaged GUI headless self-test (5 of 5)", "passed": true},
+    {"check": "English H, English TH, and Latin-sound TH regression vectors", "passed": true},
+    {"check": "GUI workflow: dashboard, examples, alphabet filtering, history restore, clipboard, and CSV export", "passed": true},
+    {"check": "package internal SHA256SUMS", "passed": true},
+    {"check": "independent GitHub Windows builds and executable qualification", "passed": true}
+  ],
+  "security_scan": {
+    "scanner": "Microsoft Defender Antivirus",
+    "product_version": "4.18.26070.9",
+    "signature_version": "1.457.155.0",
+    "signature_last_updated": "2026-08-13T17:00:31-05:00",
+    "remediation": "disabled during explicit scan",
+    "targets": [
+      {"name": "HMS-GP29-v0.1.1-Windows-x64-portable.zip", "sha256": "4c3b86e21d46cda2050720131301686651b5182c6c17a5c5be814f25f5fac252", "result": "NO_THREATS", "exit_code": 0},
+      {"name": "HMS-GP29.exe", "sha256": "c1aff6820b00c1ab6e8637a079d3148fc2dcfe6b11dcc5eeed44dc8833fa7a3d", "result": "NO_THREATS", "exit_code": 0},
+      {"name": "HMS-GP29-CLI.exe", "sha256": "770e6ef0b87cad211fb71afea27e19a65696fbc5c5b58669caf9eda8d0116a9b", "result": "NO_THREATS", "exit_code": 0}
+    ]
+  },
+  "code_signing": {
+    "signed": false,
+    "disclosure": "The v0.1.1 executables are not Authenticode-signed. Windows may display an Unknown Publisher or reputation warning; users must verify the published SHA-256 checksum before running them."
+  },
+  "ordinary_user_acceptance": {
+    "status": "APPROVED_WITH_RECORDED_LIMITATION",
+    "protocol": "docs/tooling/GP29_UAT_V0.1.1.md",
+    "approval_basis": "The repository owner iteratively reviewed the launched packaged application, requested usability corrections, and explicitly directed public release after the final workflow revision.",
+    "limitation": "Human acceptance occurred on the Windows build workstation rather than a separate clean machine; clean Windows packaging and executable checks were independently repeated by GitHub-hosted runners."
+  },
+  "remaining_checks": []
+}

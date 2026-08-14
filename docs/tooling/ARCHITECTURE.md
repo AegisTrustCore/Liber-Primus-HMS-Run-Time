@@ -34,4 +34,4 @@ The first executable slice now lives in `hms_tools.gp29` and `hms_tools.runtime`
 - a reference in-memory queue; and
 - the developer CLI at `scripts/hms_runtime.py`.
 
-The same core drives the GP29 desktop application, standalone CLI, and reproducible Windows portable-package builder. RC1 is superseded; the frozen v0.1.0 contract is implemented in the RC2 source lineage. The public-facing v0.1.0 package does not become a release candidate until it is built from merged `main`, and it cannot become public until the exact package passes security review, clean-machine ordinary-user acceptance, and human approval. Endeavour Lite and the hosted service will later wrap these contracts rather than reimplementing them.
+The same core drives the released GP29 v0.1.1 desktop application, standalone CLI, and reproducible Windows portable-package builder. Its approved manifest binds the merged source, exact ZIP, security review, qualification, and recorded owner acceptance. Endeavour Lite and the hosted service will wrap these contracts rather than reimplementing them.
