@@ -15,4 +15,10 @@ HMS treats the source image, canonical transcription, alternative transcription,
 - LP2 segment: pages `17`-`74` (**58** pages)
 - Source image bytes redistributed here: **no**, pending rights clearance
 
-Status: **PUBLIC CORPUS NAVIGATION; VERIFIER IN DEVELOPMENT**
+Corpus navigation status: **PUBLIC**
+
+Verifier status: **INTERNAL TESTING**
+
+The deterministic verifier core, CLI, desktop interface, JSON report contract, and Windows portable development build now exist. No canonical Liber Primus corpus manifest or customer release has been approved yet.
+
+See [Corpus Manifest Verifier](../docs/tooling/CORPUS_MANIFEST_VERIFIER.md).

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/corpus-verification.schema.json",
+  "title": "HMS Corpus Verification Report v1",
+  "type": "object",
+  "required": ["schema", "corpus_id", "version", "manifest_sha256", "strict", "status", "summary", "files", "unexpected_files", "limitations", "report_sha256"],
+  "properties": {
+    "schema": {"const": "HMS_CORPUS_VERIFICATION_V1"},
+    "corpus_id": {"type": "string"},
+    "version": {"type": "string"},
+    "manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "strict": {"type": "boolean"},
+    "status": {"enum": ["PASS", "FAIL"]},
+    "summary": {"type": "object"},
+    "files": {"type": "array", "items": {"type": "object"}},
+    "unexpected_files": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "report_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

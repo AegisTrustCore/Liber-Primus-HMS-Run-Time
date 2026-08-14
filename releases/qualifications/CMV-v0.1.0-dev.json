@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "CMV-v0.1.0-dev",
+  "candidate_commit_sha": "687975e488e57d97491a3b5585f4e25a41d63dff",
+  "environment_id": "ENV-0005",
+  "artifact": {
+    "name": "HMS-Corpus-Verifier-v0.1.0-dev-Windows-x64-portable.zip",
+    "sha256": "055899c61efb8c6c7d5868851099dd05e4d8c83cd3521fdb8a77d2c1ddcfaa1f"
+  },
+  "qualification_date": "2026-08-13",
+  "build_reproducibility": {"clean_builds": 2, "byte_identical": true, "source_date_epoch": "1786578000", "python_hash_seed": "0"},
+  "functional_checks": [
+    {"check": "exact packaged CLI creates a canonical manifest", "passed": true},
+    {"check": "exact packaged CLI verifies the strict known control", "passed": true},
+    {"check": "exact packaged GUI positive-and-tampered self-test", "passed": true},
+    {"check": "package internal SHA256SUMS", "passed": true},
+    {"check": "source tests cover mismatch, missing, unexpected, traversal, ordering, and CLI failure", "passed": true},
+    {"check": "independent GitHub Windows runner double-build and exact packaged-interface qualification", "passed": true}
+  ],
+  "security_scan": {
+    "scanner": "Microsoft Defender Antivirus",
+    "signature_version": "1.457.130.0",
+    "result": "NO_THREATS",
+    "targets": [
+      {"name": "HMS-Corpus-Verifier-v0.1.0-dev-Windows-x64-portable.zip", "sha256": "055899c61efb8c6c7d5868851099dd05e4d8c83cd3521fdb8a77d2c1ddcfaa1f"},
+      {"name": "HMS-Corpus-Verifier.exe", "sha256": "f4becd3b5677f68f109a31ec51aa55d393d6fe1861d17ebe1b43efd5556dc29e"},
+      {"name": "HMS-Corpus-Verifier-CLI.exe", "sha256": "c52cb9cc0de4eb2691b5ce235f26a36b358f0b480bcde8fc6b24538baabaa1e2"}
+    ]
+  },
+  "remaining_checks": ["Independent ordinary-user clean-machine acceptance", "Version promotion from development status", "Explicit human publication approval"]
+}

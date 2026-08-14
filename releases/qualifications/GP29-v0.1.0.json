@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "GP29-v0.1.0",
+  "candidate_commit_sha": "89f02c02e72c7b4fbc0d8334f2f1bbbcb0e7c36d",
+  "environment_id": "ENV-0006",
+  "artifact": {
+    "name": "HMS-GP29-v0.1.0-Windows-x64-portable.zip",
+    "sha256": "886379acc7f57359fc3a5f211a9589cb13ce20b7cf3c6f9cdda72d06560df75c"
+  },
+  "qualification_date": "2026-08-13",
+  "build_reproducibility": {
+    "clean_builds": 2,
+    "byte_identical": true,
+    "source_date_epoch": "1786578000",
+    "python_hash_seed": "0"
+  },
+  "functional_checks": [
+    {"check": "41 source unit tests", "passed": true},
+    {"check": "public record and boundary validation", "passed": true},
+    {"check": "packaged CLI frozen-vector self-test (4 of 4)", "passed": true},
+    {"check": "packaged deterministic Runtime job", "passed": true},
+    {"check": "packaged GUI headless self-test", "passed": true},
+    {"check": "documented Latin, token, rune, and UTF-8 file calculations", "passed": true},
+    {"check": "package internal SHA256SUMS", "passed": true},
+    {"check": "independent GitHub Windows build, reproducibility, and executable qualification", "passed": true}
+  ],
+  "security_scan": {
+    "scanner": "Microsoft Defender Antivirus",
+    "product_version": "4.18.26070.9",
+    "signature_version": "1.457.150.0",
+    "signature_last_updated": "2026-08-13T12:07:28-05:00",
+    "remediation": "disabled during explicit scan",
+    "targets": [
+      {"name": "HMS-GP29-v0.1.0-Windows-x64-portable.zip", "sha256": "886379acc7f57359fc3a5f211a9589cb13ce20b7cf3c6f9cdda72d06560df75c", "result": "NO_THREATS", "exit_code": 0},
+      {"name": "HMS-GP29.exe", "sha256": "66949bd44e95029bd5aeaf7a4318319ce1f4cdc63fa5371b55d9d58da7f28505", "result": "NO_THREATS", "exit_code": 0},
+      {"name": "HMS-GP29-CLI.exe", "sha256": "1eed311fceaadd38c4d153cef03ff4e40666bdba67a4840a4213a3ba9d67e482", "result": "NO_THREATS", "exit_code": 0}
+    ]
+  },
+  "code_signing": {
+    "signed": false,
+    "disclosure": "The v0.1.0 executables are not Authenticode-signed. Windows may display an Unknown Publisher or reputation warning; users must verify the published SHA-256 checksum before running them."
+  },
+  "ordinary_user_acceptance": {
+    "status": "PENDING",
+    "protocol": "docs/tooling/GP29_UAT.md",
+    "reason": "No clean Windows ordinary-user VM or Windows Sandbox is available on the build workstation."
+  },
+  "remaining_checks": [
+    "Independent ordinary-user clean-machine acceptance with all 24 steps passed and no tester assistance",
+    "Explicit human publication approval bound to the final canonical manifest digest"
+  ]
+}

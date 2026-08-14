@@ -25,4 +25,13 @@ GP29 data + corpus manifests + evidence schemas
 
 ## First implementation
 
-GP29 is the first planned executable slice and will receive a separate public release after the foundation. Endeavour Lite and Liber Runtime begin as interface contracts around that core; their status remains planned until runnable code exists.
+The first executable slice now lives in `hms_tools.gp29` and `hms_tools.runtime`:
+
+- one frozen 29-rune/prime table;
+- strict rune and separated-token parsers;
+- deterministic calculation and result digests;
+- a versioned local job/result contract;
+- a reference in-memory queue; and
+- the developer CLI at `scripts/hms_runtime.py`.
+
+The same core drives the GP29 desktop application, standalone CLI, and reproducible Windows portable-package builder. RC1 is superseded; the frozen v0.1.0 contract is implemented in the RC2 source lineage. The public-facing v0.1.0 package does not become a release candidate until it is built from merged `main`, and it cannot become public until the exact package passes security review, clean-machine ordinary-user acceptance, and human approval. Endeavour Lite and the hosted service will later wrap these contracts rather than reimplementing them.

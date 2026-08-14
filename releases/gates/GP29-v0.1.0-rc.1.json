@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "GP29-v0.1.0-rc.1",
+  "release_type": "SOFTWARE",
+  "status": "SUPERSEDED",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "68308cbf15273053ea9b6ffc2380c220322707a4",
+    "release_manifest": "releases/manifests/GP29-v0.1.0-rc.1.json",
+    "release_manifest_sha256": "159981216f6885d4717e9132bdc851da6ec5731554ce940be65891dc4870e3c7",
+    "environment_id": "ENV-0004",
+    "intended_tag": "GP29-v0.1.0-rc.1"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "software": {
+      "tests_passed": true,
+      "package_hashes_present": true,
+      "dependency_manifest_present": true,
+      "security_scan_passed": true,
+      "build_reproducible": true,
+      "release_notes_complete": true
+    }
+  },
+  "human_approval": {
+    "approved": false,
+    "approver": null,
+    "approved_at": null,
+    "approved_subject_sha256": null
+  },
+  "notes": [
+    "This candidate includes the GP29 core, first deterministic local Runtime job contract, Windows x64 desktop application, standalone CLI, and a portable package builder.",
+    "The exact candidate ZIP passed packaged CLI and GUI self-tests, deterministic Runtime-job execution, and internal checksum verification on the declared build workstation; two clean builds were byte-identical.",
+    "Microsoft Defender signature 1.457.130.0 reported no threats for the exact ZIP and both packaged executables; the evidence is recorded in releases/qualifications/GP29-v0.1.0-rc.1.json.",
+    "The gate remains pending until independent clean-machine ordinary-user qualification and explicit human approval are recorded.",
+    "Calculation output is evidence labeled CALCULATION_ONLY and makes no decoder, plaintext, route, or Liber Primus solve claim.",
+    "Superseded by the frozen GP29-v0.1.0 release subject; this RC1 gate was never approved or published."
+  ]
+}

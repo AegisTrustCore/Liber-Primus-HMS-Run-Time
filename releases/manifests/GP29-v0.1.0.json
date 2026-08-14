@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "GP29-v0.1.0",
+  "release_type": "SOFTWARE",
+  "candidate_commit_sha": "89f02c02e72c7b4fbc0d8334f2f1bbbcb0e7c36d",
+  "intended_tag": "GP29-v0.1.0",
+  "environment_id": "ENV-0006",
+  "release_notes": "docs/tooling/GP29.md",
+  "artifacts": [
+    {"name": "hms_tools/gp29.py", "sha256": "d5789126d0c798752f15b33712fc82ab28a62cbee9ea4cb8c43583b885b09c30"},
+    {"name": "hms_tools/runtime.py", "sha256": "d26fe853940c26baf06c2e5e4e925fc4c1959d2b7685bf68ffaf62c062e827ad"},
+    {"name": "scripts/hms_runtime.py", "sha256": "008c01da8afbe5131f2692c8b32b971fd7fd78e1311c82dcf8e8f27fc274624e"},
+    {"name": "scripts/gp29_app.py", "sha256": "275786fab1063e8e04c67c57a909cc431d5acb5dc5d6f3db0026e3b14a75fa3a"},
+    {"name": "scripts/build_gp29_windows.py", "sha256": "8be13ab68165e52eba96c44bedbbb3697d700f62bdabaefe2ccad4a2086c60ce"},
+    {"name": "requirements-build.txt", "sha256": "be3e2c617a15c6263b4c0f70acb47792fde84d455139e1bc44f9fd4f1548c3a1"},
+    {"name": ".github/workflows/validate-public-record.yml", "sha256": "bfab7fdf3b929cd9f640782742fac04000ba2543b950b817b4955e5356000619"},
+    {"name": "schemas/gp29-result.schema.json", "sha256": "c098ee458423282142ffc5e3a98e43e1c9db2e63e9c1ccdb037398a245f45f1c"},
+    {"name": "schemas/runtime-job.schema.json", "sha256": "137e09039d966675855488bad9a58a0e84ff1834d117f3f34b0c50e9c78a4932"},
+    {"name": "schemas/runtime-result.schema.json", "sha256": "42597e072e6d2c929ccd55399ced83d23d043e4ca654e88d1164b84156f9fabb"},
+    {"name": "docs/tooling/GP29.md", "sha256": "e40d0aef1174a487a754cb75ce85db4e9c98d391e6d5c491e501983002e99ffa"},
+    {"name": "docs/tooling/GP29_SCOPE_V0.1.0.md", "sha256": "df01cbe6c75770b9af37d14bca8b948bf79feefe5f22beb61d3c5adf748812fd"},
+    {"name": "docs/tooling/GP29_UAT.md", "sha256": "0cdde19c32c7396f023aa5425804a4498f290c134cfd541a4dedc988ca0d8698"},
+    {"name": "tests/test_gp29_runtime.py", "sha256": "bcb5ca8ca42af768e97e49bfecbc137ee3a3cd88ab16fc1fc8ce062879b96a46"},
+    {"name": "tests/test_gp29_package.py", "sha256": "eab877ac7e7dd525ef87c8fe6a795461a74905d97aa6e0c863fb4d3ca43bc409"},
+    {"name": "HMS-GP29-v0.1.0-Windows-x64-portable.zip", "sha256": "886379acc7f57359fc3a5f211a9589cb13ce20b7cf3c6f9cdda72d06560df75c"}
+  ]
+}

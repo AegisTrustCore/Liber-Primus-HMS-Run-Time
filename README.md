@@ -56,13 +56,13 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 | Foundation | **RELEASED — v0.1.0** |
 | Liber Primus corpus navigation | **PUBLIC — 75/75 pages registered; source image bytes external pending rights clearance** |
 | Research Archive | **PUBLISHED ON `main` — 8 Runs, 8 Results, 3 Capsules; RSET-0001 staged, RSET-0002 and RSET-0003 published** |
-| GP29 Calculator | IN DEVELOPMENT |
+| GP29 Calculator | IN DEVELOPMENT — v0.1.0 scope frozen; final package qualification pending; no public download |
 | Expedition 001 | RELEASE CANDIDATE — CLOSED |
 | Expedition Verifier | IN DEVELOPMENT — private Windows candidate qualified; no public download |
 | RC-0001 | REPRODUCTION PENDING |
 | Endeavour Lite | ARCHITECTURE |
-| Corpus Manifest Verifier | IN DEVELOPMENT |
-| Liber Runtime | PLANNED |
+| Corpus Manifest Verifier | INTERNAL TESTING — read-only core, desktop/CLI development package locally qualified |
+| Liber Runtime | IN DEVELOPMENT — local job/result core runnable; hosted service unavailable |
 | Advanced GP Solver | PLANNED |
 | Batch Experiment Engine | PLANNED |
 
