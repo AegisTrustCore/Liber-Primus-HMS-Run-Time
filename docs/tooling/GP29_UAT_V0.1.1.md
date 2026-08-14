@@ -31,14 +31,25 @@ Use this only with the exact v0.1.1 candidate named in its release manifest. Rec
 19. Confirm the app selects rune mode, inserts the H rune, and calculates it as prime / GP sum 23.
 20. Enter ordinary English text, then attempt an incompatible alphabet insertion. Confirm the app asks before clearing the existing input and that **No** preserves it.
 
+## Calculator workflow
+
+21. Filter the alphabet by `H`, `TH`, and `23`; confirm the expected rows remain selectable and clearing the filter restores all 29 rows.
+22. Load each quick example and confirm its input mode and text change together.
+23. Use `Ctrl+Enter`, then F5, and confirm both calculate without changing the input.
+24. Confirm each calculation appears in **Session history** with input, mode, rune count, and GP sum.
+25. Restore an earlier history row and confirm its input, mode, overview, breakdown, and JSON return together.
+26. Clear session history and confirm calculations remain usable. Restart the app and confirm history was not persisted.
+27. Copy the readable summary and JSON; paste each into a text editor and confirm the expected content is intact.
+28. Export the breakdown as CSV and confirm it contains one header row and one row per calculated rune.
+
 ## Package and export
 
-21. Open **Raw JSON / diagnostics** and confirm the structured result is available there.
-22. Export a calculation to JSON and confirm the chosen file opens as readable UTF-8 JSON.
-23. Run the desktop **Self-test** and confirm 5 passed, 0 failed.
-24. Run `HMS-GP29-CLI.exe self-test` and confirm 5 passed, 0 failed.
-25. Run `HMS-GP29-CLI.exe gp29 H --mode letters` and confirm prime / GP sum 23.
-26. Confirm no account, network connection, Python installation, or telemetry permission was requested.
+29. Open **Raw JSON / diagnostics** and confirm the structured result is available there.
+30. Export a calculation to JSON and confirm the chosen file opens as readable UTF-8 JSON.
+31. Run the desktop **Self-test** and confirm 5 passed, 0 failed.
+32. Run `HMS-GP29-CLI.exe self-test` and confirm 5 passed, 0 failed.
+33. Run `HMS-GP29-CLI.exe gp29 H --mode letters` and confirm prime / GP sum 23.
+34. Confirm no account, network connection, Python installation, or telemetry permission was requested.
 
 ## Acceptance record
 

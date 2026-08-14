@@ -13,6 +13,12 @@ This is a usability revision of the deterministic GP29 calculator. It does not c
 - A confirmation before alphabet insertion clears input from an incompatible mode.
 - A results dashboard with headline totals, normalized sequences, aggregate registers, and a per-rune table.
 - Raw JSON and diagnostics in a secondary tab instead of the default reading path.
+- Quick examples that demonstrate letter, sound, token, and rune behavior.
+- A searchable alphabet reference.
+- In-memory session history with result restoration and no persistence.
+- Clipboard copies for the readable summary and structured JSON.
+- UTF-8 CSV export for the per-rune breakdown.
+- `Ctrl+Enter` and `F5` calculation shortcuts plus a visible input-character count.
 
 ## Input distinction
 

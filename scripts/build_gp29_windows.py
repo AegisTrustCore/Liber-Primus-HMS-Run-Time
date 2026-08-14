@@ -12,11 +12,11 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.1.1-rc.1"
+VERSION = "0.1.1-rc.2"
 PACKAGE_NAME = f"HMS-GP29-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 13, 0, 0, 0)
 
-START_HERE = """HMS GP29 Calculator v0.1.1-rc.1
+START_HERE = """HMS GP29 Calculator v0.1.1-rc.2
 
 WHAT IT IS
 A deterministic Gematria Primus calculator. It is not a decoder and makes no Liber Primus solve claim.
@@ -31,7 +31,10 @@ INPUT
 Use English-letter mode for ordinary A-Z words. Every letter remains separate, so H cannot be silently combined into TH. Use Latin-sound mode only when GP29 clusters such as TH, NG, or ING are intended. Explicit sound tokens and the 29 supported runes remain available.
 
 VISIBLE ALPHABET
-The desktop application shows the complete 29-rune table. Select a row and insert its exact sound token or rune. A mode change that would make existing input incompatible asks before clearing it.
+The desktop application shows the complete 29-rune table. Filter it by rune, sound, row, or prime; then insert the exact sound token or rune. A mode change that would make existing input incompatible asks before clearing it.
+
+WORKFLOW FEATURES
+Use quick examples to learn the input modes, Ctrl+Enter or F5 to calculate, the in-memory session history to revisit calculations, clipboard actions to share results, and CSV export for the per-rune breakdown. Session history is never written to disk or transmitted.
 
 OUTPUT
 The default results dashboard shows headline totals, normalized sequences, aggregate registers, and a per-rune table. Raw JSON remains available in a secondary tab and through export. Each rune reports its canonical L, R, prime, N, and Q values.
