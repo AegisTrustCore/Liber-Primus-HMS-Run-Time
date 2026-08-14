@@ -8,7 +8,7 @@ Use this only with the exact v0.1.1 candidate named in its release manifest. Rec
 2. Verify the ZIP checksum against the official candidate record.
 3. Verify every extracted file against `SHA256SUMS`.
 4. Read `START-HERE.txt` and launch `HMS-GP29.exe` without assistance.
-5. Confirm the calculator, input, result area, mode explanation, and Gematria Primus alphabet are readable without resizing the window.
+5. Confirm the calculator, input, results dashboard, mode explanation, and Gematria Primus alphabet are readable without resizing the window.
 6. Confirm the alphabet contains 29 selectable rows with rune, sound, prime, L, R, N, and Q columns.
 
 ## English H regression
@@ -19,24 +19,26 @@ Use this only with the exact v0.1.1 candidate named in its release manifest. Rec
 10. Confirm the tokens are `T H`, rune count is 2, and prime / GP sum is 82.
 11. Select **Latin sounds (longest match)**, enter `TH`, and calculate.
 12. Confirm the token is `TH`, rune count is 1, and prime / GP sum is 5.
+13. Confirm the overview shows input mode, rune count, prime / GP sum, mod-29 residue, normalized runes, normalized tokens, five aggregate rows, and a one-row per-rune breakdown without requiring the raw JSON tab.
 
 ## Selectable alphabet
 
-13. Clear the input, select the H row, and choose **Insert sound token**.
-14. Confirm the app selects explicit-token mode and inserts `H`.
-15. Select the TH row and insert its sound token; confirm the input becomes `H TH`.
-16. Calculate and confirm the tokens remain exactly `H TH`.
-17. Clear the input, select the H row, and choose **Insert rune**.
-18. Confirm the app selects rune mode, inserts the H rune, and calculates it as prime / GP sum 23.
-19. Enter ordinary English text, then attempt an incompatible alphabet insertion. Confirm the app asks before clearing the existing input and that **No** preserves it.
+14. Clear the input, select the H row, and choose **Insert sound token**.
+15. Confirm the app selects explicit-token mode and inserts `H`.
+16. Select the TH row and insert its sound token; confirm the input becomes `H TH`.
+17. Calculate and confirm the tokens remain exactly `H TH`.
+18. Clear the input, select the H row, and choose **Insert rune**.
+19. Confirm the app selects rune mode, inserts the H rune, and calculates it as prime / GP sum 23.
+20. Enter ordinary English text, then attempt an incompatible alphabet insertion. Confirm the app asks before clearing the existing input and that **No** preserves it.
 
 ## Package and export
 
-20. Export a calculation to JSON and confirm the chosen file opens as readable UTF-8 JSON.
-21. Run the desktop **Self-test** and confirm 5 passed, 0 failed.
-22. Run `HMS-GP29-CLI.exe self-test` and confirm 5 passed, 0 failed.
-23. Run `HMS-GP29-CLI.exe gp29 H --mode letters` and confirm prime / GP sum 23.
-24. Confirm no account, network connection, Python installation, or telemetry permission was requested.
+21. Open **Raw JSON / diagnostics** and confirm the structured result is available there.
+22. Export a calculation to JSON and confirm the chosen file opens as readable UTF-8 JSON.
+23. Run the desktop **Self-test** and confirm 5 passed, 0 failed.
+24. Run `HMS-GP29-CLI.exe self-test` and confirm 5 passed, 0 failed.
+25. Run `HMS-GP29-CLI.exe gp29 H --mode letters` and confirm prime / GP sum 23.
+26. Confirm no account, network connection, Python installation, or telemetry permission was requested.
 
 ## Acceptance record
 

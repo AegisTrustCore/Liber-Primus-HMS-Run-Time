@@ -11,6 +11,8 @@ This is a usability revision of the deterministic GP29 calculator. It does not c
 - Exact insertion of either the selected sound token or rune.
 - Plain-language input-mode names and an explanation of each mode.
 - A confirmation before alphabet insertion clears input from an incompatible mode.
+- A results dashboard with headline totals, normalized sequences, aggregate registers, and a per-rune table.
+- Raw JSON and diagnostics in a secondary tab instead of the default reading path.
 
 ## Input distinction
 

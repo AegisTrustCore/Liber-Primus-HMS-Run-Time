@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from hms_tools.gp29 import GP29InputError, TABLE, calculate, format_human, self_test
+from hms_tools.gp29 import GP29InputError, TABLE, calculate, self_test
 
 PRODUCT = "HMS GP29 Calculator"
 VERSION = "0.1.1-rc.1"
@@ -43,6 +43,13 @@ class GP29App(tk.Tk):
         self.mode_label = tk.StringVar(value="English letters (A-Z)")
         self.mode_help = tk.StringVar(value=MODE_HELP["letters"])
         self.status = tk.StringVar(value="Ready. English-letter mode keeps H separate from TH.")
+        self.summary_mode = tk.StringVar(value="—")
+        self.summary_count = tk.StringVar(value="—")
+        self.summary_gp = tk.StringVar(value="—")
+        self.summary_mod = tk.StringVar(value="—")
+        self.summary_runes = tk.StringVar(value="Calculate an input to see its rune sequence.")
+        self.summary_tokens = tk.StringVar(value="—")
+        self.summary_digest = tk.StringVar(value="—")
         self._build()
 
     def _build(self) -> None:
@@ -75,9 +82,72 @@ class GP29App(tk.Tk):
         ttk.Label(calculator, text="Input:").pack(anchor="w", pady=(0, 4))
         self.input_text = tk.Text(calculator, height=7, wrap="word", undo=True, font=("Segoe UI", 11))
         self.input_text.pack(fill="x")
-        ttk.Label(calculator, text="Result:").pack(anchor="w", pady=(12, 4))
-        self.output_text = tk.Text(calculator, wrap="none", state="disabled", font=("Consolas", 10))
-        self.output_text.pack(fill="both", expand=True)
+        ttk.Label(calculator, text="Results:").pack(anchor="w", pady=(12, 4))
+        self.result_notebook = ttk.Notebook(calculator)
+        self.result_notebook.pack(fill="both", expand=True)
+        dashboard = ttk.Frame(self.result_notebook, padding=8)
+        raw = ttk.Frame(self.result_notebook, padding=6)
+        self.result_notebook.add(dashboard, text="Overview & breakdown")
+        self.result_notebook.add(raw, text="Raw JSON / diagnostics")
+
+        cards = ttk.Frame(dashboard)
+        cards.pack(fill="x")
+        card_values = (
+            ("Input mode", self.summary_mode),
+            ("Rune count", self.summary_count),
+            ("Prime / GP sum", self.summary_gp),
+            ("GP sum mod 29", self.summary_mod),
+        )
+        for column, (title, variable) in enumerate(card_values):
+            card = ttk.LabelFrame(cards, text=title, padding=(10, 4))
+            card.grid(row=0, column=column, sticky="nsew", padx=(0 if column == 0 else 4, 0))
+            ttk.Label(card, textvariable=variable, font=("Segoe UI", 13, "bold")).pack()
+            cards.columnconfigure(column, weight=1)
+
+        sequence = ttk.LabelFrame(dashboard, text="Normalized sequence", padding=6)
+        sequence.pack(fill="x", pady=(8, 6))
+        ttk.Label(sequence, text="Runes:", width=8).grid(row=0, column=0, sticky="nw")
+        ttk.Label(sequence, textvariable=self.summary_runes, font=("Segoe UI Symbol", 11), wraplength=520).grid(row=0, column=1, sticky="w")
+        ttk.Label(sequence, text="Tokens:", width=8).grid(row=1, column=0, sticky="nw", pady=(3, 0))
+        ttk.Label(sequence, textvariable=self.summary_tokens, wraplength=520).grid(row=1, column=1, sticky="w", pady=(3, 0))
+        sequence.columnconfigure(1, weight=1)
+
+        aggregate_frame = ttk.LabelFrame(dashboard, text="Aggregate registers", padding=4)
+        aggregate_frame.pack(fill="x", pady=(0, 6))
+        self.aggregate_table = ttk.Treeview(aggregate_frame, columns=("register", "sum", "modulus", "residue"), show="headings", height=5)
+        for column, heading, width in (("register", "Register", 110), ("sum", "Sum", 80), ("modulus", "Reduced by", 90), ("residue", "Residue", 80)):
+            self.aggregate_table.heading(column, text=heading)
+            self.aggregate_table.column(column, width=width, anchor="center", stretch=True)
+        self.aggregate_table.pack(fill="x")
+
+        breakdown = ttk.LabelFrame(dashboard, text="Per-rune breakdown", padding=4)
+        breakdown.pack(fill="both", expand=True)
+        detail_frame = ttk.Frame(breakdown)
+        detail_frame.pack(fill="both", expand=True)
+        detail_columns = ("number", "rune", "sound", "L", "R", "prime", "N", "Q")
+        self.detail_table = ttk.Treeview(detail_frame, columns=detail_columns, show="headings", height=8)
+        detail_widths = {"number": 38, "rune": 45, "sound": 75, "L": 36, "R": 36, "prime": 55, "N": 36, "Q": 36}
+        detail_headings = {"number": "#", "rune": "Rune", "sound": "Token", "prime": "Prime", "L": "L", "R": "R", "N": "N", "Q": "Q"}
+        for column in detail_columns:
+            self.detail_table.heading(column, text=detail_headings[column])
+            self.detail_table.column(column, width=detail_widths[column], anchor="center", stretch=column == "sound")
+        detail_scrollbar = ttk.Scrollbar(detail_frame, orient="vertical", command=self.detail_table.yview)
+        self.detail_table.configure(yscrollcommand=detail_scrollbar.set)
+        self.detail_table.pack(side="left", fill="both", expand=True)
+        detail_scrollbar.pack(side="right", fill="y")
+
+        ttk.Label(dashboard, text="Result SHA-256:").pack(anchor="w", pady=(5, 0))
+        ttk.Entry(dashboard, textvariable=self.summary_digest, state="readonly").pack(fill="x")
+
+        self.output_text = tk.Text(raw, wrap="none", state="disabled", font=("Consolas", 10))
+        raw_y = ttk.Scrollbar(raw, orient="vertical", command=self.output_text.yview)
+        raw_x = ttk.Scrollbar(raw, orient="horizontal", command=self.output_text.xview)
+        self.output_text.configure(yscrollcommand=raw_y.set, xscrollcommand=raw_x.set)
+        self.output_text.grid(row=0, column=0, sticky="nsew")
+        raw_y.grid(row=0, column=1, sticky="ns")
+        raw_x.grid(row=1, column=0, sticky="ew")
+        raw.rowconfigure(0, weight=1)
+        raw.columnconfigure(0, weight=1)
 
         ttk.Label(alphabet, text="Select a row, then insert its exact sound or rune.", wraplength=380).pack(anchor="w", pady=(0, 6))
         table_frame = ttk.Frame(alphabet)
@@ -113,6 +183,12 @@ class GP29App(tk.Tk):
     def clear_input(self) -> None:
         self.input_text.delete("1.0", "end")
         self.result = None
+        for variable in (self.summary_mode, self.summary_count, self.summary_gp, self.summary_mod, self.summary_tokens, self.summary_digest):
+            variable.set("—")
+        self.summary_runes.set("Calculate an input to see its rune sequence.")
+        for table in (self.aggregate_table, self.detail_table):
+            table.delete(*table.get_children())
+        self._display_text("")
         self.status.set("Input cleared.")
 
     def _prepare_insert(self, target_mode: str, target_label: str) -> bool:
@@ -157,6 +233,34 @@ class GP29App(tk.Tk):
     def _display(self, value: object) -> None:
         self._display_text(json.dumps(value, ensure_ascii=False, indent=2))
 
+    def _display_result(self, result: dict[str, object]) -> None:
+        self.summary_mode.set(str(result["input_mode"]))
+        self.summary_count.set(str(result["rune_count"]))
+        self.summary_gp.set(str(result["gp_sum"]))
+        self.summary_mod.set(str(result["gp_sum_mod29"]))
+        self.summary_runes.set(str(result["normalized_runes"]))
+        self.summary_tokens.set("  ".join(str(token) for token in result["normalized_tokens"]))
+        self.summary_digest.set(str(result["result_sha256"]))
+
+        self.aggregate_table.delete(*self.aggregate_table.get_children())
+        aggregates = (
+            ("L", result["L_sum"], "mod 29", result["L_sum_mod29"]),
+            ("R", result["R_sum"], "mod 29", result["R_sum_mod29"]),
+            ("Prime / GP", result["prime_sum"], "mod 29", result["prime_sum_mod29"]),
+            ("N", result["N_sum"], "mod 29", result["N_sum_mod29"]),
+            ("Q", result["Q_sum"], "mod 4", result["Q_sum_mod4"]),
+        )
+        for values in aggregates:
+            self.aggregate_table.insert("", "end", values=values)
+
+        self.detail_table.delete(*self.detail_table.get_children())
+        for number, entry in enumerate(result["entries"], 1):
+            self.detail_table.insert(
+                "", "end", values=(number, entry["rune"], entry["sound"], entry["L"], entry["R"], entry["prime"], entry["N"], entry["Q"])
+            )
+        self._display(result)
+        self.result_notebook.select(0)
+
     def _display_text(self, rendered: str) -> None:
         self.output_text.configure(state="normal")
         self.output_text.delete("1.0", "end")
@@ -170,7 +274,7 @@ class GP29App(tk.Tk):
             self.status.set(f"Input error: {error}")
             messagebox.showerror("GP29 input error", str(error), parent=self)
             return
-        self._display_text(format_human(self.result))
+        self._display_result(self.result)
         self.status.set(f"Calculated {self.result['rune_count']} runes; GP sum {self.result['gp_sum']}.")
 
     def load_file(self) -> None:
@@ -203,6 +307,7 @@ class GP29App(tk.Tk):
     def run_self_test(self) -> None:
         report = self_test()
         self._display(report)
+        self.result_notebook.select(1)
         self.status.set(f"Self-test: {report['passed']} passed, {report['failed']} failed.")
         if report["failed"]:
             messagebox.showerror("Self-test failed", "Do not rely on this build.", parent=self)

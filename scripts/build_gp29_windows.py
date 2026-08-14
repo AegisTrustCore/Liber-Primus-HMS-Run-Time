@@ -34,7 +34,7 @@ VISIBLE ALPHABET
 The desktop application shows the complete 29-rune table. Select a row and insert its exact sound token or rune. A mode change that would make existing input incompatible asks before clearing it.
 
 OUTPUT
-Each rune reports its canonical L, R, prime, N, and Q values. Aggregate sums and documented residues are included in the visible result and JSON export.
+The default results dashboard shows headline totals, normalized sequences, aggregate registers, and a per-rune table. Raw JSON remains available in a secondary tab and through export. Each rune reports its canonical L, R, prime, N, and Q values.
 
 DOCUMENTED TESTS
 - English letters: H -> Prime / GP sum 23
