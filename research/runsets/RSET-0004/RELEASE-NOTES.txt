@@ -1,0 +1,18 @@
+HMS ENDEAVOUR RESEARCH RELEASE CANDIDATE RR-0003
+
+RSET-0004: SEGMENT FRAMES, TERMINAL CONTROLS, AND A BOARD CLOSURE
+
+INCLUDED
+- RUN-0009 / RES-0009: E1477 bounded direct-board route-family closure.
+- RUN-0010 / RES-0010: E156 solved-LP1 dollar-segment structural control.
+- RUN-0011 / RES-0011: E159 Page 73 and Page 74 terminal known controls.
+
+EXCLUDED
+- Third-party corpus images and complete transcriptions.
+- Private typed event streams.
+- Unsolved-segment best outputs and active route detail.
+- Exploratory modulus signals, selector hypotheses, and forward queues.
+
+THIS RELEASE DOES NOT CLAIM NEW LIBER PRIMUS PLAINTEXT.
+
+Status before exact-subject owner approval: RELEASE CANDIDATE / NOT TAGGED.

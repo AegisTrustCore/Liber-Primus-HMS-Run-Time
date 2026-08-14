@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/result-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RES-0011",
+  "title": "Segment-wide replay recovers both established terminal controls",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "evidence_class": "KNOWN_CONTROL",
+  "reproduction_status": "PARTIAL",
+  "claim": "Within the declared six-operation family, the segment-wide runtime ranks the established Page 73 sequential-prime/totient operator and Page 74 direct-GP operator first; each known control exceeds all 500 retained full-family shuffles in both token and vocabulary measures.",
+  "why_it_matters": "It demonstrates that the runtime can recognize known terminal plaintext when the correct operation is present, establishing a positive control before interpreting failures on unsolved material.",
+  "supporting_runs": ["RUN-0011"],
+  "controls": [
+    "Two established public terminal plaintexts and operators.",
+    "Six declared complete-segment operations.",
+    "500 full-family shuffles for each control.",
+    "Exact JSON/CSV cross-check and empirical-p recomputation."
+  ],
+  "contradictions": [],
+  "limitations": [
+    "Both terminal plaintexts were already known.",
+    "Private typed event streams are not redistributed, so the public verifier audits the complete retained terminal ledger rather than transforming source glyphs.",
+    "Two successful controls do not establish an operation for unsolved segments."
+  ],
+  "does_not_claim": [
+    "An HMS-originated translation of Page 73 or Page 74.",
+    "Any new LP2 plaintext, key, locator, endpoint, or solve.",
+    "That one of the six tested operations must decode every unsolved segment.",
+    "That the operation-selector field has been identified."
+  ],
+  "current_interpretation": "Retain Page 73 and Page 74 as positive regression controls for the segment runtime; require separate preregistered evidence before promoting any unsolved-segment output.",
+  "corrections": [],
+  "supersedes": [],
+  "superseded_by": [],
+  "prooflinks": [
+    "research/runs/RUN-0011/manifest.json",
+    "research/runs/RUN-0011/historical/E159_TERMINAL_FULL_FAMILY_CONTROLS.csv",
+    "research/runs/RUN-0011/evidence/verify_e159_controls.py"
+  ],
+  "capsule_id": "CAP-0004",
+  "finding_tags": ["E159", "PAGE73", "PAGE74", "KNOWN_CONTROL"]
+}

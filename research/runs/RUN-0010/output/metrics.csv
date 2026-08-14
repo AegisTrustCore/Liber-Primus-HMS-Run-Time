@@ -1,0 +1,7 @@
+name,value,unit
+rune_bearing_pages,15,pages
+source_segments,7,segments
+matching_boundaries,6,of_6
+candidate_boundary_sets,3003,sets
+homogeneous_boundary_sets,1,sets
+exact_random_boundary_p,0.000333000333000333,probability

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "RR-0003",
+  "release_type": "RESEARCH",
+  "candidate_commit_sha": "95de550523831d0228df1283b4bff220a43645a3",
+  "intended_tag": "RR-0003",
+  "environment_id": "ENV-0007",
+  "release_notes": "research/runsets/RSET-0004/START-HERE.md",
+  "artifacts": [
+    {"name": "research/runsets/RSET-0004/RSET-0004.zip", "sha256": "9b53b5850c1cae1797fadf8261517f43c2fa3eb47899157111e5ca01a39b6931"},
+    {"name": "research/runs/RUN-0009/RUN-0009.zip", "sha256": "fcf23253c5b1adcefb2f2afd570240a82c1aa0042dd190db42d02a9dfaad02e6"},
+    {"name": "research/runs/RUN-0010/RUN-0010.zip", "sha256": "14d9000912ec8fc297c34cd2d8daa3645652133fc5cf006cedc2f23404073394"},
+    {"name": "research/runs/RUN-0011/RUN-0011.zip", "sha256": "5ab49d2285cdb656e8633fb1fe4778250275956f61bdea159cc342b54a4677c9"},
+    {"name": "research/results/RES-0009/RES-0009.zip", "sha256": "d1811e81091e881b532171ff345fd4da3b66b88bb95ab1211e4259db913aaaee"},
+    {"name": "research/results/RES-0010/RES-0010.zip", "sha256": "5b9187553c480569b07968f27e30763a8548343a8ed3066bce2a86ab87543fa6"},
+    {"name": "research/results/RES-0011/RES-0011.zip", "sha256": "592aca8935fd5cf6681756f30d7da29cc4e294d6aecaa779b5ed53187b0ebd92"},
+    {"name": "research/capsules/CAP-0004/CAP-0004.zip", "sha256": "2104abda381186bdc5e8ef05252aa0d1394fcbc2252ac7d3a0e7024026b01afc"},
+    {"name": "research/runsets/RSET-0004/START-HERE.md", "sha256": "a399e32885babfe1a3fb28cc2c45f872805d937fbb0d2ca0642e8d40bc8fdd6a"},
+    {"name": "research/runsets/RSET-0004/RELEASE-NOTES.txt", "sha256": "3ade814535555d192e805174d5880ebbff84e6b6d6195b9490c0a685887a66e3"},
+    {"name": "releases/environments/ENV-0007.json", "sha256": "40ffca6e7d6620b75c9670cd5fdfa5a59b07e2df1fc4701b27730bc1d6841d84"}
+  ]
+}

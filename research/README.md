@@ -9,10 +9,10 @@ Structured objects—not prose alone—are the public research record.
 | Category | Count |
 |---|---:|
 | Hash-inventoried source artifacts | 1,322 |
-| Published Runs | 8 |
-| Published Results | 8 |
-| Published Capsules | 3 |
-| Published Run Sets | 2 |
+| Published Runs | 11 |
+| Published Results | 11 |
+| Published Capsules | 4 |
+| Published Run Sets | 3 |
 | Staged Run Sets | 1 |
 
 **1,322 source artifacts does not mean 1,322 results.** It is the audited file count in the supplied Personal Research tree.

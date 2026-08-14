@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0011",
+  "evidence_class": "KNOWN_CONTROL",
+  "claim": "Within the declared six-operation family, the segment-wide runtime ranks the established Page 73 sequential-prime/totient operator and Page 74 direct-GP operator first; each known control exceeds all 500 retained full-family shuffles in both token and vocabulary measures.",
+  "current_interpretation": "Retain Page 73 and Page 74 as positive regression controls for the segment runtime; require separate preregistered evidence before promoting any unsolved-segment output."
+}

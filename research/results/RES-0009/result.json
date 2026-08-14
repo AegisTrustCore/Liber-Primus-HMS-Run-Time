@@ -1,0 +1,6 @@
+{
+  "result_id": "RES-0009",
+  "evidence_class": "BOUNDED_NEGATIVE",
+  "claim": "Under the declared 640-route family, the complete Page 05 numeric board is not supported as a direct periodic key or 25-column permutation for the 267-rune Page 33 stream: all three calibrated models failed half-transfer, solved-reference, and p <= 0.01 permutation gates.",
+  "current_interpretation": "Remove direct complete-board periodic-key and 25-column-permutation uses from the active Page 05 to Page 33 route family; retain structurally different hypotheses for separate preregistered tests."
+}

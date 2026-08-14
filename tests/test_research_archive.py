@@ -58,8 +58,8 @@ class ResearchArchiveTests(unittest.TestCase):
         self.assertIn(summary, project_status)
         self.assertIn("`RSET-0001` remains `STAGED`", project_status)
         self.assertIn("`RSET-0002` and `RSET-0003` are `PUBLISHED`", project_status)
-        self.assertIn("`RSET-0002` and `RSET-0003` are `PUBLISHED`", project_status)
-        self.assertIn("Eight Results", research_index)
+        self.assertIn("`RSET-0004` is also `PUBLISHED`", project_status)
+        self.assertIn(f"{archive['published_results']} Results", research_index)
         self.assertNotIn("draft PR #6", project_status)
 
     def test_e1059_public_verifier(self):

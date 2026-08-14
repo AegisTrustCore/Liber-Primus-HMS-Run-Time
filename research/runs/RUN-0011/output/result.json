@@ -1,0 +1,18 @@
+{
+  "run_id": "RUN-0011",
+  "status": "COMPLETE",
+  "result_class": "KNOWN_CONTROL",
+  "summary": "BOTH_TERMINAL_SEGMENTS_SELECT_ESTABLISHED_OPERATORS",
+  "metrics": {
+    "declared_operations": 6,
+    "known_controls_recovered": 2,
+    "page73_selected_rank": 1,
+    "page74_selected_rank": 1,
+    "full_family_shuffles_per_control": 500,
+    "joint_empirical_p_each": 0.001996007984031936
+  },
+  "acceptance": {
+    "passed": true,
+    "criterion": "Each established terminal plaintext ranks first under its known operator and exceeds every retained full-family shuffled control in token and vocabulary measures."
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "description": "Verify the retained route count, input identity, calibration gates, half-transfer failures, solved-reference failures, permutation tails, and bounded rejection across all three replacement scorers.",
+  "implementation": "research/runs/RUN-0009/evidence/verify_e1477.py"
+}

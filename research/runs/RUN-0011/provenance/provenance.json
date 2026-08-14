@@ -1,0 +1,29 @@
+{
+  "source_system": "HMS_ENDEAVOUR_MORE_RESEARCH",
+  "historical_source": {
+    "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+    "original_identifier": "LP_E156_E160_Segment_Runtime.zip",
+    "source_preserved": true,
+    "sha256": "502abf0da98d9eaf1d3907de586ececf92888cbc2b2d2d9cbfad290f048c93e6",
+    "size_bytes": 310350
+  },
+  "environment_manifest": "releases/environments/ENV-0007.json",
+  "parent_records": [
+    "E118",
+    "E154"
+  ],
+  "source_paths": [],
+  "migration": {
+    "historical": true,
+    "original_run": "E159",
+    "original_source": "Personal Research/More research",
+    "migrated_at": "2026-08-14T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Separated the two known terminal controls from the unsolved-segment scan and later selector work.",
+      "Retained the complete terminal full-family control ledger and result object.",
+      "Added a portable non-mutating ledger verifier.",
+      "Excluded unsolved best outputs, active route detail, private typed event streams, and forward experiments."
+    ]
+  }
+}

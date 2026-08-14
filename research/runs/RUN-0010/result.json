@@ -1,0 +1,18 @@
+{
+  "run_id": "RUN-0010",
+  "status": "COMPLETE",
+  "result_class": "STRUCTURAL",
+  "summary": "DOLLAR_SEGMENTS_MATCH_OPERATION_FRAMES_ON_SOLVED_LP1",
+  "metrics": {
+    "rune_bearing_pages": 15,
+    "source_segments": 7,
+    "matching_boundaries": 6,
+    "candidate_boundary_sets": 3003,
+    "homogeneous_boundary_sets": 1,
+    "exact_random_boundary_p": 0.000333000333000333
+  },
+  "acceptance": {
+    "passed": true,
+    "criterion": "All seven source segments are homogeneous and the six source boundaries equal all six operation changes across the frozen solved-page sequence."
+  }
+}

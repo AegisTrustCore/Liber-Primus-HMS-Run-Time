@@ -1,0 +1,52 @@
+HMS ENDEAVOUR
+RUN-0009
+
+TITLE:
+Page 05 complete-board to Page 33 bounded route-family test
+
+STATUS:
+BOUNDED_NEGATIVE / PARTIAL
+
+SUMMARY:
+All three calibrated GP language models rejected the declared 640-route direct-board family: the selected route failed half-transfer, solved-reference, and familywise permutation gates.
+
+WHY THIS RUN EXISTS:
+To close a specific direct-key interpretation of the exact Page 05 numeric board without claiming that Page 05 or Page 33 has no other role.
+
+TARGET:
+Whether the complete source-authenticated Page 05 5x5 GP-prime board directly operates on Page 33 as a periodic key or 25-column permutation
+
+METHOD:
+Verify the retained route count, input identity, calibration gates, half-transfer failures, solved-reference failures, permutation tails, and bounded rejection across all three replacement scorers.
+
+PARAMETERS:
+{"board_permutation_controls_per_scorer": 999, "command": "python research/runs/RUN-0009/evidence/verify_e1477.py", "control_seed": 1477, "familywise_threshold": 0.01, "observed_routes": 640, "scorers": [2, 3, 4]}
+
+RESULT:
+PAGE05_COMPLETE_BOARD_TO_PAGE33_DIRECT_ROUTE_FAMILY_REJECTED
+
+METRICS:
+- declared_routes: 640 routes
+- calibrated_scorers: 3 models
+- same_route_half_transfers: 0 of_3
+- familywise_p_2gram: 0.06 probability
+- familywise_p_3gram: 0.827 probability
+- familywise_p_4gram: 1.0 probability
+
+CONTROLS:
+- Each 2-, 3-, and 4-gram model recovered the planted calibration route exactly at rank 1 before Page 33 evaluation.
+- Each observed score was compared with solved LP1 reference text under the same model.
+- Each scorer used 999 seeded board permutations and the declared familywise threshold p <= 0.01.
+- First- and second-half routes were selected independently and required to agree.
+
+INTERPRETATION:
+The complete Page 05 numeric board is not supported as a direct periodic key or 25-column permutation for Page 33 under the declared family. Address, selector, checksum, orbit, or multi-input roles remain outside this closure.
+
+LIMITATIONS:
+- The original transient E1459 qscore dependency did not survive; the completion uses three disclosed replacement models calibrated on solved LP1 text.
+- The public package does not redistribute third-party corpus transcriptions, so its portable verifier audits the complete retained decision ledgers while the full route replay requires separately acquired inputs.
+- This does not reject every possible Page 05 to Page 33 relationship, alternate board-derived object, transform, key, or execution model.
+- No LP2 plaintext, key, wallet, address, onion locator, endpoint, or Page 73 preimage was recovered.
+
+SOURCE:
+HMS_ENDEAVOUR_PERSONAL_RESEARCH / E1477_FINISHED_REPRODUCTION_PACKAGE_2026-08-03.zip

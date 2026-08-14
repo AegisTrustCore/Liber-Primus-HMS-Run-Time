@@ -1,0 +1,16 @@
+HMS ENDEAVOUR
+CAP-0004
+
+Segment runtime controls and one direct-board closure
+
+Three bounded public objects: an E1477 direct-board route-family closure, the E156 solved-LP1 operation-frame structure, and E159 Page 73/Page 74 terminal known controls.
+
+RUNS:
+RUN-0009
+RUN-0010
+RUN-0011
+
+RESULTS:
+RES-0009
+RES-0010
+RES-0011

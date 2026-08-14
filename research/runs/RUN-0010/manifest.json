@@ -1,0 +1,119 @@
+{
+  "$schema": "../../../schemas/run-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RUN-0010",
+  "title": "Solved-LP1 dollar-segment operation-frame audit",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "evidence_class": "STRUCTURAL",
+  "reproduction_status": "PARTIAL",
+  "migration_confidence": "HIGH",
+  "executed_at": "2026-08-03T00:00:00-05:00",
+  "target": {
+    "type": "SOLVED_LP1_STRUCTURE",
+    "page": null,
+    "region": "Fifteen rune-bearing solved LP1 pages",
+    "description": "Whether the six source dollar boundaries coincide with the six known operation changes across seven solved-LP1 segments"
+  },
+  "experiment_id": "E156",
+  "result_ids": ["RES-0010"],
+  "capsule_id": "CAP-0004",
+  "run_set_ids": ["RSET-0004"],
+  "method_family": "SOLVED_CONTROL_SEGMENT_BOUNDARY_AUDIT",
+  "pipeline_id": null,
+  "summary": "The seven source dollar segments are operation-homogeneous, and their six boundaries exactly equal the six known operation-change gaps across the fifteen rune-bearing solved LP1 pages.",
+  "why_run": "To test whether dollar segmentation is an authored operation-frame boundary on known solved material before applying that runtime model to unsolved LP2 segments.",
+  "inputs": [
+    {
+      "id": "E156-RESULT",
+      "path": "research/runs/RUN-0010/historical/e156_result.json",
+      "sha256": "83b76c03172fd0a5c671e6d1f06d0c674a5fea39f57e8c5acde331803ad3cba2",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "E156-SEGMENT-LEDGER",
+      "path": "research/runs/RUN-0010/historical/E156_LP1_SEGMENT_OPERATION_LEDGER.csv",
+      "sha256": "755098b1230aa292ad6bda7cfa3919ca29393c79047805a225099799ecc2c8c7",
+      "availability": "PUBLIC"
+    }
+  ],
+  "parameters": {
+    "command": "python research/runs/RUN-0010/evidence/verify_e156.py",
+    "rune_bearing_pages": 15,
+    "source_segments": 7,
+    "source_boundaries": 6,
+    "possible_six_boundary_sets": 3003
+  },
+  "pipeline": {
+    "description": "Reconstruct the page-method sequence from the public segment ledger, derive method-change and segment-boundary gaps independently, and verify the exact 1/3003 combinatorial control.",
+    "implementation": "research/runs/RUN-0010/evidence/verify_e156.py"
+  },
+  "output": {
+    "status": "COMPLETE",
+    "result_class": "STRUCTURAL",
+    "summary": "DOLLAR_SEGMENTS_MATCH_OPERATION_FRAMES_ON_SOLVED_LP1",
+    "acceptance": {
+      "passed": true,
+      "criterion": "All seven source segments are homogeneous and the six source boundaries equal all six operation changes across the frozen solved-page sequence."
+    },
+    "metrics": [
+      {"name": "rune_bearing_pages", "value": 15, "unit": "pages"},
+      {"name": "source_segments", "value": 7, "unit": "segments"},
+      {"name": "matching_boundaries", "value": 6, "unit": "of_6"},
+      {"name": "candidate_boundary_sets", "value": 3003, "unit": "sets"},
+      {"name": "homogeneous_boundary_sets", "value": 1, "unit": "sets"},
+      {"name": "exact_random_boundary_p", "value": 0.000333000333000333, "unit": "probability"}
+    ],
+    "stdout": "PASS — 8/8 E156 ledger checks; solved-LP1 boundaries equal operation changes."
+  },
+  "controls": [
+    "Only already-solved LP1 pages and established operators are used.",
+    "All 3,003 ways to place six boundaries among fourteen page gaps define the comparison family.",
+    "Segment boundaries are taken from the source ledger; method changes are derived separately from the known operation sequence."
+  ],
+  "interpretation": "On solved LP1, the dollar boundary is supported as an operation-scope boundary. This motivates preserving operation state across internal records, but does not identify the operation selector for unsolved segments.",
+  "limitations": [
+    "This is a structural known-control observation on solved LP1, not a new plaintext recovery.",
+    "The public package verifies the retained normalized ledger; it does not redistribute the complete third-party LP1 transcription or source imagery.",
+    "The result identifies where known operations change, not which unknown operation applies to an LP2 segment.",
+    "Transfer of the frame model from LP1 to unsolved LP2 requires separate tests."
+  ],
+  "provenance": {
+    "source_system": "HMS_ENDEAVOUR_MORE_RESEARCH",
+    "historical_source": {
+      "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+      "original_identifier": "LP_E156_E160_Segment_Runtime.zip",
+      "source_preserved": true,
+      "sha256": "502abf0da98d9eaf1d3907de586ececf92888cbc2b2d2d9cbfad290f048c93e6",
+      "size_bytes": 310350
+    },
+    "environment_manifest": "releases/environments/ENV-0007.json",
+    "parent_records": ["E150", "E154"],
+    "source_paths": [],
+    "migration": {
+      "historical": true,
+      "original_run": "E156",
+      "original_source": "Personal Research/More research",
+      "migrated_at": "2026-08-14T00:00:00-05:00",
+      "migration_version": "1.0.0",
+      "normalization_changes": [
+        "Separated the exact solved-LP1 structural claim from later exploratory E157-E160 leads.",
+        "Retained the complete seven-segment operation ledger and result object.",
+        "Added a portable independent combinatorial and boundary verifier.",
+        "Excluded forward experiment queues and private typed-corpus dependencies."
+      ]
+    }
+  },
+  "raw_artifacts": {
+    "availability": "SANITIZED_SUBSET",
+    "reason": "The exact structural ledger and result are public; complete source transcriptions and later experimental queues are excluded.",
+    "files": [
+      "historical/e156_result.json",
+      "historical/E156_LP1_SEGMENT_OPERATION_LEDGER.csv",
+      "evidence/verify_e156.py"
+    ]
+  },
+  "chronicle_events": [],
+  "finding_tags": ["E156", "LP1", "SEGMENTS", "OPERATION_SCOPE", "STRUCTURAL"]
+}

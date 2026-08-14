@@ -1,0 +1,17 @@
+{
+  "run_id": "RUN-0009",
+  "inputs": [
+    {
+      "id": "E1477-REPRODUCTION-RESULT",
+      "path": "research/runs/RUN-0009/historical/E1477_REPRODUCTION_RESULT.json",
+      "sha256": "d33f20ced42611692801a2804a3f44c9c74114dfe8ab8f3a59322b0ce12494f0",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "E1477-FINISHED-REPORT",
+      "path": "research/runs/RUN-0009/historical/E1477_FINISHED.json",
+      "sha256": "52d8e6b6d30b801f445055297ae6722a8264617249011d240f4959cf6f8304d8",
+      "availability": "PUBLIC"
+    }
+  ]
+}

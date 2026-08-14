@@ -1,0 +1,52 @@
+HMS ENDEAVOUR
+RUN-0011
+
+TITLE:
+Terminal segment-wide operation known controls
+
+STATUS:
+KNOWN_CONTROL / PARTIAL
+
+SUMMARY:
+The six-operation family selected the established sequential-prime/totient operator for Page 73 and direct GP for Page 74; both known controls beat 500 full-family shuffles.
+
+WHY THIS RUN EXISTS:
+To test whether the segment-wide runtime can recover known terminal material when the correct operator is present before it is used as a negative or discovery instrument.
+
+TARGET:
+Whether a six-operation segment-wide runtime independently selects and replays the established Page 73 and Page 74 terminal operators
+
+METHOD:
+Cross-check the retained JSON and CSV ledgers, the selected operation and established text for each terminal segment, separation from the strongest shuffled controls, and the exact empirical p value.
+
+PARAMETERS:
+{"command": "python research/runs/RUN-0011/evidence/verify_e159_controls.py", "declared_operations": 6, "full_family_shuffles_per_segment": 500, "state_reset_at_internal_red_record": false, "terminal_segments": [9, 10]}
+
+RESULT:
+BOTH_TERMINAL_SEGMENTS_SELECT_ESTABLISHED_OPERATORS
+
+METRICS:
+- declared_operations: 6 operators
+- known_controls_recovered: 2 of_2
+- page73_selected_rank: 1 rank
+- page74_selected_rank: 1 rank
+- full_family_shuffles_per_control: 500 shuffles
+- joint_empirical_p_each: 0.001996007984031936 probability
+
+CONTROLS:
+- Page 73 and Page 74 are established terminal plaintext controls, not HMS-originated discoveries.
+- The declared family contains six complete-segment operations and selects the best without resetting at internal red records.
+- Each terminal control is compared with 500 full-family shuffled inputs using token and vocabulary measures.
+- The public verifier requires exact JSON/CSV agreement and recomputes p as 1/(500+1).
+
+INTERPRETATION:
+The segment-wide runtime recognizes both known terminal operators when they are in the declared family. This validates the instrument as a control but does not establish an operator for any unsolved segment.
+
+LIMITATIONS:
+- Both plaintexts and their operations were already known; this is a positive control, not a new translation.
+- The public package retains the complete terminal-control ledger but not the private typed event streams needed to rerun transformation from source glyphs, so reproduction is PARTIAL.
+- Success on two terminal controls does not prove that every LP2 segment uses one of the six operations.
+- This package does not publish the unsolved-segment best-output ledger or forward selector experiments.
+
+SOURCE:
+HMS_ENDEAVOUR_MORE_RESEARCH / LP_E156_E160_Segment_Runtime.zip

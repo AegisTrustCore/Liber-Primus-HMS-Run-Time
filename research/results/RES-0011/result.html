@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RES-0011 — Segment-wide replay recovers both established terminal controls</title>
+<style>
+:root{--bg:#0b1014;--panel:#121a20;--ink:#e7edf0;--muted:#9aabb4;--cyan:#64d8e8;--brass:#d1ad62;--line:#263740}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+main{max-width:1040px;margin:auto;padding:3rem 1.25rem} header{border-bottom:1px solid var(--line);padding-bottom:1.5rem;margin-bottom:2rem}
+h1{margin:.2rem 0;color:var(--cyan);font-size:clamp(1.8rem,4vw,3rem)} h2{color:var(--brass);margin-top:2rem;font-size:1.05rem;letter-spacing:.08em}
+a{color:var(--cyan)} .eyebrow{color:var(--muted);letter-spacing:.16em} .badge{display:inline-block;border:1px solid var(--brass);border-radius:999px;padding:.18rem .65rem;margin:.2rem .35rem .2rem 0;color:var(--brass);font-size:.78rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem} section,.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1rem 1.2rem}
+table{width:100%;border-collapse:collapse} td,th{padding:.55rem;border-bottom:1px solid var(--line);text-align:left} code{overflow-wrap:anywhere} input,select{background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:.7rem;border-radius:4px}
+</style></head><body><main><header><div class="eyebrow">HMS ENDEAVOUR · RESEARCH ARCHIVE</div><h1>RES-0011</h1><p>Segment-wide replay recovers both established terminal controls</p><span class="badge">PUBLISHED</span></header><div><span class="badge">KNOWN CONTROL</span><span class="badge">PARTIAL</span></div>
+<section><h2>CLAIM</h2><p>Within the declared six-operation family, the segment-wide runtime ranks the established Page 73 sequential-prime/totient operator and Page 74 direct-GP operator first; each known control exceeds all 500 retained full-family shuffles in both token and vocabulary measures.</p></section>
+<section><h2>WHY IT MATTERS</h2><p>It demonstrates that the runtime can recognize known terminal plaintext when the correct operation is present, establishing a positive control before interpreting failures on unsolved material.</p></section>
+<section><h2>WHAT SUPPORTS IT</h2><p><a href="../../runs/RUN-0011/result.html">RUN-0011</a></p></section>
+<div class="grid"><section><h2>CONTROLS</h2><ul><li>Two established public terminal plaintexts and operators.</li><li>Six declared complete-segment operations.</li><li>500 full-family shuffles for each control.</li><li>Exact JSON/CSV cross-check and empirical-p recomputation.</li></ul></section><section><h2>CONTRADICTIONS</h2><p>None recorded.</p></section></div>
+<section><h2>LIMITATIONS</h2><ul><li>Both terminal plaintexts were already known.</li><li>Private typed event streams are not redistributed, so the public verifier audits the complete retained terminal ledger rather than transforming source glyphs.</li><li>Two successful controls do not establish an operation for unsolved segments.</li></ul></section>
+<section><h2>WHAT IT DOES NOT CLAIM</h2><ul><li>An HMS-originated translation of Page 73 or Page 74.</li><li>Any new LP2 plaintext, key, locator, endpoint, or solve.</li><li>That one of the six tested operations must decode every unsolved segment.</li><li>That the operation-selector field has been identified.</li></ul></section>
+<section><h2>REPRODUCTION</h2><p><span class="badge">PARTIAL</span></p></section>
+<section><h2>CURRENT INTERPRETATION</h2><p>Retain Page 73 and Page 74 as positive regression controls for the segment runtime; require separate preregistered evidence before promoting any unsolved-segment output.</p></section>
+<section><h2>CORRECTIONS / SUPERSESSIONS</h2><p>None recorded.</p></section>
+<section><h2>PROOFLINK / PROOFLOCK</h2><ul><li>research/runs/RUN-0011/manifest.json</li><li>research/runs/RUN-0011/historical/E159_TERMINAL_FULL_FAMILY_CONTROLS.csv</li><li>research/runs/RUN-0011/evidence/verify_e159_controls.py</li></ul></section>
+<section><h2>DOWNLOAD</h2><p><a href="manifest.json">Manifest JSON</a> · <a href="evidence.json">Evidence JSON</a> · <a href="supporting-runs.json">Supporting runs</a> · <a href="RES-0011.zip">Download package</a></p></section></main></body></html>

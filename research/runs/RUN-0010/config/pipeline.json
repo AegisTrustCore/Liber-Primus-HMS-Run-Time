@@ -1,0 +1,4 @@
+{
+  "description": "Reconstruct the page-method sequence from the public segment ledger, derive method-change and segment-boundary gaps independently, and verify the exact 1/3003 combinatorial control.",
+  "implementation": "research/runs/RUN-0010/evidence/verify_e156.py"
+}

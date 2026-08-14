@@ -1,0 +1,7 @@
+{
+  "command": "python research/runs/RUN-0010/evidence/verify_e156.py",
+  "rune_bearing_pages": 15,
+  "source_segments": 7,
+  "source_boundaries": 6,
+  "possible_six_boundary_sets": 3003
+}

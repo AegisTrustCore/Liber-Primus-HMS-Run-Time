@@ -4,7 +4,7 @@ Last reviewed: 2026-08-13
 
 ## Completed foundation
 
-The `v0.1.0` public foundation and the `RR-0002` research release are live. The public archive contains eight Runs, eight Results, three Capsules, the RSET-0002 and RSET-0003 evidence packages, and complete navigation for the 75-page working corpus.
+The `v0.1.0` public foundation plus research releases `RR-0002` and `RR-0003` are live. The public archive contains eleven Runs, eleven Results, four Capsules, the RSET-0002 through RSET-0004 evidence packages, and complete navigation for the 75-page working corpus.
 
 ## Current release sequence
 
@@ -14,7 +14,7 @@ The `v0.1.0` public foundation and the `RR-0002` research release are live. The 
 4. **Build Endeavour Lite and the Liber Runtime.** Assemble these applications from the stable GP29, corpus, evidence, and Expedition components rather than opening another major instrument branch first.
 5. **Add advanced systems later.** Saved laboratories, batch automation, socket/API access, and add-ons follow only after the public workflow is dependable.
 
-Research normalization, including E1477 and Page 72/73 provenance reconciliation, may continue as a separate evidence lane. It does not override the customer-tool release order.
+Research normalization, including Page 72/73 provenance reconciliation, may continue as a separate evidence lane. It does not override the customer-tool release order.
 
 ## Boundary rule
 

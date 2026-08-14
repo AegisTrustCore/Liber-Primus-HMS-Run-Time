@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schemas/environment-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "id": "ENV-0007",
+  "hms_version": "RR-0003 normalized public-evidence candidate",
+  "engine": "CPython 3.12.10",
+  "operating_system": "Windows 11",
+  "architecture": "x86_64",
+  "dependencies": [],
+  "encoding": "UTF-8",
+  "alphabet_mapping": "Gematria Primus 29-rune order as recorded in the retained historical E1477 source; portable release verifiers operate on normalized JSON and CSV ledgers.",
+  "page_numbering": "Physical Liber Primus page numbering; Page 05 and Page 33 for E1477, solved LP1 rune pages 01 and 03-16 for E156, and terminal Pages 73-74 for E159.",
+  "corpus_manifest_id": null,
+  "random_seed": 1477,
+  "container_or_lock_hash": null
+}

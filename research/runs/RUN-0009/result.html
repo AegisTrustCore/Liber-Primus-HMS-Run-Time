@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RUN-0009 — Page 05 complete-board to Page 33 bounded route-family test</title>
+<style>
+:root{--bg:#0b1014;--panel:#121a20;--ink:#e7edf0;--muted:#9aabb4;--cyan:#64d8e8;--brass:#d1ad62;--line:#263740}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+main{max-width:1040px;margin:auto;padding:3rem 1.25rem} header{border-bottom:1px solid var(--line);padding-bottom:1.5rem;margin-bottom:2rem}
+h1{margin:.2rem 0;color:var(--cyan);font-size:clamp(1.8rem,4vw,3rem)} h2{color:var(--brass);margin-top:2rem;font-size:1.05rem;letter-spacing:.08em}
+a{color:var(--cyan)} .eyebrow{color:var(--muted);letter-spacing:.16em} .badge{display:inline-block;border:1px solid var(--brass);border-radius:999px;padding:.18rem .65rem;margin:.2rem .35rem .2rem 0;color:var(--brass);font-size:.78rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem} section,.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1rem 1.2rem}
+table{width:100%;border-collapse:collapse} td,th{padding:.55rem;border-bottom:1px solid var(--line);text-align:left} code{overflow-wrap:anywhere} input,select{background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:.7rem;border-radius:4px}
+</style></head><body><main><header><div class="eyebrow">HMS ENDEAVOUR · RESEARCH ARCHIVE</div><h1>RUN-0009</h1><p>Page 05 complete-board to Page 33 bounded route-family test</p><span class="badge">PUBLISHED</span></header><div><span class="badge">BOUNDED NEGATIVE</span><span class="badge">PARTIAL</span><span class="badge">HIGH MIGRATION</span></div>
+<section><h2>SUMMARY</h2><p>All three calibrated GP language models rejected the declared 640-route direct-board family: the selected route failed half-transfer, solved-reference, and familywise permutation gates.</p></section>
+<div class="grid"><section><h2>WHY THIS RUN EXISTS</h2><p>To close a specific direct-key interpretation of the exact Page 05 numeric board without claiming that Page 05 or Page 33 has no other role.</p></section><section><h2>TARGET</h2><p>Whether the complete source-authenticated Page 05 5x5 GP-prime board directly operates on Page 33 as a periodic key or 25-column permutation</p></section></div>
+<section><h2>INPUTS</h2><table><tr><th>ID</th><th>Path</th><th>Availability</th></tr><tr><td>E1477-REPRODUCTION-RESULT</td><td><code>research/runs/RUN-0009/historical/E1477_REPRODUCTION_RESULT.json</code></td><td><span class="badge">PUBLIC</span></td></tr><tr><td>E1477-FINISHED-REPORT</td><td><code>research/runs/RUN-0009/historical/E1477_FINISHED.json</code></td><td><span class="badge">PUBLIC</span></td></tr></table></section>
+<section><h2>PIPELINE / METHOD</h2><p>Verify the retained route count, input identity, calibration gates, half-transfer failures, solved-reference failures, permutation tails, and bounded rejection across all three replacement scorers.</p><p><code>research/runs/RUN-0009/evidence/verify_e1477.py</code></p></section>
+<section><h2>PARAMETERS</h2><pre>{
+  &quot;command&quot;: &quot;python research/runs/RUN-0009/evidence/verify_e1477.py&quot;,
+  &quot;observed_routes&quot;: 640,
+  &quot;scorers&quot;: [
+    2,
+    3,
+    4
+  ],
+  &quot;board_permutation_controls_per_scorer&quot;: 999,
+  &quot;familywise_threshold&quot;: 0.01,
+  &quot;control_seed&quot;: 1477
+}</pre></section>
+<section><h2>OUTPUT</h2><p>PAGE05_COMPLETE_BOARD_TO_PAGE33_DIRECT_ROUTE_FAMILY_REJECTED</p><pre>PASS — 16/16 retained E1477 checks; direct Page05-board to Page33 lane rejected.</pre></section>
+<section><h2>METRICS</h2><table><tr><th>Metric</th><th>Value</th><th>Unit</th></tr><tr><td>declared_routes</td><td>640</td><td>routes</td></tr><tr><td>calibrated_scorers</td><td>3</td><td>models</td></tr><tr><td>same_route_half_transfers</td><td>0</td><td>of_3</td></tr><tr><td>familywise_p_2gram</td><td>0.06</td><td>probability</td></tr><tr><td>familywise_p_3gram</td><td>0.827</td><td>probability</td></tr><tr><td>familywise_p_4gram</td><td>1.0</td><td>probability</td></tr></table></section>
+<div class="grid"><section><h2>CONTROLS</h2><ul><li>Each 2-, 3-, and 4-gram model recovered the planted calibration route exactly at rank 1 before Page 33 evaluation.</li><li>Each observed score was compared with solved LP1 reference text under the same model.</li><li>Each scorer used 999 seeded board permutations and the declared familywise threshold p &lt;= 0.01.</li><li>First- and second-half routes were selected independently and required to agree.</li></ul></section><section><h2>INTERPRETATION</h2><p>The complete Page 05 numeric board is not supported as a direct periodic key or 25-column permutation for Page 33 under the declared family. Address, selector, checksum, orbit, or multi-input roles remain outside this closure.</p></section></div>
+<section><h2>LIMITATIONS</h2><ul><li>The original transient E1459 qscore dependency did not survive; the completion uses three disclosed replacement models calibrated on solved LP1 text.</li><li>The public package does not redistribute third-party corpus transcriptions, so its portable verifier audits the complete retained decision ledgers while the full route replay requires separately acquired inputs.</li><li>This does not reject every possible Page 05 to Page 33 relationship, alternate board-derived object, transform, key, or execution model.</li><li>No LP2 plaintext, key, wallet, address, onion locator, endpoint, or Page 73 preimage was recovered.</li></ul></section>
+<section><h2>RELATED RESULT</h2><p><a href="../../results/RES-0009/result.html">RES-0009</a></p></section>
+<section><h2>PROVENANCE</h2><p>Source system: <code>HMS_ENDEAVOUR_PERSONAL_RESEARCH</code></p><p>Environment: <code>releases/environments/ENV-0007.json</code></p><p>Raw historical output: <span class="badge">SANITIZED SUBSET</span></p></section>
+<section><h2>REPRODUCE</h2><pre>python research/runs/RUN-0009/evidence/verify_e1477.py</pre></section>
+<section><h2>RAW FILES & DOWNLOAD</h2><p><a href="manifest.json">Manifest JSON</a> · <a href="result.json">Result JSON</a> · <a href="output/metrics.csv">Metrics CSV</a> · <a href="provenance/provenance.json">Provenance</a> · <a href="RUN-0009.zip">Download package</a></p></section></main></body></html>
