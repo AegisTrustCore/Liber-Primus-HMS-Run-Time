@@ -1,0 +1,16 @@
+{
+  "result_id": "RES-0009",
+  "controls": [
+    "Planted-route rank-1 recovery under each disclosed replacement model.",
+    "Independent first-half and second-half selection.",
+    "Solved-LP1 score reference.",
+    "999 seeded board permutations per model."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0009/manifest.json",
+    "research/runs/RUN-0009/historical/REPORT.md",
+    "research/runs/RUN-0009/historical/E1477_FINISHED.json",
+    "research/runs/RUN-0009/evidence/verify_e1477.py"
+  ]
+}

@@ -2,3 +2,4 @@ id,title,status,reproduction_status,page,method,capsule,package,package_sha256,r
 CAP-0001,Public verification foundation,PUBLISHED,,,,,CAP-0001/CAP-0001.zip,0916e542fdff927692a656b90fe6362a3549d240c052a6f3bc87539d1ea1bc90,CAP-0001/result.html
 CAP-0002,Page 32 manifest-interpretation closures,PUBLISHED,,,,,CAP-0002/CAP-0002.zip,61c28d7d1d0f33aa4af058e65a6063513ec41b4ef02a89fcee2d37438936fac4,CAP-0002/result.html
 CAP-0003,E1059 default-key OutGuess branch closure,PUBLISHED,,,,,CAP-0003/CAP-0003.zip,42636e8794bcd9d25bb9ac0660306291a5465dd6809f737ed399122cc0c5a026,CAP-0003/result.html
+CAP-0004,Segment runtime controls and one direct-board closure,PUBLISHED,,,,,CAP-0004/CAP-0004.zip,2104abda381186bdc5e8ef05252aa0d1394fcbc2252ac7d3a0e7024026b01afc,CAP-0004/result.html

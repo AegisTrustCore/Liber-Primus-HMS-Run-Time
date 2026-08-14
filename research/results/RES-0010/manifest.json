@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schemas/result-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RES-0010",
+  "title": "Solved-LP1 dollar segments align with operation frames",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "evidence_class": "STRUCTURAL",
+  "reproduction_status": "PARTIAL",
+  "claim": "Across the fifteen rune-bearing solved LP1 pages, all seven source dollar segments are operation-homogeneous and their six boundaries exactly equal the six established operation-change gaps; one of 3,003 six-boundary placements has that property.",
+  "why_it_matters": "It supports treating the dollar boundary as an operation-scope boundary and prevents automatic cipher-state resets at every internal record or page.",
+  "supporting_runs": ["RUN-0010"],
+  "controls": [
+    "Already-solved LP1 pages and established operators only.",
+    "Complete 3,003-member boundary-placement family.",
+    "Independent derivation of source boundaries and operation changes from the public ledger."
+  ],
+  "contradictions": [],
+  "limitations": [
+    "The claim is structural and restricted to solved LP1.",
+    "Complete third-party LP1 transcriptions and images are not redistributed.",
+    "The observation identifies scope boundaries, not the operation selector for an unsolved segment."
+  ],
+  "does_not_claim": [
+    "Any newly recovered plaintext.",
+    "That every LP2 segment uses an LP1 operation.",
+    "That a dollar boundary alone identifies which operation to apply.",
+    "That internal red records have no independent semantic or type role."
+  ],
+  "current_interpretation": "Use dollar boundaries as the default operation-frame boundary in the HMS runtime while keeping operation selection and LP2 transfer as separately gated questions.",
+  "corrections": [],
+  "supersedes": [],
+  "superseded_by": [],
+  "prooflinks": [
+    "research/runs/RUN-0010/manifest.json",
+    "research/runs/RUN-0010/historical/E156_LP1_SEGMENT_OPERATION_LEDGER.csv",
+    "research/runs/RUN-0010/evidence/verify_e156.py"
+  ],
+  "capsule_id": "CAP-0004",
+  "finding_tags": ["E156", "LP1", "SEGMENTS", "STRUCTURAL"]
+}

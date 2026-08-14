@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/result-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RES-0009",
+  "title": "The complete Page 05 board fails the declared direct Page 33 family",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "evidence_class": "BOUNDED_NEGATIVE",
+  "reproduction_status": "PARTIAL",
+  "claim": "Under the declared 640-route family, the complete Page 05 numeric board is not supported as a direct periodic key or 25-column permutation for the 267-rune Page 33 stream: all three calibrated models failed half-transfer, solved-reference, and p <= 0.01 permutation gates.",
+  "why_it_matters": "It closes one precise and attractive board-to-ciphertext interpretation while retaining narrower address, selector, checksum, orbit, and multi-input possibilities.",
+  "supporting_runs": ["RUN-0009"],
+  "controls": [
+    "Planted-route rank-1 recovery under each disclosed replacement model.",
+    "Independent first-half and second-half selection.",
+    "Solved-LP1 score reference.",
+    "999 seeded board permutations per model."
+  ],
+  "contradictions": [],
+  "limitations": [
+    "The original transient E1459 scorer was unavailable and is replaced by calibrated 2-, 3-, and 4-gram models.",
+    "Full route replay requires third-party corpus inputs not redistributed in the package.",
+    "The claim is limited to the declared periodic and columnar family."
+  ],
+  "does_not_claim": [
+    "That Page 05 has no role in Liber Primus.",
+    "That Page 33 cannot use a board-derived selector, address, checksum, orbit, or additional input.",
+    "Any LP2 plaintext, key, locator, endpoint, wallet, or complete solve."
+  ],
+  "current_interpretation": "Remove direct complete-board periodic-key and 25-column-permutation uses from the active Page 05 to Page 33 route family; retain structurally different hypotheses for separate preregistered tests.",
+  "corrections": [],
+  "supersedes": [],
+  "superseded_by": [],
+  "prooflinks": [
+    "research/runs/RUN-0009/manifest.json",
+    "research/runs/RUN-0009/historical/REPORT.md",
+    "research/runs/RUN-0009/historical/E1477_FINISHED.json",
+    "research/runs/RUN-0009/evidence/verify_e1477.py"
+  ],
+  "capsule_id": "CAP-0004",
+  "finding_tags": ["E1477", "PAGE05", "PAGE33", "BOUNDED_NEGATIVE"]
+}

@@ -1,0 +1,28 @@
+{
+  "source_system": "HMS_ENDEAVOUR_PERSONAL_RESEARCH",
+  "historical_source": {
+    "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+    "original_identifier": "E1477_FINISHED_REPRODUCTION_PACKAGE_2026-08-03.zip",
+    "source_preserved": true,
+    "sha256": "f8b8e7f809084fe2978e21a457dff96304c97c1baf70d836ee8075aa68779341",
+    "size_bytes": 38290
+  },
+  "environment_manifest": "releases/environments/ENV-0007.json",
+  "parent_records": [
+    "E1459"
+  ],
+  "source_paths": [],
+  "migration": {
+    "historical": true,
+    "original_run": "E1477",
+    "original_source": "Personal Research",
+    "migrated_at": "2026-08-14T00:00:00-05:00",
+    "migration_version": "1.0.0",
+    "normalization_changes": [
+      "Converted the historical completion into HMS Run and Result objects.",
+      "Clean-reran the frozen standalone reproduction and confirmed exact semantic agreement with the archived result.",
+      "Excluded corpus transcription files while preserving their source-package identity and the complete decision ledgers.",
+      "Added a non-mutating standard-library verifier for the retained evidence."
+    ]
+  }
+}

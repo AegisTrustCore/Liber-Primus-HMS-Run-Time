@@ -1,0 +1,31 @@
+HMS ENDEAVOUR
+RES-0011
+
+TITLE:
+Segment-wide replay recovers both established terminal controls
+
+STATUS:
+KNOWN_CONTROL / PARTIAL
+
+CLAIM:
+Within the declared six-operation family, the segment-wide runtime ranks the established Page 73 sequential-prime/totient operator and Page 74 direct-GP operator first; each known control exceeds all 500 retained full-family shuffles in both token and vocabulary measures.
+
+WHY IT MATTERS:
+It demonstrates that the runtime can recognize known terminal plaintext when the correct operation is present, establishing a positive control before interpreting failures on unsolved material.
+
+SUPPORTED BY:
+RUN-0011
+
+WHAT THIS DOES NOT CLAIM:
+- An HMS-originated translation of Page 73 or Page 74.
+- Any new LP2 plaintext, key, locator, endpoint, or solve.
+- That one of the six tested operations must decode every unsolved segment.
+- That the operation-selector field has been identified.
+
+LIMITATIONS:
+- Both terminal plaintexts were already known.
+- Private typed event streams are not redistributed, so the public verifier audits the complete retained terminal ledger rather than transforming source glyphs.
+- Two successful controls do not establish an operation for unsolved segments.
+
+CURRENT INTERPRETATION:
+Retain Page 73 and Page 74 as positive regression controls for the segment runtime; require separate preregistered evidence before promoting any unsolved-segment output.

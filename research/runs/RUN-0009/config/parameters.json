@@ -1,0 +1,12 @@
+{
+  "command": "python research/runs/RUN-0009/evidence/verify_e1477.py",
+  "observed_routes": 640,
+  "scorers": [
+    2,
+    3,
+    4
+  ],
+  "board_permutation_controls_per_scorer": 999,
+  "familywise_threshold": 0.01,
+  "control_seed": 1477
+}

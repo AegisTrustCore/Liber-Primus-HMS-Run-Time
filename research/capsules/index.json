@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "object_type": "CAPSULES",
-  "count": 3,
+  "count": 4,
   "entries": [
     {
       "id": "CAP-0001",
@@ -38,6 +38,18 @@
       "package": "CAP-0003/CAP-0003.zip",
       "package_sha256": "42636e8794bcd9d25bb9ac0660306291a5465dd6809f737ed399122cc0c5a026",
       "result_page": "CAP-0003/result.html"
+    },
+    {
+      "id": "CAP-0004",
+      "title": "Segment runtime controls and one direct-board closure",
+      "status": "PUBLISHED",
+      "reproduction_status": null,
+      "page": null,
+      "method": null,
+      "capsule": null,
+      "package": "CAP-0004/CAP-0004.zip",
+      "package_sha256": "2104abda381186bdc5e8ef05252aa0d1394fcbc2252ac7d3a0e7024026b01afc",
+      "result_page": "CAP-0004/result.html"
     }
   ]
 }

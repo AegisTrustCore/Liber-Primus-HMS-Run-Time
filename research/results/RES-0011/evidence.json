@@ -1,0 +1,15 @@
+{
+  "result_id": "RES-0011",
+  "controls": [
+    "Two established public terminal plaintexts and operators.",
+    "Six declared complete-segment operations.",
+    "500 full-family shuffles for each control.",
+    "Exact JSON/CSV cross-check and empirical-p recomputation."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0011/manifest.json",
+    "research/runs/RUN-0011/historical/E159_TERMINAL_FULL_FAMILY_CONTROLS.csv",
+    "research/runs/RUN-0011/evidence/verify_e159_controls.py"
+  ]
+}

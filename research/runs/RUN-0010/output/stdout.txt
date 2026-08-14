@@ -1,0 +1,1 @@
+PASS — 8/8 E156 ledger checks; solved-LP1 boundaries equal operation changes.

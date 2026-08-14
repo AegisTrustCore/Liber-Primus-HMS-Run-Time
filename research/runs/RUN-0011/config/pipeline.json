@@ -1,0 +1,4 @@
+{
+  "description": "Cross-check the retained JSON and CSV ledgers, the selected operation and established text for each terminal segment, separation from the strongest shuffled controls, and the exact empirical p value.",
+  "implementation": "research/runs/RUN-0011/evidence/verify_e159_controls.py"
+}

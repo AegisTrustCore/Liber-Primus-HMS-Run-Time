@@ -1,0 +1,17 @@
+{
+  "run_id": "RUN-0010",
+  "inputs": [
+    {
+      "id": "E156-RESULT",
+      "path": "research/runs/RUN-0010/historical/e156_result.json",
+      "sha256": "83b76c03172fd0a5c671e6d1f06d0c674a5fea39f57e8c5acde331803ad3cba2",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "E156-SEGMENT-LEDGER",
+      "path": "research/runs/RUN-0010/historical/E156_LP1_SEGMENT_OPERATION_LEDGER.csv",
+      "sha256": "755098b1230aa292ad6bda7cfa3919ca29393c79047805a225099799ecc2c8c7",
+      "availability": "PUBLIC"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "../../../schemas/run-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RUN-0009",
+  "title": "Page 05 complete-board to Page 33 bounded route-family test",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "evidence_class": "BOUNDED_NEGATIVE",
+  "reproduction_status": "PARTIAL",
+  "migration_confidence": "HIGH",
+  "executed_at": "2026-08-03T00:00:00-05:00",
+  "target": {
+    "type": "LIBER_PRIMUS_ROUTE_FAMILY",
+    "page": 33,
+    "region": "Physical Page 33 complete 267-rune stream",
+    "description": "Whether the complete source-authenticated Page 05 5x5 GP-prime board directly operates on Page 33 as a periodic key or 25-column permutation"
+  },
+  "experiment_id": "E1477",
+  "result_ids": ["RES-0009"],
+  "capsule_id": "CAP-0004",
+  "run_set_ids": ["RSET-0004"],
+  "method_family": "GP29_BOARD_PERIODIC_AND_COLUMNAR_FAMILY",
+  "pipeline_id": null,
+  "summary": "All three calibrated GP language models rejected the declared 640-route direct-board family: the selected route failed half-transfer, solved-reference, and familywise permutation gates.",
+  "why_run": "To close a specific direct-key interpretation of the exact Page 05 numeric board without claiming that Page 05 or Page 33 has no other role.",
+  "inputs": [
+    {
+      "id": "E1477-REPRODUCTION-RESULT",
+      "path": "research/runs/RUN-0009/historical/E1477_REPRODUCTION_RESULT.json",
+      "sha256": "d33f20ced42611692801a2804a3f44c9c74114dfe8ab8f3a59322b0ce12494f0",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "E1477-FINISHED-REPORT",
+      "path": "research/runs/RUN-0009/historical/E1477_FINISHED.json",
+      "sha256": "52d8e6b6d30b801f445055297ae6722a8264617249011d240f4959cf6f8304d8",
+      "availability": "PUBLIC"
+    }
+  ],
+  "parameters": {
+    "command": "python research/runs/RUN-0009/evidence/verify_e1477.py",
+    "observed_routes": 640,
+    "scorers": [2, 3, 4],
+    "board_permutation_controls_per_scorer": 999,
+    "familywise_threshold": 0.01,
+    "control_seed": 1477
+  },
+  "pipeline": {
+    "description": "Verify the retained route count, input identity, calibration gates, half-transfer failures, solved-reference failures, permutation tails, and bounded rejection across all three replacement scorers.",
+    "implementation": "research/runs/RUN-0009/evidence/verify_e1477.py"
+  },
+  "output": {
+    "status": "COMPLETE",
+    "result_class": "BOUNDED_NEGATIVE",
+    "summary": "PAGE05_COMPLETE_BOARD_TO_PAGE33_DIRECT_ROUTE_FAMILY_REJECTED",
+    "acceptance": {
+      "passed": true,
+      "criterion": "Every calibrated scorer rejects promotion because the independently selected half-routes differ, the observed score is below solved reference, and familywise p is greater than 0.01."
+    },
+    "metrics": [
+      {"name": "declared_routes", "value": 640, "unit": "routes"},
+      {"name": "calibrated_scorers", "value": 3, "unit": "models"},
+      {"name": "same_route_half_transfers", "value": 0, "unit": "of_3"},
+      {"name": "familywise_p_2gram", "value": 0.06, "unit": "probability"},
+      {"name": "familywise_p_3gram", "value": 0.827, "unit": "probability"},
+      {"name": "familywise_p_4gram", "value": 1.0, "unit": "probability"}
+    ],
+    "stdout": "PASS — 16/16 retained E1477 checks; direct Page05-board to Page33 lane rejected."
+  },
+  "controls": [
+    "Each 2-, 3-, and 4-gram model recovered the planted calibration route exactly at rank 1 before Page 33 evaluation.",
+    "Each observed score was compared with solved LP1 reference text under the same model.",
+    "Each scorer used 999 seeded board permutations and the declared familywise threshold p <= 0.01.",
+    "First- and second-half routes were selected independently and required to agree."
+  ],
+  "interpretation": "The complete Page 05 numeric board is not supported as a direct periodic key or 25-column permutation for Page 33 under the declared family. Address, selector, checksum, orbit, or multi-input roles remain outside this closure.",
+  "limitations": [
+    "The original transient E1459 qscore dependency did not survive; the completion uses three disclosed replacement models calibrated on solved LP1 text.",
+    "The public package does not redistribute third-party corpus transcriptions, so its portable verifier audits the complete retained decision ledgers while the full route replay requires separately acquired inputs.",
+    "This does not reject every possible Page 05 to Page 33 relationship, alternate board-derived object, transform, key, or execution model.",
+    "No LP2 plaintext, key, wallet, address, onion locator, endpoint, or Page 73 preimage was recovered."
+  ],
+  "provenance": {
+    "source_system": "HMS_ENDEAVOUR_PERSONAL_RESEARCH",
+    "historical_source": {
+      "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+      "original_identifier": "E1477_FINISHED_REPRODUCTION_PACKAGE_2026-08-03.zip",
+      "source_preserved": true,
+      "sha256": "f8b8e7f809084fe2978e21a457dff96304c97c1baf70d836ee8075aa68779341",
+      "size_bytes": 38290
+    },
+    "environment_manifest": "releases/environments/ENV-0007.json",
+    "parent_records": ["E1459"],
+    "source_paths": [],
+    "migration": {
+      "historical": true,
+      "original_run": "E1477",
+      "original_source": "Personal Research",
+      "migrated_at": "2026-08-14T00:00:00-05:00",
+      "migration_version": "1.0.0",
+      "normalization_changes": [
+        "Converted the historical completion into HMS Run and Result objects.",
+        "Clean-reran the frozen standalone reproduction and confirmed exact semantic agreement with the archived result.",
+        "Excluded corpus transcription files while preserving their source-package identity and the complete decision ledgers.",
+        "Added a non-mutating standard-library verifier for the retained evidence."
+      ]
+    }
+  },
+  "raw_artifacts": {
+    "availability": "SANITIZED_SUBSET",
+    "reason": "Complete decision ledgers, report, source checksums, and reproduction source are retained; third-party corpus transcriptions are not redistributed.",
+    "files": [
+      "historical/E1477_REPRODUCTION_RESULT.json",
+      "historical/E1477_FINISHED.json",
+      "historical/REPORT.md",
+      "historical/SOURCE_SHA256SUMS.txt",
+      "historical/reproduce_e1477.py",
+      "evidence/verify_e1477.py"
+    ]
+  },
+  "chronicle_events": [],
+  "finding_tags": ["E1477", "PAGE05", "PAGE33", "GP29", "BOUNDED_NEGATIVE"]
+}

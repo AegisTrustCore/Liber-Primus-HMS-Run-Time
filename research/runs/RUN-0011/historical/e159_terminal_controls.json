@@ -1,0 +1,36 @@
+{
+  "schema": "LP_E159_TERMINAL_FULL_FAMILY_CONTROLS_V1",
+  "rows": [
+    {
+      "segment": 9,
+      "pages": "73",
+      "real_best_transform": "E118_PRIME_TOTIENT_F_PAUSE",
+      "real_token4_score": -2.6635064783182756,
+      "real_vocab_coverage": 0.5604395604395604,
+      "real_vocab_hits": 15,
+      "real_rendered": "AN END WITHIN THE DEEP WEB THERE EXISTS A PAGE THAT HASHES TO IT IS THE DUTY OF EUERY PILGRIM TO SEEK OUT THIS PAGE",
+      "null_iterations": 500,
+      "full_family_token_p": 0.001996007984031936,
+      "full_family_vocab_p": 0.001996007984031936,
+      "full_family_joint_p": 0.001996007984031936,
+      "null_best_token_max": -3.1896782335285914,
+      "null_best_vocab_max": 0.2871287128712871
+    },
+    {
+      "segment": 10,
+      "pages": "74",
+      "real_best_transform": "DIRECT_GP",
+      "real_token4_score": -2.572006102085441,
+      "real_vocab_coverage": 0.5544554455445545,
+      "real_vocab_hits": 14,
+      "real_rendered": "PARABLE LIKE THE INSTAR TUNNELING TO THE SURFAKE WE MUST SHED OUR OWN KIRKUMFERENKES FIND THE DIUINITY WITHIN AND EMERGE",
+      "null_iterations": 500,
+      "full_family_token_p": 0.001996007984031936,
+      "full_family_vocab_p": 0.001996007984031936,
+      "full_family_joint_p": 0.001996007984031936,
+      "null_best_token_max": -3.2245248609970054,
+      "null_best_vocab_max": 0.25742574257425743
+    }
+  ],
+  "decision": "BOTH_TERMINAL_SEGMENTS_SELECT_KNOWN_OPERATIONS_AND_BEAT_FULL_FAMILY_SHUFFLES"
+}

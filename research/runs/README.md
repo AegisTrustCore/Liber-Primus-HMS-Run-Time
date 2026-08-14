@@ -14,3 +14,6 @@ The JSON index is authoritative for discovery; HTML, CSV, and Markdown are gener
 - [RUN-0006 — Page 32 signed prime-gap to payload-junction vector](RUN-0006/README.md)
 - [RUN-0007 — Page 32 red-edge terminal holdout eligibility audit](RUN-0007/README.md)
 - [RUN-0008 — Corpus-wide default-key OutGuess calibration](RUN-0008/README.md)
+- [RUN-0009 — Page 05 complete-board to Page 33 bounded route-family test](RUN-0009/README.md)
+- [RUN-0010 — Solved-LP1 dollar-segment operation-frame audit](RUN-0010/README.md)
+- [RUN-0011 — Terminal segment-wide operation known controls](RUN-0011/README.md)

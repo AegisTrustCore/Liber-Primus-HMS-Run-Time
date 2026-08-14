@@ -1,0 +1,120 @@
+{
+  "$schema": "../../../schemas/run-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "RUN-0011",
+  "title": "Terminal segment-wide operation known controls",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "evidence_class": "KNOWN_CONTROL",
+  "reproduction_status": "PARTIAL",
+  "migration_confidence": "HIGH",
+  "executed_at": "2026-08-03T00:00:00-05:00",
+  "target": {
+    "type": "SOLVED_LP2_TERMINAL_CONTROLS",
+    "page": null,
+    "region": "Segment 9 / Page 73 and Segment 10 / Page 74",
+    "description": "Whether a six-operation segment-wide runtime independently selects and replays the established Page 73 and Page 74 terminal operators"
+  },
+  "experiment_id": "E159",
+  "result_ids": ["RES-0011"],
+  "capsule_id": "CAP-0004",
+  "run_set_ids": ["RSET-0004"],
+  "method_family": "SEGMENT_WIDE_KNOWN_OPERATOR_REPLAY",
+  "pipeline_id": null,
+  "summary": "The six-operation family selected the established sequential-prime/totient operator for Page 73 and direct GP for Page 74; both known controls beat 500 full-family shuffles.",
+  "why_run": "To test whether the segment-wide runtime can recover known terminal material when the correct operator is present before it is used as a negative or discovery instrument.",
+  "inputs": [
+    {
+      "id": "E159-TERMINAL-CONTROL-RESULT",
+      "path": "research/runs/RUN-0011/historical/e159_terminal_controls.json",
+      "sha256": "66eb70f2a2f9440d989f1e916ebe644188aff49c2941daeab59ff36577e72970",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "E159-TERMINAL-CONTROL-LEDGER",
+      "path": "research/runs/RUN-0011/historical/E159_TERMINAL_FULL_FAMILY_CONTROLS.csv",
+      "sha256": "e5bcbc37e2a7823facd6df4ada5a41a162648b03617377c726a254f60cfcac16",
+      "availability": "PUBLIC"
+    }
+  ],
+  "parameters": {
+    "command": "python research/runs/RUN-0011/evidence/verify_e159_controls.py",
+    "declared_operations": 6,
+    "terminal_segments": [9, 10],
+    "full_family_shuffles_per_segment": 500,
+    "state_reset_at_internal_red_record": false
+  },
+  "pipeline": {
+    "description": "Cross-check the retained JSON and CSV ledgers, the selected operation and established text for each terminal segment, separation from the strongest shuffled controls, and the exact empirical p value.",
+    "implementation": "research/runs/RUN-0011/evidence/verify_e159_controls.py"
+  },
+  "output": {
+    "status": "COMPLETE",
+    "result_class": "KNOWN_CONTROL",
+    "summary": "BOTH_TERMINAL_SEGMENTS_SELECT_ESTABLISHED_OPERATORS",
+    "acceptance": {
+      "passed": true,
+      "criterion": "Each established terminal plaintext ranks first under its known operator and exceeds every retained full-family shuffled control in token and vocabulary measures."
+    },
+    "metrics": [
+      {"name": "declared_operations", "value": 6, "unit": "operators"},
+      {"name": "known_controls_recovered", "value": 2, "unit": "of_2"},
+      {"name": "page73_selected_rank", "value": 1, "unit": "rank"},
+      {"name": "page74_selected_rank", "value": 1, "unit": "rank"},
+      {"name": "full_family_shuffles_per_control", "value": 500, "unit": "shuffles"},
+      {"name": "joint_empirical_p_each", "value": 0.001996007984031936, "unit": "probability"}
+    ],
+    "stdout": "PASS — 14/14 E159 terminal-control checks; both established operators separate."
+  },
+  "controls": [
+    "Page 73 and Page 74 are established terminal plaintext controls, not HMS-originated discoveries.",
+    "The declared family contains six complete-segment operations and selects the best without resetting at internal red records.",
+    "Each terminal control is compared with 500 full-family shuffled inputs using token and vocabulary measures.",
+    "The public verifier requires exact JSON/CSV agreement and recomputes p as 1/(500+1)."
+  ],
+  "interpretation": "The segment-wide runtime recognizes both known terminal operators when they are in the declared family. This validates the instrument as a control but does not establish an operator for any unsolved segment.",
+  "limitations": [
+    "Both plaintexts and their operations were already known; this is a positive control, not a new translation.",
+    "The public package retains the complete terminal-control ledger but not the private typed event streams needed to rerun transformation from source glyphs, so reproduction is PARTIAL.",
+    "Success on two terminal controls does not prove that every LP2 segment uses one of the six operations.",
+    "This package does not publish the unsolved-segment best-output ledger or forward selector experiments."
+  ],
+  "provenance": {
+    "source_system": "HMS_ENDEAVOUR_MORE_RESEARCH",
+    "historical_source": {
+      "source_type": "PERSONAL_RESEARCH_ARCHIVE",
+      "original_identifier": "LP_E156_E160_Segment_Runtime.zip",
+      "source_preserved": true,
+      "sha256": "502abf0da98d9eaf1d3907de586ececf92888cbc2b2d2d9cbfad290f048c93e6",
+      "size_bytes": 310350
+    },
+    "environment_manifest": "releases/environments/ENV-0007.json",
+    "parent_records": ["E118", "E154"],
+    "source_paths": [],
+    "migration": {
+      "historical": true,
+      "original_run": "E159",
+      "original_source": "Personal Research/More research",
+      "migrated_at": "2026-08-14T00:00:00-05:00",
+      "migration_version": "1.0.0",
+      "normalization_changes": [
+        "Separated the two known terminal controls from the unsolved-segment scan and later selector work.",
+        "Retained the complete terminal full-family control ledger and result object.",
+        "Added a portable non-mutating ledger verifier.",
+        "Excluded unsolved best outputs, active route detail, private typed event streams, and forward experiments."
+      ]
+    }
+  },
+  "raw_artifacts": {
+    "availability": "SANITIZED_SUBSET",
+    "reason": "The terminal known-control result and full-family control ledger are retained; private typed input streams and unsolved-output scans are excluded.",
+    "files": [
+      "historical/e159_terminal_controls.json",
+      "historical/E159_TERMINAL_FULL_FAMILY_CONTROLS.csv",
+      "evidence/verify_e159_controls.py"
+    ]
+  },
+  "chronicle_events": [],
+  "finding_tags": ["E159", "PAGE73", "PAGE74", "KNOWN_CONTROL", "SEGMENT_RUNTIME"]
+}

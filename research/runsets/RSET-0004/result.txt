@@ -1,0 +1,18 @@
+HMS ENDEAVOUR
+RSET-0004
+
+Segment Frames, Terminal Controls, and a Board Closure
+
+STATUS: PUBLISHED
+
+Add three reader-friendly, bounded evidence objects to the public archive without disclosing active unsolved-output routes or claiming new plaintext.
+
+RUNS:
+RUN-0009
+RUN-0010
+RUN-0011
+
+RESULTS:
+RES-0009
+RES-0010
+RES-0011

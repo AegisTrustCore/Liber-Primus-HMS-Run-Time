@@ -1,0 +1,7 @@
+name,value,unit
+declared_routes,640,routes
+calibrated_scorers,3,models
+same_route_half_transfers,0,of_3
+familywise_p_2gram,0.06,probability
+familywise_p_3gram,0.827,probability
+familywise_p_4gram,1.0,probability

@@ -1,0 +1,14 @@
+{
+  "result_id": "RES-0010",
+  "controls": [
+    "Already-solved LP1 pages and established operators only.",
+    "Complete 3,003-member boundary-placement family.",
+    "Independent derivation of source boundaries and operation changes from the public ledger."
+  ],
+  "contradictions": [],
+  "prooflinks": [
+    "research/runs/RUN-0010/manifest.json",
+    "research/runs/RUN-0010/historical/E156_LP1_SEGMENT_OPERATION_LEDGER.csv",
+    "research/runs/RUN-0010/evidence/verify_e156.py"
+  ]
+}

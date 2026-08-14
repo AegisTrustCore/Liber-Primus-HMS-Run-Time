@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "object_type": "RUNS",
-  "count": 8,
+  "count": 11,
   "entries": [
     {
       "id": "RUN-0001",
@@ -98,6 +98,42 @@
       "package": "RUN-0008/RUN-0008.zip",
       "package_sha256": "f1df281413ba097c65a972517ca4b103cf8cfc6be5fe9ec4d3e666d5af171724",
       "result_page": "RUN-0008/result.html"
+    },
+    {
+      "id": "RUN-0009",
+      "title": "Page 05 complete-board to Page 33 bounded route-family test",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "PARTIAL",
+      "page": 33,
+      "method": "GP29_BOARD_PERIODIC_AND_COLUMNAR_FAMILY",
+      "capsule": "CAP-0004",
+      "package": "RUN-0009/RUN-0009.zip",
+      "package_sha256": "fcf23253c5b1adcefb2f2afd570240a82c1aa0042dd190db42d02a9dfaad02e6",
+      "result_page": "RUN-0009/result.html"
+    },
+    {
+      "id": "RUN-0010",
+      "title": "Solved-LP1 dollar-segment operation-frame audit",
+      "status": "STRUCTURAL",
+      "reproduction_status": "PARTIAL",
+      "page": null,
+      "method": "SOLVED_CONTROL_SEGMENT_BOUNDARY_AUDIT",
+      "capsule": "CAP-0004",
+      "package": "RUN-0010/RUN-0010.zip",
+      "package_sha256": "14d9000912ec8fc297c34cd2d8daa3645652133fc5cf006cedc2f23404073394",
+      "result_page": "RUN-0010/result.html"
+    },
+    {
+      "id": "RUN-0011",
+      "title": "Terminal segment-wide operation known controls",
+      "status": "KNOWN_CONTROL",
+      "reproduction_status": "PARTIAL",
+      "page": null,
+      "method": "SEGMENT_WIDE_KNOWN_OPERATOR_REPLAY",
+      "capsule": "CAP-0004",
+      "package": "RUN-0011/RUN-0011.zip",
+      "package_sha256": "5ab49d2285cdb656e8633fb1fe4778250275956f61bdea159cc342b54a4677c9",
+      "result_page": "RUN-0011/result.html"
     }
   ]
 }

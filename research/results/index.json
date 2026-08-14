@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "object_type": "RESULTS",
-  "count": 8,
+  "count": 11,
   "entries": [
     {
       "id": "RES-0001",
@@ -98,6 +98,42 @@
       "package": "RES-0008/RES-0008.zip",
       "package_sha256": "a10cd3d2284b8cd6360042969ebfa61df056ae771472b3aecd531acd2e9be536",
       "result_page": "RES-0008/result.html"
+    },
+    {
+      "id": "RES-0009",
+      "title": "The complete Page 05 board fails the declared direct Page 33 family",
+      "status": "BOUNDED_NEGATIVE",
+      "reproduction_status": "PARTIAL",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0004",
+      "package": "RES-0009/RES-0009.zip",
+      "package_sha256": "d1811e81091e881b532171ff345fd4da3b66b88bb95ab1211e4259db913aaaee",
+      "result_page": "RES-0009/result.html"
+    },
+    {
+      "id": "RES-0010",
+      "title": "Solved-LP1 dollar segments align with operation frames",
+      "status": "STRUCTURAL",
+      "reproduction_status": "PARTIAL",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0004",
+      "package": "RES-0010/RES-0010.zip",
+      "package_sha256": "5b9187553c480569b07968f27e30763a8548343a8ed3066bce2a86ab87543fa6",
+      "result_page": "RES-0010/result.html"
+    },
+    {
+      "id": "RES-0011",
+      "title": "Segment-wide replay recovers both established terminal controls",
+      "status": "KNOWN_CONTROL",
+      "reproduction_status": "PARTIAL",
+      "page": null,
+      "method": null,
+      "capsule": "CAP-0004",
+      "package": "RES-0011/RES-0011.zip",
+      "package_sha256": "592aca8935fd5cf6681756f30d7da29cc4e294d6aecaa779b5ed53187b0ebd92",
+      "result_page": "RES-0011/result.html"
     }
   ]
 }

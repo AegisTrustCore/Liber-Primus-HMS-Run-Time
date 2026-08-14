@@ -1,0 +1,51 @@
+HMS ENDEAVOUR
+RUN-0010
+
+TITLE:
+Solved-LP1 dollar-segment operation-frame audit
+
+STATUS:
+STRUCTURAL / PARTIAL
+
+SUMMARY:
+The seven source dollar segments are operation-homogeneous, and their six boundaries exactly equal the six known operation-change gaps across the fifteen rune-bearing solved LP1 pages.
+
+WHY THIS RUN EXISTS:
+To test whether dollar segmentation is an authored operation-frame boundary on known solved material before applying that runtime model to unsolved LP2 segments.
+
+TARGET:
+Whether the six source dollar boundaries coincide with the six known operation changes across seven solved-LP1 segments
+
+METHOD:
+Reconstruct the page-method sequence from the public segment ledger, derive method-change and segment-boundary gaps independently, and verify the exact 1/3003 combinatorial control.
+
+PARAMETERS:
+{"command": "python research/runs/RUN-0010/evidence/verify_e156.py", "possible_six_boundary_sets": 3003, "rune_bearing_pages": 15, "source_boundaries": 6, "source_segments": 7}
+
+RESULT:
+DOLLAR_SEGMENTS_MATCH_OPERATION_FRAMES_ON_SOLVED_LP1
+
+METRICS:
+- rune_bearing_pages: 15 pages
+- source_segments: 7 segments
+- matching_boundaries: 6 of_6
+- candidate_boundary_sets: 3003 sets
+- homogeneous_boundary_sets: 1 sets
+- exact_random_boundary_p: 0.000333000333000333 probability
+
+CONTROLS:
+- Only already-solved LP1 pages and established operators are used.
+- All 3,003 ways to place six boundaries among fourteen page gaps define the comparison family.
+- Segment boundaries are taken from the source ledger; method changes are derived separately from the known operation sequence.
+
+INTERPRETATION:
+On solved LP1, the dollar boundary is supported as an operation-scope boundary. This motivates preserving operation state across internal records, but does not identify the operation selector for unsolved segments.
+
+LIMITATIONS:
+- This is a structural known-control observation on solved LP1, not a new plaintext recovery.
+- The public package verifies the retained normalized ledger; it does not redistribute the complete third-party LP1 transcription or source imagery.
+- The result identifies where known operations change, not which unknown operation applies to an LP2 segment.
+- Transfer of the frame model from LP1 to unsolved LP2 requires separate tests.
+
+SOURCE:
+HMS_ENDEAVOUR_MORE_RESEARCH / LP_E156_E160_Segment_Runtime.zip

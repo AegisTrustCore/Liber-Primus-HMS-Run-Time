@@ -1,0 +1,18 @@
+{
+  "run_id": "RUN-0009",
+  "status": "COMPLETE",
+  "result_class": "BOUNDED_NEGATIVE",
+  "summary": "PAGE05_COMPLETE_BOARD_TO_PAGE33_DIRECT_ROUTE_FAMILY_REJECTED",
+  "metrics": {
+    "declared_routes": 640,
+    "calibrated_scorers": 3,
+    "same_route_half_transfers": 0,
+    "familywise_p_2gram": 0.06,
+    "familywise_p_3gram": 0.827,
+    "familywise_p_4gram": 1.0
+  },
+  "acceptance": {
+    "passed": true,
+    "criterion": "Every calibrated scorer rejects promotion because the independently selected half-routes differ, the observed score is below solved reference, and familywise p is greater than 0.01."
+  }
+}

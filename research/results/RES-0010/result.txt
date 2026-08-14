@@ -1,0 +1,31 @@
+HMS ENDEAVOUR
+RES-0010
+
+TITLE:
+Solved-LP1 dollar segments align with operation frames
+
+STATUS:
+STRUCTURAL / PARTIAL
+
+CLAIM:
+Across the fifteen rune-bearing solved LP1 pages, all seven source dollar segments are operation-homogeneous and their six boundaries exactly equal the six established operation-change gaps; one of 3,003 six-boundary placements has that property.
+
+WHY IT MATTERS:
+It supports treating the dollar boundary as an operation-scope boundary and prevents automatic cipher-state resets at every internal record or page.
+
+SUPPORTED BY:
+RUN-0010
+
+WHAT THIS DOES NOT CLAIM:
+- Any newly recovered plaintext.
+- That every LP2 segment uses an LP1 operation.
+- That a dollar boundary alone identifies which operation to apply.
+- That internal red records have no independent semantic or type role.
+
+LIMITATIONS:
+- The claim is structural and restricted to solved LP1.
+- Complete third-party LP1 transcriptions and images are not redistributed.
+- The observation identifies scope boundaries, not the operation selector for an unsolved segment.
+
+CURRENT INTERPRETATION:
+Use dollar boundaries as the default operation-frame boundary in the HMS runtime while keeping operation selection and LP2 transfer as separately gated questions.

@@ -1,0 +1,10 @@
+{
+  "command": "python research/runs/RUN-0011/evidence/verify_e159_controls.py",
+  "declared_operations": 6,
+  "terminal_segments": [
+    9,
+    10
+  ],
+  "full_family_shuffles_per_segment": 500,
+  "state_reset_at_internal_red_record": false
+}

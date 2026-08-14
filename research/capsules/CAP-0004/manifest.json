@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schemas/capsule-package.schema.json",
+  "schema_version": "1.0.0",
+  "id": "CAP-0004",
+  "title": "Segment runtime controls and one direct-board closure",
+  "version": "1.0.0",
+  "classification": "PUBLIC",
+  "publication_status": "PUBLISHED",
+  "summary": "Three bounded public objects: an E1477 direct-board route-family closure, the E156 solved-LP1 operation-frame structure, and E159 Page 73/Page 74 terminal known controls.",
+  "experiment_ids": ["E1477", "E156", "E159"],
+  "run_ids": ["RUN-0009", "RUN-0010", "RUN-0011"],
+  "result_ids": ["RES-0009", "RES-0010", "RES-0011"],
+  "control_ids": ["RES-0011"],
+  "negative_result_ids": ["RES-0009"],
+  "correction_ids": [],
+  "limitations": [
+    "No object in this capsule is a newly recovered LP2 plaintext.",
+    "The public packages retain complete decision and control ledgers but omit third-party corpus transcriptions and private typed event streams.",
+    "E1477 uses disclosed replacement scorers because the original transient E1459 scorer was unavailable.",
+    "Exploratory modulus signals, unsolved best outputs, selector hypotheses, and forward experiment queues are excluded."
+  ],
+  "finding_tags": ["E1477", "E156", "E159", "SEGMENT_RUNTIME", "BOUNDED_PUBLIC_RELEASE"]
+}

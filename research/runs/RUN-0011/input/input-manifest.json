@@ -1,0 +1,17 @@
+{
+  "run_id": "RUN-0011",
+  "inputs": [
+    {
+      "id": "E159-TERMINAL-CONTROL-RESULT",
+      "path": "research/runs/RUN-0011/historical/e159_terminal_controls.json",
+      "sha256": "66eb70f2a2f9440d989f1e916ebe644188aff49c2941daeab59ff36577e72970",
+      "availability": "PUBLIC"
+    },
+    {
+      "id": "E159-TERMINAL-CONTROL-LEDGER",
+      "path": "research/runs/RUN-0011/historical/E159_TERMINAL_FULL_FAMILY_CONTROLS.csv",
+      "sha256": "e5bcbc37e2a7823facd6df4ada5a41a162648b03617377c726a254f60cfcac16",
+      "availability": "PUBLIC"
+    }
+  ]
+}
