@@ -15,11 +15,15 @@ The published [RSET-0003 archive](research/runsets/RSET-0003/START-HERE.md) adds
 
 - [`RES-0008`](research/results/RES-0008/README.md) — no LP2 page separated under the exact frozen OutGuess 0.13 default-key path; other keys, carriers, tools, and steganography generally remain outside scope.
 
+The published [RSET-0004 archive](research/runsets/RSET-0004/START-HERE.md) adds:
+
+- [`RES-0009`](research/results/RES-0009/README.md) — the complete Page 05 numeric board failed the declared 640-route direct periodic-key and 25-column-permutation family on Page 33. Address, selector, checksum, orbit, multi-input, and structurally different roles remain outside scope.
+
 Negative results are part of the evidence record. A failed candidate, rejected transformation, or null control can prevent repeated work and narrow the search space.
 
 ## Current ledger
 
-Five bounded negative/null Results now have structured public source-tree packages. `RSET-0002` and the E1059 `RSET-0003` package are published on `main`; `RSET-0003` is bound to approved gate `RR-0002`.
+Six bounded negative/null Results now have structured public packages. `RSET-0002`, E1059 `RSET-0003`, and E1477/E156/E159 `RSET-0004` are published on `main`; the latter two are bound to approved gates `RR-0002` and `RR-0003`.
 
 The source workspace contains many likely negative, null, control, and bounded-rejection outputs. They will be promoted only after the tested claim, parameters, success criterion, actual outcome, and limits of the rejection are documented.
 

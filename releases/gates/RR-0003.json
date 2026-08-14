@@ -3,7 +3,7 @@
   "schema_version": "1.1.0",
   "release_id": "RR-0003",
   "release_type": "RESEARCH",
-  "status": "PENDING",
+  "status": "APPROVED",
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
@@ -14,7 +14,7 @@
     "intended_tag": "RR-0003"
   },
   "common_checks": {
-    "publication_approved": false,
+    "publication_approved": true,
     "secret_scan_passed": true,
     "rights_reviewed": true,
     "provenance_complete": true,
@@ -32,10 +32,10 @@
     }
   },
   "human_approval": {
-    "approved": false,
-    "approver": null,
-    "approved_at": null,
-    "approved_subject_sha256": null
+    "approved": true,
+    "approver": "coreystilwell3-eng",
+    "approved_at": "2026-08-13T22:00:16-05:00",
+    "approved_subject_sha256": "4f1290cb1e0fa2dac4692cc48da5c0fdbbfce2260a3c48067c302d2385fd4635"
   },
   "notes": [
     "The exact subject contains three normalized public objects: E1477 direct complete-board closure, E156 solved-LP1 segment-frame structure, and E159 Page 73/Page 74 terminal known controls.",
@@ -43,6 +43,6 @@
     "The public E156 and E159 verifiers reproduce retained ledger logic, cross-file consistency, combinatorial controls, and empirical-p arithmetic; source-glyph reproduction remains PARTIAL because third-party corpus transcriptions and private typed event streams are not redistributed.",
     "Exploratory modulus signals, unsolved best-output ledgers, operation-selector hypotheses, active route details, and forward experiment queues are excluded.",
     "No subject claims a newly recovered LP2 plaintext, key, locator, endpoint, wallet, or complete solve.",
-    "Automation prepared and validated this pending gate but did not supply the required exact-subject owner approval."
+    "The repository owner explicitly approved the exact RR-0003 subject in the controlling conversation on 2026-08-13; automation recorded but did not originate that approval."
   ]
 }

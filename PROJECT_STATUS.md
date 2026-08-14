@@ -34,7 +34,7 @@ The Research Archive now contains 11 published Runs, 11 published Results, 4 pub
 - An automated public-boundary scan rejecting workstation paths and local endpoints.
 - Complete navigation for the 75-page Liber Primus working corpus, including a page index, timeline, source-verification guide, and E1059 ledger cross-reference.
 
-The eleven Runs, eleven Results, and four Capsules are packaged in the Research Archive. `RSET-0001` remains `STAGED`; `RSET-0002` and `RSET-0003` are `PUBLISHED` on `main`, while `RSET-0004` is the exact RR-0003 candidate pending its owner-approved release gate. None claims an LP plaintext recovery, and Expedition 001 remains closed pending its exact-subject release approval.
+The eleven Runs, eleven Results, and four Capsules are published through the `main`-branch Research Archive. `RSET-0001` remains `STAGED`; `RSET-0002` and `RSET-0003` are `PUBLISHED`, and `RSET-0004` is also `PUBLISHED`. `RSET-0003` is bound to approved gate `RR-0002`, and `RSET-0004` is bound to approved gate `RR-0003`. None claims an LP plaintext recovery, and Expedition 001 remains closed pending its exact-subject release approval.
 
 ## Source audit included in the foundation
 
@@ -73,14 +73,14 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 3. Qualify and approve the Expedition 001 customer package before opening its public campaign.
 4. Bind the Corpus Manifest Verifier to a canonical public corpus manifest and complete its customer release gate.
 5. Build HMS Endeavour Lite and the Liber Runtime on those stable public instruments.
-6. Complete the RR-0003 exact-subject approval for E1477/E156/E159, then continue Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
+6. Keep approved RR-0003 synchronized while continuing Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
 
 ## Platform launch state
 
 - GitHub: `v0.1.0` public research foundation released; `RSET-0001` is staged, and `RSET-0002` and approved `RSET-0003` are published.
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
-- Public Research Archive: eleven Runs, eleven Results, and four Capsules are packaged; `RSET-0001` is staged, `RSET-0002` and `RSET-0003` are released, and `RSET-0004` awaits exact-subject RR-0003 approval.
+- Public Research Archive: eleven Runs, eleven Results, and four Capsules are published; `RSET-0001` is staged, while `RSET-0002`, `RSET-0003`, and owner-approved `RSET-0004` are released portable packages.
 - Public GP29 Calculator: frozen `RELEASE_CANDIDATE`; engineering qualification passed, while independent clean-machine UAT and human approval remain pending. No customer download is public.
 - Expedition verifier: public version 0.2.0 developer source plus a private Windows candidate exist; the campaign is closed and no customer download is public.
 - Corpus navigation: the complete 75-page working-corpus map, timeline, page index, and verification route are public.

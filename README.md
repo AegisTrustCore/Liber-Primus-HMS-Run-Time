@@ -10,6 +10,7 @@
 |---|---|---|
 | [HMS Endeavour v0.1.0](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0) | Public research foundation, schemas, evidence records, validation source, and provenance tooling | Free / public |
 | [Research Release RR-0002](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/RR-0002) | Five bounded closure and correction packages with a portable evidence archive | Free / public |
+| [Research Release RR-0003](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/RR-0003) | E1477 board-family closure, E156 solved-LP1 segment frames, and E159 terminal known controls | Free / public |
 
 Only the releases listed above are downloadable customer-facing GitHub releases. Development source may be visible on `main` before a packaged tool is approved for release.
 
@@ -28,6 +29,7 @@ Only the releases listed above are downloadable customer-facing GitHub releases.
 
 - A complete [75-page working-corpus map](corpus/liber-primus/README.md), page index, timeline, and source-verification path.
 - Structured public Result objects and reproducible Runs, including [RSET-0002](research/runsets/RSET-0002/START-HERE.md) and [RSET-0003](research/runsets/RSET-0003/START-HERE.md).
+- [RSET-0004](research/runsets/RSET-0004/START-HERE.md): three bounded objects spanning a negative route closure, a structural control, and two established terminal plaintext controls.
 - Public audit dossiers for pages 32, 72, and 73. These record bounded observations and controls; they are not presented as new verified plaintext solves.
 - Historical Cicada 3301 OpenPGP provenance material and a local verification path.
 - Public schemas, release gates, record validators, and developer-source utilities.

@@ -26,6 +26,8 @@ The public source tree exposes actual [Runs](research/runs/README.md), [Results]
 
 [`RSET-0003`](research/runsets/RSET-0003/START-HERE.md) is **PUBLISHED** through owner-approved gate [`RR-0002`](releases/gates/RR-0002.json): the E1059 default-key OutGuess bounded closure, complete retained 75-page ledger family, portable verifier, and explicit partial-reproduction boundary.
 
+[`RSET-0004`](research/runsets/RSET-0004/START-HERE.md) is **PUBLISHED** through owner-approved gate [`RR-0003`](releases/gates/RR-0003.json): the E1477 direct complete-board route-family closure, E156 solved-LP1 operation-frame structure, and E159 Page 73/Page 74 terminal known controls. The release excludes unsolved best-output ledgers, active selector routes, exploratory modulus leads, private typed event streams, and third-party corpus transcriptions. It publishes no new LP2 plaintext claim.
+
 ## Public puzzles
 
 [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md) is a synthetic method-training puzzle with a local, no-telemetry verifier. Its status is `RELEASE_CANDIDATE`, not `OPEN`. It introduces no new Liber Primus research claim and will receive a complete public solution after its campaign window.

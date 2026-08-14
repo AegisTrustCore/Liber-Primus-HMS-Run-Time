@@ -8,11 +8,11 @@ This is a public roadmap, not the HMS research queue. It records the existence, 
 
 | Public ID | Evidence class | Current state | Gate before public release |
 |---|---|---|---|
-| RC-0001 | Known control | Reproduction pending | Freeze canonical inputs, package a clean implementation, and reproduce the declared comparison independently |
-| RC-0002 | Bounded negative | Initial examples published in `RSET-0002`; E1059 normalized as staged `RSET-0003`; E1477 remains next | Approve only exact subjects with the complete tested family, controls, reproduction boundary, and explicit non-claims |
+| RC-0001 | Known control | E159 terminal controls published in `RSET-0004`; further controls require separate review | Freeze canonical inputs, package a clean implementation, and reproduce the declared comparison independently |
+| RC-0002 | Bounded negative | Examples published in `RSET-0002`; E1059 published in `RSET-0003`; E1477 published in `RSET-0004` | Approve only exact subjects with the complete tested family, controls, reproduction boundary, and explicit non-claims |
 | RC-0003 | Known control | Provenance reconciliation | Reconcile source identity and numbering, package the comparison family, and complete a clean replay |
 | RC-0004 | Correction | Initial anti-post-hoc correction published as `RES-0007`; further candidates pending | Identify the superseded interpretation, reproduce the narrowing evidence, and publish both together |
-| RC-0005 | Structural observation | Independent implementation pending | Freeze canonical source material, document the rule and ambiguity boundary, and reproduce independently |
+| RC-0005 | Structural observation | E156 solved-LP1 segment frame published in `RSET-0004`; further candidates pending | Freeze canonical source material, document the rule and ambiguity boundary, and reproduce independently |
 
 Exact source experiments, active hypotheses, parameters, datasets, and reproduction assignments remain in the private HMS ledger until a candidate is intentionally promoted through the public release gate.
 
