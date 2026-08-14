@@ -31,6 +31,7 @@ The Research Archive now contains 8 published Runs, 8 published Results, 3 publi
 - `CAP-0001` through `CAP-0003`: the public verification foundation, Page 32 manifest-interpretation closures, and E1059 OutGuess closure.
 - Distribution and UX standards separating developer source from customer-ready applications.
 - An automated public-boundary scan rejecting workstation paths and local endpoints.
+- Complete navigation for the 75-page Liber Primus working corpus, including a page index, timeline, source-verification guide, and E1059 ledger cross-reference.
 
 The eight Runs, eight Results, and three Capsules are published through the `main`-branch Research Archive. `RSET-0001` remains `STAGED`; `RSET-0002` and `RSET-0003` are `PUBLISHED` on `main`. `RSET-0003` is also bound to approved gate `RR-0002`. None claims an LP plaintext recovery, and Expedition 001 remains closed pending its exact-subject release approval.
 
@@ -67,11 +68,11 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 ## Immediate focus
 
 1. Keep every status surface synchronized with the canonical Research Archive indexes.
-2. Normalize E1477 as the next bounded-rejection candidate while beginning the GP29/Runtime implementation slice.
-3. Reconcile Page 72/73 numbering, known-control provenance, and corpus-edition differences before another control publication.
-4. Complete GP29 as the reference customer-ready instrument and release it separately.
-5. Open Expedition 001 only after its Windows portable verifier is signed and bound to an approved campaign subject.
-6. Release HMS Endeavour Lite alpha through a separate capability review.
+2. Complete independent clean-machine UAT and exact-subject owner approval for the frozen GP29 v0.1.0 candidate, then release it separately if the gate passes.
+3. Qualify and approve the Expedition 001 customer package before opening its public campaign.
+4. Bind the Corpus Manifest Verifier to a canonical public corpus manifest and complete its customer release gate.
+5. Build HMS Endeavour Lite and the Liber Runtime on those stable public instruments.
+6. Continue E1477 normalization and Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
 
 ## Platform launch state
 
@@ -79,8 +80,9 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
 - Public Research Archive: eight Runs, eight Results, and three Capsules are published; `RSET-0001` is staged, while `RSET-0002` and `RSET-0003` are published portable packages.
-- Public GP29 Calculator: in development and intentionally excluded from the frozen foundation candidate; planned as a separate tool release.
-- Expedition verifier: canonical core, GUI, CLI, tests, and a private Windows portable candidate exist; public download remains unavailable while the campaign is closed.
-- Endeavour Lite and Liber Runtime: architecture started; runnable applications remain planned.
+- Public GP29 Calculator: frozen `RELEASE_CANDIDATE`; engineering qualification passed, while independent clean-machine UAT and human approval remain pending. No customer download is public.
+- Expedition verifier: public version 0.2.0 developer source plus a private Windows candidate exist; the campaign is closed and no customer download is public.
+- Corpus navigation: the complete 75-page working-corpus map, timeline, page index, and verification route are public.
+- Endeavour Lite: architecture only; no public application exists. Liber Runtime: local developer core only; no hosted public service exists.
 - Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
 - Scope: foundation content merged through PR #1; Expedition 001 remains closed pending its own release.

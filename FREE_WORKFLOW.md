@@ -1,6 +1,6 @@
-# Observer End-to-End Workflow
+# Target Observer End-to-End Workflow
 
-The first public workflow is intentionally narrow and complete:
+The free Observer workflow is deliberately narrow. Its evidence and identity foundation is public now; its ordinary-user executable chain is not yet complete.
 
 ```text
 Import or identify public material
@@ -12,9 +12,18 @@ Import or identify public material
   → verify a published known-control package
 ```
 
-The foundation release establishes the evidence and identity contracts. GP29 `v0.1`, the corpus-manifest verifier, and `RC-0001` will complete the executable workflow through separate reviewed releases.
+## What works today
 
-Every public result page will use the same approachable layer:
+- The `v0.1.0` foundation supplies evidence, provenance, release, and identity contracts.
+- Public Runs, Results, Capsules, and portable evidence packages demonstrate the record model.
+- The 75-page working-corpus map supplies navigation and source-verification guidance.
+- GP29 and the Expedition verifier are usable as developer source by users with the stated Python environment.
+
+## What remains
+
+The customer-ready chain remains incomplete until GP29 v0.1.0 and the Corpus Manifest Verifier pass their independent clean-machine UAT and human-controlled release gates. Public source does not substitute for an approved ordinary-user download.
+
+Every public result page uses the same approachable layer:
 
 - **Claim** — the smallest conclusion.
 - **Why it matters** — context without expanding the claim.

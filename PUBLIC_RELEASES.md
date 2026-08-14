@@ -26,7 +26,7 @@ The public source tree exposes actual [Runs](research/runs/README.md), [Results]
 
 [`RSET-0003`](research/runsets/RSET-0003/START-HERE.md) is **PUBLISHED** through owner-approved gate [`RR-0002`](releases/gates/RR-0002.json): the E1059 default-key OutGuess bounded closure, complete retained 75-page ledger family, portable verifier, and explicit partial-reproduction boundary.
 
-### First free-drop candidate
+## Public puzzles
 
 [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md) is a synthetic method-training puzzle with a local, no-telemetry verifier. Its status is `RELEASE_CANDIDATE`, not `OPEN`. It introduces no new Liber Primus research claim and will receive a complete public solution after its campaign window.
 
