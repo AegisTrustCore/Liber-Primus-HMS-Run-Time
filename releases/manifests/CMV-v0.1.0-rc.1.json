@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "CMV-v0.1.0-rc.1",
+  "release_type": "SOFTWARE",
+  "candidate_commit_sha": "adb475649e66e34a391d91da65a8d691a00e9516",
+  "intended_tag": "CMV-v0.1.0-rc.1",
+  "environment_id": "ENV-0009",
+  "release_notes": "releases/CMV-v0.1.0-rc.1.md",
+  "artifacts": [
+    {"name":"hms_tools/corpus_manifest.py","sha256":"aaa100c38053f76a0c5d660893845538c48e43971032e83e19729abced37b415"},
+    {"name":"scripts/corpus_manifest.py","sha256":"052d6bd254991556aa46381ef3fdb3712ed42d049181ffb55b86763fa39ebee6"},
+    {"name":"scripts/corpus_verifier_app.py","sha256":"03588796bf5c510576fa725dff26f5c34a3981fd144fbb42b52c85253d60727d"},
+    {"name":"scripts/build_corpus_verifier_windows.py","sha256":"a8a65196fef17648beb479c282dd8bcca13d572f18c92875eb1e11121ac79e02"},
+    {"name":"corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json","sha256":"76d67e34f04b0125ad9b2893cd68b11510bb4e7e37ec2bb1849760e487a31978"},
+    {"name":"schemas/corpus-manifest.schema.json","sha256":"4d05fda8e846f7aa238461ba048ba0016a8c004d87e6abc5bc63c2b544d764c5"},
+    {"name":"schemas/corpus-verification.schema.json","sha256":"2b123be3af77392c16a6c9154ef458899fd20783a531405a78214a68a036d02a"},
+    {"name":"tests/test_corpus_manifest.py","sha256":"1671a280d022f5537044479c7eb90c107aef85749f40a7f4ade2ebcd502c857a"},
+    {"name":"tests/test_corpus_package.py","sha256":"abcd697907fbf4ab351ac066d3deb36fa61b966bde5af2144ef0fcc34f34c42f"},
+    {"name":"docs/tooling/CORPUS_MANIFEST_VERIFIER.md","sha256":"d543e8d0c3d37b5d183d581cdc50f37ab44d6be6bc02acfa2f8e37f8a0ea73e3"},
+    {"name":"docs/tooling/CORPUS_VERIFIER_UAT_V0.1.0_RC1.md","sha256":"4757b8f41a2e5240397b3e1f1aa2bf3faf8efe5a0d23b8f5371e01ffa4896396"},
+    {"name":"requirements-build.txt","sha256":"a675ca100a83653f329173decc688f422e9fc915a442adcc33b1d4b8f9e5353c"},
+    {"name":"HMS-Corpus-Verifier-v0.1.0-rc.1-Windows-x64-portable.zip","sha256":"631f6be600fa28d240e220ce31a9d293afddc56c65245ab5ca93c1476d64d7f4"}
+  ]
+}

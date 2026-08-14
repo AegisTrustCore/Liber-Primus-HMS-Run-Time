@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "CMV-v0.1.0-rc.1",
+  "release_type": "SOFTWARE",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "adb475649e66e34a391d91da65a8d691a00e9516",
+    "release_manifest": "releases/manifests/CMV-v0.1.0-rc.1.json",
+    "release_manifest_sha256": "d27cb262fd842c4042a8d45a731ef9614c0d4c190ae778bae4db8b59be08498d",
+    "environment_id": "ENV-0009",
+    "intended_tag": "CMV-v0.1.0-rc.1"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "software": {
+      "tests_passed": true,
+      "package_hashes_present": true,
+      "dependency_manifest_present": true,
+      "security_scan_passed": true,
+      "build_reproducible": true,
+      "release_notes_complete": true
+    }
+  },
+  "human_approval": {"approved":false,"approver":null,"approved_at":null,"approved_subject_sha256":null},
+  "notes": [
+    "The exact local candidate passed source tests, packaged self-tests, internal checksums, all five synthetic controls, and strict verification of the bound 75-page local set.",
+    "The canonical manifest publishes byte identities only and does not redistribute page images.",
+    "The gate remains pending until independent GitHub Windows qualification, clean-environment human UAT, and explicit owner approval of this exact subject.",
+    "A PASS establishes declared byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution."
+  ]
+}
