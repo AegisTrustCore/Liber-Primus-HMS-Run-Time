@@ -12,11 +12,11 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.1.1-rc.2"
+VERSION = "0.1.1"
 PACKAGE_NAME = f"HMS-GP29-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 13, 0, 0, 0)
 
-START_HERE = """HMS GP29 Calculator v0.1.1-rc.2
+START_HERE = """HMS GP29 Calculator v0.1.1
 
 WHAT IT IS
 A deterministic Gematria Primus calculator. It is not a decoder and makes no Liber Primus solve claim.
@@ -62,7 +62,7 @@ VERIFY
 Compare each included file with SHA256SUMS. Compare this ZIP with the checksum on the official GitHub release page.
 
 STATUS
-Release candidate. This exact ZIP is not an approved HMS release until its public software gate is APPROVED and the official GitHub release is published.
+Public release subject. Verify this exact ZIP against the checksum on the official GitHub release page.
 """
 
 

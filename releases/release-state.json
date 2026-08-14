@@ -18,7 +18,7 @@
       "Public record validator and release schemas",
       "Synthetic Expedition 001 release candidate"
     ],
-    "release_candidate": "GP29-v0.1.1-rc.2 — calculator workflow revision in engineering; new package qualification, clean-machine UAT, and human approval required"
+    "release_candidate": "GP29-v0.1.1 — final public candidate; owner release direction recorded and immutable release record pending"
   },
   "research": {
     "published_record_count": 3,
