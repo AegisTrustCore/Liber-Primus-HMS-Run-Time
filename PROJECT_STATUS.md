@@ -84,8 +84,9 @@ The staged product, access, dependency, and human-gate architecture is now froze
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
 - Public Research Archive: eleven Runs, eleven Results, and four Capsules are published; `RSET-0001` is staged, while `RSET-0002`, `RSET-0003`, and owner-approved `RSET-0004` are released portable packages.
 - Public GP29 Calculator: frozen `RELEASE_CANDIDATE`; engineering qualification passed, while independent clean-machine UAT and human approval remain pending. No customer download is public.
-- Expedition verifier: public version 0.2.0 developer source plus a private Windows candidate exist; the campaign is closed and no customer download is public.
+- Expedition verifier: public version 0.2.0 source plus a reproducible, locally qualified Windows GUI/CLI candidate with non-disclosing JSON receipts exist; independent UAT, leak review, private acceptance, and approval remain pending. The campaign is closed and no customer download is public.
 - Corpus navigation: the complete 75-page working-corpus map, timeline, page index, and verification route are public.
+- Corpus Manifest Verifier: the packaged five-case synthetic suite now covers GOOD, ALTERED, MISSING, EXTRA, and TRAVERSAL; canonical manifest binding, version promotion, independent UAT, and approval remain pending.
 - Endeavour Lite: architecture only; no public application exists. Liber Runtime: local developer core only; no hosted public service exists.
 - Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
 - Scope: foundation content merged through PR #1; Expedition 001 remains closed pending its own release.

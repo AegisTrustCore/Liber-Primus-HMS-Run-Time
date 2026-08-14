@@ -132,6 +132,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Packaged strict verification failed' }
           $report = Get-Content (Join-Path $qual 'report.json') | ConvertFrom-Json
           if ($report.status -ne 'PASS' -or $report.summary.verified -ne 1) { throw 'Packaged report was not the expected PASS' }
+          & (Join-Path $qual 'HMS-Corpus-Verifier-CLI.exe') demo-self-test
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged five-case demo self-test failed' }
           $gui = Start-Process -FilePath (Join-Path $qual 'HMS-Corpus-Verifier.exe') -ArgumentList '--self-test' -Wait -PassThru
           if ($gui.ExitCode -ne 0) { throw 'Packaged GUI self-test failed' }
           Push-Location $qual
@@ -146,5 +148,61 @@ jobs:
         with:
           name: corpus-verifier-windows-dev-not-for-release
           path: dist/HMS-Corpus-Verifier-v0.1.0-dev-Windows-x64-portable.zip
+          if-no-files-found: error
+          retention-days: 7
+
+  qualify-expedition-verifier-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up pinned Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12.10"
+          cache: pip
+          cache-dependency-path: requirements-build.txt
+      - name: Install pinned build environment
+        run: python -m pip install --requirement requirements-build.txt
+      - name: Build twice and compare within the pinned runner
+        shell: pwsh
+        run: |
+          python scripts/build_expedition_verifier_windows.py
+          $zip = 'dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip'
+          $first = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
+          python scripts/build_expedition_verifier_windows.py
+          $second = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
+          if ($first -ne $second) { throw "Two clean runner builds disagreed: $first != $second" }
+          "CI package SHA256: $second"
+      - name: Qualify customer interfaces without exposing the sealed answer
+        shell: pwsh
+        run: |
+          $zip = Resolve-Path 'dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip'
+          $qual = Join-Path $env:RUNNER_TEMP 'expedition-verifier-qualification'
+          Expand-Archive -LiteralPath $zip -DestinationPath $qual
+          & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --self-test
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged CLI self-test failed' }
+          & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --instructions | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged instructions failed' }
+          & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --hint 1 | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged hint failed' }
+          $rejected = & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --json 'deliberate-nonmatch' | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 1 -or $rejected.accepted -ne $false -or $rejected.solution_disclosed -ne $false) { throw 'Nonmatch contract failed' }
+          $gui = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier.exe') -ArgumentList '--self-test' -Wait -PassThru
+          if ($gui.ExitCode -ne 0) { throw 'Packaged GUI self-test failed' }
+          $manifest = Get-Content (Join-Path $qual 'manifest.json') | ConvertFrom-Json
+          if ($manifest.status -ne 'IN_DEVELOPMENT' -or $manifest.package_state -ne 'QUALIFICATION_CANDIDATE_NOT_FOR_RELEASE' -or $manifest.campaign_state -ne 'CLOSED' -or $manifest.solution_disclosed -ne $false) { throw 'Package boundary is not closed, non-disclosing, and development-only' }
+          Push-Location $qual
+          Get-Content SHA256SUMS | ForEach-Object {
+            $parts = $_ -split '  ', 2
+            $member = (Get-FileHash -LiteralPath $parts[1] -Algorithm SHA256).Hash.ToLower()
+            if ($member -ne $parts[0]) { throw "Internal checksum mismatch: $($parts[1])" }
+          }
+          Pop-Location
+      - name: Retain candidate for review only
+        uses: actions/upload-artifact@v7
+        with:
+          name: expedition-verifier-windows-candidate-not-for-release
+          path: dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip
           if-no-files-found: error
           retention-days: 7

@@ -12,7 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from hms_tools.corpus_manifest import CorpusManifestError, create_manifest, verify_manifest
+from hms_tools.corpus_manifest import CorpusManifestError, create_manifest, run_demo_self_test, verify_manifest
+
+
+def application_root() -> Path:
+    return Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else ROOT
 
 
 def configure_output() -> None:
@@ -34,6 +38,8 @@ def main() -> int:
     configure_output()
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
+    demo = commands.add_parser("demo-self-test", help="Run the packaged five-case synthetic verifier suite")
+    demo.add_argument("--demo-root", type=Path, default=application_root() / "demo" / "corpus-verifier")
     create = commands.add_parser("create", help="Create a sorted manifest for a local directory")
     create.add_argument("root", type=Path)
     create.add_argument("--corpus-id", required=True)
@@ -47,6 +53,10 @@ def main() -> int:
     verify.add_argument("--output", type=Path)
     args = parser.parse_args()
     try:
+        if args.command == "demo-self-test":
+            result = run_demo_self_test(args.demo_root)
+            write_json(result)
+            return 0 if result["passed"] else 1
         if args.command == "create":
             manifest = create_manifest(args.root, args.corpus_id, args.version, args.exclude)
             write_json(manifest, args.output)

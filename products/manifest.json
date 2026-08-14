@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/product-manifest.schema.json",
   "schema_version": "1.0.0",
-  "last_reviewed": "2026-08-13",
+  "last_reviewed": "2026-08-14",
   "status_vocabulary": ["PLANNED", "IN_DEVELOPMENT", "INTERNAL_TESTING", "RELEASE_CANDIDATE", "RELEASED", "DEPRECATED", "RETIRED"],
   "release_channels": ["DEVELOPMENT", "EXPERIMENTAL", "BETA", "RC", "STABLE"],
   "current_release_objective": "public-gp29-calculator",
@@ -44,7 +44,7 @@
       "access_level": "OBSERVER",
       "current_version": "0.2.0",
       "target_next_state": "RELEASE_CANDIDATE",
-      "required_gate": "Package a GUI/CLI customer download, pass solution-leak audit and synthetic/public verifier tests, then bind human approval to the exact subject.",
+      "required_gate": "Complete solution-leak audit, private accepted-submission test, independent clean-machine UAT, then bind human approval to the exact GUI/CLI subject.",
       "depends_on": ["public-foundation"]
     },
     {
@@ -68,7 +68,7 @@
       "access_level": "OBSERVER",
       "current_version": "0.1.0-dev",
       "target_next_state": "RELEASE_CANDIDATE",
-      "required_gate": "Promote the version, ship synthetic GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL cases, bind the canonical manifest, complete UAT, and approve the exact package.",
+      "required_gate": "Promote the version, bind the canonical manifest, complete clean-machine UAT, and approve the exact package; the five-case synthetic suite is complete.",
       "depends_on": ["public-foundation"]
     },
     {

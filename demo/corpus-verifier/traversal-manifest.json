@@ -1,0 +1,13 @@
+{
+  "schema": "HMS_CORPUS_MANIFEST_V1",
+  "corpus_id": "HMS-SYNTHETIC-TRAVERSAL",
+  "version": "1",
+  "files": [
+    {
+      "path": "../outside.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "bytes": 0,
+      "role": "SECURITY_TEST"
+    }
+  ]
+}

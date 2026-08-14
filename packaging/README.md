@@ -4,7 +4,13 @@ Packaging files are build recipes, not released binaries. A CI artifact or local
 
 ## Expedition 001 Windows verifier
 
-Developer build:
+Reproducible candidate build:
+
+```powershell
+python scripts/build_expedition_verifier_windows.py
+```
+
+Low-level developer build:
 
 ```powershell
 python -m pip install pyinstaller
