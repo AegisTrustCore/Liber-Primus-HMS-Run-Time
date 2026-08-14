@@ -9,7 +9,7 @@
     "schema_version": "1.0.0",
     "candidate_commit_sha": "89f02c02e72c7b4fbc0d8334f2f1bbbcb0e7c36d",
     "release_manifest": "releases/manifests/GP29-v0.1.0.json",
-    "release_manifest_sha256": "ff68b09993959c8e3336cc4557539902743674a951c815ce1ce989c099fe52bb",
+    "release_manifest_sha256": "a28da65d5ec087eaf99cfd9f197c448cca21c661e66a2353cf4a183f6bd9f3fa",
     "environment_id": "ENV-0006",
     "intended_tag": "GP29-v0.1.0"
   },

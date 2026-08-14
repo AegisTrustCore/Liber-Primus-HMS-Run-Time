@@ -18,6 +18,7 @@
 - [Unapproved `GP29-v0.1.0-rc.1` software gate](gates/GP29-v0.1.0-rc.1.json)
 - [`GP29-v0.1.0-rc.1` engineering qualification record](qualifications/GP29-v0.1.0-rc.1.json)
 - [`GP29-v0.1.0` final candidate manifest](manifests/GP29-v0.1.0.json)
+- [`GP29-v0.1.0` release notes](GP29-v0.1.0.md)
 - [Pending `GP29-v0.1.0` software gate](gates/GP29-v0.1.0.json)
 - [`GP29-v0.1.0` engineering qualification record](qualifications/GP29-v0.1.0.json)
 - [`GP29-v0.1.0` deterministic environment](environments/ENV-0006.json)
