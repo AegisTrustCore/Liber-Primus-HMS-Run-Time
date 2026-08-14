@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "GP29-v0.1.0",
+  "release_type": "SOFTWARE",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "89f02c02e72c7b4fbc0d8334f2f1bbbcb0e7c36d",
+    "release_manifest": "releases/manifests/GP29-v0.1.0.json",
+    "release_manifest_sha256": "ff68b09993959c8e3336cc4557539902743674a951c815ce1ce989c099fe52bb",
+    "environment_id": "ENV-0006",
+    "intended_tag": "GP29-v0.1.0"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "software": {
+      "tests_passed": true,
+      "package_hashes_present": true,
+      "dependency_manifest_present": true,
+      "security_scan_passed": true,
+      "build_reproducible": true,
+      "release_notes_complete": true
+    }
+  },
+  "human_approval": {
+    "approved": false,
+    "approver": null,
+    "approved_at": null,
+    "approved_subject_sha256": null
+  },
+  "notes": [
+    "This subject binds the frozen GP29 v0.1.0 core, desktop application, standalone CLI, documentation, schemas, tests, builder, and exact Windows portable ZIP.",
+    "The exact ZIP passed source tests, packaged CLI and GUI self-tests, deterministic Runtime-job execution, documented examples, internal checksum verification, two byte-identical local builds, and two independent GitHub Windows qualifications.",
+    "Microsoft Defender signature 1.457.150.0 reported no threats for the exact ZIP and extracted package; evidence is recorded in releases/qualifications/GP29-v0.1.0.json.",
+    "The executables are not Authenticode-signed. The release notes must disclose the possible Windows Unknown Publisher or reputation warning and direct users to verify SHA-256.",
+    "The gate remains pending until an independent ordinary user passes all 24 clean-machine acceptance steps without assistance and explicit human approval is bound to this manifest digest.",
+    "Calculation output is evidence labeled CALCULATION_ONLY and makes no decoder, plaintext, route, or Liber Primus solve claim."
+  ]
+}
