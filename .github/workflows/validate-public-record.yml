@@ -186,8 +186,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Packaged instructions failed' }
           & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --hint 1 | Out-Null
           if ($LASTEXITCODE -ne 0) { throw 'Packaged hint failed' }
-          $rejected = & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --json 'deliberate-nonmatch' | ConvertFrom-Json
-          if ($LASTEXITCODE -ne 1 -or $rejected.accepted -ne $false -or $rejected.solution_disclosed -ne $false) { throw 'Nonmatch contract failed' }
+          $rejectedOutput = Join-Path $env:RUNNER_TEMP 'expedition-deliberate-nonmatch.json'
+          $reject = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') -ArgumentList '--json', 'deliberate-nonmatch' -RedirectStandardOutput $rejectedOutput -Wait -PassThru
+          $rejected = Get-Content $rejectedOutput | ConvertFrom-Json
+          if ($reject.ExitCode -ne 1 -or $rejected.accepted -ne $false -or $rejected.solution_disclosed -ne $false) { throw 'Nonmatch contract failed' }
           $gui = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier.exe') -ArgumentList '--self-test' -Wait -PassThru
           if ($gui.ExitCode -ne 0) { throw 'Packaged GUI self-test failed' }
           $manifest = Get-Content (Join-Path $qual 'manifest.json') | ConvertFrom-Json
