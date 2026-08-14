@@ -48,6 +48,7 @@ class ResearchArchiveTests(unittest.TestCase):
     def test_public_status_matches_archive_counts_and_run_set_states(self):
         archive = self.load("research/archive-index.json")
         project_status = (ROOT / "PROJECT_STATUS.md").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
         research_index = (ROOT / "RESEARCH_INDEX.md").read_text(encoding="utf-8")
 
         summary = (
@@ -56,6 +57,14 @@ class ResearchArchiveTests(unittest.TestCase):
             f"{archive['published_capsules']} published Capsules"
         )
         self.assertIn(summary, project_status)
+        readme_summary = (
+            f"{archive['published_runs']} published Runs, "
+            f"{archive['published_results']} published Results, "
+            f"{archive['published_capsules']} published Capsules"
+        )
+        self.assertIn(readme_summary, readme)
+        self.assertIn("zero HMS-verified recoveries of previously unknown Liber Primus plaintext", readme)
+        self.assertNotIn("three published research records", readme)
         self.assertIn("`RSET-0001` remains `STAGED`", project_status)
         self.assertIn("`RSET-0002` and `RSET-0003` are `PUBLISHED`", project_status)
         self.assertIn("`RSET-0004` is also `PUBLISHED`", project_status)

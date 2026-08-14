@@ -35,7 +35,7 @@ Only the releases listed above are downloadable customer-facing GitHub releases.
 - Public schemas, release gates, record validators, and developer-source utilities.
 - A public synthetic puzzle preview and source verifier for practicing HMS evidence classification.
 
-The public record currently contains **three published research records and zero HMS-verified new plaintext records**. Open, negative, control, corrected, and verified states remain visibly separate.
+The repository currently has **three public GitHub releases**. Its Research Archive contains **11 published Runs, 11 published Results, 4 published Capsules, and zero HMS-verified recoveries of previously unknown Liber Primus plaintext**. Open, negative, control, corrected, and verified states remain visibly separate.
 
 ## Public puzzles — Observer access
 
