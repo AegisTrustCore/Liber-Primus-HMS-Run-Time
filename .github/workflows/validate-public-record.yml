@@ -59,7 +59,7 @@ jobs:
         shell: pwsh
         run: |
           python scripts/build_gp29_windows.py
-          $zip = 'dist/HMS-GP29-v0.1.0-rc.1-Windows-x64-portable.zip'
+          $zip = 'dist/HMS-GP29-v0.1.0-rc.2-Windows-x64-portable.zip'
           $first = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
           python scripts/build_gp29_windows.py
           $second = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
@@ -68,7 +68,7 @@ jobs:
       - name: Qualify exact packaged executables and checksums
         shell: pwsh
         run: |
-          $zip = Resolve-Path 'dist/HMS-GP29-v0.1.0-rc.1-Windows-x64-portable.zip'
+          $zip = Resolve-Path 'dist/HMS-GP29-v0.1.0-rc.2-Windows-x64-portable.zip'
           $qual = Join-Path $env:RUNNER_TEMP 'gp29-qualification'
           Expand-Archive -LiteralPath $zip -DestinationPath $qual
           & (Join-Path $qual 'HMS-GP29-CLI.exe') self-test
@@ -88,7 +88,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: gp29-windows-ci-qualification-not-for-release
-          path: dist/HMS-GP29-v0.1.0-rc.1-Windows-x64-portable.zip
+          path: dist/HMS-GP29-v0.1.0-rc.2-Windows-x64-portable.zip
           if-no-files-found: error
           retention-days: 7
 
