@@ -7,7 +7,7 @@ The machine-readable registry is [`manifest.json`](manifest.json). It is the aut
 | Public Record Validator | RELEASED — 0.1.0 | Developer source; not a customer application | Observer |
 | LP Source Audit Inventory | RELEASED — 0.1.0 | Developer source; not a customer application | Observer |
 | HMS Expedition Verifier | IN DEVELOPMENT — 0.2.0 | Public developer source; private Windows candidate; no customer download | Observer |
-| Corpus Manifest Verifier | INTERNAL TESTING — 0.1.0-dev | Developer source and development package only; no customer download | Observer |
+| Corpus Manifest Verifier | RELEASE CANDIDATE — 0.1.0-rc.1 | Developer source and private qualification package; no customer download | Observer |
 | Public GP29 Calculator | RELEASED — 0.1.1 | Public Windows desktop/CLI download with approved manifest and checksums | Observer |
 | Advanced GP Laboratory | PLANNED | No service | Cartographer |
 | Liber Runtime Beta | IN DEVELOPMENT | Local developer core only; no hosted service | Navigator |

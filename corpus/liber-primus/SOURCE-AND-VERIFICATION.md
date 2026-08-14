@@ -12,6 +12,7 @@ Because no source-specific license has been established for the 75 JPEG files, H
 
 The authoritative HMS carrier registry is:
 
+- [LP-75-IMAGES-v1.0.0.json](manifests/LP-75-IMAGES-v1.0.0.json), the machine-readable verifier manifest; and
 - [canonical_page_manifest.csv](../../research/runs/RUN-0008/historical/canonical_page_manifest.csv)
 
 It declares exactly 75 files, `00.jpg` through `74.jpg`, with byte length, pixel dimensions, and SHA-256 digest. Each registered image is 2400 by 3600 pixels. The complete declared set totals 52,248,065 bytes.
@@ -40,7 +41,7 @@ GNU/Linux example for one page:
 sha256sum ./00.jpg
 ```
 
-The expected hash for each page is in the manifest. A full corpus verifier is tracked separately as an HMS instrument; until a public package passes its release gate, native hashing remains the reference check.
+The expected hash for each page is in both manifests. Corpus Manifest Verifier `0.1.0-rc.1` is bound to the JSON manifest, but remains a release candidate until clean-environment human UAT and exact-package approval are complete. Until then, native hashing remains the public reference check.
 
 ## Derived images
 

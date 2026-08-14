@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -7,7 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from hms_tools.corpus_manifest import CorpusManifestError, create_manifest, run_demo_self_test, validate_manifest, validate_verification_report, verify_manifest
+from hms_tools.corpus_manifest import CorpusManifestError, canonical_json, create_manifest, run_demo_self_test, validate_manifest, validate_verification_report, verify_manifest
 from hms_tools.runtime import create_corpus_report_job, execute_job
 
 
@@ -15,6 +16,28 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class CorpusManifestTests(unittest.TestCase):
+    def test_canonical_lp_manifest_has_fixed_identity_and_complete_page_range(self):
+        path = ROOT / "corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json"
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+        files = validate_manifest(manifest)
+        self.assertEqual(manifest["corpus_id"], "LP-75-IMAGES")
+        self.assertEqual(manifest["version"], "1.0.0")
+        self.assertEqual([item["path"] for item in files], [f"{number:02}.jpg" for number in range(75)])
+        self.assertEqual({item["role"] for item in files}, {"CANONICAL_PAGE_IMAGE"})
+        self.assertEqual(sum(item["bytes"] for item in files), 52_248_065)
+        self.assertEqual(hashlib.sha256(canonical_json(manifest)).hexdigest(), "d11ef54e113d92cc5fd86976709d0ece188f09c7ce95fcc8d0fdb140c685b009")
+
+    def test_canonical_info_cli(self):
+        completed = subprocess.run(
+            [sys.executable, "scripts/corpus_manifest.py", "canonical-info"],
+            cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        info = json.loads(completed.stdout)
+        self.assertEqual(info["application_version"], "0.1.0-rc.1")
+        self.assertEqual(info["file_count"], 75)
+        self.assertEqual(info["manifest_sha256"], "d11ef54e113d92cc5fd86976709d0ece188f09c7ce95fcc8d0fdb140c685b009")
+
     def test_packaged_synthetic_demo_covers_all_required_cases(self):
         result = run_demo_self_test(ROOT / "demo" / "corpus-verifier")
         self.assertTrue(result["passed"], result)
