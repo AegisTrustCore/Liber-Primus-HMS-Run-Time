@@ -8,10 +8,10 @@
 
 | Release | What it contains | Access |
 |---|---|---|
-| [HMS Endeavour v0.1.0](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0) | Public research foundation, schemas, evidence records, validation source, and provenance tooling | Free / public |
-| [Research Release RR-0002](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/RR-0002) | Five bounded closure and correction packages with a portable evidence archive | Free / public |
-| [Research Release RR-0003](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/RR-0003) | E1477 board-family closure, E156 solved-LP1 segment frames, and E159 terminal known controls | Free / public |
-| [HMS GP29 Calculator v0.1.1](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) | Offline Windows desktop and CLI Gematria Primus calculator | Free / public |
+| [HMS Endeavour v0.1.0](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0) | Public research foundation, schemas, evidence records, validation source, and provenance tooling | Free / public |
+| [Research Release RR-0002](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/RR-0002) | Five bounded closure and correction packages with a portable evidence archive | Free / public |
+| [Research Release RR-0003](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/RR-0003) | E1477 board-family closure, E156 solved-LP1 segment frames, and E159 terminal known controls | Free / public |
+| [HMS GP29 Calculator v0.1.1](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) | Offline Windows desktop and CLI Gematria Primus calculator | Free / public |
 
 Only the releases listed above are downloadable customer-facing GitHub releases. Development source may be visible on `main` before a packaged tool is approved for release.
 
@@ -35,7 +35,7 @@ Only the releases listed above are downloadable customer-facing GitHub releases.
 - Historical Cicada 3301 OpenPGP provenance material and a local verification path.
 - Public schemas, release gates, record validators, and developer-source utilities.
 - A public synthetic puzzle preview and source verifier for practicing HMS evidence classification.
-- The [HMS GP29 Calculator v0.1.1](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) offline Windows desktop and CLI package.
+- The [HMS GP29 Calculator v0.1.1](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) offline Windows desktop and CLI package.
 
 The repository currently has **four public GitHub releases**. Its Research Archive contains **11 published Runs, 11 published Results, 4 published Capsules, and zero HMS-verified recoveries of previously unknown Liber Primus plaintext**. Open, negative, control, corrected, and verified states remain visibly separate.
 

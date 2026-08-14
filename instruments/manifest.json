@@ -12,7 +12,7 @@
       "offline_behavior": "Runs entirely on local repository files.", "network_behavior": "No network access.", "privacy_behavior": "Reads only paths explicitly present in the checked-out public repository.",
       "test_vectors": ["tests/test_validate_records.py"], "self_test": true, "ordinary_user_acceptance": "Not qualified as a standalone ordinary-user application; released as developer source.",
       "limitations": ["Conformance does not prove a research claim true.", "Requires a supported Python environment."], "release_gate": "Released within the approved v0.1.0 public foundation.", "human_approval": "APPROVED_VIA_FOUNDATION_RELEASE",
-      "download_page": "https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0", "last_updated": "2026-08-13"
+      "download_page": "https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0", "last_updated": "2026-08-14"
     },
     {
       "instrument_id": "lp-source-audit", "name": "LP Source Audit Inventory", "purpose": "Hash and classify private intake while keeping raw workstation metadata private.",
@@ -23,7 +23,7 @@
       "offline_behavior": "Runs entirely against a selected local tree.", "network_behavior": "No network access.", "privacy_behavior": "Raw paths and potentially sensitive metadata remain local unless explicitly promoted.",
       "test_vectors": ["audit/SOURCE_AUDIT_2026-08-12.md"], "self_test": false, "ordinary_user_acceptance": "Not qualified as a standalone ordinary-user application; released as developer source.",
       "limitations": ["Inventory counts are not correctness claims.", "Archives may contain formats the scanner cannot inspect."], "release_gate": "Released within the approved v0.1.0 public foundation.", "human_approval": "APPROVED_VIA_FOUNDATION_RELEASE",
-      "download_page": "https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0", "last_updated": "2026-08-13"
+      "download_page": "https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0", "last_updated": "2026-08-14"
     },
     {
       "instrument_id": "expedition-verifier", "name": "HMS Expedition Verifier", "purpose": "Verify sealed public Expedition submissions without disclosing protected answer material.",
@@ -53,7 +53,7 @@
       "authority_class": "CALCULATION", "evidence_scope": "DETERMINISTIC_CALCULATION_ONLY", "capabilities": ["calculator", "sequence inspection", "searchable reference table", "session history", "JSON export", "CSV export", "self-test"],
       "offline_behavior": "Runs entirely locally.", "network_behavior": "No network access.", "privacy_behavior": "Inputs and exports remain local unless the user explicitly shares them.",
       "test_vectors": ["tests/test_gp29_runtime.py", "tests/test_gp29_package.py"], "self_test": true, "ordinary_user_acceptance": "Owner-approved iterative packaged-app acceptance with the separate-clean-machine limitation recorded; independent GitHub Windows qualification passed.",
-      "limitations": ["GP29 is a calculator, not a solver.", "Numerical relationships are not by themselves evidence of a Liber Primus solution.", "Compare, batch, target matching, simplification, and solving are outside v0.1.1."], "release_gate": "Approved by releases/gates/GP29-v0.1.1.json.", "human_approval": "APPROVED", "download_page": "https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1", "last_updated": "2026-08-14"
+      "limitations": ["GP29 is a calculator, not a solver.", "Numerical relationships are not by themselves evidence of a Liber Primus solution.", "Compare, batch, target matching, simplification, and solving are outside v0.1.1."], "release_gate": "Approved by releases/gates/GP29-v0.1.1.json.", "human_approval": "APPROVED", "download_page": "https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1", "last_updated": "2026-08-14"
     },
     {
       "instrument_id": "advanced-gp-laboratory", "name": "Advanced GP Laboratory", "purpose": "Provide saved GP calculations, comparisons, sequences, batches, simplification, and target exploration.",
