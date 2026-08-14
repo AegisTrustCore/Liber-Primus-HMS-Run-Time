@@ -87,6 +87,29 @@ def parse_tokens(text: str) -> list[RuneEntry]:
     return [BY_TOKEN[token] for token in tokens]
 
 
+def parse_letters(text: str) -> list[RuneEntry]:
+    """Map ordinary English A-Z input one letter at a time.
+
+    This mode deliberately does not combine adjacent letters into GP29 sound
+    clusters. For example, ``TH`` is T followed by H; users who intend the
+    single TH rune can select Latin-sound or explicit-token mode.
+    """
+    normalized = unicodedata.normalize("NFKC", text).upper()
+    entries: list[RuneEntry] = []
+    separators = set(" \t\r\n,.;:!?'-\"()[]{}")
+    for position, character in enumerate(normalized):
+        if character in separators:
+            continue
+        if character not in BY_TOKEN or len(character) != 1 or not character.isascii():
+            raise GP29InputError(
+                f"unsupported English-letter character at position {position + 1}: {character!r}"
+            )
+        entries.append(BY_TOKEN[character])
+    if not entries:
+        raise GP29InputError("input contains no English A-Z letters")
+    return entries
+
+
 def parse_latin(text: str) -> list[RuneEntry]:
     """Parse continuous Latin with a frozen longest-alias rule.
 
@@ -115,7 +138,7 @@ def parse_latin(text: str) -> list[RuneEntry]:
 
 
 def parse(text: str, mode: str = "auto") -> tuple[str, list[RuneEntry]]:
-    if mode not in {"auto", "runes", "latin", "tokens"}:
+    if mode not in {"auto", "letters", "runes", "latin", "tokens"}:
         raise GP29InputError(f"unsupported input mode: {mode}")
     selected = mode
     if selected == "auto":
@@ -126,7 +149,7 @@ def parse(text: str, mode: str = "auto") -> tuple[str, list[RuneEntry]]:
                 return "tokens", parse_tokens(text)
             except GP29InputError:
                 selected = "latin"
-    parsers = {"runes": parse_runes, "latin": parse_latin, "tokens": parse_tokens}
+    parsers = {"letters": parse_letters, "runes": parse_runes, "latin": parse_latin, "tokens": parse_tokens}
     return selected, parsers[selected](text)
 
 
@@ -197,6 +220,7 @@ def format_human(result: dict[str, object]) -> str:
 def self_test() -> dict[str, object]:
     vectors = (
         ("ᚠ", "runes", 2, [0], [0], [2], [0]),
+        ("H", "letters", 23, [8], [21], [23], [0]),
         ("F U/V TH", "tokens", 10, [0, 1, 2], [0, 28, 27], [2, 3, 5], [0, 0, 0]),
         ("THING", "latin", 84, [2, 21], [27, 8], [5, 21], [0, 2]),
         (RUNES, "runes", sum(PRIMES), list(range(29)), [(-i) % 29 for i in range(29)], [p % 29 for p in PRIMES], [p // 29 for p in PRIMES]),

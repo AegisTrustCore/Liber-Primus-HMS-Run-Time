@@ -20,7 +20,7 @@
       "then": {
         "properties": {
           "input": {"additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}}},
-          "parameters": {"additionalProperties": false, "required": ["mode"], "properties": {"mode": {"enum": ["auto", "runes", "tokens"]}}}
+          "parameters": {"additionalProperties": false, "required": ["mode"], "properties": {"mode": {"enum": ["auto", "letters", "runes", "latin", "tokens"]}}}
         }
       }
     },

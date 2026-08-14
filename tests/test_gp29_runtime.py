@@ -6,7 +6,7 @@ import sys
 import unittest
 from pathlib import Path
 
-from hms_tools.gp29 import GP29InputError, PRIMES, RUNES, calculate, format_human, parse_latin, parse_tokens, self_test
+from hms_tools.gp29 import GP29InputError, PRIMES, RUNES, calculate, format_human, parse_latin, parse_letters, parse_tokens, self_test
 from hms_tools.runtime import RuntimeStore, create_job, execute_job
 
 
@@ -31,6 +31,16 @@ class GP29Tests(unittest.TestCase):
         self.assertEqual([entry.sound for entry in parse_latin("THING")], ["TH", "NG/ING"])
         self.assertEqual(calculate("CICADA", "latin")["normalized_tokens"], ["C/K", "I/J", "C/K", "A", "D", "A"])
 
+    def test_english_letters_do_not_merge_sound_clusters(self):
+        self.assertEqual([entry.sound for entry in parse_letters("THING")], ["T", "H", "I/J", "N", "G"])
+        self.assertEqual(calculate("H", "letters")["normalized_tokens"], ["H"])
+        self.assertEqual(calculate("TH", "letters")["normalized_tokens"], ["T", "H"])
+        self.assertEqual(calculate("TH", "latin")["normalized_tokens"], ["TH"])
+
+    def test_english_letters_reject_non_letters(self):
+        with self.assertRaises(GP29InputError):
+            parse_letters("H2")
+
     def test_lr_prime_nq_registers(self):
         result = calculate("F U/V TH", "tokens")
         self.assertEqual(
@@ -52,7 +62,7 @@ class GP29Tests(unittest.TestCase):
     def test_self_test(self):
         result = self_test()
         self.assertEqual(result["failed"], 0)
-        self.assertEqual(result["passed"], 4)
+        self.assertEqual(result["passed"], 5)
 
 
 class RuntimeTests(unittest.TestCase):

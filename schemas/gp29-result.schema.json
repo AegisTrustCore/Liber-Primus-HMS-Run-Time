@@ -7,7 +7,7 @@
   "properties": {
     "schema": {"const": "HMS_GP29_RESULT_V1"},
     "algorithm": {"const": "GP29_LR_PRIME_NQ_V1"},
-    "input_mode": {"enum": ["runes", "latin", "tokens"]},
+    "input_mode": {"enum": ["letters", "runes", "latin", "tokens"]},
     "normalized_runes": {"type": "string", "minLength": 1},
     "normalized_tokens": {"type": "array", "minItems": 1, "items": {"type": "string"}},
     "entries": {
