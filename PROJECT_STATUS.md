@@ -69,21 +69,20 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 ## Immediate focus
 
 1. Keep every status surface synchronized with the canonical Research Archive indexes.
-2. Complete independent clean-machine UAT and exact-subject owner approval for the frozen GP29 v0.1.0 candidate, then release it separately if the gate passes.
-3. Promote the Corpus Manifest Verifier to release candidate with the canonical manifest and synthetic GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL suite.
-4. Qualify, leak-audit, and approve the Expedition 001 customer package before opening its public campaign.
-5. Build HMS Endeavour Lite, the LP Atlas, Rune Workbench, and Experiment Engine in the frozen product sequence.
-6. Keep approved RR-0003 synchronized while continuing Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
+2. Promote the Corpus Manifest Verifier to release candidate with the canonical manifest and synthetic GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL suite.
+3. Qualify, leak-audit, and approve the Expedition 001 customer package before opening its public campaign.
+4. Build HMS Endeavour Lite, the LP Atlas, Rune Workbench, and Experiment Engine in the frozen product sequence.
+5. Keep approved RR-0003 synchronized while continuing Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
 
 The staged product, access, dependency, and human-gate architecture is now frozen in the [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md). The mature application direction is recorded separately and does not change current availability.
 
 ## Platform launch state
 
-- GitHub: `v0.1.0` public research foundation released; `RSET-0001` is staged, and `RSET-0002` and approved `RSET-0003` are published.
+- GitHub: `v0.1.0` public research foundation and `GP29-v0.1.1` public calculator released; `RSET-0001` is staged, and `RSET-0002` and approved `RSET-0003` are published.
 - `main`: protected by an active ruleset requiring pull requests and the `validate` check.
 - Patreon: creator page live; first public, Pilgrim, Navigator, Cartographer, and Admiral posts published.
 - Public Research Archive: eleven Runs, eleven Results, and four Capsules are published; `RSET-0001` is staged, while `RSET-0002`, `RSET-0003`, and owner-approved `RSET-0004` are released portable packages.
-- Public GP29 Calculator: frozen `RELEASE_CANDIDATE`; engineering qualification passed, while independent clean-machine UAT and human approval remain pending. No customer download is public.
+- Public GP29 Calculator: v0.1.1 is released as a free Observer-level Windows desktop and CLI download with an approved exact-subject gate and recorded acceptance limitation.
 - Expedition verifier: public version 0.2.0 source plus a reproducible, locally qualified Windows GUI/CLI candidate with non-disclosing JSON receipts exist; independent UAT, leak review, private acceptance, and approval remain pending. The campaign is closed and no customer download is public.
 - Corpus navigation: the complete 75-page working-corpus map, timeline, page index, and verification route are public.
 - Corpus Manifest Verifier: the packaged five-case synthetic suite now covers GOOD, ALTERED, MISSING, EXTRA, and TRAVERSAL; canonical manifest binding, version promotion, independent UAT, and approval remain pending.

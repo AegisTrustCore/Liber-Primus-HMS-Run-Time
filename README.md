@@ -11,6 +11,7 @@
 | [HMS Endeavour v0.1.0](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0) | Public research foundation, schemas, evidence records, validation source, and provenance tooling | Free / public |
 | [Research Release RR-0002](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/RR-0002) | Five bounded closure and correction packages with a portable evidence archive | Free / public |
 | [Research Release RR-0003](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/RR-0003) | E1477 board-family closure, E156 solved-LP1 segment frames, and E159 terminal known controls | Free / public |
+| [HMS GP29 Calculator v0.1.1](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) | Offline Windows desktop and CLI Gematria Primus calculator | Free / public |
 
 Only the releases listed above are downloadable customer-facing GitHub releases. Development source may be visible on `main` before a packaged tool is approved for release.
 
@@ -34,8 +35,9 @@ Only the releases listed above are downloadable customer-facing GitHub releases.
 - Historical Cicada 3301 OpenPGP provenance material and a local verification path.
 - Public schemas, release gates, record validators, and developer-source utilities.
 - A public synthetic puzzle preview and source verifier for practicing HMS evidence classification.
+- The [HMS GP29 Calculator v0.1.1](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) offline Windows desktop and CLI package.
 
-The repository currently has **three public GitHub releases**. Its Research Archive contains **11 published Runs, 11 published Results, 4 published Capsules, and zero HMS-verified recoveries of previously unknown Liber Primus plaintext**. Open, negative, control, corrected, and verified states remain visibly separate.
+The repository currently has **four public GitHub releases**. Its Research Archive contains **11 published Runs, 11 published Results, 4 published Capsules, and zero HMS-verified recoveries of previously unknown Liber Primus plaintext**. Open, negative, control, corrected, and verified states remain visibly separate.
 
 ## Public puzzles — Observer access
 
@@ -62,13 +64,13 @@ The puzzle is synthetic and does not conceal an unpublished *Liber Primus* resea
 | Public Record Validator | Released | Python developer source in `v0.1.0` |
 | LP Source Audit Inventory | Released | Python developer source in `v0.1.0` |
 | Expedition Verifier | In development | Public Python source for Expedition 001; no approved customer package |
-| Public GP29 Calculator | **Release candidate** | v0.1.1 usability source is visible; its new Windows candidate requires qualification, clean-machine UAT, and human approval |
+| Public GP29 Calculator | **Released** | Downloadable Windows desktop and CLI package with checksums, self-tests, dashboard, alphabet, JSON, and CSV export |
 | Corpus Manifest Verifier | Internal testing | Developer source only; canonical public package not released |
 | Liber Runtime Beta | In development | Local developer core only; no hosted public service |
 | HMS Endeavour Lite | Planned | Architecture only; implementation begins after GP29 release and Corpus Verifier RC |
 | Advanced instruments | Planned | No solver, batch engine, API/socket layer, or Plugin SDK is available |
 
-The GP29 calculator is a deterministic calculator, **not a solver**. It will receive a public download only after the exact candidate passes its remaining release gate. Track that gate in [GitHub issue #23](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/issues/23).
+The GP29 calculator is a deterministic calculator, **not a solver**. Its exact public artifact and approval are recorded in the [GP29 v0.1.1 release gate](releases/gates/GP29-v0.1.1.json).
 
 See the machine-readable [Product Ladder](products/manifest.json), readable [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md), [Instrument Manifest](instruments/manifest.json), [Instrument Registry](instruments/README.md), and [Roadmap](ROADMAP.md) for exact delivery modes and boundaries.
 
@@ -82,12 +84,11 @@ See the machine-readable [Product Ladder](products/manifest.json), readable [HMS
 
 ## What comes next
 
-1. Finish and qualify the GP29 v0.1.1 usability candidate, then complete independent clean-machine UAT and owner approval for that exact package; publish it only if the gate passes.
+1. Finish the canonical corpus manifest and customer-facing Corpus Manifest Verifier.
 2. Complete the Expedition 001 customer package and open a formal public campaign under a separately approved gate.
-3. Finish the canonical corpus manifest and customer-facing Corpus Manifest Verifier.
-4. Build Endeavour Lite, then add the LP Atlas, Rune Workbench, and Experiment Engine as accepted increments.
-5. Grow those increments into Liber Runtime Beta; add Auto Explore and contextual AEGIS only after the object lifecycle is dependable.
-6. Add batch, Advanced GP, solver, sockets/API, and the Plugin SDK only after their dependency gates are met.
+3. Build Endeavour Lite, then add the LP Atlas, Rune Workbench, and Experiment Engine as accepted increments.
+4. Grow those increments into Liber Runtime Beta; add Auto Explore and contextual AEGIS only after the object lifecycle is dependable.
+5. Add batch, Advanced GP, solver, sockets/API, and the Plugin SDK only after their dependency gates are met.
 
 The detailed sequence is maintained in [Next Steps](NEXT_STEPS.md).
 

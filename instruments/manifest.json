@@ -47,13 +47,13 @@
     },
     {
       "instrument_id": "public-gp29-calculator", "name": "Public GP29 Calculator", "purpose": "Evaluate Latin, rune, or explicit-token GP29 values with deterministic L/R/prime/N/Q output.",
-      "version": "0.1.0", "status": "RELEASE_CANDIDATE", "release_channel": "RC", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": false,
-      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 qualified candidate", "CPython 3.12 source"],
-      "input_contract": "Latin text, runes, or explicit tokens accepted under the frozen v0.1.0 normalization and compound-rune rules.", "output_contract": "Deterministic token rows and totals exposing L, R, prime p, N=p mod 29, and Q=floor(p/29), with JSON export.",
-      "authority_class": "CALCULATION", "evidence_scope": "DETERMINISTIC_CALCULATION_ONLY", "capabilities": ["calculator", "sequence inspection", "reference table", "JSON export", "self-test"],
+      "version": "0.1.1", "status": "RELEASED", "release_channel": "STABLE", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": true,
+      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 standalone release", "CPython 3.12 source"],
+      "input_contract": "English A-Z characters, deliberate longest-match Latin sounds, canonical runes, or explicit separated tokens under the frozen GP29 table.", "output_contract": "Deterministic dashboard, per-rune rows, aggregate L/R/prime/N/Q values, canonical digest, JSON export, and CSV breakdown.",
+      "authority_class": "CALCULATION", "evidence_scope": "DETERMINISTIC_CALCULATION_ONLY", "capabilities": ["calculator", "sequence inspection", "searchable reference table", "session history", "JSON export", "CSV export", "self-test"],
       "offline_behavior": "Runs entirely locally.", "network_behavior": "No network access.", "privacy_behavior": "Inputs and exports remain local unless the user explicitly shares them.",
-      "test_vectors": ["tests/test_gp29_runtime.py", "tests/test_gp29_package.py"], "self_test": true, "ordinary_user_acceptance": "Independent clean-machine UAT remains pending.",
-      "limitations": ["GP29 is a calculator, not a solver.", "Numerical relationships are not by themselves evidence of a Liber Primus solution.", "Compare, batch, target matching, simplification, and solving are outside v0.1.0."], "release_gate": "Exact-manifest clean-machine UAT and explicit owner approval are required before publication.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-13"
+      "test_vectors": ["tests/test_gp29_runtime.py", "tests/test_gp29_package.py"], "self_test": true, "ordinary_user_acceptance": "Owner-approved iterative packaged-app acceptance with the separate-clean-machine limitation recorded; independent GitHub Windows qualification passed.",
+      "limitations": ["GP29 is a calculator, not a solver.", "Numerical relationships are not by themselves evidence of a Liber Primus solution.", "Compare, batch, target matching, simplification, and solving are outside v0.1.1."], "release_gate": "Approved by releases/gates/GP29-v0.1.1.json.", "human_approval": "APPROVED", "download_page": "https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1", "last_updated": "2026-08-14"
     },
     {
       "instrument_id": "advanced-gp-laboratory", "name": "Advanced GP Laboratory", "purpose": "Provide saved GP calculations, comparisons, sequences, batches, simplification, and target exploration.",

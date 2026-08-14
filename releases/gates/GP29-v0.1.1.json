@@ -1,0 +1,50 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "GP29-v0.1.1",
+  "release_type": "SOFTWARE",
+  "status": "APPROVED",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "ffedc95afc366d80083a3dc2e2f58c7d9d25c54b",
+    "release_manifest": "releases/manifests/GP29-v0.1.1.json",
+    "release_manifest_sha256": "28b3028d68aa3652f23ba774ec28616d250c128284b6965323cbb31ca4fdb8ff",
+    "environment_id": "ENV-0008",
+    "intended_tag": "GP29-v0.1.1"
+  },
+  "common_checks": {
+    "publication_approved": true,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "software": {
+      "tests_passed": true,
+      "package_hashes_present": true,
+      "dependency_manifest_present": true,
+      "security_scan_passed": true,
+      "build_reproducible": true,
+      "release_notes_complete": true
+    }
+  },
+  "human_approval": {
+    "approved": true,
+    "approver": "coreystilwell3-eng (repository owner)",
+    "approved_at": "2026-08-14T13:21:20-05:00",
+    "approved_subject_sha256": "28b3028d68aa3652f23ba774ec28616d250c128284b6965323cbb31ca4fdb8ff"
+  },
+  "notes": [
+    "The exact subject binds the final GP29 v0.1.1 source at commit ffedc95afc366d80083a3dc2e2f58c7d9d25c54b and ZIP SHA-256 4c3b86e21d46cda2050720131301686651b5182c6c17a5c5be814f25f5fac252.",
+    "The repository owner iteratively reviewed launched packaged builds, requested the English-H, alphabet, dashboard, and calculator-workflow revisions, and explicitly directed public release after rc.2 acceptance.",
+    "Human acceptance occurred on the Windows build workstation rather than a separate clean machine; independent GitHub-hosted Windows runners repeated clean packaging and executable qualification. This recorded limitation is not concealed.",
+    "The exact ZIP passed 51 source tests, packaged CLI and GUI self-tests, input regression vectors, GUI workflow checks, internal checksum verification, two byte-identical local builds, independent GitHub Windows qualification, and Microsoft Defender scans reporting no threats.",
+    "The executables are not Authenticode-signed. Release notes disclose possible Windows Unknown Publisher or reputation warnings and require SHA-256 verification.",
+    "GP29 output is CALCULATION_ONLY and makes no decoder, plaintext, route, translation, or Liber Primus solve claim.",
+    "Codex recorded the named human decision; automated validation did not originate or substitute for the approval."
+  ]
+}

@@ -3,7 +3,7 @@
   "schema_version": "1.1.0",
   "release_id": "GP29-v0.1.0",
   "release_type": "SOFTWARE",
-  "status": "PENDING",
+  "status": "SUPERSEDED",
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
@@ -43,7 +43,7 @@
     "The exact ZIP passed source tests, packaged CLI and GUI self-tests, deterministic Runtime-job execution, documented examples, internal checksum verification, two byte-identical local builds, and two independent GitHub Windows qualifications.",
     "Microsoft Defender signature 1.457.150.0 reported no threats for the exact ZIP and extracted package; evidence is recorded in releases/qualifications/GP29-v0.1.0.json.",
     "The executables are not Authenticode-signed. The release notes must disclose the possible Windows Unknown Publisher or reputation warning and direct users to verify SHA-256.",
-    "The gate remains pending until an independent ordinary user passes all 24 clean-machine acceptance steps without assistance and explicit human approval is bound to this manifest digest.",
+    "This unreleased v0.1.0 subject was superseded by GP29-v0.1.1 after user-facing input and results-workflow revisions.",
     "Calculation output is evidence labeled CALCULATION_ONLY and makes no decoder, plaintext, route, or Liber Primus solve claim."
   ]
 }

@@ -3,7 +3,7 @@
   "schema_version": "1.0.0",
   "last_reviewed": "2026-08-14",
   "github": {
-    "current_public_tag": "v0.1.0",
+    "current_public_tag": "GP29-v0.1.1",
     "main_state": "ACTIVE",
     "available_now": [
       "Public research governance and evidence model",
@@ -16,9 +16,10 @@
       "RSET-0004 E1477 board closure, E156 segment frames, and E159 terminal controls",
       "Complete 75-page Liber Primus working-corpus navigation and E1059 ledger index",
       "Public record validator and release schemas",
-      "Synthetic Expedition 001 release candidate"
+      "Synthetic Expedition 001 release candidate",
+      "HMS GP29 Calculator v0.1.1 Windows desktop and CLI package"
     ],
-    "release_candidate": "GP29-v0.1.1 — final public candidate; owner release direction recorded and immutable release record pending"
+    "release_candidate": null
   },
   "research": {
     "published_record_count": 3,

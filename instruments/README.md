@@ -8,7 +8,7 @@ The machine-readable registry is [`manifest.json`](manifest.json). It is the aut
 | LP Source Audit Inventory | RELEASED — 0.1.0 | Developer source; not a customer application | Observer |
 | HMS Expedition Verifier | IN DEVELOPMENT — 0.2.0 | Public developer source; private Windows candidate; no customer download | Observer |
 | Corpus Manifest Verifier | INTERNAL TESTING — 0.1.0-dev | Developer source and development package only; no customer download | Observer |
-| Public GP29 Calculator | RELEASE CANDIDATE — 0.1.0 | Engineering qualification passed; clean-machine UAT and approval pending; no customer download | Observer |
+| Public GP29 Calculator | RELEASED — 0.1.1 | Public Windows desktop/CLI download with approved manifest and checksums | Observer |
 | Advanced GP Laboratory | PLANNED | No service | Cartographer |
 | Liber Runtime Beta | IN DEVELOPMENT | Local developer core only; no hosted service | Navigator |
 | GP Solver | PLANNED | No service | Admiral |
@@ -16,7 +16,7 @@ The machine-readable registry is [`manifest.json`](manifest.json). It is the aut
 | Socket/API Integration Layer | PLANNED | No service | Admiral |
 | Add-on and Plugin SDK | PLANNED | No package | Admiral |
 
-The validator and source-audit inventory were released in `v0.1.0` specifically as developer tools. They require CPython and are not customer-ready applications. The shared GP29/Runtime core is runnable as developer source. GP29 RC1 was superseded, and the frozen v0.1.0 Windows package has passed engineering qualification. It still requires clean-machine ordinary-user acceptance and human approval. Expedition 001 remains closed until its packaged verifier passes the customer release gate.
+The validator and source-audit inventory were released in `v0.1.0` specifically as developer tools. They require CPython and are not customer-ready applications. GP29 v0.1.1 is the first released customer-ready Windows instrument; its shared Runtime core remains available as developer source. Expedition 001 remains closed until its packaged verifier passes the customer release gate.
 
 `PLANNED` is not availability. Status and release channel are separate. Access levels describe the intended destination; delivery modes describe packaging. Every contract now declares inputs, outputs, authority class, evidence scope, capabilities, offline/network/privacy behavior, test vectors, self-test, ordinary-user acceptance, limitations, release gate, and human approval. See the [Distribution and User Experience Standard](../docs/DISTRIBUTION_STANDARD.md). `customer_ready: true` requires an actual tested user delivery, not merely public source.
 
