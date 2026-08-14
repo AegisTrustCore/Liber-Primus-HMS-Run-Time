@@ -16,7 +16,7 @@
       "Public record validator and release schemas",
       "Synthetic Expedition 001 release candidate"
     ],
-    "release_candidate": null
+    "release_candidate": "GP29-v0.1.0 — engineering qualification passed; clean-machine UAT and human approval pending"
   },
   "research": {
     "published_record_count": 3,
