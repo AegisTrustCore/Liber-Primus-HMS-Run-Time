@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/release-state.schema.json",
   "schema_version": "1.0.0",
-  "last_reviewed": "2026-08-13",
+  "last_reviewed": "2026-08-14",
   "github": {
     "current_public_tag": "v0.1.0",
     "main_state": "ACTIVE",
@@ -18,7 +18,7 @@
       "Public record validator and release schemas",
       "Synthetic Expedition 001 release candidate"
     ],
-    "release_candidate": "GP29-v0.1.0 — engineering qualification passed; clean-machine UAT and human approval pending"
+    "release_candidate": "GP29-v0.1.1-rc.1 — usability revision in engineering; new package qualification, clean-machine UAT, and human approval required"
   },
   "research": {
     "published_record_count": 3,

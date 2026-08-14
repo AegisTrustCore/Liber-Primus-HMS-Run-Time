@@ -35,7 +35,7 @@ def main() -> int:
     gp29 = commands.add_parser("gp29", help="Calculate GP29 values")
     gp29.add_argument("text", nargs="?", help="Latin text, rune text, or separated GP29 tokens")
     gp29.add_argument("--file", type=Path)
-    gp29.add_argument("--mode", choices=("auto", "runes", "latin", "tokens"), default="auto")
+    gp29.add_argument("--mode", choices=("auto", "letters", "runes", "latin", "tokens"), default="auto")
     gp29.add_argument("--job", action="store_true", help="Wrap calculation in the Runtime job/result contract")
     commands.add_parser("self-test", help="Run frozen public GP29 vectors")
     run_job = commands.add_parser("run-job", help="Execute a JSON job file")

@@ -62,7 +62,7 @@ The puzzle is synthetic and does not conceal an unpublished *Liber Primus* resea
 | Public Record Validator | Released | Python developer source in `v0.1.0` |
 | LP Source Audit Inventory | Released | Python developer source in `v0.1.0` |
 | Expedition Verifier | In development | Public Python source for Expedition 001; no approved customer package |
-| Public GP29 Calculator | **Release candidate** | Source is visible; the exact Windows candidate is awaiting clean-machine UAT and human approval |
+| Public GP29 Calculator | **Release candidate** | v0.1.1 usability source is visible; its new Windows candidate requires qualification, clean-machine UAT, and human approval |
 | Corpus Manifest Verifier | Internal testing | Developer source only; canonical public package not released |
 | Liber Runtime Beta | In development | Local developer core only; no hosted public service |
 | HMS Endeavour Lite | Planned | Architecture only; implementation begins after GP29 release and Corpus Verifier RC |
@@ -82,7 +82,7 @@ See the machine-readable [Product Ladder](products/manifest.json), readable [HMS
 
 ## What comes next
 
-1. Complete independent clean-machine UAT and owner approval for the exact GP29 v0.1.0 candidate; publish it only if the gate passes.
+1. Finish and qualify the GP29 v0.1.1 usability candidate, then complete independent clean-machine UAT and owner approval for that exact package; publish it only if the gate passes.
 2. Complete the Expedition 001 customer package and open a formal public campaign under a separately approved gate.
 3. Finish the canonical corpus manifest and customer-facing Corpus Manifest Verifier.
 4. Build Endeavour Lite, then add the LP Atlas, Rune Workbench, and Experiment Engine as accepted increments.

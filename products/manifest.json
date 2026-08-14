@@ -54,9 +54,9 @@
       "status": "RELEASE_CANDIDATE",
       "release_channel": "RC",
       "access_level": "OBSERVER",
-      "current_version": "0.1.0",
+      "current_version": "0.1.1-rc.1",
       "target_next_state": "RELEASED",
-      "required_gate": "Complete independent clean-machine ordinary-user UAT and exact-manifest human approval.",
+      "required_gate": "Build and qualify the v0.1.1 usability candidate, complete independent clean-machine ordinary-user UAT, and bind human approval to its exact manifest.",
       "depends_on": ["public-foundation"]
     },
     {

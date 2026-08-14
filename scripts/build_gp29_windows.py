@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Windows GP29 v0.1.0 release-candidate package."""
+"""Build the Windows GP29 v0.1.1 release-candidate package."""
 
 from __future__ import annotations
 
@@ -12,11 +12,11 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.1.0"
+VERSION = "0.1.1-rc.1"
 PACKAGE_NAME = f"HMS-GP29-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 13, 0, 0, 0)
 
-START_HERE = """HMS GP29 Calculator v0.1.0
+START_HERE = """HMS GP29 Calculator v0.1.1-rc.1
 
 WHAT IT IS
 A deterministic Gematria Primus calculator. It is not a decoder and makes no Liber Primus solve claim.
@@ -28,21 +28,26 @@ START
 - The desktop executable also supports HMS-GP29.exe --self-test for package qualification.
 
 INPUT
-Use ordinary Latin text, the 29 supported runes, or explicit sound tokens separated by spaces or commas. Latin mode uses the documented frozen longest-alias rule; it does not infer language or plaintext.
+Use English-letter mode for ordinary A-Z words. Every letter remains separate, so H cannot be silently combined into TH. Use Latin-sound mode only when GP29 clusters such as TH, NG, or ING are intended. Explicit sound tokens and the 29 supported runes remain available.
+
+VISIBLE ALPHABET
+The desktop application shows the complete 29-rune table. Select a row and insert its exact sound token or rune. A mode change that would make existing input incompatible asks before clearing it.
 
 OUTPUT
 Each rune reports its canonical L, R, prime, N, and Q values. Aggregate sums and documented residues are included in the visible result and JSON export.
 
 DOCUMENTED TESTS
-- Latin: CICADA -> Prime / GP sum 340
+- English letters: H -> Prime / GP sum 23
+- English letters: TH -> T + H -> Prime / GP sum 82
+- Latin sounds: TH -> one TH rune -> Prime / GP sum 5
 - Tokens: F U/V TH -> Prime / GP sum 10
 - Rune: ᚠ -> Prime / GP sum 2
 - EXAMPLE.txt contains the UTF-8 Latin example.
 
 CLI EXAMPLES
 HMS-GP29-CLI.exe self-test
-HMS-GP29-CLI.exe gp29 CICADA --mode latin
-HMS-GP29-CLI.exe gp29 --file EXAMPLE.txt --mode latin
+HMS-GP29-CLI.exe gp29 CICADA --mode letters
+HMS-GP29-CLI.exe gp29 --file EXAMPLE.txt --mode letters
 
 JSON EXPORT
 In the desktop application, calculate first and select Export JSON. You choose the destination and filename in the Save dialog.
