@@ -64,4 +64,4 @@ HMS Endeavour is being built in public and released progressively. GitHub will c
 
 Not every HMS working file, dataset, tool, or research candidate will be released publicly. Approved public truth claims are not permanently withheld to manufacture scarcity, and a result does not become more true because it appears in a higher tier.
 
-Every benefit that names a tool or capability is governed by its visible status: `PLANNED`, `IN DEVELOPMENT`, `INTERNAL TESTING`, `EXPERIMENTAL`, `BETA`, `STABLE`, or `RELEASED`.
+Every benefit that names a tool or capability is governed by its visible status: `PLANNED`, `IN_DEVELOPMENT`, `INTERNAL_TESTING`, `RELEASE_CANDIDATE`, `RELEASED`, `DEPRECATED`, or `RETIRED`. Development, experimental, beta, release-candidate, and stable channels are recorded separately. The target access matrix in the [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md) is not a claim that an unreleased capability is available.

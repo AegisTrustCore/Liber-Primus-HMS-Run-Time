@@ -1,18 +1,114 @@
 {
   "$schema": "../schemas/instrument-manifest.schema.json",
-  "schema_version": "1.1.0",
+  "schema_version": "2.0.0",
   "last_reviewed": "2026-08-13",
   "instruments": [
-    {"id":"public-record-validator","name":"Public Record Validator","purpose":"Enforce public record and dossier invariants.","status":"RELEASED","current_version":"0.1.0","access_level":"OBSERVER","product_class":"DEVELOPER_TOOL","customer_ready":false,"target_delivery_modes":["DEVELOPER_SOURCE"],"released_delivery_modes":["DEVELOPER_SOURCE"],"supported_platforms":["CPython 3.12 source"],"download_page":"https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0","last_updated":"2026-08-13"},
-    {"id":"lp-source-audit","name":"LP Source Audit Inventory","purpose":"Hash and classify private intake while keeping raw metadata private.","status":"RELEASED","current_version":"0.1.0","access_level":"OBSERVER","product_class":"DEVELOPER_TOOL","customer_ready":false,"target_delivery_modes":["DEVELOPER_SOURCE"],"released_delivery_modes":["DEVELOPER_SOURCE"],"supported_platforms":["CPython 3.12 source"],"download_page":"https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0","last_updated":"2026-08-13"},
-    {"id":"expedition-verifier","name":"HMS Expedition Verifier","purpose":"Verify sealed public Expedition answers locally without accounts, telemetry, or network requests.","status":"IN_DEVELOPMENT","current_version":"0.2.0","access_level":"OBSERVER","product_class":"PUZZLE_PACKAGE","customer_ready":false,"target_delivery_modes":["DESKTOP_PORTABLE","CLI_BINARY","DEVELOPER_SOURCE"],"released_delivery_modes":["DEVELOPER_SOURCE"],"supported_platforms":["CPython 3.12 source"],"download_page":null,"last_updated":"2026-08-13"},
-    {"id":"corpus-manifest-verifier","name":"Corpus Manifest Verifier","purpose":"Verify canonical corpus inputs and hashes.","status":"INTERNAL_TESTING","current_version":"0.1.0-dev","access_level":"OBSERVER","product_class":"USER_INSTRUMENT","customer_ready":false,"target_delivery_modes":["DESKTOP_PORTABLE","CLI_BINARY","DEVELOPER_SOURCE"],"released_delivery_modes":["DEVELOPER_SOURCE"],"supported_platforms":["Windows 10/11 x64 development build","CPython 3.12 source"],"download_page":null,"last_updated":"2026-08-13"},
-    {"id":"public-gp29-calculator","name":"Public GP29 Calculator","purpose":"Evaluate Latin, rune, or explicit-token GP29 values with deterministic L/R/prime/N/Q output.","status":"RELEASE_CANDIDATE","current_version":"0.1.0","access_level":"OBSERVER","product_class":"USER_INSTRUMENT","customer_ready":false,"target_delivery_modes":["DESKTOP_PORTABLE","CLI_BINARY","DEVELOPER_SOURCE"],"released_delivery_modes":["DEVELOPER_SOURCE"],"supported_platforms":["Windows 10/11 x64 qualified candidate","CPython 3.12 source"],"download_page":null,"last_updated":"2026-08-13"},
-    {"id":"advanced-gp-laboratory","name":"Advanced GP Laboratory","purpose":"Provide saved calculations, comparisons, and advanced analysis.","status":"PLANNED","current_version":null,"access_level":"CARTOGRAPHER","product_class":"HOSTED_SERVICE","customer_ready":false,"target_delivery_modes":["RUNTIME"],"released_delivery_modes":[],"supported_platforms":[],"download_page":null,"last_updated":"2026-08-13"},
-    {"id":"liber-runtime-beta","name":"Liber Runtime Beta","purpose":"Provide a hosted personal Liber Primus research workspace.","status":"IN_DEVELOPMENT","current_version":"0.0.2-dev","access_level":"NAVIGATOR","product_class":"HOSTED_SERVICE","customer_ready":false,"target_delivery_modes":["RUNTIME","DEVELOPER_SOURCE"],"released_delivery_modes":["DEVELOPER_SOURCE"],"supported_platforms":["CPython 3.12 source"],"download_page":null,"last_updated":"2026-08-13"},
-    {"id":"gp-solver","name":"GP Solver","purpose":"Automate candidate and parameter exploration.","status":"PLANNED","current_version":null,"access_level":"NAVIGATOR","product_class":"HOSTED_SERVICE","customer_ready":false,"target_delivery_modes":["RUNTIME"],"released_delivery_modes":[],"supported_platforms":[],"download_page":null,"last_updated":"2026-08-13"},
-    {"id":"batch-experiment-engine","name":"Batch Experiment Engine","purpose":"Run queued experiments, parameter sweeps, and comparisons.","status":"PLANNED","current_version":null,"access_level":"NAVIGATOR","product_class":"HOSTED_SERVICE","customer_ready":false,"target_delivery_modes":["RUNTIME"],"released_delivery_modes":[],"supported_platforms":[],"download_page":null,"last_updated":"2026-08-13"},
-    {"id":"socket-api-layer","name":"Socket/API Integration Layer","purpose":"Provide authenticated programmatic Runtime access.","status":"PLANNED","current_version":null,"access_level":"ADMIRAL","product_class":"HOSTED_SERVICE","customer_ready":false,"target_delivery_modes":["RUNTIME"],"released_delivery_modes":[],"supported_platforms":[],"download_page":null,"last_updated":"2026-08-13"},
-    {"id":"addon-plugin-sdk","name":"Add-on and Plugin SDK","purpose":"Support capability-scoped instrument extensions.","status":"PLANNED","current_version":null,"access_level":"ADMIRAL","product_class":"PLUGIN","customer_ready":false,"target_delivery_modes":["PLUGIN","DEVELOPER_SOURCE"],"released_delivery_modes":[],"supported_platforms":[],"download_page":null,"last_updated":"2026-08-13"}
+    {
+      "instrument_id": "public-record-validator", "name": "Public Record Validator", "purpose": "Enforce public record, dossier, release, and archive invariants.",
+      "version": "0.1.0", "status": "RELEASED", "release_channel": "STABLE", "access_level": "OBSERVER", "product_class": "DEVELOPER_TOOL", "customer_ready": false,
+      "delivery_modes": ["DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["CPython 3.12 source"],
+      "input_contract": "Versioned public HMS JSON records and repository indexes.", "output_contract": "Deterministic pass/fail diagnostics and a validated-object count.",
+      "authority_class": "VERIFICATION", "evidence_scope": "PUBLIC_RECORD_CONFORMANCE", "capabilities": ["schema invariants", "cross-record checks", "release-gate checks"],
+      "offline_behavior": "Runs entirely on local repository files.", "network_behavior": "No network access.", "privacy_behavior": "Reads only paths explicitly present in the checked-out public repository.",
+      "test_vectors": ["tests/test_validate_records.py"], "self_test": true, "ordinary_user_acceptance": "Not qualified as a standalone ordinary-user application; released as developer source.",
+      "limitations": ["Conformance does not prove a research claim true.", "Requires a supported Python environment."], "release_gate": "Released within the approved v0.1.0 public foundation.", "human_approval": "APPROVED_VIA_FOUNDATION_RELEASE",
+      "download_page": "https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0", "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "lp-source-audit", "name": "LP Source Audit Inventory", "purpose": "Hash and classify private intake while keeping raw workstation metadata private.",
+      "version": "0.1.0", "status": "RELEASED", "release_channel": "STABLE", "access_level": "OBSERVER", "product_class": "DEVELOPER_TOOL", "customer_ready": false,
+      "delivery_modes": ["DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["CPython 3.12 source"],
+      "input_contract": "A researcher-selected local directory.", "output_contract": "Deterministic local inventory and sanitized aggregate report.",
+      "authority_class": "PROVENANCE", "evidence_scope": "SOURCE_INVENTORY_ONLY", "capabilities": ["file hashing", "archive inventory", "sanitized summary"],
+      "offline_behavior": "Runs entirely against a selected local tree.", "network_behavior": "No network access.", "privacy_behavior": "Raw paths and potentially sensitive metadata remain local unless explicitly promoted.",
+      "test_vectors": ["audit/SOURCE_AUDIT_2026-08-12.md"], "self_test": false, "ordinary_user_acceptance": "Not qualified as a standalone ordinary-user application; released as developer source.",
+      "limitations": ["Inventory counts are not correctness claims.", "Archives may contain formats the scanner cannot inspect."], "release_gate": "Released within the approved v0.1.0 public foundation.", "human_approval": "APPROVED_VIA_FOUNDATION_RELEASE",
+      "download_page": "https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0", "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "expedition-verifier", "name": "HMS Expedition Verifier", "purpose": "Verify sealed public Expedition submissions without disclosing protected answer material.",
+      "version": "0.2.0", "status": "IN_DEVELOPMENT", "release_channel": "DEVELOPMENT", "access_level": "OBSERVER", "product_class": "PUZZLE_PACKAGE", "customer_ready": false,
+      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE", "WEB"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["CPython 3.12 source"],
+      "input_contract": "Expedition ID, verifier version, stage, and submission normalized only by the frozen challenge manifest.", "output_contract": "PASS/FAIL plus a non-disclosing JSON receipt containing submission hash and verifier identity.",
+      "authority_class": "VERIFICATION", "evidence_scope": "EXPEDITION_CONTRACT_ONLY", "capabilities": ["manifest loading", "frozen normalization", "local verification", "JSON receipt", "self-test"],
+      "offline_behavior": "Local verification is preferred when a public verifier can be distributed safely.", "network_behavior": "No network in the current source; a future service is permitted only when protected verification logic cannot safely ship.", "privacy_behavior": "No plaintext solution, future-stage secret, private key, or reversible answer representation may ship in a public client.",
+      "test_vectors": ["tests/test_challenge_verifier.py", "tests/expedition_guidance_checks.py"], "self_test": true, "ordinary_user_acceptance": "Pending packaged GUI/CLI clean-machine test.",
+      "limitations": ["Returns no proximity hints unless explicitly authorized by the puzzle.", "Current public campaign is closed."], "release_gate": "Package GUI/CLI, complete solution-leak audit and synthetic/public tests, and approve the exact immutable subject.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "corpus-manifest-verifier", "name": "Corpus Manifest Verifier", "purpose": "Determine whether a selected folder exactly matches a declared corpus manifest.",
+      "version": "0.1.0-dev", "status": "INTERNAL_TESTING", "release_channel": "DEVELOPMENT", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": false,
+      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 development build", "CPython 3.12 source"],
+      "input_contract": "Researcher-selected folder, versioned manifest, and explicit strictness mode.", "output_contract": "HMS_CORPUS_VERIFICATION_V1 report with PASS/MISMATCH and expected, verified, missing, altered, and undeclared entries.",
+      "authority_class": "PROVENANCE", "evidence_scope": "MANIFEST_MATCH_ONLY", "capabilities": ["SHA-256 verification", "missing/altered/extra detection", "strict mode", "portable report", "self-test"],
+      "offline_behavior": "Runs entirely on explicit local inputs.", "network_behavior": "No network access.", "privacy_behavior": "Does not crawl outside the selected root and does not include the local root path in the portable report.",
+      "test_vectors": ["tests/test_corpus_manifest.py"], "self_test": true, "ordinary_user_acceptance": "Pending promoted version, synthetic corpus suite, canonical manifest, and clean-machine UAT.",
+      "limitations": ["A manifest match does not prove historical authenticity.", "Canonical experiments may block mismatch while explicit user-corpus experiments remain permissible and recorded."], "release_gate": "Ship GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL controls, bind final manifest, complete UAT, and approve exact package.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "public-gp29-calculator", "name": "Public GP29 Calculator", "purpose": "Evaluate Latin, rune, or explicit-token GP29 values with deterministic L/R/prime/N/Q output.",
+      "version": "0.1.0", "status": "RELEASE_CANDIDATE", "release_channel": "RC", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": false,
+      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 qualified candidate", "CPython 3.12 source"],
+      "input_contract": "Latin text, runes, or explicit tokens accepted under the frozen v0.1.0 normalization and compound-rune rules.", "output_contract": "Deterministic token rows and totals exposing L, R, prime p, N=p mod 29, and Q=floor(p/29), with JSON export.",
+      "authority_class": "CALCULATION", "evidence_scope": "DETERMINISTIC_CALCULATION_ONLY", "capabilities": ["calculator", "sequence inspection", "reference table", "JSON export", "self-test"],
+      "offline_behavior": "Runs entirely locally.", "network_behavior": "No network access.", "privacy_behavior": "Inputs and exports remain local unless the user explicitly shares them.",
+      "test_vectors": ["tests/test_gp29_runtime.py", "tests/test_gp29_package.py"], "self_test": true, "ordinary_user_acceptance": "Independent clean-machine UAT remains pending.",
+      "limitations": ["GP29 is a calculator, not a solver.", "Numerical relationships are not by themselves evidence of a Liber Primus solution.", "Compare, batch, target matching, simplification, and solving are outside v0.1.0."], "release_gate": "Exact-manifest clean-machine UAT and explicit owner approval are required before publication.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "advanced-gp-laboratory", "name": "Advanced GP Laboratory", "purpose": "Provide saved GP calculations, comparisons, sequences, batches, simplification, and target exploration.",
+      "version": null, "status": "PLANNED", "release_channel": "EXPERIMENTAL", "access_level": "CARTOGRAPHER", "product_class": "HOSTED_SERVICE", "customer_ready": false,
+      "delivery_modes": ["RUNTIME"], "released_delivery_modes": [], "supported_platforms": [],
+      "input_contract": "PLANNED: versioned GP sequences, targets, controls, and bounded parameter families.", "output_contract": "PLANNED: complete candidate family with scores, denominator, parameters, controls, and provenance.",
+      "authority_class": "EXPERIMENTAL", "evidence_scope": "CANDIDATE_GENERATION_ONLY", "capabilities": ["planned compare", "planned sequence", "planned batch", "planned simplifier", "planned target matcher"],
+      "offline_behavior": "Not yet defined.", "network_behavior": "Protected execution, if hosted, must be authorized server-side.", "privacy_behavior": "Private by default; no silent upload or publication.",
+      "test_vectors": [], "self_test": false, "ordinary_user_acceptance": "Not started.", "limitations": ["Not built.", "Candidate scores do not establish truth."], "release_gate": "Blocked until the public GP29 release and core Runtime experiment contracts are usable.", "human_approval": "REQUIRED_FUTURE", "download_page": null, "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "liber-runtime-beta", "name": "Liber Runtime Beta", "purpose": "Provide the integrated Liber Primus Atlas, Workbench, experiments, Runs, Results, evidence, and history environment.",
+      "version": "0.0.2-dev", "status": "IN_DEVELOPMENT", "release_channel": "DEVELOPMENT", "access_level": "NAVIGATOR", "product_class": "HOSTED_SERVICE", "customer_ready": false,
+      "delivery_modes": ["RUNTIME", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["CPython 3.12 developer core"],
+      "input_contract": "Versioned local job specifications referencing immutable inputs, operations, parameters, visibility, and environment.", "output_contract": "Deterministic Run/Result records with job, specification, and result hashes plus operation-scoped evidence labels.",
+      "authority_class": "EXPERIMENTAL", "evidence_scope": "RUNTIME_EXECUTION_AND_PROVENANCE", "capabilities": ["gp29.calculate job", "corpus.report.validate job", "deterministic IDs", "local in-memory queue"],
+      "offline_behavior": "Current developer core runs locally without accounts.", "network_behavior": "No current hosted service; future connections require authenticated, capability-scoped authorization.", "privacy_behavior": "Projects are private by default and source material is not uploaded without explicit action.",
+      "test_vectors": ["tests/test_gp29_runtime.py", "tests/test_corpus_manifest.py"], "self_test": true, "ordinary_user_acceptance": "No integrated ordinary-user application exists.",
+      "limitations": ["Developer core only.", "No Atlas, persistence, authentication, entitlements, quotas, sockets, or hosted beta yet."], "release_gate": "Advance incrementally through Atlas, Rune Workbench, Experiments, Auto Explore, and Evidence before integrated beta approval.", "human_approval": "REQUIRED_FUTURE", "download_page": null, "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "gp-solver", "name": "GP Solver", "purpose": "Generate bounded GP candidates and parameter families for human evaluation.",
+      "version": null, "status": "PLANNED", "release_channel": "EXPERIMENTAL", "access_level": "ADMIRAL", "product_class": "HOSTED_SERVICE", "customer_ready": false,
+      "delivery_modes": ["RUNTIME"], "released_delivery_modes": [], "supported_platforms": [],
+      "input_contract": "PLANNED: declared hypothesis, inputs, bounded search family, controls, budget, metrics, and success gate.", "output_contract": "PLANNED: full retained candidate family and scores; never a solve declaration.",
+      "authority_class": "SOLVER", "evidence_scope": "CANDIDATE_GENERATION_ONLY", "capabilities": ["planned bounded search", "planned candidate ranking", "planned family retention"],
+      "offline_behavior": "Not yet defined.", "network_behavior": "Any hosted compute must enforce server-side entitlement and quota.", "privacy_behavior": "Candidate work remains private until explicit evidence promotion.",
+      "test_vectors": [], "self_test": false, "ordinary_user_acceptance": "Not started.", "limitations": ["Not built.", "Returns candidates only and cannot promote evidence."], "release_gate": "Blocked until GP29, Experiment Engine, Runtime Beta, Auto Explore, and evidence controls are accepted.", "human_approval": "REQUIRED_FUTURE", "download_page": null, "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "batch-experiment-engine", "name": "Batch Experiment Engine", "purpose": "Execute declared experiment families with budgets, controls, complete retention, and comparable Results.",
+      "version": null, "status": "PLANNED", "release_channel": "EXPERIMENTAL", "access_level": "NAVIGATOR", "product_class": "HOSTED_SERVICE", "customer_ready": false,
+      "delivery_modes": ["RUNTIME"], "released_delivery_modes": [], "supported_platforms": [],
+      "input_contract": "PLANNED: experiment, immutable inputs, transform family, parameter space, budget, controls, and success gate.", "output_contract": "PLANNED: complete family of Runs/Results with failures, scores, denominator, resource use, and provenance.",
+      "authority_class": "EXPERIMENTAL", "evidence_scope": "EXPERIMENT_EXECUTION_ONLY", "capabilities": ["planned queue", "planned parameter sweeps", "planned controls", "planned full-family retention"],
+      "offline_behavior": "Not yet defined.", "network_behavior": "Hosted execution must enforce authenticated capabilities, quotas, cancellation, and audit.", "privacy_behavior": "Jobs and results remain private by default.",
+      "test_vectors": [], "self_test": false, "ordinary_user_acceptance": "Not started.", "limitations": ["Not built.", "Compute access changes capability, not evidence truth."], "release_gate": "Blocked until the Experiment Engine and Runtime Beta object lifecycle are accepted.", "human_approval": "REQUIRED_FUTURE", "download_page": null, "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "socket-api-layer", "name": "Socket/API Integration Layer", "purpose": "Expose authenticated, capability-scoped programmatic Runtime operations.",
+      "version": null, "status": "PLANNED", "release_channel": "DEVELOPMENT", "access_level": "ADMIRAL", "product_class": "HOSTED_SERVICE", "customer_ready": false,
+      "delivery_modes": ["RUNTIME"], "released_delivery_modes": [], "supported_platforms": [],
+      "input_contract": "PLANNED: authenticated versioned requests using the same job/result contracts as the UI.", "output_contract": "PLANNED: authorized responses, job events, errors, and audit references.",
+      "authority_class": "PROVENANCE", "evidence_scope": "TRANSPORT_AND_AUTHORIZATION_ONLY", "capabilities": ["planned authenticated API", "planned job events", "planned scoped tokens"],
+      "offline_behavior": "Not applicable to hosted transport.", "network_behavior": "Every connection and operation must authenticate and authorize server-side.", "privacy_behavior": "Least-privilege scopes, revocation, explicit upload, and auditable access are mandatory.",
+      "test_vectors": [], "self_test": false, "ordinary_user_acceptance": "Not started.", "limitations": ["Not built.", "An API does not expand evidence authority."], "release_gate": "Blocked until stable Runtime contracts, identity, entitlements, quotas, audit, and recovery exist.", "human_approval": "REQUIRED_FUTURE", "download_page": null, "last_updated": "2026-08-13"
+    },
+    {
+      "instrument_id": "addon-plugin-sdk", "name": "Add-on and Plugin SDK", "purpose": "Support versioned, capability-scoped third-party and HMS instrument extensions.",
+      "version": null, "status": "PLANNED", "release_channel": "DEVELOPMENT", "access_level": "ADMIRAL", "product_class": "PLUGIN", "customer_ready": false,
+      "delivery_modes": ["PLUGIN", "DEVELOPER_SOURCE"], "released_delivery_modes": [], "supported_platforms": [],
+      "input_contract": "PLANNED: signed/versioned plugin manifest, declared permissions, compatibility, inputs, outputs, and resource needs.", "output_contract": "PLANNED: sandboxed instrument results using the shared Result shell and provenance contracts.",
+      "authority_class": "EXPERIMENTAL", "evidence_scope": "DECLARED_PLUGIN_AUTHORITY_ONLY", "capabilities": ["planned registry", "planned permission prompts", "planned sandbox", "planned revocation"],
+      "offline_behavior": "Offline capability must be declared per plugin.", "network_behavior": "No plugin receives network access unless separately declared and approved.", "privacy_behavior": "Plugins receive only explicit scoped data access; no Vault access by default.",
+      "test_vectors": [], "self_test": false, "ordinary_user_acceptance": "Not started.", "limitations": ["Not built.", "Plugin output cannot bypass evidence review or authority labels."], "release_gate": "Blocked until the integrated Runtime, permission model, sandbox, registry, compatibility policy, and recovery behavior are accepted.", "human_approval": "REQUIRED_FUTURE", "download_page": null, "last_updated": "2026-08-13"
+    }
   ]
 }
