@@ -6,7 +6,7 @@
   "candidate_commit_sha": "89f02c02e72c7b4fbc0d8334f2f1bbbcb0e7c36d",
   "intended_tag": "GP29-v0.1.0",
   "environment_id": "ENV-0006",
-  "release_notes": "docs/tooling/GP29.md",
+  "release_notes": "releases/GP29-v0.1.0.md",
   "artifacts": [
     {"name": "hms_tools/gp29.py", "sha256": "d5789126d0c798752f15b33712fc82ab28a62cbee9ea4cb8c43583b885b09c30"},
     {"name": "hms_tools/runtime.py", "sha256": "d26fe853940c26baf06c2e5e4e925fc4c1959d2b7685bf68ffaf62c062e827ad"},
