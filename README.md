@@ -65,11 +65,12 @@ The puzzle is synthetic and does not conceal an unpublished *Liber Primus* resea
 | Public GP29 Calculator | **Release candidate** | Source is visible; the exact Windows candidate is awaiting clean-machine UAT and human approval |
 | Corpus Manifest Verifier | Internal testing | Developer source only; canonical public package not released |
 | Liber Runtime Beta | In development | Local developer core only; no hosted public service |
-| Endeavour Lite and advanced instruments | Planned | Not available for download |
+| HMS Endeavour Lite | Planned | Architecture only; implementation begins after GP29 release and Corpus Verifier RC |
+| Advanced instruments | Planned | No solver, batch engine, API/socket layer, or Plugin SDK is available |
 
 The GP29 calculator is a deterministic calculator, **not a solver**. It will receive a public download only after the exact candidate passes its remaining release gate. Track that gate in [GitHub issue #23](https://github.com/coreystilwell3-eng/Liber-Primus-HMS-Run-Time/issues/23).
 
-See the machine-readable [Instrument Manifest](instruments/manifest.json), [Instrument Registry](instruments/README.md), and [Roadmap](ROADMAP.md) for exact delivery modes and boundaries.
+See the machine-readable [Product Ladder](products/manifest.json), readable [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md), [Instrument Manifest](instruments/manifest.json), [Instrument Registry](instruments/README.md), and [Roadmap](ROADMAP.md) for exact delivery modes and boundaries.
 
 ## Current research position
 
@@ -84,8 +85,9 @@ See the machine-readable [Instrument Manifest](instruments/manifest.json), [Inst
 1. Complete independent clean-machine UAT and owner approval for the exact GP29 v0.1.0 candidate; publish it only if the gate passes.
 2. Complete the Expedition 001 customer package and open a formal public campaign under a separately approved gate.
 3. Finish the canonical corpus manifest and customer-facing Corpus Manifest Verifier.
-4. Build Endeavour Lite and the Liber Runtime on top of those stable instruments.
-5. Add advanced laboratories, automation, sockets, and add-ons only after the public foundations are dependable.
+4. Build Endeavour Lite, then add the LP Atlas, Rune Workbench, and Experiment Engine as accepted increments.
+5. Grow those increments into Liber Runtime Beta; add Auto Explore and contextual AEGIS only after the object lifecycle is dependable.
+6. Add batch, Advanced GP, solver, sockets/API, and the Plugin SDK only after their dependency gates are met.
 
 The detailed sequence is maintained in [Next Steps](NEXT_STEPS.md).
 

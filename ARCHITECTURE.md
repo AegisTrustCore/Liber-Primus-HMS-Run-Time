@@ -23,6 +23,12 @@ This repository documents the boundary now so future tools can be built without 
 
 No item in this list is considered available merely because its architecture is acknowledged. Current status is authoritative only in [`instruments/manifest.json`](instruments/manifest.json).
 
+## Product and authority hierarchy
+
+The frozen staged build is defined in the [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md) and its [machine-readable manifest](products/manifest.json). The mature application authority boundary is defined in the [Admiral Research Station Contract](docs/ADMIRAL_RESEARCH_STATION_CONTRACT.md).
+
+AEGIS Trust Core governs identity, permission, provenance, verification, and evidence policy. HMS Endeavour orchestrates instruments and experiments. Liber Runtime supplies the LP research environment. AEGIS AI remains a permission-bounded contextual assistant: it invokes and explains authoritative instruments but does not impersonate them or promote evidence.
+
 ## Security invariants
 
 1. Patreon membership is translated into server-side capabilities; it is not enforced by hiding a GitHub repository.

@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RECORD_DIR = ROOT / "research" / "records"
 PAGES_DIR = ROOT / "pages"
 INSTRUMENT_MANIFEST = ROOT / "instruments" / "manifest.json"
+PRODUCT_MANIFEST = ROOT / "products" / "manifest.json"
 RELEASE_STATE = ROOT / "releases" / "release-state.json"
 PATREON_POST_MANIFEST = ROOT / "patreon" / "public-manifest.json"
 CHALLENGE_MANIFEST = ROOT / "challenges" / "manifest.json"
@@ -60,12 +61,20 @@ INSTRUMENT_STATES = {
     "PLANNED",
     "IN_DEVELOPMENT",
     "INTERNAL_TESTING",
-    "EXPERIMENTAL",
-    "BETA",
     "RELEASE_CANDIDATE",
-    "STABLE",
     "RELEASED",
     "DEPRECATED",
+    "RETIRED",
+}
+RELEASE_CHANNELS = {"DEVELOPMENT", "EXPERIMENTAL", "BETA", "RC", "STABLE"}
+AUTHORITY_CLASSES = {
+    "REFERENCE",
+    "CALCULATION",
+    "PROVENANCE",
+    "STRUCTURAL_ANALYSIS",
+    "EXPERIMENTAL",
+    "SOLVER",
+    "VERIFICATION",
 }
 ACCESS_LEVELS = {"OBSERVER", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL", "INTERNAL"}
 POST_AUDIENCES = {"PUBLIC", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL"}
@@ -201,8 +210,8 @@ def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
 
     errors: list[str] = []
     instruments = manifest.get("instruments")
-    if manifest.get("schema_version") != "1.1.0":
-        errors.append("schema_version must be 1.1.0")
+    if manifest.get("schema_version") != "2.0.0":
+        errors.append("schema_version must be 2.0.0")
     if not isinstance(instruments, list):
         return [f"{path.relative_to(ROOT)}: instruments must be a list"], 0
 
@@ -212,17 +221,21 @@ def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
         if not isinstance(instrument, dict):
             errors.append(f"{prefix} must be an object")
             continue
-        instrument_id = instrument.get("id")
+        instrument_id = instrument.get("instrument_id")
         if not isinstance(instrument_id, str) or not re.fullmatch(
             r"[a-z0-9]+(?:-[a-z0-9]+)*", instrument_id
         ):
-            errors.append(f"{prefix}.id must be a lowercase kebab-case identifier")
+            errors.append(f"{prefix}.instrument_id must be a lowercase kebab-case identifier")
         elif instrument_id in seen_ids:
             errors.append(f"duplicate instrument id: {instrument_id}")
         else:
             seen_ids.add(instrument_id)
         if instrument.get("status") not in INSTRUMENT_STATES:
             errors.append(f"{prefix}.status is unrecognized")
+        if instrument.get("release_channel") not in RELEASE_CHANNELS:
+            errors.append(f"{prefix}.release_channel is unrecognized")
+        if instrument.get("authority_class") not in AUTHORITY_CLASSES:
+            errors.append(f"{prefix}.authority_class is unrecognized")
         if instrument.get("access_level") not in ACCESS_LEVELS:
             errors.append(f"{prefix}.access_level is unrecognized")
         if instrument.get("product_class") not in {
@@ -235,14 +248,14 @@ def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
             "WEB", "DESKTOP_INSTALLER", "DESKTOP_PORTABLE", "CLI_BINARY",
             "RUNTIME", "PLUGIN", "DEVELOPER_SOURCE",
         }
-        targets = instrument.get("target_delivery_modes")
+        targets = instrument.get("delivery_modes")
         released = instrument.get("released_delivery_modes")
         if not isinstance(targets, list) or not targets or any(mode not in delivery_modes for mode in targets):
-            errors.append(f"{prefix}.target_delivery_modes must contain recognized modes")
+            errors.append(f"{prefix}.delivery_modes must contain recognized modes")
         if not isinstance(released, list) or any(mode not in delivery_modes for mode in released):
             errors.append(f"{prefix}.released_delivery_modes must contain only recognized modes")
         if isinstance(released, list) and isinstance(targets, list) and not set(released).issubset(targets):
-            errors.append(f"{prefix}.released_delivery_modes must be a subset of target_delivery_modes")
+            errors.append(f"{prefix}.released_delivery_modes must be a subset of delivery_modes")
         if instrument.get("customer_ready") and not released:
             errors.append(f"{prefix}.customer_ready requires a released delivery mode")
         platforms = instrument.get("supported_platforms")
@@ -253,18 +266,96 @@ def validate_instrument_manifest(path: Path) -> tuple[list[str], int]:
         download_page = instrument.get("download_page")
         if download_page is not None and (not isinstance(download_page, str) or not download_page.startswith("https://")):
             errors.append(f"{prefix}.download_page must be null or an HTTPS URL")
-        for field in ("name", "purpose", "last_updated"):
+        for field in (
+            "name", "purpose", "last_updated", "input_contract", "output_contract",
+            "evidence_scope", "offline_behavior", "network_behavior", "privacy_behavior",
+            "ordinary_user_acceptance", "release_gate", "human_approval",
+        ):
             if not isinstance(instrument.get(field), str) or not instrument[field]:
                 errors.append(f"{prefix}.{field} must be a non-empty string")
-        version = instrument.get("current_version")
+        for field in ("capabilities", "test_vectors", "limitations"):
+            value = instrument.get(field)
+            if not isinstance(value, list) or any(not isinstance(item, str) or not item for item in value):
+                errors.append(f"{prefix}.{field} must be a string array")
+        if not instrument.get("limitations"):
+            errors.append(f"{prefix}.limitations must not be empty")
+        if not isinstance(instrument.get("self_test"), bool):
+            errors.append(f"{prefix}.self_test must be boolean")
+        version = instrument.get("version")
         if instrument.get("status") == "RELEASED" and not isinstance(version, str):
-            errors.append(f"{prefix}.current_version is required when RELEASED")
+            errors.append(f"{prefix}.version is required when RELEASED")
         if instrument.get("status") == "RELEASE_CANDIDATE" and not isinstance(version, str):
-            errors.append(f"{prefix}.current_version is required when RELEASE_CANDIDATE")
+            errors.append(f"{prefix}.version is required when RELEASE_CANDIDATE")
         if instrument.get("status") == "PLANNED" and version is not None:
-            errors.append(f"{prefix}.current_version must be null when PLANNED")
+            errors.append(f"{prefix}.version must be null when PLANNED")
 
     return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(instruments)
+
+
+def validate_product_manifest(path: Path) -> tuple[list[str], int]:
+    try:
+        manifest = load_json(path)
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        return [f"{path.relative_to(ROOT)}: {exc}"], 0
+
+    errors: list[str] = []
+    if manifest.get("schema_version") != "1.0.0":
+        errors.append("schema_version must be 1.0.0")
+    if manifest.get("status_vocabulary") != [
+        "PLANNED", "IN_DEVELOPMENT", "INTERNAL_TESTING", "RELEASE_CANDIDATE",
+        "RELEASED", "DEPRECATED", "RETIRED",
+    ]:
+        errors.append("status_vocabulary must equal the frozen product vocabulary")
+    if manifest.get("release_channels") != ["DEVELOPMENT", "EXPERIMENTAL", "BETA", "RC", "STABLE"]:
+        errors.append("release_channels must equal the frozen channel vocabulary")
+    products = manifest.get("products")
+    if not isinstance(products, list) or not products:
+        return [f"{path.relative_to(ROOT)}: products must be a non-empty list"], 0
+
+    seen_ids: set[str] = set()
+    for index, product in enumerate(products):
+        prefix = f"product[{index}]"
+        if not isinstance(product, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+        product_id = product.get("id")
+        if not isinstance(product_id, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", product_id):
+            errors.append(f"{prefix}.id must be a lowercase kebab-case identifier")
+        elif product_id in seen_ids:
+            errors.append(f"duplicate product id: {product_id}")
+        else:
+            seen_ids.add(product_id)
+        if product.get("status") not in INSTRUMENT_STATES:
+            errors.append(f"{prefix}.status is unrecognized")
+        if product.get("release_channel") not in RELEASE_CHANNELS:
+            errors.append(f"{prefix}.release_channel is unrecognized")
+        if product.get("access_level") not in ACCESS_LEVELS:
+            errors.append(f"{prefix}.access_level is unrecognized")
+        for field in ("name", "purpose", "required_gate"):
+            if not isinstance(product.get(field), str) or not product[field]:
+                errors.append(f"{prefix}.{field} must be a non-empty string")
+        dependencies = product.get("depends_on")
+        if not isinstance(dependencies, list) or any(not isinstance(item, str) for item in dependencies):
+            errors.append(f"{prefix}.depends_on must be a string array")
+        if product.get("status") == "PLANNED" and product.get("current_version") is not None:
+            errors.append(f"{prefix}.current_version must be null when PLANNED")
+
+    for index, product in enumerate(products):
+        if isinstance(product, dict):
+            for dependency in product.get("depends_on", []):
+                if dependency not in seen_ids:
+                    errors.append(f"product[{index}].depends_on references unknown product: {dependency}")
+    objective = manifest.get("current_release_objective")
+    if objective not in seen_ids:
+        errors.append("current_release_objective must reference a product")
+    parallel = manifest.get("parallel_preparation")
+    if not isinstance(parallel, list) or any(item not in seen_ids for item in parallel):
+        errors.append("parallel_preparation must reference products")
+    order = manifest.get("build_order")
+    if not isinstance(order, list) or not order or len(order) != len(set(order)):
+        errors.append("build_order must be a non-empty unique list")
+
+    return [f"{path.relative_to(ROOT)}: {error}" for error in errors], len(products)
 
 
 def validate_release_state(path: Path, published_record_count: int) -> tuple[list[str], dict]:
@@ -676,6 +767,8 @@ def main() -> int:
         errors.extend(validate_page_record(path))
     instrument_errors, instrument_count = validate_instrument_manifest(INSTRUMENT_MANIFEST)
     errors.extend(instrument_errors)
+    product_errors, product_count = validate_product_manifest(PRODUCT_MANIFEST)
+    errors.extend(product_errors)
     release_errors, release_state = validate_release_state(RELEASE_STATE, len(seen_ids))
     errors.extend(release_errors)
     patreon_status = release_state.get("patreon", {}).get("status")
@@ -705,7 +798,7 @@ def main() -> int:
     if release_state.get("github", {}).get("current_public_tag") is None:
         instrument_manifest = load_json(INSTRUMENT_MANIFEST)
         released = [
-            item.get("id") for item in instrument_manifest.get("instruments", [])
+            item.get("instrument_id") for item in instrument_manifest.get("instruments", [])
             if item.get("status") == "RELEASED"
         ]
         if released:
@@ -730,7 +823,8 @@ def main() -> int:
     print(
         f"Validated {len(seen_ids)} published research record(s) and "
         f"{len(list(PAGES_DIR.glob('page-*/record.json')))} page dossier(s), and "
-        f"{instrument_count} instrument status record(s), and {post_count} Patreon post record(s)."
+        f"{instrument_count} instrument contract(s), {product_count} product status record(s), "
+        f"and {post_count} Patreon post record(s)."
         f" Validated {challenge_count} public challenge record(s), {environment_count} environment manifest(s),"
         f" {len(release_gates)} release gate(s), and {reservation_count} permanent ID reservation(s)."
     )

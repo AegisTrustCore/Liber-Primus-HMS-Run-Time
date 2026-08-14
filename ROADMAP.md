@@ -1,8 +1,8 @@
 # HMS Endeavour Public Roadmap
 
-Legend: **RELEASED**, **RELEASE CANDIDATE**, **IN DEVELOPMENT**, **PLANNED**
+Status: **PLANNED**, **IN DEVELOPMENT**, **INTERNAL TESTING**, **RELEASE CANDIDATE**, **RELEASED**, **DEPRECATED**, **RETIRED**. Release channels are tracked separately.
 
-The machine-readable [instrument manifest](instruments/manifest.json) is authoritative for individual tool status.
+The machine-readable [product ladder](products/manifest.json) is authoritative for build order and product status. The [instrument manifest](instruments/manifest.json) is authoritative for individual tool contracts and availability.
 
 ## Foundation
 
@@ -31,7 +31,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 
 | Capability | Status |
 |---|---|
-| Public page index | PLANNED |
+| Public 75-page working-corpus map and page index | RELEASED |
 | Page regions and Page Sets | PLANNED |
 | Comparison workspace | PLANNED |
 | Experiment engine and pipeline builder | IN DEVELOPMENT — local GP29 and corpus-report validation jobs runnable |
@@ -51,7 +51,7 @@ The machine-readable [instrument manifest](instruments/manifest.json) is authori
 | Capability | Status |
 |---|---|
 | Checksum and corpus-manifest verifier | IN DEVELOPMENT |
-| Public reproduction packages | ACTIVE — eight member Runs/Results published; RSET-0001 staged, RSET-0002 and approved RSET-0003 published |
+| Public reproduction packages | RELEASED / ACTIVE — eleven Runs, eleven Results, four Capsules; RSET-0001 staged and RSET-0002 through RSET-0004 published |
 | ProofLock and notary verification | PLANNED |
 | Authenticated sockets and API | PLANNED |
 | Add-on architecture and plugin SDK | PLANNED |
@@ -63,5 +63,11 @@ The roadmap describes intended direction. A planned capability is not an entitle
 - Public GP29 Calculator: the v0.1.0 contract is frozen at Latin/token/rune input and deterministic `L/R/prime/N/Q` output. The exact Windows package has passed reproducible engineering qualification. It must still be accepted on a clean ordinary-user machine, approved by manifest hash, and released under instrument-specific tag `GP29-v0.1.0`.
 - HMS Endeavour Lite: local interface and portable-result contract documented; application not yet implemented.
 - Liber Runtime: deterministic local GP29 and corpus-report job/result core implemented; hosted persistence, auth, entitlements, quotas, and sockets remain pending.
+
+## Frozen product sequence
+
+GP29 release → Corpus Manifest Verifier RC → Expedition Verifier package → Endeavour Lite → LP Atlas → Rune Workbench → Experiment Engine → Liber Runtime Beta → Auto Explore → contextual AEGIS → Batch → Advanced GP → Solver → Plugin SDK.
+
+See the [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md). Advanced work may be researched privately, but it must not displace usable dependency layers or be advertised as released.
 
 See the [tool architecture](docs/tooling/ARCHITECTURE.md). The instrument registry remains authoritative when roadmap prose and promotional language differ.

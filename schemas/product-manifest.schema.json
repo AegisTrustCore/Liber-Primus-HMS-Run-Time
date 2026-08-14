@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/product-manifest.schema.json",
+  "title": "HMS Product Ladder Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "last_reviewed", "status_vocabulary", "release_channels", "current_release_objective", "parallel_preparation", "build_order", "products"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "status_vocabulary": {"const": ["PLANNED", "IN_DEVELOPMENT", "INTERNAL_TESTING", "RELEASE_CANDIDATE", "RELEASED", "DEPRECATED", "RETIRED"]},
+    "release_channels": {"const": ["DEVELOPMENT", "EXPERIMENTAL", "BETA", "RC", "STABLE"]},
+    "current_release_objective": {"type": "string"},
+    "parallel_preparation": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "build_order": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "products": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "purpose", "status", "release_channel", "access_level", "current_version", "target_next_state", "required_gate", "depends_on"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "name": {"type": "string", "minLength": 1},
+          "purpose": {"type": "string", "minLength": 1},
+          "status": {"enum": ["PLANNED", "IN_DEVELOPMENT", "INTERNAL_TESTING", "RELEASE_CANDIDATE", "RELEASED", "DEPRECATED", "RETIRED"]},
+          "release_channel": {"enum": ["DEVELOPMENT", "EXPERIMENTAL", "BETA", "RC", "STABLE"]},
+          "access_level": {"enum": ["OBSERVER", "PILGRIM", "NAVIGATOR", "CARTOGRAPHER", "ADMIRAL", "INTERNAL"]},
+          "current_version": {"type": ["string", "null"]},
+          "target_next_state": {"type": ["string", "null"]},
+          "required_gate": {"type": "string", "minLength": 1},
+          "depends_on": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

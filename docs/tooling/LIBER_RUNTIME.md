@@ -23,6 +23,21 @@ The Runtime will not receive private Vault material by default, and an Admiral e
 
 Tier capability and compute allowance are separate policy decisions. A locked-tool preview may show documentation and sample output but cannot execute the protected backend.
 
+## Beta rollout
+
+The developer core is not an integrated beta. Runtime advances through these accepted increments:
+
+| Increment | Scope | Acceptance outcome |
+|---|---|---|
+| Beta 0.1 — Atlas | All-page navigation, viewer, zoom/pan, metadata, transcriptions, notes, bookmarks, snips, Regions, page hashes | A researcher can comfortably navigate and annotate the 75-page working corpus |
+| Beta 0.2 — Rune Workbench | Rune/line/word selection, inspector, L/R/p/N/Q, occurrence search, overlays, PageSets | Every source selection becomes a reusable research object |
+| Beta 0.3 — Experiment Workbench | Experiments, Pipelines, Runs, Results, controls, success gates, reproduction, comparison | The application conducts declared HMS experiments rather than ad hoc transformations |
+| Beta 0.4 — Candidate Decryption | Decrypt Lab, Auto Explore, transform library, raw/failure retention, language metrics, IC, lagged IC, entropy, frequency, complete family | Candidate generation is broad, reproducible, and honest about gibberish and denominator |
+| Beta 0.5 — Evidence & AEGIS | Context rail, Epistemic Center, Evidence, Claims, Corrections, Wreck Chart, Trust Inspector, ProofLink, basic ProofLock | Assistance and evidence promotion remain permission-bounded and reviewable |
+| Beta 0.6 — Admiral Research | Batch, advanced families, selector tools, solver candidates, plugins, advanced reproduction, higher compute | Deep research capability exists without Vault access or stronger truth labels |
+
+No advanced solver is part of Atlas, Rune Workbench, or the initial Experiment Workbench. Candidate decryption is **AUTO EXPLORE**, not AUTO SOLVE.
+
 ## Runnable slice v0.0.2
 
 The repository now includes a local reference engine for `gp29.calculate` and `corpus.report.validate` jobs. It provides deterministic job IDs, specification hashes, result hashes, explicit visibility, and operation-specific evidence labels.

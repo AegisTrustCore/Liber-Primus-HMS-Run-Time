@@ -70,10 +70,12 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 
 1. Keep every status surface synchronized with the canonical Research Archive indexes.
 2. Complete independent clean-machine UAT and exact-subject owner approval for the frozen GP29 v0.1.0 candidate, then release it separately if the gate passes.
-3. Qualify and approve the Expedition 001 customer package before opening its public campaign.
-4. Bind the Corpus Manifest Verifier to a canonical public corpus manifest and complete its customer release gate.
-5. Build HMS Endeavour Lite and the Liber Runtime on those stable public instruments.
+3. Promote the Corpus Manifest Verifier to release candidate with the canonical manifest and synthetic GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL suite.
+4. Qualify, leak-audit, and approve the Expedition 001 customer package before opening its public campaign.
+5. Build HMS Endeavour Lite, the LP Atlas, Rune Workbench, and Experiment Engine in the frozen product sequence.
 6. Keep approved RR-0003 synchronized while continuing Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
+
+The staged product, access, dependency, and human-gate architecture is now frozen in the [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md). The mature application direction is recorded separately and does not change current availability.
 
 ## Platform launch state
 
