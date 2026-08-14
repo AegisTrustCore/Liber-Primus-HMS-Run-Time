@@ -54,7 +54,7 @@ HMS Endeavour is an independent project studying *Liber Primus* and Cicada 3301 
 |---|---|
 | Foundation | **RELEASED — v0.1.0** |
 | Research Archive | **PUBLISHED ON `main` — 8 Runs, 8 Results, 3 Capsules; RSET-0001 staged, RSET-0002 and RSET-0003 published** |
-| GP29 Calculator | IN DEVELOPMENT — v0.1.0 scope frozen; RC2 source candidate; no public download |
+| GP29 Calculator | IN DEVELOPMENT — v0.1.0 scope frozen; final package qualification pending; no public download |
 | Expedition 001 | RELEASE CANDIDATE — CLOSED |
 | Expedition Verifier | IN DEVELOPMENT — private Windows candidate qualified; no public download |
 | RC-0001 | REPRODUCTION PENDING |
