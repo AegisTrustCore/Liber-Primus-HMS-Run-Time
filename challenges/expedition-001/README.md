@@ -76,10 +76,11 @@ If the signal fades, open the [progressive public hints](HINTS.md). Reveal only 
 Developer/source route:
 
 ```bash
-python scripts/verify_challenge.py XPD-0001 YOUR_ANSWER
+python scripts/verify_challenge.py YOUR_ANSWER
+python scripts/verify_challenge.py --json --output receipt.json YOUR_ANSWER
 ```
 
-The verifier normalizes your answer and compares its SHA-256 digest with the sealed digest in the public manifest. It stores nothing and makes no network request.
+The verifier normalizes your answer and compares its SHA-256 digest with the sealed digest in the public manifest. It stores nothing and makes no network request. It can export a non-disclosing receipt containing the verifier version, PASS/FAIL state, submission hash, timestamp, and `solution_disclosed: false`; it never records the submitted plaintext in the receipt.
 
 A Windows double-click and CLI portable package has been built and privately tested, but it is **not a public download yet**. It will be attached only after the exact campaign package is approved. Public source is not being presented as a substitute customer application.
 

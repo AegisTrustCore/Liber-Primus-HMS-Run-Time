@@ -28,6 +28,7 @@ START
 - Choose a manifest and its corpus root, then select Verify.
 - Power users can run HMS-Corpus-Verifier-CLI.exe --help.
 - Run either executable with --self-test before qualification.
+- Run HMS-Corpus-Verifier-CLI.exe demo-self-test to exercise GOOD, ALTERED, MISSING, EXTRA, and TRAVERSAL controls.
 
 PRIVACY AND SAFETY
 Verification is offline and read-only. The application has no telemetry, accounts, network features, or upload path. It never establishes authenticity, redistribution rights, transcription correctness, or a Liber Primus solve.
@@ -59,14 +60,15 @@ def main() -> int:
     build("scripts/corpus_manifest.py", "HMS-Corpus-Verifier-CLI", stage, work, False)
     build("scripts/corpus_verifier_app.py", "HMS-Corpus-Verifier", stage, work, True)
     (stage / "START-HERE.txt").write_text(START_HERE, encoding="utf-8", newline="\n")
+    shutil.copytree(ROOT / "demo" / "corpus-verifier", stage / "demo" / "corpus-verifier")
     shutil.copyfile(ROOT / "LICENSE", stage / "LICENSE.txt")
-    files = sorted(stage.iterdir(), key=lambda path: path.name)
-    (stage / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.name}\n" for path in files), encoding="utf-8", newline="\n")
+    files = sorted((path for path in stage.rglob("*") if path.is_file()), key=lambda path: path.relative_to(stage).as_posix())
+    (stage / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.relative_to(stage).as_posix()}\n" for path in files), encoding="utf-8", newline="\n")
     output = ROOT / "dist" / PACKAGE_NAME
     output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-        for path in sorted(stage.iterdir(), key=lambda item: item.name):
-            info = zipfile.ZipInfo(path.name, date_time=FIXED_TIME)
+        for path in sorted((item for item in stage.rglob("*") if item.is_file()), key=lambda item: item.relative_to(stage).as_posix()):
+            info = zipfile.ZipInfo(path.relative_to(stage).as_posix(), date_time=FIXED_TIME)
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
             archive.writestr(info, path.read_bytes(), compresslevel=9)

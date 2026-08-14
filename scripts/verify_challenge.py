@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Verify a public HMS challenge answer locally without telemetry."""
+"""Verify a public HMS Expedition submission locally without telemetry."""
 
 from __future__ import annotations
 
+import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -11,32 +13,71 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from hms_tools.challenge_verifier import verify_answer
-from hms_tools.expedition_001 import HINTS, VERSION, hint_text, instructions_text
+from hms_tools.expedition_verifier import build_receipt, packaged_self_test
+from hms_tools.expedition_001 import CHALLENGE_ID, HINTS, VERSION, hint_text, instructions_text
 
 
-def main() -> int:
-    if len(sys.argv) == 2 and sys.argv[1] in {"--help", "-h", "--instructions"}:
+def write_json(value: object, path: Path | None = None) -> None:
+    rendered = json.dumps(value, ensure_ascii=False, indent=2) + "\n"
+    if path is None:
+        print(rendered, end="")
+    else:
+        path.write_text(rendered, encoding="utf-8", newline="\n")
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("items", nargs="*", metavar="ANSWER", help="Answer, or legacy EXPEDITION_ID ANSWER")
+    parser.add_argument("--expedition", default=CHALLENGE_ID, help=f"Expedition ID (default: {CHALLENGE_ID})")
+    parser.add_argument("--json", action="store_true", help="Print a non-disclosing JSON verification receipt")
+    parser.add_argument("--output", type=Path, help="Write the JSON receipt to a file")
+    parser.add_argument("--hint", type=int, choices=range(1, len(HINTS) + 1), metavar=f"1-{len(HINTS)}")
+    parser.add_argument("--instructions", action="store_true", help="Show the complete public puzzle instructions")
+    parser.add_argument("--self-test", action="store_true", help="Run synthetic accept/reject controls")
+    parser.add_argument("--version", action="version", version=f"HMS Expedition Verifier {VERSION}")
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    if args.self_test:
+        passed = packaged_self_test(VERSION)
+        result = {"product": "HMS Expedition Verifier", "version": VERSION, "self_test": "PASS" if passed else "FAIL"}
+        write_json(result) if args.json else print(f"Self-test {'passed' if passed else 'failed'}.")
+        return 0 if passed else 1
+    if args.instructions:
         print(instructions_text())
-        print(f"\nVerifier version {VERSION}")
-        print("\nUsage: HMS-XPD-0001-Verifier-CLI XPD-0001 YOUR_ANSWER")
-        print("       HMS-XPD-0001-Verifier-CLI --hint 1")
         return 0
-    if len(sys.argv) == 3 and sys.argv[1] == "--hint":
-        try:
-            level = int(sys.argv[2])
-            print(hint_text(level))
-            return 0
-        except (TypeError, ValueError) as exc:
-            print(f"Hint error: {exc}")
-            print(f"Available hint levels: 1-{len(HINTS)}")
-            return 2
-    if len(sys.argv) != 3:
-        print("Usage: python scripts/verify_challenge.py XPD-0001 YOUR_ANSWER")
-        print("Run with --help for puzzle instructions or --hint 1 for the first hint.")
+    if args.hint is not None:
+        print(hint_text(args.hint))
+        return 0
+    if len(args.items) == 1:
+        expedition_id, submitted = args.expedition, args.items[0]
+    elif len(args.items) == 2:
+        expedition_id, submitted = args.items
+    else:
+        print("ERROR: provide ANSWER, or legacy EXPEDITION_ID ANSWER. Run --help for usage.", file=sys.stderr)
         return 2
 
-    result = verify_answer(sys.argv[1], sys.argv[2])
-    print(result.message)
+    result = verify_answer(expedition_id, submitted)
+    if result.code == 2:
+        print(f"ERROR: {result.message}", file=sys.stderr)
+        return 2
+    receipt = build_receipt(expedition_id, submitted, result, VERSION)
+    if args.output:
+        write_json(receipt, args.output)
+    if args.json:
+        write_json(receipt)
+    elif result.matched:
+        print("VALID STAGE RESULT")
+        print(f"Expedition: {expedition_id}")
+        print(f"Verifier: {VERSION}")
+        print(f"Proof receipt: {receipt['receipt_id']}")
+    else:
+        print("NOT ACCEPTED")
+        print("The submission did not satisfy the frozen verification contract.")
+        print("No additional solution information is disclosed.")
+        print(f"Proof receipt: {receipt['receipt_id']}")
     return result.code
 
 

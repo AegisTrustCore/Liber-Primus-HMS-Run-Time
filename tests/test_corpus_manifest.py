@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from hms_tools.corpus_manifest import CorpusManifestError, create_manifest, validate_manifest, validate_verification_report, verify_manifest
+from hms_tools.corpus_manifest import CorpusManifestError, create_manifest, run_demo_self_test, validate_manifest, validate_verification_report, verify_manifest
 from hms_tools.runtime import create_corpus_report_job, execute_job
 
 
@@ -15,6 +15,19 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class CorpusManifestTests(unittest.TestCase):
+    def test_packaged_synthetic_demo_covers_all_required_cases(self):
+        result = run_demo_self_test(ROOT / "demo" / "corpus-verifier")
+        self.assertTrue(result["passed"], result)
+        self.assertEqual(set(result["cases"]), {"GOOD", "ALTERED", "MISSING", "EXTRA", "TRAVERSAL"})
+
+    def test_demo_self_test_cli(self):
+        completed = subprocess.run(
+            [sys.executable, "scripts/corpus_manifest.py", "demo-self-test"],
+            cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        self.assertTrue(json.loads(completed.stdout)["passed"])
+
     def test_create_and_verify_round_trip(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

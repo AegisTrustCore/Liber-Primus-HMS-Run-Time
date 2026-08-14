@@ -1,0 +1,19 @@
+{
+  "schema": "HMS_CORPUS_MANIFEST_V1",
+  "corpus_id": "HMS-SYNTHETIC-DEMO",
+  "version": "1",
+  "files": [
+    {
+      "path": "nested/page-01.txt",
+      "sha256": "8615fcb795f14249e06e63b4983f6195b6c058d9ca266687b06cdef31e05237b",
+      "bytes": 38,
+      "role": "SYNTHETIC_CONTROL"
+    },
+    {
+      "path": "page-00.txt",
+      "sha256": "8cb29a8e00a614e4953ceaf320f747eaef5fd72cb19800e2e4c1eea059b98d3f",
+      "bytes": 38,
+      "role": "SYNTHETIC_CONTROL"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/instrument-manifest.schema.json",
   "schema_version": "2.0.0",
-  "last_reviewed": "2026-08-13",
+  "last_reviewed": "2026-08-14",
   "instruments": [
     {
       "instrument_id": "public-record-validator", "name": "Public Record Validator", "purpose": "Enforce public record, dossier, release, and archive invariants.",
@@ -28,22 +28,22 @@
     {
       "instrument_id": "expedition-verifier", "name": "HMS Expedition Verifier", "purpose": "Verify sealed public Expedition submissions without disclosing protected answer material.",
       "version": "0.2.0", "status": "IN_DEVELOPMENT", "release_channel": "DEVELOPMENT", "access_level": "OBSERVER", "product_class": "PUZZLE_PACKAGE", "customer_ready": false,
-      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE", "WEB"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["CPython 3.12 source"],
-      "input_contract": "Expedition ID, verifier version, stage, and submission normalized only by the frozen challenge manifest.", "output_contract": "PASS/FAIL plus a non-disclosing JSON receipt containing submission hash and verifier identity.",
+      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE", "WEB"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 locally qualified candidate", "CPython 3.12 source"],
+      "input_contract": "Expedition ID, verifier version, stage, and submission normalized only by the frozen challenge manifest.", "output_contract": "PASS/FAIL plus HMS_EXPEDITION_VERIFICATION_RECEIPT_V1 containing submission hash and verifier identity but no submitted plaintext.",
       "authority_class": "VERIFICATION", "evidence_scope": "EXPEDITION_CONTRACT_ONLY", "capabilities": ["manifest loading", "frozen normalization", "local verification", "JSON receipt", "self-test"],
       "offline_behavior": "Local verification is preferred when a public verifier can be distributed safely.", "network_behavior": "No network in the current source; a future service is permitted only when protected verification logic cannot safely ship.", "privacy_behavior": "No plaintext solution, future-stage secret, private key, or reversible answer representation may ship in a public client.",
-      "test_vectors": ["tests/test_challenge_verifier.py", "tests/expedition_guidance_checks.py"], "self_test": true, "ordinary_user_acceptance": "Pending packaged GUI/CLI clean-machine test.",
-      "limitations": ["Returns no proximity hints unless explicitly authorized by the puzzle.", "Current public campaign is closed."], "release_gate": "Package GUI/CLI, complete solution-leak audit and synthetic/public tests, and approve the exact immutable subject.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-13"
+      "test_vectors": ["tests/test_challenge_verifier.py", "tests/expedition_guidance_checks.py"], "self_test": true, "ordinary_user_acceptance": "Reproducible GUI/CLI candidate and automated package qualification exist; independent clean-machine acceptance remains pending.",
+      "limitations": ["Returns no proximity hints unless explicitly authorized by the puzzle.", "Current public campaign is closed."], "release_gate": "Complete solution-leak audit, private accepted-submission test, independent clean-machine UAT, and approval of the exact immutable subject.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-14"
     },
     {
       "instrument_id": "corpus-manifest-verifier", "name": "Corpus Manifest Verifier", "purpose": "Determine whether a selected folder exactly matches a declared corpus manifest.",
       "version": "0.1.0-dev", "status": "INTERNAL_TESTING", "release_channel": "DEVELOPMENT", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": false,
       "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 development build", "CPython 3.12 source"],
       "input_contract": "Researcher-selected folder, versioned manifest, and explicit strictness mode.", "output_contract": "HMS_CORPUS_VERIFICATION_V1 report with PASS/MISMATCH and expected, verified, missing, altered, and undeclared entries.",
-      "authority_class": "PROVENANCE", "evidence_scope": "MANIFEST_MATCH_ONLY", "capabilities": ["SHA-256 verification", "missing/altered/extra detection", "strict mode", "portable report", "self-test"],
+      "authority_class": "PROVENANCE", "evidence_scope": "MANIFEST_MATCH_ONLY", "capabilities": ["SHA-256 verification", "missing/altered/extra detection", "strict mode", "portable report", "five-case synthetic demo", "self-test"],
       "offline_behavior": "Runs entirely on explicit local inputs.", "network_behavior": "No network access.", "privacy_behavior": "Does not crawl outside the selected root and does not include the local root path in the portable report.",
-      "test_vectors": ["tests/test_corpus_manifest.py"], "self_test": true, "ordinary_user_acceptance": "Pending promoted version, synthetic corpus suite, canonical manifest, and clean-machine UAT.",
-      "limitations": ["A manifest match does not prove historical authenticity.", "Canonical experiments may block mismatch while explicit user-corpus experiments remain permissible and recorded."], "release_gate": "Ship GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL controls, bind final manifest, complete UAT, and approve exact package.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-13"
+      "test_vectors": ["tests/test_corpus_manifest.py", "demo/corpus-verifier/README.md"], "self_test": true, "ordinary_user_acceptance": "Packaged GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL suite passes; promoted version, canonical manifest, and clean-machine UAT remain pending.",
+      "limitations": ["A manifest match does not prove historical authenticity.", "Canonical experiments may block mismatch while explicit user-corpus experiments remain permissible and recorded."], "release_gate": "Promote the version, bind the final canonical manifest, complete clean-machine UAT, and approve the exact package.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-14"
     },
     {
       "instrument_id": "public-gp29-calculator", "name": "Public GP29 Calculator", "purpose": "Evaluate Latin, rune, or explicit-token GP29 values with deterministic L/R/prime/N/Q output.",

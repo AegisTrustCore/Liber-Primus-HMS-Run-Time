@@ -1,56 +1,97 @@
 #!/usr/bin/env python3
-"""Small offline GUI for packaged HMS challenge verification."""
+"""Offline desktop interface for HMS Expedition verification."""
 
 from __future__ import annotations
 
+import json
 import sys
 import tkinter as tk
 from pathlib import Path
-from tkinter import ttk
+from tkinter import filedialog, messagebox, ttk
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from hms_tools.challenge_verifier import verify_answer
-from hms_tools.expedition_001 import HINTS, VERSION, hint_text, instructions_text
+from hms_tools.expedition_verifier import build_receipt, packaged_self_test
+from hms_tools.expedition_001 import CHALLENGE_ID, HINTS, VERSION, hint_text, instructions_text
 
 
 class VerifierApp:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
-        root.title("HMS Endeavour — Expedition Verifier")
-        root.geometry("600x370")
-        root.minsize(560, 350)
+        root.title(f"HMS Endeavour — Expedition Verifier {VERSION}")
+        root.geometry("680x470")
+        root.minsize(600, 420)
+        self.receipt: dict[str, object] | None = None
 
         frame = ttk.Frame(root, padding=24)
         frame.pack(fill="both", expand=True)
-
-        ttk.Label(frame, text="Expedition 001 — The Evidence Ledger", font=("Segoe UI", 16, "bold")).pack(anchor="w")
+        ttk.Label(frame, text="HMS ENDEAVOUR", font=("Segoe UI", 10, "bold")).pack(anchor="w")
+        ttk.Label(frame, text="Expedition Verifier", font=("Segoe UI", 18, "bold")).pack(anchor="w")
         ttk.Label(frame, text="Local verifier · no account · no telemetry · no network request").pack(anchor="w", pady=(4, 20))
 
-        ttk.Label(frame, text="Your five-letter answer").pack(anchor="w")
-        self.answer = ttk.Entry(frame, font=("Segoe UI", 13))
+        ttk.Label(frame, text="Expedition").pack(anchor="w")
+        ttk.Label(frame, text="XPD-0001 — The Evidence Ledger").pack(anchor="w", pady=(2, 12))
+        ttk.Label(frame, text="Submission").pack(anchor="w")
+        self.answer = ttk.Entry(frame, font=("Segoe UI", 13), show="")
         self.answer.pack(fill="x", pady=(6, 12))
         self.answer.bind("<Return>", lambda _event: self.verify())
 
-        ttk.Button(frame, text="Verify answer", command=self.verify).pack(anchor="w")
         actions = ttk.Frame(frame)
-        actions.pack(anchor="w", pady=(8, 0))
-        ttk.Button(actions, text="How to solve", command=self.show_instructions).pack(side="left")
-        ttk.Button(actions, text="Show next hint", command=self.show_hint).pack(side="left", padx=(8, 0))
-        self.status = tk.StringVar(value="Enter an answer, then select Verify answer.")
-        self.status_label = ttk.Label(frame, textvariable=self.status, wraplength=500)
-        self.status_label.pack(anchor="w", fill="x", pady=(20, 0))
+        actions.pack(fill="x")
+        ttk.Button(actions, text="Verify", command=self.verify).pack(side="left")
+        ttk.Button(actions, text="Copy receipt", command=self.copy_receipt).pack(side="left", padx=(8, 0))
+        ttk.Button(actions, text="Save result", command=self.save_receipt).pack(side="left", padx=(8, 0))
+        ttk.Button(actions, text="How to solve", command=self.show_instructions).pack(side="right")
+        ttk.Button(actions, text="Next hint", command=self.show_hint).pack(side="right", padx=(0, 8))
 
-        ttk.Separator(frame).pack(fill="x", pady=(20, 10))
-        ttk.Label(frame, text=f"Verifier version {VERSION} · XPD-0001 · Practice preview · Campaign closed").pack(anchor="w")
+        ttk.Separator(frame).pack(fill="x", pady=(20, 14))
+        self.status = tk.StringVar(value="Ready. Enter a submission and select Verify.")
+        ttk.Label(frame, textvariable=self.status, wraplength=610, font=("Segoe UI", 11, "bold")).pack(anchor="w", fill="x")
+        self.details = tk.StringVar(value="No result yet.")
+        ttk.Label(frame, textvariable=self.details, wraplength=610).pack(anchor="w", fill="x", pady=(8, 0))
+        ttk.Label(frame, text=f"Verifier {VERSION} · {CHALLENGE_ID} · Practice preview · Campaign closed").pack(anchor="w", pady=(24, 0))
         self.hint_level = 0
         self.answer.focus_set()
 
     def verify(self) -> None:
-        result = verify_answer("XPD-0001", self.answer.get())
-        self.status.set(result.message)
+        result = verify_answer(CHALLENGE_ID, self.answer.get())
+        if result.code == 2:
+            self.receipt = None
+            self.status.set("INPUT ERROR")
+            self.details.set(result.message)
+            return
+        self.receipt = build_receipt(CHALLENGE_ID, self.answer.get(), result, VERSION)
+        if result.matched:
+            self.status.set("VALID STAGE RESULT")
+            self.details.set(f"Verifier: {VERSION}\nProof receipt: {self.receipt['receipt_id']}")
+        else:
+            self.status.set("NOT ACCEPTED")
+            self.details.set("The submission did not satisfy the frozen verification contract.\nNo additional solution information is disclosed.\n" + f"Proof receipt: {self.receipt['receipt_id']}")
+
+    def copy_receipt(self) -> None:
+        if self.receipt is None:
+            messagebox.showinfo("No receipt", "Verify a submission first.", parent=self.root)
+            return
+        self.root.clipboard_clear()
+        self.root.clipboard_append(json.dumps(self.receipt, ensure_ascii=False, indent=2))
+        self.details.set(f"Copied receipt {self.receipt['receipt_id']} to the clipboard.")
+
+    def save_receipt(self) -> None:
+        if self.receipt is None:
+            messagebox.showinfo("No receipt", "Verify a submission first.", parent=self.root)
+            return
+        selected = filedialog.asksaveasfilename(parent=self.root, title="Save verification receipt", defaultextension=".json", filetypes=(("JSON", "*.json"),))
+        if not selected:
+            return
+        try:
+            Path(selected).write_text(json.dumps(self.receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        except OSError as error:
+            messagebox.showerror("Unable to save", str(error), parent=self.root)
+            return
+        self.details.set(f"Saved receipt {self.receipt['receipt_id']}.")
 
     def show_instructions(self) -> None:
         self.show_text_window("How to solve Expedition 001", instructions_text())
@@ -73,11 +114,17 @@ class VerifierApp:
         body.pack(fill="both", expand=True)
 
 
-def main() -> None:
+def main() -> int:
+    if sys.argv[1:] == ["--self-test"]:
+        return 0 if packaged_self_test(VERSION) else 1
+    if sys.argv[1:] == ["--version"]:
+        print(f"HMS Expedition Verifier {VERSION}")
+        return 0
     root = tk.Tk()
     VerifierApp(root)
     root.mainloop()
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -189,3 +189,33 @@ def create_manifest(root: Path, corpus_id: str, version: str, exclude: Iterable[
     manifest = {"schema": SCHEMA, "corpus_id": corpus_id, "version": version, "files": files}
     validate_manifest(manifest)
     return manifest
+
+
+def run_demo_self_test(demo_root: Path) -> dict[str, Any]:
+    """Exercise the packaged GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL controls."""
+    demo_root = Path(demo_root)
+    manifest = json.loads((demo_root / "manifest.json").read_text(encoding="utf-8"))
+    expected = {
+        "GOOD": {"status": "PASS", "verified": 2, "mismatch": 0, "missing": 0, "unexpected": 0},
+        "ALTERED": {"status": "FAIL", "verified": 1, "mismatch": 1, "missing": 0, "unexpected": 0},
+        "MISSING": {"status": "FAIL", "verified": 1, "mismatch": 0, "missing": 1, "unexpected": 0},
+        "EXTRA": {"status": "FAIL", "verified": 2, "mismatch": 0, "missing": 0, "unexpected": 1},
+    }
+    cases: dict[str, dict[str, Any]] = {}
+    passed = True
+    for name, contract in expected.items():
+        report = verify_manifest(manifest, demo_root / "cases" / name, strict=True)
+        observed = {"status": report["status"], **report["summary"]}
+        case_passed = all(observed.get(field) == value for field, value in contract.items())
+        cases[name] = {"passed": case_passed, "expected": contract, "observed": observed}
+        passed = passed and case_passed
+
+    try:
+        traversal = json.loads((demo_root / "traversal-manifest.json").read_text(encoding="utf-8"))
+        validate_manifest(traversal)
+        traversal_result = {"passed": False, "observed": "ACCEPTED"}
+    except (CorpusManifestError, OSError, UnicodeError, json.JSONDecodeError) as error:
+        traversal_result = {"passed": True, "observed": "REJECTED", "detail": str(error)}
+    cases["TRAVERSAL"] = traversal_result
+    passed = passed and traversal_result["passed"]
+    return {"schema": "HMS_CORPUS_DEMO_SELF_TEST_V1", "passed": passed, "cases": cases}

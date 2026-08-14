@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/expedition-verification-receipt.schema.json",
+  "title": "HMS Expedition Verification Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "receipt_id", "expedition_id", "verifier_version", "accepted", "submission_sha256", "verified_at", "solution_disclosed"],
+  "properties": {
+    "schema": {"const": "HMS_EXPEDITION_VERIFICATION_RECEIPT_V1"},
+    "receipt_id": {"type": "string", "pattern": "^VRF-[A-F0-9]{12}$"},
+    "expedition_id": {"type": "string", "pattern": "^XPD-[A-Z0-9-]+$"},
+    "verifier_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "accepted": {"type": "boolean"},
+    "submission_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "verified_at": {"type": "string", "format": "date-time"},
+    "solution_disclosed": {"const": false}
+  }
+}
