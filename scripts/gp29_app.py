@@ -17,7 +17,7 @@ if str(ROOT) not in sys.path:
 from hms_tools.gp29 import GP29InputError, TABLE, calculate, self_test
 
 PRODUCT = "HMS GP29 Calculator"
-VERSION = "0.1.1-rc.2"
+VERSION = "0.1.1"
 MODE_LABELS = {
     "English letters (A-Z)": "letters",
     "Latin sounds (longest match)": "latin",
