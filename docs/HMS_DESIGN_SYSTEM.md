@@ -42,4 +42,3 @@ The instrument's authority class is visible beside its status. For example, GP29
 - Decorative “cyberpunk” density must never obscure object, status, provenance, limitations, or next action.
 
 Candidate-generation actions use **Explore**, **Run**, or **Auto Explore**. They do not use **Solve** unless the instrument's declared authority class is `SOLVER`, and even then the output remains a candidate until evidence review.
-

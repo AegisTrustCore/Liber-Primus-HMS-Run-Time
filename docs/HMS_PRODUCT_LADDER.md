@@ -1,6 +1,6 @@
 # HMS Product Ladder
 
-Status: **FROZEN ARCHITECTURE**  
+Status: **FROZEN ARCHITECTURE**
 Last reviewed: 2026-08-13
 
 This document defines what HMS builds, in what order, and what prevents a planned capability from being advertised as available. The machine-readable source is [`products/manifest.json`](../products/manifest.json); individual tool contracts are authoritative in [`instruments/manifest.json`](../instruments/manifest.json).
@@ -95,4 +95,3 @@ Every instrument uses the same object model, evidence vocabulary, Trust Core bou
 `OBJECT · STATUS · INPUT · OUTPUT · INTERPRETATION · LIMITATIONS · PROVENANCE · EXPORT`
 
 Every screen answers: what object is this, what is its status, what can the researcher do, what supports it, and what is the next step?
-

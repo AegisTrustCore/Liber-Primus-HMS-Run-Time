@@ -54,4 +54,3 @@ Projects reference corpora by identity and hash by default instead of copying so
 Use a dark-first professional research interface with restrained cyan and brass accents. HMS language may provide identity, but plain subtitles must keep actions understandable. Avoid decorative cyberpunk density.
 
 The master research rule is: **generate candidates aggressively; interpret conservatively.**
-
