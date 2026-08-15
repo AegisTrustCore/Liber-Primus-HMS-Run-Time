@@ -35,7 +35,7 @@
   "human_approval": {"approved":false,"approver":null,"approved_at":null,"approved_subject_sha256":null},
   "notes": [
     "The exact local candidate passed 75 source tests, both packaged self-tests, internal checksums, all five synthetic controls, and strict verification of the bound 75-page local set.",
-    "Two clean local builds were byte-identical; independent GitHub Windows qualification remains part of the protected pull-request gate.",
+    "Two clean local builds were byte-identical; two independent GitHub Windows workflow runs also passed reproduction and exact packaged-interface qualification.",
     "Microsoft Defender reported no threats for the exact ZIP and both packaged executables.",
     "The usability pass changes presentation and workflow only; the verification contract and meaning of PASS are unchanged.",
     "The gate remains pending until clean-environment human UAT and explicit owner approval of this exact subject.",

@@ -17,7 +17,8 @@
     {"check":"exact packaged strict verification of the bound local 75-page set","passed":true},
     {"check":"package internal SHA256SUMS","passed":true},
     {"check":"portable report contains no local corpus-root path","passed":true},
-    {"check":"manifest identity and finding-filter source controls","passed":true}
+    {"check":"manifest identity and finding-filter source controls","passed":true},
+    {"check":"independent GitHub Windows runner reproduction and exact packaged-interface qualification (two successful workflow runs)","passed":true}
   ],
   "canonical_binding": {
     "manifest":"LP-75-IMAGES-v1.0.0.json",
@@ -37,5 +38,5 @@
       {"name":"HMS-Corpus-Verifier-CLI.exe","sha256":"498eda23ef2d4a64e3618c81c1ea8025f89d476018b50eccebd4171aeae6a02e"}
     ]
   },
-  "remaining_checks":["Independent GitHub Windows runner qualification","Independent ordinary-user clean-environment UAT","Explicit human publication approval"]
+  "remaining_checks":["Independent ordinary-user clean-environment UAT","Explicit human publication approval"]
 }

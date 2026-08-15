@@ -20,6 +20,6 @@ The verification contract and meaning of PASS are unchanged. PASS establishes de
 
 ## Qualification state
 
-Two local clean builds were byte-identical. The exact package passed internal checksum verification, both packaged self-tests, all five synthetic cases, canonical identity inspection, strict verification of the bound 75-page local set, privacy inspection, the complete 75-test source suite, and Microsoft Defender scanning.
+Two local clean builds were byte-identical, and two independent GitHub Windows runs passed reproduction and exact packaged-interface qualification. The exact package passed internal checksum verification, both packaged self-tests, all five synthetic cases, canonical identity inspection, strict verification of the bound 75-page local set, privacy inspection, the complete 75-test source suite, and Microsoft Defender scanning.
 
 Clean-environment ordinary-user UAT and explicit owner approval remain required. This candidate is retained for review and must not be presented as a public release.
