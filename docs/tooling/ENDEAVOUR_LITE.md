@@ -2,13 +2,14 @@
 
 Audience: Observer basic; Pilgrim and above when released
 
-Status: Planned; shared calculation core exists, unified application not started
+Status: **IN DEVELOPMENT — runnable `0.1.0-dev`, not publicly released**
 
 Endeavour Lite will be the local, reduced HMS workstation:
 
+- selectable 29-rune reference and explicit-token handoff;
 - GP29 rune/token lookup and sums;
 - paste-or-file input with explicit provenance fields;
-- deterministic transforms with visible parameters;
+- a bounded GP29 comparison experiment with a predeclared hypothesis and success gate;
 - result export as a portable JSON record;
 - side-by-side input/output and diff views;
 - local-only projects by default;
@@ -38,4 +39,15 @@ Add the LP page viewer, annotations, snips, Regions, basic PageSets, Run compari
 
 Add the basic Experiment Builder, contextual AEGIS rail, Trust Inspector, and instrument catalog.
 
-The shared GP29 and Runtime job/result cores now exist, and GP29 v0.1.1 is released with its desktop interface, CLI, file loading, dashboard, JSON/CSV export, and Windows portable package. Endeavour Lite begins implementation after the Corpus Manifest Verifier reaches release candidate. It still requires its unified shell, local project format, page/corpus views, side-by-side experiment workspace, multi-instrument export workflow, and ordinary-user qualification before it can be called runnable or released.
+The `0.1.0-dev` slice now provides the unified desktop and CLI shell, private local project create/open workflow, immutable Run storage, shared `HMS_RESULT_ENVELOPE_V1`, selectable Rune Workbench, GP29 execution, corpus verification handoff, one bounded declared GP29 batch experiment, explicit JSON export, history inspection, and a metadata-only 75-page LP Atlas. It does not copy corpus images into projects.
+
+Automated Windows development-package qualification now covers deterministic rebuilds, internal checksums, packaged GUI/CLI self-tests, project creation, saved calculation, result listing/export, and the bundled 75-file identity manifest. Still required before release: integrate the approved secure Expedition client, improve project settings and recovery behavior, complete clean-environment human UAT, and approve the exact package. Annotations, Regions, page rendering, general Experiment Builder, Auto Explore, AEGIS, sockets, accounts, and hosted synchronization remain later increments.
+
+Developer start:
+
+```text
+python scripts/endeavour_lite_app.py
+python scripts/endeavour_lite_app.py --self-test
+python scripts/endeavour_lite.py --help
+python scripts/build_endeavour_lite_windows.py
+```

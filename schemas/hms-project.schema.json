@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://hms-endeavour.invalid/schemas/hms-project.schema.json",
+  "title":"HMS Endeavour local project",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","project_id","name","created_at","visibility","application_version","corpus"],
+  "properties":{
+    "schema":{"const":"HMS_PROJECT_V1"},
+    "project_id":{"type":"string","pattern":"^PRJ-[A-F0-9]{16}$"},
+    "name":{"type":"string","minLength":1},
+    "created_at":{"type":"string","format":"date-time"},
+    "visibility":{"const":"PRIVATE"},
+    "application_version":{"const":"0.1.0-dev"},
+    "corpus":{"type":"object","additionalProperties":false,"required":["manifest_ref","manifest_sha256","local_root_configured"],"properties":{
+      "manifest_ref":{"type":["string","null"]},
+      "manifest_sha256":{"type":["string","null"],"pattern":"^[a-f0-9]{64}$"},
+      "local_root_configured":{"type":"boolean"}
+    }}
+  }
+}

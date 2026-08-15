@@ -11,7 +11,7 @@ from .corpus_manifest import validate_verification_report
 from .gp29 import calculate
 
 
-SUPPORTED_OPERATIONS = {"gp29.calculate", "corpus.report.validate"}
+SUPPORTED_OPERATIONS = {"gp29.calculate", "corpus.report.validate", "experiment.gp29.batch"}
 
 
 def canonical_json(value: object) -> bytes:
@@ -40,25 +40,101 @@ def create_corpus_report_job(report: dict[str, Any], visibility: str = "PRIVATE"
     return _create_job("corpus.report.validate", {"report": report}, {}, visibility)
 
 
+def create_gp29_experiment_job(
+    variants: list[str],
+    *,
+    mode: str = "letters",
+    hypothesis: str,
+    target_gp_sum: int,
+    visibility: str = "PRIVATE",
+) -> dict[str, Any]:
+    """Create one bounded, declared GP29 comparison experiment.
+
+    This intentionally supports only an explicit list and a single predeclared
+    success gate. It is a reproducible measurement tool, not an optimizer or
+    an automatic LP search.
+    """
+    cleaned = [str(value).strip() for value in variants]
+    if not 2 <= len(cleaned) <= 100:
+        raise ValueError("a GP29 experiment requires 2 to 100 declared variants")
+    if any(not value for value in cleaned):
+        raise ValueError("experiment variants cannot be empty")
+    hypothesis = str(hypothesis).strip()
+    if not hypothesis:
+        raise ValueError("declare the hypothesis before running the experiment")
+    if isinstance(target_gp_sum, bool) or not isinstance(target_gp_sum, int) or target_gp_sum < 0:
+        raise ValueError("target GP sum must be a non-negative integer")
+    return _create_job(
+        "experiment.gp29.batch",
+        {"variants": cleaned},
+        {
+            "mode": mode,
+            "hypothesis": hypothesis,
+            "success_gate": {"metric": "gp_sum", "operator": "equals", "target": target_gp_sum},
+        },
+        visibility,
+    )
+
+
 def execute_job(job: dict[str, Any]) -> dict[str, Any]:
     operation = job.get("operation")
     if operation not in SUPPORTED_OPERATIONS:
         raise ValueError(f"unsupported operation: {operation}")
     if operation == "gp29.calculate":
         expected = create_job(str(job.get("input", {}).get("text", "")), str(job.get("parameters", {}).get("mode", "auto")), str(job.get("visibility", "PRIVATE")))
-    else:
+    elif operation == "corpus.report.validate":
         report = job.get("input", {}).get("report", {})
         expected = create_corpus_report_job(report if isinstance(report, dict) else {}, str(job.get("visibility", "PRIVATE")))
+    else:
+        input_value = job.get("input", {})
+        parameters = job.get("parameters", {})
+        gate = parameters.get("success_gate", {})
+        expected = create_gp29_experiment_job(
+            input_value.get("variants", []) if isinstance(input_value, dict) else [],
+            mode=str(parameters.get("mode", "letters")),
+            hypothesis=str(parameters.get("hypothesis", "")),
+            target_gp_sum=gate.get("target") if isinstance(gate, dict) else None,
+            visibility=str(job.get("visibility", "PRIVATE")),
+        )
     if job.get("job_id") != expected["job_id"] or job.get("specification_sha256") != expected["specification_sha256"]:
         raise ValueError("job identity does not match its canonical specification")
     if operation == "gp29.calculate":
         output = calculate(expected["input"]["text"], expected["parameters"]["mode"])
         evidence_label = "CALCULATION_ONLY"
         limitations = ["A deterministic GP29 calculation is not a plaintext, translation, or verified Liber Primus result."]
-    else:
+    elif operation == "corpus.report.validate":
         output = validate_verification_report(expected["input"]["report"])
         evidence_label = "PROVENANCE_ONLY"
         limitations = ["Report validation confirms canonical report integrity, not corpus authenticity, rights, transcription correctness, or a Liber Primus solution."]
+    else:
+        gate = expected["parameters"]["success_gate"]
+        rows = []
+        for index, variant in enumerate(expected["input"]["variants"], start=1):
+            calculation = calculate(variant, expected["parameters"]["mode"])
+            rows.append(
+                {
+                    "index": index,
+                    "variant": variant,
+                    "rune_count": calculation["rune_count"],
+                    "gp_sum": calculation["gp_sum"],
+                    "gate_passed": calculation["gp_sum"] == gate["target"],
+                    "calculation_sha256": hashlib.sha256(canonical_json(calculation)).hexdigest(),
+                }
+            )
+        output = {
+            "schema": "HMS_GP29_BATCH_EXPERIMENT_V1",
+            "hypothesis": expected["parameters"]["hypothesis"],
+            "input_mode": expected["parameters"]["mode"],
+            "success_gate": gate,
+            "variant_count": len(rows),
+            "gate_pass_count": sum(row["gate_passed"] for row in rows),
+            "rows": rows,
+        }
+        evidence_label = "EXPERIMENTAL"
+        limitations = [
+            "A gate match is a declared numerical observation, not a plaintext, route, translation, or verified Liber Primus solution.",
+            "The Runtime does not rank, optimize, or generate candidate variants for this experiment.",
+        ]
     result_core = {
         "schema": "HMS_RUNTIME_RESULT_V1",
         "job_id": expected["job_id"],
