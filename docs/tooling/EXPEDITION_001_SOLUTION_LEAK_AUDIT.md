@@ -15,7 +15,7 @@ SHA-256 is operating correctly; the failure is the low-entropy input space. Call
 - No answer, answer digest, keyed answer commitment, or equivalent acceptance secret ships in public source or binaries.
 - The downloadable client sends an explicit submission to a TLS-protected verification service.
 - The service normalizes and compares against a deployment secret using constant-time comparison.
-- The service enforces both application and edge rate limits and returns only accepted/rejected state plus a signed, non-plaintext receipt.
+- The service enforces both application and edge rate limits and returns only accepted/rejected state plus an Ed25519-signed, non-plaintext receipt that the public client binds to its submission and verifies locally.
 - Request bodies and normalized answers must not be logged.
 - Public clients disclose that submission verification requires a network request.
 - The campaign remains closed until the exact service deployment and configured client package pass accepted/rejected, abuse-control, privacy, clean-environment UAT, and human approval gates.

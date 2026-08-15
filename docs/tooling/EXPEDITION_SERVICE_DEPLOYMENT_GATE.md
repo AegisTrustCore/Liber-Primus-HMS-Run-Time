@@ -4,6 +4,8 @@ Status: **REQUIRED BEFORE XPD-0001 CAN OPEN**
 
 This gate applies jointly to the deployed v0.3.0 verification service and the exact Windows client configured to call it. Neither subject may be approved alone.
 
+Implementation state: the platform-neutral non-root container, OpenAPI contract, Ed25519 receipt signing and client verification, replay binding, bounded in-process rate controls, trusted-proxy handling, configurable Windows package, and synthetic CI controls are built. A particular deployment cannot pass this gate until a host, immutable image, secret-manager entries, edge policy, HTTPS endpoint, and exact configured client exist.
+
 ## Secret preparation
 
 - Derive the rotated v0.3.0 answer independently from the approved puzzle package.

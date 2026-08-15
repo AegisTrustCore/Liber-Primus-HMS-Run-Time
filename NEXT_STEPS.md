@@ -9,7 +9,7 @@ The `v0.1.0` public foundation, research releases `RR-0002` and `RR-0003`, and t
 ## Current release sequence
 
 1. **Qualify Corpus Manifest Verifier `0.1.0-rc.1`.** The canonical 75-page binding and GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL package are complete; finish clean-environment human UAT and approve the exact immutable package.
-2. **Finish Expedition 001 as a public product.** Keep the current synthetic practice preview public, qualify the customer package, complete its solution-leak audit, approve the immutable campaign subject, then open it in a separate release decision.
+2. **Deploy and qualify Expedition 001.** The v0.3 sealed service, signed-receipt client, container, leak audit, and unconfigured Windows package are built; choose the host, inject the private answer/key through its secret manager, bind the HTTPS endpoint and Ed25519 public key into the exact client, inspect redacted logs, complete accepted/rejected abuse and human UAT, then make a separate campaign-opening decision.
 3. **Finish Endeavour Lite `0.1.0-dev`.** The local project shell, selectable Rune Workbench, GP29, Corpus, bounded GP29 experiment, shared Results, history/export, Atlas metadata, deterministic Windows build, and automated exact-package qualification are complete; integrate the approved secure Expedition client and finish recovery review plus human UAT.
 4. **Grow Lite into Liber Runtime incrementally.** Page-aware LP Atlas and Regions → general Experiment Builder and comparison → integrated beta → Auto Explore → contextual AEGIS.
 5. **Add advanced systems later.** Batch → Advanced GP → Solver → sockets/API and Plugin SDK only after the dependency layers are usable.

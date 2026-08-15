@@ -29,7 +29,7 @@ Public and member packages use the same [`RUN → RES → CAP → RSET`](../docs
 
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
 
-As of 2026-08-14, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. No Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit, its sealed-service replacement is in development, and no tiered hint, worksheet, validation, or solution release is live.
+As of 2026-08-14, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. No Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit; its v0.3 sealed-service/client deployment candidate is built but has no approved host, endpoint, configured public client, or campaign release. No tiered hint, worksheet, validation, or solution release is live.
 
 ## Expedition release ladder
 
