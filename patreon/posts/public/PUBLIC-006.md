@@ -1,7 +1,7 @@
 # HMS STATUS 002 — The Public Deck Is Open
 
-**Audience:** Public / Observer  
-**Access:** Free  
+**Audience:** Public / Observer
+**Access:** Free
 **Publication:** https://www.patreon.com/AegisTrustCore/posts/hms-status-002-166729647
 
 Four signals are on the public rail. One instrument has left the workshop. The next doors remain sealed by design.
