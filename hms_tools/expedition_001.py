@@ -4,7 +4,7 @@ from __future__ import annotations
 
 
 CHALLENGE_ID = "XPD-0001"
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 
 LOGS = (
     "A repeatable row/column relation survives, but produces no readable message.",
@@ -27,8 +27,8 @@ STEPS = (
     "1. Classify each of the five logs with the most precise vocabulary label.",
     "2. Use each selected label once; one vocabulary label remains unused.",
     "3. Uppercase each label and remove spaces, hyphens, and underscores.",
-    "4. Take 1-based characters 2, 3, 3, 9, and 1 in log order.",
-    "5. Join the five characters and verify the five-letter answer locally.",
+    "4. Take 1-based characters 2, 3, 11, 6, and 7 in log order.",
+    "5. Join the five characters and verify the five-letter answer with the official service.",
 )
 
 HINTS = (
@@ -53,7 +53,7 @@ def instructions_text() -> str:
         "STEPS",
         *STEPS,
         "",
-        "Campaign state: practice preview; no submission is collected.",
+        "Campaign state: closed redesign preview; the verification service is not active.",
     ]
     return "\n".join(sections)
 

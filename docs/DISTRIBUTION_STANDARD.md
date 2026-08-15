@@ -84,9 +84,9 @@ Protected logic stays server-side or in access-controlled packages. Hiding a but
 
 ## Puzzle packages
 
-A public puzzle must be solvable from its released instructions and verifiable with a packaged local verifier. Before opening a campaign, HMS privately confirms both an accepted and rejected submission against the exact distributed build. The acceptance answer remains sealed until the public solution gate.
+A public puzzle must be solvable from its released instructions and verifiable with a packaged client. Local verification is preferred only when the acceptance predicate cannot reveal protected material. Short or otherwise enumerable answers require an approved sealed service. Before opening a campaign, HMS privately confirms both an accepted and rejected submission against the exact distributed build and, where applicable, the exact deployed service. The acceptance answer remains sealed until the public solution gate.
 
-The puzzle package must not require telemetry, an account, or a network request unless the campaign explicitly declares otherwise. The complete public solution returns to GitHub when the campaign closes.
+The puzzle package must not require telemetry or an account. A network request is permitted only when the campaign explicitly declares the service, data sent, retention behavior, and failure mode. The complete public solution returns to GitHub when the campaign closes.
 
 ## First reference implementations
 

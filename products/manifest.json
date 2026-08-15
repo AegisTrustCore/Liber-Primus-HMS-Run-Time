@@ -42,9 +42,9 @@
       "status": "IN_DEVELOPMENT",
       "release_channel": "DEVELOPMENT",
       "access_level": "OBSERVER",
-      "current_version": "0.2.0",
+      "current_version": "0.3.0",
       "target_next_state": "RELEASE_CANDIDATE",
-      "required_gate": "Complete solution-leak audit, private accepted-submission test, independent clean-machine UAT, then bind human approval to the exact GUI/CLI subject.",
+      "required_gate": "Deploy the sealed HTTPS verification service with edge controls, configure the public client, pass accepted/rejected and abuse tests plus clean-environment UAT, then bind human approval to the exact service and package.",
       "depends_on": ["public-foundation"]
     },
     {

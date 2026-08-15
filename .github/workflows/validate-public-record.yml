@@ -21,6 +21,10 @@ jobs:
         uses: actions/setup-python@v7
         with:
           python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-runtime.txt
+      - name: Install pinned runtime dependencies
+        run: python -m pip install --requirement requirements-runtime.txt
       - name: Validate records, releases, posts, and challenges
         run: python scripts/validate_records.py
       - name: Regenerate and verify the Research Archive
@@ -52,7 +56,9 @@ jobs:
         with:
           python-version: "3.12.10"
           cache: pip
-          cache-dependency-path: requirements-build.txt
+          cache-dependency-path: |
+            requirements-build.txt
+            requirements-runtime.txt
       - name: Install pinned build environment
         run: python -m pip install --requirement requirements-build.txt
       - name: Build Windows portable candidate
@@ -92,6 +98,28 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+  qualify-expedition-service-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12.10"
+          cache: pip
+          cache-dependency-path: requirements-runtime.txt
+      - name: Install pinned runtime dependencies
+        run: python -m pip install --requirement requirements-runtime.txt
+      - name: Test sealed service and public client contracts
+        run: python -m unittest tests.test_expedition_service -v
+      - name: Build non-root service container
+        run: docker build --file deploy/expedition-service/Dockerfile --tag hms-expedition-service:qualification .
+      - name: Run synthetic self-test inside the exact image
+        run: docker run --rm --entrypoint python hms-expedition-service:qualification /app/scripts/serve_expedition_verifier.py --self-test
+      - name: Verify configured container user
+        run: test "$(docker image inspect hms-expedition-service:qualification --format '{{.Config.User}}')" = "65532:65532"
+
   qualify-corpus-verifier-windows:
     runs-on: windows-latest
     steps:
@@ -104,7 +132,9 @@ jobs:
         with:
           python-version: "3.12.10"
           cache: pip
-          cache-dependency-path: requirements-build.txt
+          cache-dependency-path: |
+            requirements-build.txt
+            requirements-runtime.txt
       - name: Install pinned build environment
         run: python -m pip install --requirement requirements-build.txt
       - name: Build twice and compare within the pinned runner
@@ -166,7 +196,9 @@ jobs:
         with:
           python-version: "3.12.10"
           cache: pip
-          cache-dependency-path: requirements-build.txt
+          cache-dependency-path: |
+            requirements-build.txt
+            requirements-runtime.txt
       - name: Install pinned build environment
         run: python -m pip install --requirement requirements-build.txt
       - name: Build twice and compare within the pinned runner
@@ -230,14 +262,16 @@ jobs:
         with:
           python-version: "3.12.10"
           cache: pip
-          cache-dependency-path: requirements-build.txt
+          cache-dependency-path: |
+            requirements-build.txt
+            requirements-runtime.txt
       - name: Install pinned build environment
         run: python -m pip install --requirement requirements-build.txt
       - name: Build twice and compare within the pinned runner
         shell: pwsh
         run: |
           python scripts/build_expedition_verifier_windows.py
-          $zip = 'dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip'
+          $zip = 'dist/HMS-XPD-0001-v0.3.0-Windows-x64-portable.zip'
           $first = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
           python scripts/build_expedition_verifier_windows.py
           $second = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
@@ -246,7 +280,7 @@ jobs:
       - name: Qualify customer interfaces without exposing the sealed answer
         shell: pwsh
         run: |
-          $zip = Resolve-Path 'dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip'
+          $zip = Resolve-Path 'dist/HMS-XPD-0001-v0.3.0-Windows-x64-portable.zip'
           $qual = Join-Path $env:RUNNER_TEMP 'expedition-verifier-qualification'
           Expand-Archive -LiteralPath $zip -DestinationPath $qual
           & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --self-test
@@ -255,14 +289,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Packaged instructions failed' }
           & (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') --hint 1 | Out-Null
           if ($LASTEXITCODE -ne 0) { throw 'Packaged hint failed' }
-          $rejectedOutput = Join-Path $env:RUNNER_TEMP 'expedition-deliberate-nonmatch.json'
-          $reject = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') -ArgumentList '--json', 'deliberate-nonmatch' -RedirectStandardOutput $rejectedOutput -Wait -PassThru
-          $rejected = Get-Content $rejectedOutput | ConvertFrom-Json
-          if ($reject.ExitCode -ne 1 -or $rejected.accepted -ne $false -or $rejected.solution_disclosed -ne $false) { throw 'Nonmatch contract failed' }
+          $closedOutput = Join-Path $env:RUNNER_TEMP 'expedition-closed-output.txt'
+          $closedError = Join-Path $env:RUNNER_TEMP 'expedition-closed-error.txt'
+          $closed = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier-CLI.exe') -ArgumentList '--json', 'deliberate-nonmatch' -RedirectStandardOutput $closedOutput -RedirectStandardError $closedError -Wait -PassThru
+          if ($closed.ExitCode -ne 2 -or (Get-Content $closedError -Raw) -notmatch 'campaign remains closed') { throw 'Unconfigured client did not fail closed' }
           $gui = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier.exe') -ArgumentList '--self-test' -Wait -PassThru
           if ($gui.ExitCode -ne 0) { throw 'Packaged GUI self-test failed' }
           $manifest = Get-Content (Join-Path $qual 'manifest.json') | ConvertFrom-Json
-          if ($manifest.status -ne 'IN_DEVELOPMENT' -or $manifest.package_state -ne 'QUALIFICATION_CANDIDATE_NOT_FOR_RELEASE' -or $manifest.campaign_state -ne 'CLOSED' -or $manifest.solution_disclosed -ne $false) { throw 'Package boundary is not closed, non-disclosing, and development-only' }
+          if ($manifest.status -ne 'IN_DEVELOPMENT' -or $manifest.package_state -ne 'SECURE_SERVICE_CANDIDATE_NOT_FOR_RELEASE' -or $manifest.campaign_state -ne 'CLOSED' -or $manifest.solution_disclosed -ne $false -or $manifest.verification_endpoint_configured -ne $false -or $manifest.verification_public_key_configured -ne $false) { throw 'Package boundary is not closed, non-disclosing, and development-only' }
           Push-Location $qual
           Get-Content SHA256SUMS | ForEach-Object {
             $parts = $_ -split '  ', 2
@@ -274,6 +308,6 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: expedition-verifier-windows-candidate-not-for-release
-          path: dist/HMS-XPD-0001-v0.2.0-Windows-x64-portable.zip
+          path: dist/HMS-XPD-0001-v0.3.0-Windows-x64-portable.zip
           if-no-files-found: error
           retention-days: 7

@@ -42,7 +42,7 @@
 - [`CMV-v0.1.0-rc.1` deterministic environment](environments/ENV-0009.json)
 - [`GP29` developer documentation](../docs/tooling/GP29.md)
 - [Pending `XPD-0001-v0.2.0` Expedition manifest](manifests/XPD-0001-v0.2.0.json)
-- [Pending `XPD-0001-v0.2.0` Expedition gate](gates/XPD-0001-v0.2.0.json)
+- [Rejected `XPD-0001-v0.2.0` Expedition gate](gates/XPD-0001-v0.2.0.json)
 
 Software and research releases are tracked separately. A Git branch or pull request is not a release. A Patreon preview is not a public research publication.
 

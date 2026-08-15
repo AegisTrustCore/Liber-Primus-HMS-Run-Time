@@ -16,7 +16,7 @@ Evidence ceiling: **TRAINING ONLY — NO LIBER PRIMUS RESEARCH CLAIM**
 
 ## Your mission in one sentence
 
-Classify five fictional research log entries, extract one character from each classification label, join those characters into a five-letter answer, and check it locally.
+Classify five fictional research log entries, extract one character from each classification label, join those characters into a five-letter answer, and check it with the official verifier when the campaign opens.
 
 ## Five-minute start
 
@@ -24,9 +24,9 @@ Classify five fictional research log entries, extract one character from each cl
 2. Choose the one vocabulary label that describes the **state of its evidence**.
 3. Repeat for entries 2–5. No chosen label repeats.
 4. Remove spaces, hyphens, and underscores from each chosen label and write it in uppercase.
-5. From labels 1–5, take characters at positions `2, 3, 3, 9, 1` respectively.
+5. From labels 1–5, take characters at positions `2, 3, 11, 6, 7` respectively.
 6. Join the five extracted characters in log order.
-7. Check the answer with the local verifier. There is nowhere to submit it while the campaign is closed.
+7. Check the answer with the official verifier after the campaign opens. Verification is unavailable while the campaign is closed.
 
 The answer is exactly five letters. The character positions are **1-based**, so position 1 means the first character.
 
@@ -65,24 +65,24 @@ Choose the most precise vocabulary label for each entry.
 |---:|---|---|---|---:|---|
 | 1 | Repeatable relation; no message |  |  | 2 |  |
 | 2 | Earlier interpretation withdrawn |  |  | 3 |  |
-| 3 | Declared family failed its gate |  |  | 3 |  |
-| 4 | Previously known text recreated |  |  | 9 |  |
-| 5 | Proposed but not run |  |  | 1 |  |
+| 3 | Declared family failed its gate |  |  | 11 |  |
+| 4 | Previously known text recreated |  |  | 6 |  |
+| 5 | Proposed but not run |  |  | 7 |  |
 
 If the signal fades, open the [progressive public hints](HINTS.md). Reveal only one signal at a time; each one states its practical instruction directly.
 
 ## Check your answer
 
-Developer/source route:
+Planned command-line route after the official HTTPS service is approved:
 
 ```bash
 python scripts/verify_challenge.py YOUR_ANSWER
 python scripts/verify_challenge.py --json --output receipt.json YOUR_ANSWER
 ```
 
-The verifier normalizes your answer and compares its SHA-256 digest with the sealed digest in the public manifest. It stores nothing and makes no network request. It can export a non-disclosing receipt containing the verifier version, PASS/FAIL state, submission hash, timestamp, and `solution_disclosed: false`; it never records the submitted plaintext in the receipt.
+The public client will send the submission to the rate-limited official HTTPS verification service and receive a signed, non-plaintext PASS/FAIL receipt. No answer or answer digest is shipped in public metadata or binaries. The service must suppress request-body logging, and the client must disclose the network request before the campaign opens.
 
-A Windows double-click and CLI portable package has been built and privately tested, but it is **not a public download yet**. It will be attached only after the exact campaign package is approved. Public source is not being presented as a substitute customer application.
+The prior offline Windows candidate failed its solution-leak audit because a five-letter digest is enumerable. It will never be released. The replacement client/service design is under development and there is **no public download yet**.
 
 ## What this puzzle teaches
 

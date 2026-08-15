@@ -14,7 +14,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "title", "version", "status", "classification", "access_level", "challenge_type", "difficulty", "research_concept", "skill_taught", "instrument_used", "source_class", "evidence_ceiling", "beginner_entry", "entrypoint", "verifier", "answer_sha256", "public_hints", "solution_status", "public_solution", "research_claim", "last_updated"],
+        "required": ["id", "title", "version", "status", "classification", "access_level", "challenge_type", "difficulty", "research_concept", "skill_taught", "instrument_used", "source_class", "evidence_ceiling", "beginner_entry", "entrypoint", "verifier", "verification_mode", "verification_endpoint", "verification_public_key", "verification_public_key_id", "public_hints", "solution_status", "public_solution", "research_claim", "last_updated"],
         "properties": {
           "id": {"type": "string", "pattern": "^XPD-[0-9]{4,}$"},
           "title": {"type": "string", "minLength": 1},
@@ -32,7 +32,11 @@
           "beginner_entry": {"type": "boolean"},
           "entrypoint": {"type": "string", "minLength": 1},
           "verifier": {"type": "string", "minLength": 1},
-          "answer_sha256": {"pattern": "^[a-f0-9]{64}$"},
+          "verification_mode": {"enum": ["LOCAL_DIGEST", "REMOTE_SEALED"]},
+          "verification_endpoint": {"type": ["string", "null"], "format": "uri"},
+          "verification_public_key": {"type": ["string", "null"], "pattern": "^[A-Za-z0-9+/]{43}=$"},
+          "verification_public_key_id": {"type": ["string", "null"], "pattern": "^ED25519-[A-F0-9]{16}$"},
+          "answer_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
           "public_hints": {
             "type": "array",
             "minItems": 1,
@@ -52,7 +56,17 @@
           "public_solution": {"type": ["string", "null"]},
           "research_claim": {"type": "boolean"},
           "last_updated": {"type": "string", "format": "date"}
-        }
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"verification_mode": {"const": "LOCAL_DIGEST"}}},
+            "then": {"required": ["answer_sha256"]}
+          },
+          {
+            "if": {"properties": {"verification_mode": {"const": "REMOTE_SEALED"}}},
+            "then": {"not": {"required": ["answer_sha256"]}}
+          }
+        ]
       }
     }
   }

@@ -14,7 +14,8 @@ Each challenge manifest declares:
 - instrument used, if any;
 - source class and evidence ceiling;
 - discoverable beginner entry;
-- answer digest and local verifier;
+- verification mode and verifier entrypoint;
+- HTTPS endpoint when protected short-answer verification cannot safely ship offline;
 - public hint paths and hashes;
 - sealed or published solution state;
 - campaign state and public solution policy.
@@ -58,7 +59,9 @@ An Expedition remains closed unless all applicable checks are true:
 - evidence ceiling and source rights are clear;
 - critical-leak and public-boundary scans pass;
 - tier material is consistent with the public answer;
-- the exact packaged verifier accepts the sealed answer and rejects a deliberate nonmatch;
+- the exact packaged verifier and, when applicable, exact deployed service accept the sealed answer and reject a deliberate nonmatch;
+- low-entropy answer predicates are absent from public packages and history for the active version;
+- remote verification passes rate-limit, request-log, TLS, privacy, and service-failure controls;
 - public solution timing is defined;
 - named human approval is bound to the exact campaign package.
 
