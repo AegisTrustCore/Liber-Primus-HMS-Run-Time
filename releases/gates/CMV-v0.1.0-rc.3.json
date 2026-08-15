@@ -13,8 +13,8 @@
     "The exact local candidate passed focused source tests, both packaged self-tests, internal checksums, all five synthetic controls, and strict verification of the bound 75-page local set.",
     "Page-file selection only resolves a shared manifest root; the verifier still checks the complete manifest and cannot emit a partial-corpus PASS.",
     "Undeclared, ambiguous, duplicate, and mixed-root selections are rejected.",
-    "Two clean local builds were byte-identical and Microsoft Defender reported no threats.",
-    "The gate remains pending until independent GitHub qualification, clean-environment human UAT, and explicit owner approval.",
+    "Two clean local builds were byte-identical, two independent GitHub Windows workflow runs passed, and Microsoft Defender reported no threats.",
+    "The gate remains pending until clean-environment human UAT and explicit owner approval.",
     "A PASS establishes declared byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution."
   ]
 }
