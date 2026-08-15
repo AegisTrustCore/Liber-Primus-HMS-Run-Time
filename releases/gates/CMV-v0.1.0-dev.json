@@ -3,7 +3,7 @@
   "schema_version": "1.1.0",
   "release_id": "CMV-v0.1.0-dev",
   "release_type": "SOFTWARE",
-  "status": "PENDING",
+  "status": "SUPERSEDED",
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
@@ -36,7 +36,7 @@
   "notes": [
     "This development candidate is read-only and offline; it creates or verifies path/hash/byte-count manifests and exports portable verification reports.",
     "No canonical Liber Primus corpus, source image, third-party transcription, private filename inventory, or workstation path is included.",
-    "The gate remains pending until independent Windows-runner package qualification, ordinary-user clean-machine acceptance, version promotion from dev, and explicit human approval.",
+    "This development candidate was superseded by CMV-v0.1.0-rc.1; it was never approved for public release.",
     "A PASS verifies declared local byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution."
   ]
 }

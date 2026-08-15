@@ -8,7 +8,7 @@ The `v0.1.0` public foundation, research releases `RR-0002` and `RR-0003`, and t
 
 ## Current release sequence
 
-1. **Promote the Corpus Manifest Verifier to release candidate.** Bind it to a canonical public corpus manifest; ship GOOD, ALTERED, MISSING, EXTRA, and TRAVERSAL synthetic cases; complete customer packaging and UAT.
+1. **Qualify Corpus Manifest Verifier `0.1.0-rc.1`.** The canonical 75-page binding and GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL package are complete; finish clean-environment human UAT and approve the exact immutable package.
 2. **Finish Expedition 001 as a public product.** Keep the current synthetic practice preview public, qualify the customer package, complete its solution-leak audit, approve the immutable campaign subject, then open it in a separate release decision.
 3. **Build Endeavour Lite.** Assemble the released GP29 and qualified corpus/Expedition components in the frozen v0.1 local project workflow.
 4. **Grow Lite into Liber Runtime incrementally.** LP Atlas → Rune Workbench → Experiment Engine → integrated beta → Auto Explore → contextual AEGIS.

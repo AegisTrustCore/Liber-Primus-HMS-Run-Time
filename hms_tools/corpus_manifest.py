@@ -170,10 +170,18 @@ def validate_verification_report(report: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def create_manifest(root: Path, corpus_id: str, version: str, exclude: Iterable[str] = ()) -> dict[str, Any]:
+def create_manifest(
+    root: Path,
+    corpus_id: str,
+    version: str,
+    exclude: Iterable[str] = (),
+    role: str = "UNSPECIFIED",
+) -> dict[str, Any]:
     root = Path(root).resolve(strict=True)
     if not root.is_dir():
         raise CorpusManifestError(f"corpus root is not a directory: {root}")
+    if not isinstance(role, str) or not role.strip():
+        raise CorpusManifestError("role must be a non-empty string")
     excluded = {normalize_relative_path(value) for value in exclude}
     files: list[dict[str, Any]] = []
     for path in sorted((item for item in root.rglob("*") if item.is_file()), key=lambda item: item.as_posix()):
@@ -183,7 +191,7 @@ def create_manifest(root: Path, corpus_id: str, version: str, exclude: Iterable[
         resolved = path.resolve(strict=True)
         if not resolved.is_relative_to(root):
             raise CorpusManifestError(f"file resolves outside corpus root: {relative}")
-        files.append({"path": relative, "sha256": sha256_file(path), "bytes": path.stat().st_size, "role": "UNSPECIFIED"})
+        files.append({"path": relative, "sha256": sha256_file(path), "bytes": path.stat().st_size, "role": role})
     if not files:
         raise CorpusManifestError("cannot create an empty corpus manifest")
     manifest = {"schema": SCHEMA, "corpus_id": corpus_id, "version": version, "files": files}

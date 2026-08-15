@@ -63,12 +63,12 @@
       "id": "corpus-manifest-verifier",
       "name": "Corpus Manifest Verifier",
       "purpose": "Determine whether a selected folder exactly matches a declared corpus manifest.",
-      "status": "INTERNAL_TESTING",
-      "release_channel": "DEVELOPMENT",
+      "status": "RELEASE_CANDIDATE",
+      "release_channel": "RC",
       "access_level": "OBSERVER",
-      "current_version": "0.1.0-dev",
-      "target_next_state": "RELEASE_CANDIDATE",
-      "required_gate": "Promote the version, bind the canonical manifest, complete clean-machine UAT, and approve the exact package; the five-case synthetic suite is complete.",
+      "current_version": "0.1.0-rc.1",
+      "target_next_state": "RELEASED",
+      "required_gate": "Complete clean-environment human UAT and approve the exact checksum-identified Windows package; canonical binding and the five-case synthetic suite are complete.",
       "depends_on": ["public-foundation"]
     },
     {

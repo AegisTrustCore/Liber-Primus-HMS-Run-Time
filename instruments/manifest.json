@@ -37,13 +37,13 @@
     },
     {
       "instrument_id": "corpus-manifest-verifier", "name": "Corpus Manifest Verifier", "purpose": "Determine whether a selected folder exactly matches a declared corpus manifest.",
-      "version": "0.1.0-dev", "status": "INTERNAL_TESTING", "release_channel": "DEVELOPMENT", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": false,
-      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 development build", "CPython 3.12 source"],
+      "version": "0.1.0-rc.1", "status": "RELEASE_CANDIDATE", "release_channel": "RC", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": false,
+      "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 release candidate", "CPython 3.12 source"],
       "input_contract": "Researcher-selected folder, versioned manifest, and explicit strictness mode.", "output_contract": "HMS_CORPUS_VERIFICATION_V1 report with PASS/MISMATCH and expected, verified, missing, altered, and undeclared entries.",
       "authority_class": "PROVENANCE", "evidence_scope": "MANIFEST_MATCH_ONLY", "capabilities": ["SHA-256 verification", "missing/altered/extra detection", "strict mode", "portable report", "five-case synthetic demo", "self-test"],
       "offline_behavior": "Runs entirely on explicit local inputs.", "network_behavior": "No network access.", "privacy_behavior": "Does not crawl outside the selected root and does not include the local root path in the portable report.",
-      "test_vectors": ["tests/test_corpus_manifest.py", "demo/corpus-verifier/README.md"], "self_test": true, "ordinary_user_acceptance": "Packaged GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL suite passes; promoted version, canonical manifest, and clean-machine UAT remain pending.",
-      "limitations": ["A manifest match does not prove historical authenticity.", "Canonical experiments may block mismatch while explicit user-corpus experiments remain permissible and recorded."], "release_gate": "Promote the version, bind the final canonical manifest, complete clean-machine UAT, and approve the exact package.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-14"
+      "test_vectors": ["tests/test_corpus_manifest.py", "tests/test_corpus_package.py", "demo/corpus-verifier/README.md"], "self_test": true, "ordinary_user_acceptance": "Packaged GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL qualification and canonical 75-page binding are complete; clean-environment human UAT remains pending.",
+      "limitations": ["A manifest match does not prove historical authenticity.", "Canonical experiments may block mismatch while explicit user-corpus experiments remain permissible and recorded."], "release_gate": "Complete clean-environment human UAT and approve the exact checksum-identified package.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-14"
     },
     {
       "instrument_id": "public-gp29-calculator", "name": "Public GP29 Calculator", "purpose": "Evaluate Latin, rune, or explicit-token GP29 values with deterministic L/R/prime/N/Q output.",

@@ -40,6 +40,7 @@
     {"id":"CAP-0004","object_type":"CAPSULE","state":"ACTIVE","reserved_at":"2026-08-14"},
     {"id":"RSET-0004","object_type":"RUN_SET","state":"RESERVED","reserved_at":"2026-08-14"},
     {"id":"ENV-0007","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"},
-    {"id":"ENV-0008","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"}
+    {"id":"ENV-0008","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"},
+    {"id":"ENV-0009","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"}
   ]
 }

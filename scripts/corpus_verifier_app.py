@@ -17,7 +17,18 @@ if str(ROOT) not in sys.path:
 from hms_tools.corpus_manifest import CorpusManifestError, create_manifest, verify_manifest
 
 PRODUCT = "HMS Corpus Manifest Verifier"
-VERSION = "0.1.0-dev"
+VERSION = "0.1.0-rc.1"
+CANONICAL_MANIFEST_NAME = "LP-75-IMAGES-v1.0.0.json"
+
+
+def application_root() -> Path:
+    return Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else ROOT
+
+
+def default_canonical_manifest() -> Path:
+    if getattr(sys, "frozen", False):
+        return application_root() / "canonical" / CANONICAL_MANIFEST_NAME
+    return ROOT / "corpus" / "liber-primus" / "manifests" / CANONICAL_MANIFEST_NAME
 
 
 def packaged_self_test() -> bool:
@@ -37,10 +48,11 @@ class CorpusVerifierApp(tk.Tk):
         self.title(f"{PRODUCT} {VERSION}")
         self.geometry("960x680")
         self.minsize(740, 520)
-        self.manifest_path = tk.StringVar()
+        canonical = default_canonical_manifest()
+        self.manifest_path = tk.StringVar(value=str(canonical) if canonical.is_file() else "")
         self.root_path = tk.StringVar()
         self.strict = tk.BooleanVar(value=True)
-        self.status = tk.StringVar(value="Ready. Verification is read-only.")
+        self.status = tk.StringVar(value="Ready. The canonical 75-page manifest is preselected; verification is read-only." if canonical.is_file() else "Ready. Verification is read-only.")
         self.report: dict[str, object] | None = None
         self._build()
 
@@ -54,12 +66,29 @@ class CorpusVerifierApp(tk.Tk):
         controls = ttk.Frame(frame)
         controls.pack(fill="x", pady=8)
         ttk.Checkbutton(controls, text="Strict: reject undeclared files", variable=self.strict).pack(side="left")
-        ttk.Button(controls, text="Verify", command=self.verify).pack(side="left", padx=6)
+        ttk.Button(controls, text="Verify corpus", command=self.verify).pack(side="left", padx=6)
         ttk.Button(controls, text="Export report", command=self.export).pack(side="left", padx=6)
         ttk.Button(controls, text="Self-test", command=self.self_test).pack(side="left", padx=6)
         ttk.Button(controls, text="About", command=self.about).pack(side="right")
-        self.output = tk.Text(frame, wrap="none", state="disabled", font=("Consolas", 10))
-        self.output.pack(fill="both", expand=True, pady=(8, 0))
+        self.summary = tk.StringVar(value="No verification has been run.")
+        ttk.Label(frame, textvariable=self.summary, font=("Segoe UI", 11, "bold")).pack(anchor="w", pady=(8, 2))
+        notebook = ttk.Notebook(frame)
+        notebook.pack(fill="both", expand=True, pady=(4, 0))
+        findings = ttk.Frame(notebook)
+        raw = ttk.Frame(notebook)
+        notebook.add(findings, text="File findings")
+        notebook.add(raw, text="Raw JSON")
+        columns = ("status", "path", "expected", "actual")
+        self.findings = ttk.Treeview(findings, columns=columns, show="headings")
+        for column, label, width in (("status", "Status", 100), ("path", "File", 240), ("expected", "Expected bytes", 130), ("actual", "Actual bytes", 130)):
+            self.findings.heading(column, text=label)
+            self.findings.column(column, width=width, anchor="w")
+        scroll = ttk.Scrollbar(findings, orient="vertical", command=self.findings.yview)
+        self.findings.configure(yscrollcommand=scroll.set)
+        self.findings.pack(side="left", fill="both", expand=True)
+        scroll.pack(side="right", fill="y")
+        self.output = tk.Text(raw, wrap="none", state="disabled", font=("Consolas", 10))
+        self.output.pack(fill="both", expand=True)
         ttk.Label(frame, textvariable=self.status).pack(anchor="w", pady=(8, 0))
 
     def _path_row(self, parent: ttk.Frame, label: str, variable: tk.StringVar, command: object) -> None:
@@ -70,6 +99,13 @@ class CorpusVerifierApp(tk.Tk):
         ttk.Button(row, text="Browse", command=command).pack(side="left", padx=(6, 0))
 
     def _display(self, value: object) -> None:
+        for item in self.findings.get_children():
+            self.findings.delete(item)
+        if isinstance(value, dict):
+            for finding in value.get("files", []):
+                self.findings.insert("", "end", values=(finding.get("status", ""), finding.get("path", ""), finding.get("expected_bytes", ""), finding.get("actual_bytes", "")))
+            for path in value.get("unexpected_files", []):
+                self.findings.insert("", "end", values=("UNEXPECTED", path, "—", "—"))
         self.output.configure(state="normal")
         self.output.delete("1.0", "end")
         self.output.insert("1.0", json.dumps(value, ensure_ascii=False, indent=2))
@@ -95,6 +131,7 @@ class CorpusVerifierApp(tk.Tk):
             return
         self._display(self.report)
         summary = self.report["summary"]
+        self.summary.set(f"{self.report['status']}  •  {summary['verified']} verified  •  {summary['mismatch']} altered  •  {summary['missing']} missing  •  {summary['unexpected']} extra")
         self.status.set(f"{self.report['status']}: {summary['verified']} verified, {summary['mismatch']} mismatched, {summary['missing']} missing, {summary['unexpected']} unexpected.")
 
     def export(self) -> None:

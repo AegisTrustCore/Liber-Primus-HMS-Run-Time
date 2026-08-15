@@ -20,7 +20,8 @@ The 75-page count is therefore an **HMS working-corpus count**. The 58-page coun
 2. [Page index](PAGE-INDEX.md) for all 75 registered pages.
 3. [Timeline](TIMELINE.md) for historical and HMS milestones without blending the two.
 4. [Source, rights, and verification](SOURCE-AND-VERIFICATION.md) before obtaining or comparing image files.
-5. [Canonical page manifest](../../research/runs/RUN-0008/historical/canonical_page_manifest.csv) for byte counts, dimensions, and SHA-256 identities.
+5. [Canonical verifier manifest](manifests/LP-75-IMAGES-v1.0.0.json) for machine verification of all 75 image identities.
+6. [Historical page manifest](../../research/runs/RUN-0008/historical/canonical_page_manifest.csv) for byte counts, dimensions, and SHA-256 identities recorded with RUN-0008.
 
 ## Current public result
 

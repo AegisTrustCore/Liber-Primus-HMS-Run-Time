@@ -1,6 +1,6 @@
 # Patreon Release Matrix
 
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-14
 
 Patreon is the member delivery and development-support layer. It points back to GitHub for stable public evidence and provides progressively deeper material only when that material exists and has been approved for the intended audience.
 
@@ -8,7 +8,7 @@ Current Patreon state: **PUBLISHED**. The creator page and first post round are 
 
 | Audience | Intended member material | Tooling destination | Current delivery state |
 |---|---|---|---|
-| Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch, Signal 3301, HMS Status 001, and PUBLIC-004 live |
+| Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch, Signal 3301, HMS Status 001, PUBLIC-004, and the PUBLIC-005 GP29 v0.1.1 release notice live |
 | Pilgrim — Follow | Dispatches, development updates, release alerts, selected previews, early notes, and discussion | Selected entry-level Runtime tools and research utilities when released | Pilgrim Briefing 001 and PILGRIM-005 orientation live; challenge material campaign-gated; tools not available |
 | Navigator — Investigate | Research previews, discussion, and approved datasets or stronger hints during an open campaign | Runtime beta, solver datasets, and advanced GP/Gematria tools when released | Research Queue 001 and NAVIGATOR-005 analysis live; Expedition 001 closed; tools not available |
 | Cartographer — Research | Research briefings and approved campaign packets, worksheets, datasets, and ledgers | Advanced Runtime modules, batch tools, operation-bank explorer, routing tools, and visual-analysis laboratory when released | Evidence Ledger 001 and CARTOGRAPHER-005 reproduction assignment live; tools not available |
