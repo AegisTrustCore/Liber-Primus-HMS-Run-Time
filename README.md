@@ -63,11 +63,11 @@ The puzzle is synthetic and does not conceal an unpublished *Liber Primus* resea
 |---|---|---|
 | Public Record Validator | Released | Python developer source in `v0.1.0` |
 | LP Source Audit Inventory | Released | Python developer source in `v0.1.0` |
-| Expedition Verifier | In development | Public Python source for Expedition 001; no approved customer package |
+| Expedition Verifier | In development | Signed remote client and non-root sealed service candidate; no deployed endpoint or approved customer package |
 | Public GP29 Calculator | **Released** | Downloadable Windows desktop and CLI package with checksums, self-tests, dashboard, alphabet, JSON, and CSV export |
-| Corpus Manifest Verifier | Internal testing | Developer source only; canonical public package not released |
+| Corpus Manifest Verifier | Internal testing | Canonical 75-page Windows release candidate qualified; public package not released |
 | Liber Runtime Beta | In development | Local developer core only; no hosted public service |
-| HMS Endeavour Lite | Planned | Architecture only; implementation begins after GP29 release and Corpus Verifier RC |
+| HMS Endeavour Lite | In development | Runnable local workstation and qualified Windows development package; no public download |
 | Advanced instruments | Planned | No solver, batch engine, API/socket layer, or Plugin SDK is available |
 
 The GP29 calculator is a deterministic calculator, **not a solver**. Its exact public artifact and approval are recorded in the [GP29 v0.1.1 release gate](releases/gates/GP29-v0.1.1.json).
@@ -84,9 +84,9 @@ See the machine-readable [Product Ladder](products/manifest.json), readable [HMS
 
 ## What comes next
 
-1. Finish the canonical corpus manifest and customer-facing Corpus Manifest Verifier.
-2. Complete the Expedition 001 customer package and open a formal public campaign under a separately approved gate.
-3. Build Endeavour Lite, then add the LP Atlas, Rune Workbench, and Experiment Engine as accepted increments.
+1. Complete clean-environment human UAT and exact-package approval for the Corpus Manifest Verifier release candidate.
+2. Deploy and privately qualify the sealed Expedition service, then approve the configured customer package before opening a public campaign.
+3. Complete Endeavour Lite recovery/privacy review and human UAT, then promote an exact checksum-identified package.
 4. Grow those increments into Liber Runtime Beta; add Auto Explore and contextual AEGIS only after the object lifecycle is dependable.
 5. Add batch, Advanced GP, solver, sockets/API, and the Plugin SDK only after their dependency gates are met.
 

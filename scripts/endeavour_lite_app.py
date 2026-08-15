@@ -15,6 +15,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from hms_tools.corpus_manifest import CorpusManifestError, verify_manifest
+from hms_tools.expedition_001 import CHALLENGE_ID, VERSION as EXPEDITION_VERSION, hint_text, instructions_text
+from hms_tools.expedition_client import ExpeditionClientError, ServiceConfiguration, configured_service, verify_remote
 from hms_tools.gp29 import GP29InputError, TABLE
 from hms_tools.project import PROJECT_VERSION, ProjectError, ProjectStore
 from hms_tools.runtime import create_corpus_report_job, create_gp29_experiment_job, create_job, execute_job
@@ -32,6 +34,30 @@ def default_canonical_manifest() -> Path:
     if getattr(sys, "frozen", False):
         return application_root() / "canonical" / "LP-75-IMAGES-v1.0.0.json"
     return ROOT / "corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json"
+
+
+def default_expedition_manifest() -> Path:
+    if getattr(sys, "frozen", False):
+        return application_root() / "expedition" / "manifest.json"
+    return ROOT / "challenges/manifest.json"
+
+
+def load_expedition_configuration() -> tuple[str, ServiceConfiguration | None]:
+    path = default_expedition_manifest()
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise ExpeditionClientError(f"campaign manifest could not be loaded: {error}") from error
+    challenge = next((item for item in manifest.get("challenges", []) if item.get("id") == CHALLENGE_ID), None)
+    if not isinstance(challenge, dict):
+        raise ExpeditionClientError(f"{CHALLENGE_ID} is absent from the campaign manifest")
+    state = str(challenge.get("status", "CLOSED")).upper()
+    if state != "OPEN":
+        return state, None
+    configuration = configured_service(path)
+    if configuration is None:
+        raise ExpeditionClientError("open campaign has no approved verification service configuration")
+    return state, configuration
 
 
 def packaged_self_test() -> bool:
@@ -79,6 +105,16 @@ class EndeavourLiteApp(tk.Tk):
         self.corpus_root_path = tk.StringVar()
         self.corpus_strict = tk.BooleanVar(value=True)
         self.corpus_summary = tk.StringVar(value="No verification yet.")
+        self.expedition_summary = tk.StringVar(value="Loading campaign boundary.")
+        try:
+            self.expedition_state, self.expedition_configuration = load_expedition_configuration()
+            if self.expedition_configuration is None:
+                self.expedition_summary.set(f"CAMPAIGN {self.expedition_state} — no submission will be sent.")
+            else:
+                self.expedition_summary.set("CAMPAIGN OPEN — signed official verification is available.")
+        except ExpeditionClientError as error:
+            self.expedition_state, self.expedition_configuration = "CONFIGURATION ERROR", None
+            self.expedition_summary.set(f"FAIL-CLOSED — {error}")
         self._result_by_item: dict[str, dict[str, object]] = {}
         self._build_menu()
         self._build_shell()
@@ -141,7 +177,7 @@ class EndeavourLiteApp(tk.Tk):
         for column, (title, state, detail) in enumerate((
             ("GP29", "RELEASED", "Calculate and save deterministic GP29 Results."),
             ("Corpus", "RC", "Verify the canonical 75-page identity manifest."),
-            ("Expedition", "CLOSED", "Secure-service client integration follows PR #35."),
+            ("Expedition", self.expedition_state, "Signed remote receipts; submitted plaintext is never saved."),
             ("Runtime", "DEVELOPMENT", "Local jobs, Results, provenance, and history."),
         )):
             card = ttk.LabelFrame(cards, text=title, padding=12)
@@ -253,8 +289,56 @@ class EndeavourLiteApp(tk.Tk):
     def _build_expedition_tab(self) -> None:
         frame = self._tab("Expedition")
         ttk.Label(frame, text="Expedition 001", font=("Segoe UI", 18, "bold")).pack(anchor="w")
-        ttk.Label(frame, text="CAMPAIGN CLOSED", font=("Segoe UI", 12, "bold")).pack(anchor="w", pady=(12, 4))
-        ttk.Label(frame, text="The rejected offline verifier is not included. The secure v0.3 service/client from PR #35 will be integrated only after its endpoint and release gate are approved.", wraplength=760).pack(anchor="w")
+        ttk.Label(frame, textvariable=self.expedition_summary, font=("Segoe UI", 11, "bold")).pack(anchor="w", pady=(6, 8))
+        guidance = tk.Text(frame, height=14, wrap="word", font=("Segoe UI", 10))
+        guidance.insert("1.0", instructions_text(self.expedition_state))
+        guidance.configure(state="disabled")
+        guidance.pack(fill="both", expand=True)
+        hint_row = ttk.Frame(frame)
+        hint_row.pack(fill="x", pady=(8, 4))
+        ttk.Label(hint_row, text="Progressive hints:").pack(side="left")
+        for level in range(1, 5):
+            ttk.Button(hint_row, text=str(level), command=lambda value=level: self.show_expedition_hint(value), width=3).pack(side="left", padx=(6, 0))
+        submission_row = ttk.Frame(frame)
+        submission_row.pack(fill="x", pady=(4, 0))
+        ttk.Label(submission_row, text="Answer").pack(side="left")
+        self.expedition_submission = ttk.Entry(submission_row)
+        self.expedition_submission.pack(side="left", fill="x", expand=True, padx=8)
+        self.expedition_verify_button = ttk.Button(submission_row, text="Verify and save receipt", command=self.verify_expedition)
+        self.expedition_verify_button.pack(side="left")
+        if self.expedition_configuration is None:
+            self.expedition_verify_button.configure(state="disabled")
+        ttk.Label(frame, text="Only the signed receipt and normalized submission hash enter project history; the answer text is discarded.").pack(anchor="w", pady=(6, 0))
+
+    def show_expedition_hint(self, level: int) -> None:
+        messagebox.showinfo(f"Expedition 001 — Hint {level}", hint_text(level), parent=self)
+
+    def verify_expedition(self) -> None:
+        try:
+            store = self._require_project()
+            configuration = self.expedition_configuration
+            if configuration is None:
+                raise ExpeditionClientError("verification is not active; the campaign remains closed")
+            submitted = self.expedition_submission.get()
+            if not submitted.strip():
+                raise ExpeditionClientError("enter an answer before verification")
+            receipt = verify_remote(
+                configuration.endpoint,
+                CHALLENGE_ID,
+                submitted,
+                EXPEDITION_VERSION,
+                public_key_b64=configuration.public_key_b64,
+                public_key_id=configuration.public_key_id,
+            )
+            envelope = store.save_expedition_receipt(receipt, instrument_version=EXPEDITION_VERSION)
+        except (ProjectError, ExpeditionClientError, OSError, ValueError) as error:
+            messagebox.showerror("Expedition verification failed", str(error), parent=self)
+            return
+        self.expedition_submission.delete(0, "end")
+        verdict = "ACCEPTED" if receipt["accepted"] else "NOT ACCEPTED"
+        self.expedition_summary.set(f"{verdict} — receipt {receipt['receipt_id']} saved as {envelope['result_id']}")
+        self.status.set("Signed Expedition receipt saved with TRAINING_ONLY evidence; submitted plaintext was not retained.")
+        self.refresh_history()
 
     def _build_history_tab(self) -> None:
         frame = self._tab("Runs & Results")

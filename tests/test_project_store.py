@@ -42,6 +42,32 @@ class ProjectStoreTests(unittest.TestCase):
         with self.assertRaisesRegex(ProjectError, "digest"):
             validate_result_envelope(envelope)
 
+    def test_signed_expedition_receipt_is_saved_without_plaintext(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = ProjectStore.create(Path(directory) / "project", "Expedition", created_at="2026-08-14T00:00:00Z")
+            receipt = {
+                "schema":"HMS_EXPEDITION_VERIFICATION_RECEIPT_V2",
+                "receipt_id":"VRF-0123456789ABCDEF",
+                "expedition_id":"XPD-0001",
+                "client_version":"0.3.0",
+                "accepted":True,
+                "submission_sha256":"a" * 64,
+                "verified_at":"2026-08-14T00:00:00Z",
+                "verification_authority":"HMS_ENDEAVOUR",
+                "signature_algorithm":"ED25519",
+                "public_key_id":"ED25519-0123456789ABCDEF",
+                "server_verified":True,
+                "solution_disclosed":False,
+                "receipt_signature":"synthetic-test-signature",
+            }
+            envelope = store.save_expedition_receipt(receipt, instrument_version="0.3.0")
+            rendered = json.dumps(envelope)
+            self.assertEqual(envelope["evidence_label"], "TRAINING_ONLY")
+            self.assertEqual(envelope["operation"], "REMOTE_SEALED_VERIFICATION")
+            self.assertEqual(envelope["payload"], receipt)
+            self.assertNotIn("known answer plaintext", rendered)
+            self.assertEqual(store.list_results(), [envelope])
+
     def test_project_folder_must_be_empty(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -60,6 +86,15 @@ class ProjectStoreTests(unittest.TestCase):
             listing = subprocess.run([sys.executable,"scripts/endeavour_lite.py","list",str(project)], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(listing.returncode, 0, listing.stderr)
             self.assertEqual(len(json.loads(listing.stdout)), 1)
+
+    def test_cli_expedition_fails_closed_without_approved_campaign(self):
+        with tempfile.TemporaryDirectory() as directory:
+            project = Path(directory) / "project"
+            ProjectStore.create(project, "Closed Campaign", created_at="2026-08-14T00:00:00Z")
+            completed = subprocess.run([sys.executable,"scripts/endeavour_lite.py","expedition",str(project),"attempt"], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
+            self.assertEqual(completed.returncode, 2)
+            self.assertIn("campaign remains closed", completed.stderr)
+            self.assertEqual(ProjectStore.open(project).list_results(), [])
 
 
 if __name__ == "__main__":

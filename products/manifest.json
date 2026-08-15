@@ -80,7 +80,7 @@
       "access_level": "OBSERVER",
       "current_version": "0.1.0-dev",
       "target_next_state": "INTERNAL_TESTING",
-      "required_gate": "Integrate the approved secure Expedition client, complete recovery and privacy review, pass clean-environment human UAT, and approve the exact checksum-identified package; the unified local workflows and automated Windows qualification pass.",
+      "required_gate": "Complete recovery and privacy review of the integrated fail-closed Expedition client, pass clean-environment human UAT, and approve the exact checksum-identified package; the unified local workflows and automated Windows qualification pass.",
       "depends_on": ["public-gp29-calculator", "corpus-manifest-verifier", "expedition-verifier"]
     },
     {

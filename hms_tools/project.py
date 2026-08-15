@@ -236,6 +236,51 @@ class ProjectStore:
         self.rebuild_index()
         return envelope
 
+    def save_expedition_receipt(self, receipt: dict[str, Any], *, instrument_version: str) -> dict[str, Any]:
+        """Persist a verified remote receipt without retaining the submitted plaintext."""
+        required = {
+            "schema", "receipt_id", "expedition_id", "client_version", "accepted",
+            "submission_sha256", "verified_at", "verification_authority",
+            "signature_algorithm", "public_key_id", "server_verified",
+            "solution_disclosed", "receipt_signature",
+        }
+        if not isinstance(receipt, dict) or set(receipt) != required:
+            raise ProjectError("expedition receipt contract is invalid")
+        if receipt.get("schema") != "HMS_EXPEDITION_VERIFICATION_RECEIPT_V2":
+            raise ProjectError("expedition receipt schema is invalid")
+        if receipt.get("server_verified") is not True or receipt.get("solution_disclosed") is not False:
+            raise ProjectError("expedition receipt boundary is invalid")
+        if not isinstance(receipt.get("accepted"), bool):
+            raise ProjectError("expedition receipt acceptance state is invalid")
+        submission_digest = receipt.get("submission_sha256")
+        if not isinstance(submission_digest, str) or not re.fullmatch(r"[a-f0-9]{64}", submission_digest):
+            raise ProjectError("expedition submission digest is invalid")
+        envelope = create_result_envelope(
+            project_id=self.project["project_id"],
+            instrument_id="expedition-verifier",
+            instrument_version=instrument_version,
+            operation="REMOTE_SEALED_VERIFICATION",
+            payload=receipt,
+            parameters={
+                "expedition_id": str(receipt.get("expedition_id", "")),
+                "client_version": str(receipt.get("client_version", "")),
+            },
+            input_refs=[{"kind":"SUBMISSION_SHA256", "id":submission_digest}],
+            evidence_label="TRAINING_ONLY",
+            limitations=[
+                "This receipt records a synthetic training-puzzle verification, not a Liber Primus research result.",
+                "The submitted plaintext is intentionally not retained in the project Result.",
+            ],
+            provenance={
+                "receipt_id": str(receipt.get("receipt_id", "")),
+                "verification_authority": str(receipt.get("verification_authority", "")),
+                "public_key_id": str(receipt.get("public_key_id", "")),
+            },
+        )
+        self._immutable_write(Path("results") / f"{envelope['result_id']}.json", envelope)
+        self.rebuild_index()
+        return envelope
+
     def rebuild_index(self) -> dict[str, Any]:
         runs = sorted(path.stem for path in (self.root / "runs").glob("JOB-*.json"))
         results = sorted(path.stem for path in (self.root / "results").glob("LRES-*.json"))
