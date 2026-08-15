@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "CMV-v0.1.0-rc.2",
+  "release_type": "SOFTWARE",
+  "candidate_commit_sha": "b9f7395a3c48f79c849317ab05d353341d6ed095",
+  "intended_tag": "CMV-v0.1.0-rc.2",
+  "environment_id": "ENV-0010",
+  "release_notes": "releases/CMV-v0.1.0-rc.2.md",
+  "artifacts": [
+    {"name":"hms_tools/corpus_manifest.py","sha256":"aaa100c38053f76a0c5d660893845538c48e43971032e83e19729abced37b415"},
+    {"name":"scripts/corpus_manifest.py","sha256":"9a896eb296fa3bb1644ee5e033567b5669c018fac92600fc939186b27624f778"},
+    {"name":"scripts/corpus_verifier_app.py","sha256":"4458e077249a9d888c8c072187bac37774bc0c6a31eaf28bcddfba9887773fc2"},
+    {"name":"scripts/build_corpus_verifier_windows.py","sha256":"efb3fda023c48e4ca011c7df9244acf6690c5e707522a4eaab934266206d9fc5"},
+    {"name":"corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json","sha256":"76d67e34f04b0125ad9b2893cd68b11510bb4e7e37ec2bb1849760e487a31978"},
+    {"name":"schemas/corpus-manifest.schema.json","sha256":"4d05fda8e846f7aa238461ba048ba0016a8c004d87e6abc5bc63c2b544d764c5"},
+    {"name":"schemas/corpus-verification.schema.json","sha256":"2b123be3af77392c16a6c9154ef458899fd20783a531405a78214a68a036d02a"},
+    {"name":"tests/test_corpus_manifest.py","sha256":"c2b319cb32e81670bfd1944326d91ff2fc87a5f9eb8c8ea954a1f222028dcd4b"},
+    {"name":"tests/test_corpus_package.py","sha256":"abcd697907fbf4ab351ac066d3deb36fa61b966bde5af2144ef0fcc34f34c42f"},
+    {"name":"docs/tooling/CORPUS_MANIFEST_VERIFIER.md","sha256":"9305292a5b8d061be57835033d3b76d2ebd739d0bed5685e76da6481276513a4"},
+    {"name":"docs/tooling/CORPUS_VERIFIER_UAT_V0.1.0_RC2.md","sha256":"6d4ed5affacd214b90ffe19f601cc0c6ac648571ac26011de5abe7e40c0d965d"},
+    {"name":"requirements-build.txt","sha256":"bf1abe2ece931e3bf2c4698e45dd6cc5279bb4a918cd676a3794d6b645ec6307"},
+    {"name":"HMS-Corpus-Verifier-v0.1.0-rc.2-Windows-x64-portable.zip","sha256":"ee379e1f9fc0f3601833161202aae9f2118deda53fad309478336932d8d88ba9"}
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/id-registry.schema.json",
   "schema_version": "1.0.0",
-  "last_reviewed": "2026-08-14",
+  "last_reviewed": "2026-08-15",
   "reservations": [
     {"id":"OBS-0001","object_type":"OBSERVATION","state":"ACTIVE","reserved_at":"2026-08-12"},
     {"id":"RUN-0001","object_type":"RUN","state":"ACTIVE","reserved_at":"2026-08-13"},
@@ -41,6 +41,7 @@
     {"id":"RSET-0004","object_type":"RUN_SET","state":"RESERVED","reserved_at":"2026-08-14"},
     {"id":"ENV-0007","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"},
     {"id":"ENV-0008","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"},
-    {"id":"ENV-0009","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"}
+    {"id":"ENV-0009","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"},
+    {"id":"ENV-0010","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-15"}
   ]
 }
