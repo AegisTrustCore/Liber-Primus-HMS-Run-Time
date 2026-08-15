@@ -215,9 +215,11 @@ jobs:
         shell: pwsh
         run: |
           $zip = Resolve-Path 'dist/HMS-Endeavour-Runtime-v1.0.0-rc.1-Windows-x64-portable.zip'
-          $qual = Join-Path $env:RUNNER_TEMP 'endeavour-lite-qualification'
-          $project = Join-Path $env:RUNNER_TEMP 'endeavour-lite-project'
-          $export = Join-Path $env:RUNNER_TEMP 'endeavour-lite-export.json'
+          $qual = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-qualification'
+          $project = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-project'
+          $export = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-export.json'
+          $objectExport = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-object.json'
+          $backup = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-backup.zip'
           Expand-Archive -LiteralPath $zip -DestinationPath $qual
           Push-Location $qual
           Get-Content SHA256SUMS | ForEach-Object {
@@ -240,14 +242,25 @@ jobs:
           if ($results.Count -ne 2) { throw 'Packaged history did not contain both Results' }
           & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') export $project $results[0].result_id $export
           if ($LASTEXITCODE -ne 0 -or -not (Test-Path $export)) { throw 'Packaged Result export failed' }
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') note $project 'CI note' 'Bounded packaged observation' --page '32.jpg'
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') region $project '32.jpg' 'Full page' --x 0 --y 0 --width 1 --height 1
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') pageset $project 'CI pages' '32.jpg' '72.jpg' '73.jpg'
+          $objects = & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') objects $project | ConvertFrom-Json
+          if ($objects.Count -ne 3) { throw 'Packaged research-object history is incomplete' }
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') object-export $project $objects[0].object_id $objectExport
+          if ($LASTEXITCODE -ne 0 -or -not (Test-Path $objectExport)) { throw 'Packaged research-object export failed' }
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') audit $project
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged project audit failed' }
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') backup $project $backup
+          if ($LASTEXITCODE -ne 0 -or -not (Test-Path $backup)) { throw 'Packaged safe backup failed' }
           $canonical = Get-Content (Join-Path $qual 'canonical/LP-75-IMAGES-v1.0.0.json') | ConvertFrom-Json
           if ($canonical.files.Count -ne 75) { throw 'Bundled canonical corpus identity is wrong' }
           $manifest = Get-Content (Join-Path $qual 'manifest.json') | ConvertFrom-Json
-          if ($manifest.package_state -ne 'DEVELOPMENT_NOT_FOR_RELEASE' -or $manifest.network_access -ne $false -or $manifest.telemetry -ne $false -or $manifest.expedition_campaign -ne 'CLOSED') { throw 'Development boundary is wrong' }
-      - name: Retain development package for review only
+          if ($manifest.package_state -ne 'RC_NOT_FOR_PUBLIC_RELEASE' -or $manifest.status -ne 'RELEASE_CANDIDATE' -or $manifest.network_access -ne $false -or $manifest.telemetry -ne $false -or $manifest.expedition_campaign -ne 'CLOSED') { throw 'Release-candidate boundary is wrong' }
+      - name: Retain release-candidate package for review only
         uses: actions/upload-artifact@v7
         with:
-          name: endeavour-lite-windows-development-not-for-release
+          name: endeavour-runtime-v1-windows-rc-not-for-release
           path: dist/HMS-Endeavour-Runtime-v1.0.0-rc.1-Windows-x64-portable.zip
           if-no-files-found: error
           retention-days: 7
