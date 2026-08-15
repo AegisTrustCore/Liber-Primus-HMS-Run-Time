@@ -28,7 +28,7 @@ from hms_tools.corpus_manifest import (
 )
 
 PRODUCT = "HMS Corpus Manifest Verifier"
-VERSION = "0.1.0-rc.2"
+VERSION = "0.1.0-rc.3"
 CANONICAL_MANIFEST_NAME = "LP-75-IMAGES-v1.0.0.json"
 FILTERS = ("All files", "Problems only", "Verified only")
 
@@ -70,6 +70,33 @@ def finding_matches(status: str, path: str, selected_filter: str, search: str) -
     return not needle or needle in path.casefold() or needle in status.casefold()
 
 
+def infer_corpus_root(selected_files: list[Path], manifest: dict[str, Any]) -> tuple[Path, list[str]]:
+    """Resolve selected declared files to one manifest root without enabling partial PASS."""
+    if not selected_files:
+        raise CorpusManifestError("select at least one corpus file")
+    declared = {item["path"] for item in validate_manifest(manifest)}
+    candidates: list[tuple[Path, str]] = []
+    for selected in selected_files:
+        selected = Path(selected).resolve(strict=True)
+        if not selected.is_file():
+            raise CorpusManifestError(f"selected path is not a file: {selected}")
+        matches: list[tuple[Path, str]] = []
+        for relative in declared:
+            parts = Path(*relative.split("/")).parts
+            if len(selected.parts) >= len(parts) and tuple(selected.parts[-len(parts):]) == parts:
+                matches.append((selected.parents[len(parts) - 1], relative))
+        if len(matches) != 1:
+            raise CorpusManifestError(f"selected file does not map uniquely to the manifest: {selected.name}")
+        candidates.append(matches[0])
+    roots = {root for root, _relative in candidates}
+    if len(roots) != 1:
+        raise CorpusManifestError("selected files do not share one manifest root")
+    relative_paths = [relative for _root, relative in candidates]
+    if len(relative_paths) != len(set(relative_paths)):
+        raise CorpusManifestError("the same declared file was selected more than once")
+    return roots.pop(), sorted(relative_paths)
+
+
 def packaged_self_test() -> dict[str, Any]:
     packaged_demo = demo_root()
     if packaged_demo.is_dir():
@@ -104,6 +131,7 @@ class CorpusVerifierApp(tk.Tk):
         self.status = tk.StringVar(value="Ready. Choose the folder containing the corpus files.")
         self.summary = tk.StringVar(value="No verification has been run.")
         self.manifest_summary = tk.StringVar(value="No manifest selected.")
+        self.selection_summary = tk.StringVar(value="Choose the corpus folder or select one or more declared page files.")
         self.filter_mode = tk.StringVar(value=FILTERS[0])
         self.search_text = tk.StringVar()
         self.report: dict[str, Any] | None = None
@@ -133,7 +161,8 @@ class CorpusVerifierApp(tk.Tk):
 
         self._path_row(frame, "Manifest", self.manifest_path, self.choose_manifest, ("Use canonical", self.use_canonical))
         ttk.Label(frame, textvariable=self.manifest_summary, foreground="#4a5568").pack(anchor="w", padx=(106, 0), pady=(0, 4))
-        self._path_row(frame, "Corpus root", self.root_path, self.choose_root)
+        self._path_row(frame, "Corpus root", self.root_path, self.choose_root, ("Select page files", self.choose_page_files))
+        ttk.Label(frame, textvariable=self.selection_summary, foreground="#4a5568").pack(anchor="w", padx=(106, 0), pady=(0, 4))
 
         controls = ttk.Frame(frame)
         controls.pack(fill="x", pady=(8, 4))
@@ -276,7 +305,33 @@ class CorpusVerifierApp(tk.Tk):
         selected = filedialog.askdirectory(parent=self, title="Choose corpus root", mustexist=True)
         if selected:
             self.root_path.set(selected)
+            self.selection_summary.set("Corpus folder selected directly. Full-manifest verification will check every declared file.")
             self.status.set("Corpus folder selected. Verification has not run yet.")
+
+    def choose_page_files(self) -> None:
+        manifest = self._inspect_selected_manifest()
+        if manifest is None:
+            return
+        selected = filedialog.askopenfilenames(
+            parent=self,
+            title="Select one or more declared corpus page files",
+            initialdir=self.root_path.get().strip() or None,
+            filetypes=(("Page images", "*.jpg *.jpeg *.png"), ("All files", "*.*")),
+        )
+        if not selected:
+            return
+        try:
+            root, relative_paths = infer_corpus_root([Path(path) for path in selected], manifest)
+        except (CorpusManifestError, OSError) as error:
+            messagebox.showerror("Page selection error", str(error), parent=self)
+            return
+        declared_count = len(validate_manifest(manifest))
+        self.root_path.set(str(root))
+        self.selection_summary.set(
+            f"Selected {len(relative_paths)} of {declared_count} declared files. "
+            "Their shared root is loaded; Verify corpus will still check the complete manifest."
+        )
+        self.status.set(f"Loaded corpus root from selected file(s): {', '.join(relative_paths[:4])}" + ("..." if len(relative_paths) > 4 else ""))
 
     def verify(self) -> None:
         if self._busy:
@@ -477,6 +532,7 @@ class CorpusVerifierApp(tk.Tk):
             "Offline, read-only, no accounts, telemetry, or network access.\n\n"
             "A matching hash establishes byte identity only - not authenticity, rights, "
             "transcription correctness, or a solve.\n\n"
+            "Select page files can locate a corpus root from one or more declared pages; verification still checks the full manifest.\n\n"
             "Shortcuts: Ctrl+O manifest | Ctrl+Shift+O corpus folder | Ctrl+Enter verify | "
             "Ctrl+S export | Ctrl+F search | F1 help",
             parent=self,

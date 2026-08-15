@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schemas/environment-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "id": "ENV-0011",
+  "hms_version": "Corpus Manifest Verifier 0.1.0-rc.3",
+  "engine": "CPython 3.12.10 core; PyInstaller 6.22.0 Windows bundler",
+  "operating_system": "Windows 10 Pro 22H2 x64 authoritative package build and local qualification; independent qualification configured on GitHub-hosted Windows runners",
+  "architecture": "Windows x64 standalone executables; architecture-independent Python source",
+  "dependencies": [{"name":"requirements-build.txt","version":"pinned set including PyInstaller 6.22.0","hash":"sha256:bf1abe2ece931e3bf2c4698e45dd6cc5279bb4a918cd676a3794d6b645ec6307"}],
+  "encoding": "UTF-8 JSON and relative POSIX manifest paths",
+  "alphabet_mapping": "Not applicable",
+  "page_numbering": "Canonical manifest declares 00.jpg through 74.jpg; selected files resolve a root but do not reduce verification scope",
+  "corpus_manifest_id": "LP-75-IMAGES-v1.0.0",
+  "random_seed": null,
+  "container_or_lock_hash": "sha256:bf1abe2ece931e3bf2c4698e45dd6cc5279bb4a918cd676a3794d6b645ec6307"
+}

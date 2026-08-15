@@ -1,6 +1,6 @@
 # HMS Corpus Manifest Verifier
 
-Status: **RELEASE CANDIDATE `0.1.0-rc.2` — NOT AN APPROVED PUBLIC RELEASE**
+Status: **RELEASE CANDIDATE `0.1.0-rc.3` — NOT AN APPROVED PUBLIC RELEASE**
 
 ## What it is
 
@@ -17,7 +17,7 @@ There is no public download yet. The exact Windows candidate is retained only as
 1. Verify the published ZIP checksum before extraction.
 2. Extract the complete ZIP to a new folder.
 3. Double-click `HMS-Corpus-Verifier.exe`.
-4. Keep the preselected canonical manifest, then choose the folder containing exactly `00.jpg` through `74.jpg`.
+4. Keep the preselected canonical manifest, then choose the folder containing exactly `00.jpg` through `74.jpg`. You may instead select one or more declared page files and let the application resolve their shared manifest root.
 5. Leave strict mode enabled and select **Verify corpus**.
 6. Use **Problems only**, Search, and sortable column headings to assess failures without scanning a wall of output.
 7. Save the digest-protected JSON report when a durable verification record is needed.
@@ -51,6 +51,7 @@ The portable `HMS_CORPUS_VERIFICATION_V1` JSON report records the manifest ident
 
 - Corpus hashing runs in a background worker so the window remains responsive.
 - Manifest identity, declared file count, total bytes, and canonical digest are visible before verification.
+- One or more declared page files may be selected to locate their shared corpus root; verification still checks the complete manifest and never reports a partial corpus as a full PASS.
 - PASS and FAIL summaries are color-coded, and findings can be filtered, searched, sorted, and copied.
 - Expected and observed SHA-256 values are visible beside byte counts.
 - Strict-mode disabling requires an explicit warning acknowledgement.
@@ -90,6 +91,7 @@ Manifest creation records sorted relative POSIX paths, SHA-256 digests, byte cou
 
 ## Changelog
 
+- `0.1.0-rc.3`: multi-file page selection resolves and loads one safe shared manifest root without changing full-manifest PASS semantics.
 - `0.1.0-rc.2`: responsive verification, manifest identity preview, searchable and sortable findings, visible digests, detailed five-case GUI self-test, strict-mode warning, safer report export, and keyboard shortcuts.
 - `0.1.0-rc.1`: bound the canonical 75-page manifest; added canonical identity inspection; promoted Windows GUI/CLI packaging and five-case qualification to release-candidate status.
 - `0.1.0-dev`: initial deterministic core, GUI/CLI, report contract, packaging, and synthetic controls.

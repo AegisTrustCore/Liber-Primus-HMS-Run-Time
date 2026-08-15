@@ -12,12 +12,12 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.1.0-rc.2"
+VERSION = "0.1.0-rc.3"
 PACKAGE_NAME = f"HMS-Corpus-Verifier-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 13, 0, 0, 0)
 CANONICAL_MANIFEST = ROOT / "corpus" / "liber-primus" / "manifests" / "LP-75-IMAGES-v1.0.0.json"
 
-START_HERE = """HMS Corpus Manifest Verifier v0.1.0-rc.2
+START_HERE = """HMS Corpus Manifest Verifier v0.1.0-rc.3
 
 RELEASE CANDIDATE — NOT AN APPROVED PUBLIC RELEASE
 
@@ -28,6 +28,7 @@ START
 - Double-click HMS-Corpus-Verifier.exe for the desktop interface.
 - The canonical 75-page LP image manifest is preselected.
 - Choose the folder containing exactly 00.jpg through 74.jpg, then select Verify.
+- Alternatively, use Select page files to locate the shared corpus root from one or more declared images.
 - Use Problems only and Search to isolate findings; select column headings to sort.
 - Export creates a portable digest-protected JSON report without the local corpus-root path.
 - Power users can run HMS-Corpus-Verifier-CLI.exe --help.
