@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: HMS Expedition Sealed Verification Service
+  version: 0.3.0
+  description: Non-disclosing verification authority for an approved HMS Expedition.
+paths:
+  /healthz:
+    get:
+      operationId: serviceHealth
+      responses:
+        "200":
+          description: Process is ready to receive requests.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [status, service]
+                properties:
+                  status: {const: ok}
+                  service: {const: HMS_EXPEDITION_SERVICE}
+  /v1/expeditions/verify:
+    post:
+      operationId: verifyExpeditionSubmission
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VerificationRequest"
+      responses:
+        "200":
+          description: Signed accepted or rejected receipt. HTTP status does not reveal acceptance.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Receipt"
+        "400": {$ref: "#/components/responses/InvalidRequest"}
+        "413": {$ref: "#/components/responses/RequestTooLarge"}
+        "415": {$ref: "#/components/responses/JsonRequired"}
+        "429": {$ref: "#/components/responses/RateLimited"}
+components:
+  schemas:
+    VerificationRequest:
+      type: object
+      additionalProperties: false
+      required: [expedition_id, submission, client_version]
+      properties:
+        expedition_id: {type: string, pattern: "^XPD-[A-Z0-9-]+$"}
+        submission: {type: string, minLength: 1, maxLength: 4096}
+        client_version: {type: string, pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
+    Receipt:
+      type: object
+      additionalProperties: false
+      required: [schema, receipt_id, expedition_id, client_version, accepted, submission_sha256, verified_at, verification_authority, signature_algorithm, public_key_id, server_verified, solution_disclosed, receipt_signature]
+      properties:
+        schema: {const: HMS_EXPEDITION_VERIFICATION_RECEIPT_V2}
+        receipt_id: {type: string, pattern: "^VRF-[A-F0-9]{16}$"}
+        expedition_id: {type: string}
+        client_version: {type: string}
+        accepted: {type: boolean}
+        submission_sha256: {type: string, pattern: "^[a-f0-9]{64}$"}
+        verified_at: {type: string, format: date-time}
+        verification_authority: {const: HMS_EXPEDITION_SERVICE}
+        signature_algorithm: {const: ED25519}
+        public_key_id: {type: string, pattern: "^ED25519-[A-F0-9]{16}$"}
+        server_verified: {const: true}
+        solution_disclosed: {const: false}
+        receipt_signature: {type: string, pattern: "^[A-Za-z0-9+/]{86}==$"}
+    Error:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error: {type: string}
+  responses:
+    InvalidRequest:
+      description: Invalid request without normalization or proximity detail.
+      content: {application/json: {schema: {$ref: "#/components/schemas/Error"}}}
+    RequestTooLarge:
+      description: Request exceeds 4096 bytes.
+      content: {application/json: {schema: {$ref: "#/components/schemas/Error"}}}
+    JsonRequired:
+      description: Content type must be application/json.
+      content: {application/json: {schema: {$ref: "#/components/schemas/Error"}}}
+    RateLimited:
+      description: Attempt budget exhausted.
+      content: {application/json: {schema: {$ref: "#/components/schemas/Error"}}}

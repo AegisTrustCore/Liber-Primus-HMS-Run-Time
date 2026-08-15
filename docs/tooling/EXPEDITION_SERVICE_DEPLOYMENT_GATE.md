@@ -8,7 +8,8 @@ This gate applies jointly to the deployed v0.3.0 verification service and the ex
 
 - Derive the rotated v0.3.0 answer independently from the approved puzzle package.
 - Store it only in the deployment secret manager as `HMS_XPD_0001_ANSWER`.
-- Generate a separate random signing key of at least 32 bytes for `HMS_EXPEDITION_SIGNING_KEY`.
+- Generate a separate random 32-byte Ed25519 private key and store its base64 form as `HMS_EXPEDITION_SIGNING_KEY_B64`.
+- Derive the Ed25519 public key and key ID, then bind both into the exact client manifest before packaging. The client must verify every receipt signature locally.
 - Never place either value in Git, CI logs, build arguments, container layers, screenshots, Patreon drafts, or client configuration.
 - Record secret custody and rotation authority privately.
 
@@ -31,12 +32,13 @@ This gate applies jointly to the deployed v0.3.0 verification service and the ex
 - Rate limiting returns HTTP 429 and recovers after the declared window.
 - Service outage, invalid TLS, invalid JSON, and malformed receipts make the client fail closed.
 - Receipts contain no submitted plaintext and validate against the v2 schema.
+- Replayed receipts, altered acceptance states, mismatched submission hashes, wrong public keys, and malformed signatures fail closed in the client.
 - Server logs, proxy logs, traces, metrics, alerts, and crash records contain neither test plaintext nor secrets.
 - The old v0.2.0 accepted value is rejected.
 
 ## Client/package tests
 
-- The public manifest contains no answer digest and points only to the approved HTTPS endpoint.
+- The public manifest contains no answer digest and binds only the approved HTTPS endpoint, Ed25519 public key, and derived key ID.
 - The package contains no production secret, answer commitment, tier-only content, or private route.
 - CLI and GUI accepted/rejected flows agree.
 - Instructions and synthetic self-tests remain usable during a service outage.

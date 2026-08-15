@@ -6,6 +6,8 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import base64
+import binascii
 import subprocess
 import sys
 from pathlib import Path
@@ -488,6 +490,8 @@ def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
             errors.append(f"{prefix}.instrument_used must be null or a non-empty string")
         verification_mode = challenge.get("verification_mode")
         endpoint = challenge.get("verification_endpoint")
+        verification_public_key = challenge.get("verification_public_key")
+        verification_public_key_id = challenge.get("verification_public_key_id")
         digest = challenge.get("answer_sha256")
         if verification_mode == "LOCAL_DIGEST":
             if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
@@ -497,8 +501,19 @@ def validate_challenge_manifest(path: Path) -> tuple[list[str], int]:
                 errors.append(f"{prefix}.answer_sha256 must be absent in REMOTE_SEALED mode")
             if endpoint is not None and (not isinstance(endpoint, str) or not endpoint.startswith("https://")):
                 errors.append(f"{prefix}.verification_endpoint must be null or HTTPS in REMOTE_SEALED mode")
-            if challenge.get("status") == "OPEN" and endpoint is None:
-                errors.append(f"{prefix}.verification_endpoint is required before a REMOTE_SEALED campaign opens")
+            service_values = (endpoint, verification_public_key, verification_public_key_id)
+            if any(value is not None for value in service_values) and not all(isinstance(value, str) and value for value in service_values):
+                errors.append(f"{prefix}.remote service endpoint, public key, and key ID must be configured together")
+            if all(isinstance(value, str) and value for value in service_values):
+                try:
+                    public_key_bytes = base64.b64decode(verification_public_key, validate=True)
+                except (binascii.Error, ValueError):
+                    public_key_bytes = b""
+                derived_key_id = "ED25519-" + hashlib.sha256(public_key_bytes).hexdigest()[:16].upper()
+                if len(public_key_bytes) != 32 or verification_public_key_id != derived_key_id:
+                    errors.append(f"{prefix}.verification public key and key ID do not match")
+            if challenge.get("status") == "OPEN" and not all(isinstance(value, str) and value for value in service_values):
+                errors.append(f"{prefix}.complete verification service configuration is required before a REMOTE_SEALED campaign opens")
         else:
             errors.append(f"{prefix}.verification_mode is unrecognized")
         for field in ("entrypoint", "verifier"):

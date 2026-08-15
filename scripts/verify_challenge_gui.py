@@ -14,7 +14,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from hms_tools.challenge_verifier import application_root
-from hms_tools.expedition_client import ExpeditionClientError, configured_endpoint, verify_remote
+from hms_tools.expedition_client import ExpeditionClientError, configured_service, verify_remote
 from hms_tools.expedition_verifier import packaged_self_test
 from hms_tools.expedition_001 import CHALLENGE_ID, HINTS, VERSION, hint_text, instructions_text
 
@@ -59,10 +59,17 @@ class VerifierApp:
 
     def verify(self) -> None:
         try:
-            endpoint = configured_endpoint(application_root() / "challenges" / "manifest.json")
-            if endpoint is None:
+            configuration = configured_service(application_root() / "challenges" / "manifest.json")
+            if configuration is None:
                 raise ExpeditionClientError("Verification is not active; the campaign remains closed.")
-            self.receipt = verify_remote(endpoint, CHALLENGE_ID, self.answer.get(), VERSION)
+            self.receipt = verify_remote(
+                configuration.endpoint,
+                CHALLENGE_ID,
+                self.answer.get(),
+                VERSION,
+                public_key_b64=configuration.public_key_b64,
+                public_key_id=configuration.public_key_id,
+            )
         except ExpeditionClientError as error:
             self.receipt = None
             self.status.set("SERVICE UNAVAILABLE")

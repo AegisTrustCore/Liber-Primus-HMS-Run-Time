@@ -92,6 +92,24 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+  qualify-expedition-service-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12.10"
+      - name: Test sealed service and public client contracts
+        run: python -m unittest tests.test_expedition_service -v
+      - name: Build non-root service container
+        run: docker build --file deploy/expedition-service/Dockerfile --tag hms-expedition-service:qualification .
+      - name: Run synthetic self-test inside the exact image
+        run: docker run --rm --entrypoint python hms-expedition-service:qualification /app/scripts/serve_expedition_verifier.py --self-test
+      - name: Verify configured container user
+        run: test "$(docker image inspect hms-expedition-service:qualification --format '{{.Config.User}}')" = "65532:65532"
+
   qualify-corpus-verifier-windows:
     runs-on: windows-latest
     steps:
@@ -262,7 +280,7 @@ jobs:
           $gui = Start-Process -FilePath (Join-Path $qual 'HMS-XPD-0001-Verifier.exe') -ArgumentList '--self-test' -Wait -PassThru
           if ($gui.ExitCode -ne 0) { throw 'Packaged GUI self-test failed' }
           $manifest = Get-Content (Join-Path $qual 'manifest.json') | ConvertFrom-Json
-          if ($manifest.status -ne 'IN_DEVELOPMENT' -or $manifest.package_state -ne 'SECURE_SERVICE_CANDIDATE_NOT_FOR_RELEASE' -or $manifest.campaign_state -ne 'CLOSED' -or $manifest.solution_disclosed -ne $false -or $manifest.verification_endpoint_configured -ne $false) { throw 'Package boundary is not closed, non-disclosing, and development-only' }
+          if ($manifest.status -ne 'IN_DEVELOPMENT' -or $manifest.package_state -ne 'SECURE_SERVICE_CANDIDATE_NOT_FOR_RELEASE' -or $manifest.campaign_state -ne 'CLOSED' -or $manifest.solution_disclosed -ne $false -or $manifest.verification_endpoint_configured -ne $false -or $manifest.verification_public_key_configured -ne $false) { throw 'Package boundary is not closed, non-disclosing, and development-only' }
           Push-Location $qual
           Get-Content SHA256SUMS | ForEach-Object {
             $parts = $_ -split '  ', 2

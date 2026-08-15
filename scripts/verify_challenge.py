@@ -13,7 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from hms_tools.challenge_verifier import application_root
-from hms_tools.expedition_client import ExpeditionClientError, configured_endpoint, verify_remote
+from hms_tools.expedition_client import ExpeditionClientError, ServiceConfiguration, configured_service, verify_remote
 from hms_tools.expedition_verifier import packaged_self_test
 from hms_tools.expedition_001 import CHALLENGE_ID, HINTS, VERSION, hint_text, instructions_text
 
@@ -33,6 +33,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--json", action="store_true", help="Print a non-disclosing JSON verification receipt")
     parser.add_argument("--output", type=Path, help="Write the JSON receipt to a file")
     parser.add_argument("--endpoint", help="HTTPS verification endpoint; intended for qualification and deployment testing")
+    parser.add_argument("--public-key", help="Base64 Ed25519 public key; required with --endpoint")
+    parser.add_argument("--public-key-id", help="Frozen Ed25519 key ID; required with --endpoint")
     parser.add_argument("--hint", type=int, choices=range(1, len(HINTS) + 1), metavar=f"1-{len(HINTS)}")
     parser.add_argument("--instructions", action="store_true", help="Show the complete public puzzle instructions")
     parser.add_argument("--self-test", action="store_true", help="Run synthetic accept/reject controls")
@@ -62,10 +64,22 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     try:
-        endpoint = args.endpoint or configured_endpoint(application_root() / "challenges" / "manifest.json")
-        if endpoint is None:
+        if args.endpoint or args.public_key or args.public_key_id:
+            if not all((args.endpoint, args.public_key, args.public_key_id)):
+                raise ExpeditionClientError("--endpoint, --public-key, and --public-key-id must be provided together")
+            configuration = ServiceConfiguration(args.endpoint, args.public_key, args.public_key_id)
+        else:
+            configuration = configured_service(application_root() / "challenges" / "manifest.json")
+        if configuration is None:
             raise ExpeditionClientError("verification service is not configured; the campaign remains closed")
-        receipt = verify_remote(endpoint, expedition_id, submitted, VERSION)
+        receipt = verify_remote(
+            configuration.endpoint,
+            expedition_id,
+            submitted,
+            VERSION,
+            public_key_b64=configuration.public_key_b64,
+            public_key_id=configuration.public_key_id,
+        )
     except ExpeditionClientError as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2

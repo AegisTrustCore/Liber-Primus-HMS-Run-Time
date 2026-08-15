@@ -22,6 +22,8 @@
       "verifier": "../scripts/verify_challenge.py",
       "verification_mode": "REMOTE_SEALED",
       "verification_endpoint": null,
+      "verification_public_key": null,
+      "verification_public_key_id": null,
       "public_hints": [
         {"id":"HINT-0","path":"expedition-001/HINTS.md","sha256":"507d2976f9593fe9e91bce338ebfe51e22861cdd9d5b63a531bb91808fa6b2d1","release_state":"PUBLIC"}
       ],
