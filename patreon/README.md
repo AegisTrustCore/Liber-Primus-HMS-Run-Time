@@ -15,3 +15,5 @@ The public manifest may contain an ID, title, audience, material type, publicati
 The current public availability report is [HMS STATUS 001 — Instruments on Deck](https://www.patreon.com/AegisTrustCore/posts/hms-status-001-166550733). It distinguishes released source-level utilities from instruments in development and planned systems; the instrument registry remains authoritative.
 
 The current research release is [PUBLIC-004 — Five Doors That Did Not Open](https://www.patreon.com/AegisTrustCore/posts/public-004-five-166586435). It gives a plain-language map of `RSET-0002`, links to the complete public evidence package, and states what each bounded result does and does not establish.
+
+The current launch-state transmission is [HMS STATUS 002 — The Public Deck Is Open](https://www.patreon.com/AegisTrustCore/posts/hms-status-002-166729647). It records the four public GitHub releases, the independently exercised GP29 download path, the current Research Archive counts, and the closed boundaries around Corpus Verifier, Endeavour Lite, and Expedition 001.
