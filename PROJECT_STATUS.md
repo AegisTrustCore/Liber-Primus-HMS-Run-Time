@@ -71,7 +71,7 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 1. Keep every status surface synchronized with the canonical Research Archive indexes.
 2. Complete clean-environment human UAT and exact-package approval for Corpus Manifest Verifier `0.1.0-rc.1`.
 3. Qualify, leak-audit, and approve the Expedition 001 customer package before opening its public campaign.
-4. Build HMS Endeavour Lite, the LP Atlas, Rune Workbench, and Experiment Engine in the frozen product sequence.
+4. Finish secure Expedition integration and human UAT for HMS Endeavour Lite, then continue its metadata Atlas and first bounded experiment into page-aware Regions, general experiments, and comparison.
 5. Keep approved RR-0003 synchronized while continuing Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
 
 The staged product, access, dependency, and human-gate architecture is now frozen in the [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md). The mature application direction is recorded separately and does not change current availability.
@@ -86,6 +86,6 @@ The staged product, access, dependency, and human-gate architecture is now froze
 - Expedition verifier: public version 0.2.0 source plus a reproducible, locally qualified Windows GUI/CLI candidate with non-disclosing JSON receipts exist; independent UAT, leak review, private acceptance, and approval remain pending. The campaign is closed and no customer download is public.
 - Corpus navigation: the complete 75-page working-corpus map, timeline, page index, and verification route are public.
 - Corpus Manifest Verifier: `0.1.0-rc.1` is bound to the canonical 75-page manifest and its packaged suite covers GOOD, ALTERED, MISSING, EXTRA, and TRAVERSAL; clean-environment human UAT and approval of the exact package remain pending.
-- Endeavour Lite: architecture only; no public application exists. Liber Runtime: local developer core only; no hosted public service exists.
+- Endeavour Lite: runnable `0.1.0-dev` source now provides local projects, a selectable 29-rune workbench, GP29 and Corpus Results, one bounded declared GP29 experiment, history/export, and a metadata-only 75-page Atlas. The deterministic Windows package passes automated exact-package qualification and Defender scanning; secure Expedition integration and independent human UAT remain pending, and no public download exists. Liber Runtime remains a local developer core with no hosted public service.
 - Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
 - Scope: public status and identity records are current through PR #33; Expedition 001 remains closed pending its own exact-subject release decision.

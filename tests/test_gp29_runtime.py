@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 
 from hms_tools.gp29 import GP29InputError, PRIMES, RUNES, calculate, format_human, parse_latin, parse_letters, parse_tokens, self_test
-from hms_tools.runtime import RuntimeStore, create_job, execute_job
+from hms_tools.runtime import RuntimeStore, create_gp29_experiment_job, create_job, execute_job
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -66,6 +66,25 @@ class GP29Tests(unittest.TestCase):
 
 
 class RuntimeTests(unittest.TestCase):
+    def test_bounded_gp29_experiment_records_declared_gate(self):
+        job = create_gp29_experiment_job(
+            ["A", "B", "AB"],
+            mode="letters",
+            hypothesis="One declared variant has GP sum 61.",
+            target_gp_sum=61,
+        )
+        result = execute_job(job)
+        self.assertEqual(result["evidence_label"], "EXPERIMENTAL")
+        self.assertEqual(result["output"]["variant_count"], 3)
+        self.assertEqual(result["output"]["gate_pass_count"], 1)
+        self.assertEqual([row["gate_passed"] for row in result["output"]["rows"]], [False, True, False])
+
+    def test_gp29_experiment_requires_predeclared_bounds(self):
+        with self.assertRaises(ValueError):
+            create_gp29_experiment_job(["A"], hypothesis="Too small", target_gp_sum=2)
+        with self.assertRaises(ValueError):
+            create_gp29_experiment_job(["A", "B"], hypothesis="", target_gp_sum=2)
+
     def test_job_identity_is_deterministic(self):
         self.assertEqual(create_job("F U TH"), create_job("F U TH"))
 

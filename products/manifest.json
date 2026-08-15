@@ -75,12 +75,12 @@
       "id": "endeavour-lite",
       "name": "Endeavour Lite",
       "purpose": "Unify the qualified public instruments in a coherent local-first research workstation.",
-      "status": "PLANNED",
+      "status": "IN_DEVELOPMENT",
       "release_channel": "DEVELOPMENT",
       "access_level": "OBSERVER",
-      "current_version": null,
-      "target_next_state": "IN_DEVELOPMENT",
-      "required_gate": "Start implementation after GP29 is released and the Corpus Manifest Verifier reaches release candidate.",
+      "current_version": "0.1.0-dev",
+      "target_next_state": "INTERNAL_TESTING",
+      "required_gate": "Integrate the approved secure Expedition client, complete recovery and privacy review, pass clean-environment human UAT, and approve the exact checksum-identified package; the unified local workflows and automated Windows qualification pass.",
       "depends_on": ["public-gp29-calculator", "corpus-manifest-verifier", "expedition-verifier"]
     },
     {
@@ -92,7 +92,7 @@
       "access_level": "NAVIGATOR",
       "current_version": "0.0.2-dev",
       "target_next_state": "INTERNAL_TESTING",
-      "required_gate": "Deliver Atlas, Rune Workbench, Experiments, Auto Explore, and Evidence as separately accepted increments before an integrated beta.",
+      "required_gate": "Advance the implemented metadata Atlas, Rune Workbench, bounded GP29 experiment, and local history into page-aware Regions, general experiments/comparison, Auto Explore, and Evidence as separately accepted increments before an integrated beta.",
       "depends_on": ["endeavour-lite"]
     },
     {
