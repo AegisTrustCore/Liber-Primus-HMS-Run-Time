@@ -3,7 +3,7 @@
   "schema_version": "1.1.0",
   "release_id": "CMV-v0.1.0-rc.2",
   "release_type": "SOFTWARE",
-  "status": "PENDING",
+  "status": "SUPERSEDED",
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
@@ -39,6 +39,7 @@
     "Microsoft Defender reported no threats for the exact ZIP and both packaged executables.",
     "The usability pass changes presentation and workflow only; the verification contract and meaning of PASS are unchanged.",
     "The gate remains pending until clean-environment human UAT and explicit owner approval of this exact subject.",
-    "A PASS establishes declared byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution."
+    "A PASS establishes declared byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution.",
+    "Superseded by CMV-v0.1.0-rc.3 before public approval or release."
   ]
 }

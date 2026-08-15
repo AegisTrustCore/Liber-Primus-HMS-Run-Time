@@ -1,0 +1,25 @@
+{
+  "schema_version":"1.0.0",
+  "release_id":"CMV-v0.1.0-rc.3",
+  "candidate_commit_sha":"30535ff418d39d9e820a35fa2dee374659231f20",
+  "environment_id":"ENV-0011",
+  "artifact":{"name":"HMS-Corpus-Verifier-v0.1.0-rc.3-Windows-x64-portable.zip","sha256":"dc0366e6c506a02ad12f5846d373d671242518f778dedc9706b00400ed562125"},
+  "qualification_date":"2026-08-15",
+  "build_reproducibility":{"clean_builds":2,"byte_identical":true,"source_date_epoch":"1786578000","python_hash_seed":"0"},
+  "functional_checks":[
+    {"check":"focused verifier/package suite: 15 tests","passed":true},
+    {"check":"selected declared files infer one root while undeclared and mixed-root files are rejected","passed":true},
+    {"check":"selection never reduces full-manifest verification scope","passed":true},
+    {"check":"exact packaged GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL suite","passed":true},
+    {"check":"exact packaged GUI five-case self-test and internal SHA256SUMS","passed":true},
+    {"check":"exact packaged canonical-info and strict bound 75-page verification","passed":true},
+    {"check":"portable report contains no local corpus-root path","passed":true}
+  ],
+  "canonical_binding":{"manifest":"LP-75-IMAGES-v1.0.0.json","canonical_json_sha256":"d11ef54e113d92cc5fd86976709d0ece188f09c7ce95fcc8d0fdb140c685b009","files_verified":75,"verification_status":"PASS","verification_report_sha256":"8328387bc1a9f6074ad0ab1b65c30ae67d07815c0e813542dc98349482f2871d"},
+  "security_scan":{"scanner":"Microsoft Defender Antivirus","engine_version":"1.1.26070.7","signature_version":"1.457.172.0","result":"NO_THREATS","targets":[
+    {"name":"HMS-Corpus-Verifier-v0.1.0-rc.3-Windows-x64-portable.zip","sha256":"dc0366e6c506a02ad12f5846d373d671242518f778dedc9706b00400ed562125"},
+    {"name":"HMS-Corpus-Verifier.exe","sha256":"8302ad6b64afd6ec7b7212263a056351e83d72a3d54847a8f28619deb6e97d9e"},
+    {"name":"HMS-Corpus-Verifier-CLI.exe","sha256":"ca9bb5b94a257bb26f721499059bdd8e716740cc9b231cc1d8b8e6ecd65986bf"}
+  ]},
+  "remaining_checks":["Independent GitHub Windows runner qualification","Independent ordinary-user clean-environment UAT","Explicit human publication approval"]
+}

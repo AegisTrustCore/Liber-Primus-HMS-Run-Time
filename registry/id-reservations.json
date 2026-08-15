@@ -42,6 +42,7 @@
     {"id":"ENV-0007","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"},
     {"id":"ENV-0008","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"},
     {"id":"ENV-0009","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-14"},
-    {"id":"ENV-0010","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-15"}
+    {"id":"ENV-0010","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-15"},
+    {"id":"ENV-0011","object_type":"ENVIRONMENT","state":"ACTIVE","reserved_at":"2026-08-15"}
   ]
 }
