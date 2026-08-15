@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://hms-endeavour.invalid/schemas/research-object.schema.json",
+  "title":"HMS Endeavour immutable research object",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","object_id","project_id","object_type","title","created_at","visibility","page_refs","result_refs","payload","object_sha256"],
+  "properties":{
+    "schema":{"const":"HMS_RESEARCH_OBJECT_V1"},
+    "object_id":{"type":"string","pattern":"^LOBJ-[A-F0-9]{16}$"},
+    "project_id":{"type":"string","pattern":"^PRJ-[A-F0-9]{16}$"},
+    "object_type":{"enum":["NOTE","BOOKMARK","REGION","PAGE_SET","RUNE_SELECTION","EVIDENCE","CLAIM"]},
+    "title":{"type":"string","minLength":1},
+    "created_at":{"type":"string","format":"date-time"},
+    "visibility":{"enum":["PRIVATE","PROJECT","GROUP","HMS_REVIEW","PUBLIC"]},
+    "page_refs":{"type":"array","items":{"type":"string"}},
+    "result_refs":{"type":"array","items":{"type":"string"}},
+    "payload":{"type":"object"},
+    "object_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}
+  }
+}

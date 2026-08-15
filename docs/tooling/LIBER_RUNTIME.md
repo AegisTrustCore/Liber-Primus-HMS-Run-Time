@@ -1,60 +1,26 @@
-# Liber Runtime — initial contract
+# Liber Runtime — v1 contract
 
-Audience: Navigator beta and above, with public verification surfaces
+Status: **RELEASE CANDIDATE — local Runtime Environment `1.0.0-rc.1` implemented**
 
-Status: In development; deterministic developer core runnable
+Runtime v1 is the persistent local research environment inside HMS Endeavour. It completes the Atlas/Workbench/history foundation without claiming to be an automatic Liber Primus solver.
 
-Liber Runtime will attach to HMS Endeavour as the persistent experiment environment. Its first contract includes:
+## Implemented v1 surface
 
-- immutable corpus and input manifests;
-- versioned operation pipelines;
-- queued jobs with resource limits;
-- complete parameter and seed capture;
-- result, control, and negative-result ledgers;
-- shareable public verification bundles;
-- tier-aware workspaces without tier-dependent truth labels;
-- future socket/API and add-on interfaces using capability-scoped tokens.
-- private-by-default visibility with explicit `PRIVATE → PROJECT → GROUP → HMS_REVIEW → PUBLIC` transitions;
-- separately enforced compute quotas for jobs, concurrency, runtime, family size, storage, and retention;
-- full parameter-family retention so selected outputs preserve their search denominator;
-- source-image, canonical, alternative, and user transcriptions as distinct immutable inputs.
+- Canonical 75-page identity manifest and privately configured corpus root.
+- Page selection, local carrier opening, Bookmarks, Page Sets, and normalized Regions.
+- Reusable immutable Notes, Rune Selections, Evidence, and Claims.
+- Versioned jobs for GP29, corpus-report validation, bounded GP29 experiments, and structural Result comparison.
+- Immutable Run and Result envelopes with provenance, visibility, evidence labels, limitations, and canonical hashes.
+- Local history, explicit export, integrity audit, index rebuild, and metadata-only backup.
+- CLI parity for projects, calculations, corpus verification, experiments, research objects, comparison, audit, backup, and corpus settings.
+- Private-by-default operation with no telemetry, account, hosted synchronization, Vault access, or silent export.
 
-The Runtime will not receive private Vault material by default, and an Admiral entitlement will not bypass evidence review or provenance controls.
+Canonical contracts include `schemas/runtime-job.schema.json`, `schemas/runtime-result.schema.json`, `schemas/hms-project.schema.json`, `schemas/project-settings.schema.json`, `schemas/research-object.schema.json`, and `schemas/result-envelope.schema.json`.
 
-Tier capability and compute allowance are separate policy decisions. A locked-tool preview may show documentation and sample output but cannot execute the protected backend.
+## Explicitly deferred
 
-## Beta rollout
+Auto Explore, candidate decryption, broad transform families, automated ranking, solver claims, network sockets/API, entitlements, plugins, contextual AEGIS, hosted compute, and Admiral workflows remain separate reviewed releases. Tier access never changes an evidence label or bypasses provenance controls.
 
-The developer core is not an integrated beta. Runtime advances through these accepted increments:
+## Release gate
 
-| Increment | Scope | Acceptance outcome |
-|---|---|---|
-| Beta 0.1 — Atlas | All-page navigation, viewer, zoom/pan, metadata, transcriptions, notes, bookmarks, snips, Regions, page hashes | A researcher can comfortably navigate and annotate the 75-page working corpus |
-| Beta 0.2 — Rune Workbench | Rune/line/word selection, inspector, L/R/p/N/Q, occurrence search, overlays, PageSets | Every source selection becomes a reusable research object |
-| Beta 0.3 — Experiment Workbench | Experiments, Pipelines, Runs, Results, controls, success gates, reproduction, comparison | The application conducts declared HMS experiments rather than ad hoc transformations |
-| Beta 0.4 — Candidate Decryption | Decrypt Lab, Auto Explore, transform library, raw/failure retention, language metrics, IC, lagged IC, entropy, frequency, complete family | Candidate generation is broad, reproducible, and honest about gibberish and denominator |
-| Beta 0.5 — Evidence & AEGIS | Context rail, Epistemic Center, Evidence, Claims, Corrections, Wreck Chart, Trust Inspector, ProofLink, basic ProofLock | Assistance and evidence promotion remain permission-bounded and reviewable |
-| Beta 0.6 — Admiral Research | Batch, advanced families, selector tools, solver candidates, plugins, advanced reproduction, higher compute | Deep research capability exists without Vault access or stronger truth labels |
-
-No advanced solver is part of Atlas, Rune Workbench, or the initial Experiment Workbench. Candidate decryption is **AUTO EXPLORE**, not AUTO SOLVE.
-
-## Runnable slice v0.0.2
-
-The repository now includes a local reference engine for `gp29.calculate` and `corpus.report.validate` jobs. It provides deterministic job IDs, specification hashes, result hashes, explicit visibility, and operation-specific evidence labels.
-
-```text
-python scripts/hms_runtime.py self-test
-python scripts/hms_runtime.py gp29 "F U/V TH" --mode tokens --job
-```
-
-The local `RuntimeStore` demonstrates submit, execute, and retrieve behavior without accounts, persistence, networking, entitlements, or Vault access. Those omissions are intentional and remain required work before a hosted beta.
-
-The Corpus Manifest Verifier emits `HMS_CORPUS_VERIFICATION_V1`. Runtime can digest-validate that portable report and label the output `PROVENANCE_ONLY`. The job contains neither an implicit workstation crawl nor a local corpus-root path. Report sharing remains explicit and private by default.
-
-Canonical contracts:
-
-- `schemas/runtime-job.schema.json`
-- `schemas/runtime-result.schema.json`
-- `hms_tools/runtime.py`
-- `schemas/corpus-manifest.schema.json`
-- `schemas/corpus-verification.schema.json`
+`1.0.0-rc.1` is code-complete for the bounded v1 surface but not approved for public distribution until the deterministic Windows artifact passes clean-environment qualification and human UAT and is approved by exact SHA-256.

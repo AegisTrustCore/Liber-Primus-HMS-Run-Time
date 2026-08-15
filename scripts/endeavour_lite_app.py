@@ -4,9 +4,12 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
 import sys
 import tempfile
 import tkinter as tk
+import zipfile
 from pathlib import Path
 from tkinter import filedialog, messagebox, simpledialog, ttk
 
@@ -19,10 +22,10 @@ from hms_tools.expedition_001 import CHALLENGE_ID, VERSION as EXPEDITION_VERSION
 from hms_tools.expedition_client import ExpeditionClientError, ServiceConfiguration, configured_service, verify_remote
 from hms_tools.gp29 import GP29InputError, TABLE
 from hms_tools.project import PROJECT_VERSION, ProjectError, ProjectStore
-from hms_tools.runtime import create_corpus_report_job, create_gp29_experiment_job, create_job, execute_job
+from hms_tools.runtime import create_corpus_report_job, create_gp29_experiment_job, create_job, create_result_comparison_job, execute_job
 
 
-PRODUCT = "HMS Endeavour Lite"
+PRODUCT = "HMS Endeavour Runtime Environment"
 VERSION = PROJECT_VERSION
 
 
@@ -76,11 +79,18 @@ def packaged_self_test() -> bool:
             instrument_id="endeavour-lite-experiment-engine",
             instrument_version=VERSION,
         )
+        research_object = store.save_research_object(
+            "REGION", "Self-test region", {"x":0.0,"y":0.0,"width":1.0,"height":1.0}, page_refs=["0.jpg"]
+        )
+        backup = store.create_backup(Path(directory) / "self-test-backup.zip")
         reopened = ProjectStore.open(store.root)
         return (
             envelope["payload"]["gp_sum"] == 10
             and experiment_envelope["payload"]["gate_pass_count"] == 1
             and len(reopened.list_results()) == 2
+            and research_object["object_type"] == "REGION"
+            and reopened.audit()["status"] == "PASS"
+            and backup.is_file()
         )
 
 
@@ -105,6 +115,16 @@ class EndeavourLiteApp(tk.Tk):
         self.corpus_root_path = tk.StringVar()
         self.corpus_strict = tk.BooleanVar(value=True)
         self.corpus_summary = tk.StringVar(value="No verification yet.")
+        self.atlas_summary = tk.StringVar(value="Select one or more registered pages.")
+        self.research_title = tk.StringVar()
+        self.research_type = tk.StringVar(value="NOTE")
+        self.research_pages = tk.StringVar()
+        self.region_x = tk.StringVar(value="0.0")
+        self.region_y = tk.StringVar(value="0.0")
+        self.region_width = tk.StringVar(value="1.0")
+        self.region_height = tk.StringVar(value="1.0")
+        self.research_summary = tk.StringVar(value="Research objects are immutable, private, and local by default.")
+        self.recovery_summary = tk.StringVar(value="Open a project to inspect integrity and privacy boundaries.")
         self.expedition_summary = tk.StringVar(value="Loading campaign boundary.")
         try:
             self.expedition_state, self.expedition_configuration = load_expedition_configuration()
@@ -116,6 +136,7 @@ class EndeavourLiteApp(tk.Tk):
             self.expedition_state, self.expedition_configuration = "CONFIGURATION ERROR", None
             self.expedition_summary.set(f"FAIL-CLOSED — {error}")
         self._result_by_item: dict[str, dict[str, object]] = {}
+        self._object_by_item: dict[str, dict[str, object]] = {}
         self._build_menu()
         self._build_shell()
         self._load_atlas()
@@ -157,6 +178,8 @@ class EndeavourLiteApp(tk.Tk):
         self._build_experiment_tab()
         self._build_expedition_tab()
         self._build_history_tab()
+        self._build_research_tab()
+        self._build_recovery_tab()
         ttk.Label(self, textvariable=self.status, padding=(18, 8)).pack(fill="x")
 
     def _tab(self, title: str) -> ttk.Frame:
@@ -256,13 +279,19 @@ class EndeavourLiteApp(tk.Tk):
 
     def _build_atlas_tab(self) -> None:
         frame = self._tab("LP Atlas")
-        ttk.Label(frame, text="LP Atlas — metadata foundation", font=("Segoe UI", 18, "bold")).pack(anchor="w")
-        ttk.Label(frame, text="All 75 registered carriers are navigable by identity. Page rendering, notes, Regions, and transcriptions follow in later increments.").pack(anchor="w", pady=(4, 12))
-        self.atlas_table = ttk.Treeview(frame, columns=("page","bytes","sha256"), show="headings")
+        ttk.Label(frame, text="LP Atlas - page-aware research index", font=("Segoe UI", 18, "bold")).pack(anchor="w")
+        ttk.Label(frame, text="The canonical manifest is preloaded. Link local images privately, select pages, open a carrier, or save bookmarks and Page Sets.").pack(anchor="w", pady=(4, 8))
+        controls = ttk.Frame(frame); controls.pack(fill="x", pady=(0, 8))
+        ttk.Button(controls, text="Open selected page", command=self.open_selected_page).pack(side="left")
+        ttk.Button(controls, text="Save bookmark", command=self.save_atlas_bookmark).pack(side="left", padx=6)
+        ttk.Button(controls, text="Save selected as Page Set", command=self.save_atlas_pageset).pack(side="left")
+        ttk.Label(controls, textvariable=self.atlas_summary).pack(side="right")
+        self.atlas_table = ttk.Treeview(frame, columns=("page","bytes","sha256"), show="headings", selectmode="extended")
         self.atlas_table.heading("page", text="Page"); self.atlas_table.column("page", width=100)
         self.atlas_table.heading("bytes", text="Bytes"); self.atlas_table.column("bytes", width=120)
         self.atlas_table.heading("sha256", text="SHA-256"); self.atlas_table.column("sha256", width=620)
         self.atlas_table.pack(fill="both", expand=True)
+        self.atlas_table.bind("<<TreeviewSelect>>", self.atlas_selection_changed)
 
     def _build_experiment_tab(self) -> None:
         frame = self._tab("Experiments")
@@ -347,13 +376,50 @@ class EndeavourLiteApp(tk.Tk):
         pane.pack(fill="both", expand=True, pady=(12, 0))
         left = ttk.Frame(pane); right = ttk.Frame(pane)
         pane.add(left, weight=1); pane.add(right, weight=2)
-        self.history = ttk.Treeview(left, columns=("instrument","operation","evidence"), show="headings", selectmode="browse")
+        actions = ttk.Frame(left); actions.pack(fill="x", pady=(0, 6))
+        ttk.Button(actions, text="Compare 2 selected", command=self.compare_selected_results).pack(side="left")
+        self.history = ttk.Treeview(left, columns=("instrument","operation","evidence"), show="headings", selectmode="extended")
         for column, title, width in (("instrument","Instrument",150),("operation","Operation",150),("evidence","Evidence",130)):
             self.history.heading(column, text=title); self.history.column(column, width=width)
         self.history.pack(fill="both", expand=True)
         self.history.bind("<<TreeviewSelect>>", self.preview_result)
         self.result_preview = tk.Text(right, wrap="none", state="disabled", font=("Consolas", 9))
         self.result_preview.pack(fill="both", expand=True)
+
+    def _build_research_tab(self) -> None:
+        frame = self._tab("Research Objects")
+        ttk.Label(frame, text="Saved evidence and research history", font=("Segoe UI", 18, "bold")).pack(anchor="w")
+        ttk.Label(frame, text="Record bounded observations without turning a note into a solve claim. Page and Result references remain explicit.").pack(anchor="w", pady=(4, 10))
+        row = ttk.Frame(frame); row.pack(fill="x")
+        ttk.Label(row, text="Type").pack(side="left")
+        ttk.Combobox(row, textvariable=self.research_type, values=("NOTE","REGION","EVIDENCE","CLAIM","RUNE_SELECTION"), state="readonly", width=16).pack(side="left", padx=6)
+        ttk.Label(row, text="Title").pack(side="left")
+        ttk.Entry(row, textvariable=self.research_title).pack(side="left", fill="x", expand=True, padx=6)
+        ttk.Label(row, text="Pages").pack(side="left")
+        ttk.Entry(row, textvariable=self.research_pages, width=18).pack(side="left", padx=6)
+        ttk.Button(row, text="Save object", command=self.save_research_object).pack(side="left")
+        region = ttk.Frame(frame); region.pack(fill="x", pady=(8, 0))
+        ttk.Label(region, text="Region (normalized 0-1):").pack(side="left")
+        for label, variable in (("x",self.region_x),("y",self.region_y),("width",self.region_width),("height",self.region_height)):
+            ttk.Label(region, text=label).pack(side="left", padx=(8, 2)); ttk.Entry(region, textvariable=variable, width=7).pack(side="left")
+        ttk.Button(region, text="Export selected object", command=self.export_selected_object).pack(side="right")
+        self.research_text = tk.Text(frame, height=7, wrap="word"); self.research_text.pack(fill="x", pady=8)
+        ttk.Label(frame, textvariable=self.research_summary, font=("Segoe UI", 10, "bold")).pack(anchor="w", pady=(0, 6))
+        self.research_table = ttk.Treeview(frame, columns=("type","title","pages","created"), show="headings", selectmode="browse")
+        for column, title, width in (("type","Type",120),("title","Title",340),("pages","Pages",180),("created","Created",220)):
+            self.research_table.heading(column, text=title); self.research_table.column(column, width=width)
+        self.research_table.pack(fill="both", expand=True)
+
+    def _build_recovery_tab(self) -> None:
+        frame = self._tab("Project & Recovery")
+        ttk.Label(frame, text="Project settings, integrity, and recovery", font=("Segoe UI", 18, "bold")).pack(anchor="w")
+        ttk.Label(frame, text="The corpus root is a private machine-local pointer. Backups exclude that path, corpus images, and exports.").pack(anchor="w", pady=(4, 12))
+        self._path_row(frame, "Corpus folder", self.corpus_root_path, self.choose_and_save_corpus_root)
+        actions = ttk.Frame(frame); actions.pack(anchor="w", pady=10)
+        ttk.Button(actions, text="Clear corpus link", command=self.clear_corpus_root).pack(side="left")
+        ttk.Button(actions, text="Audit & rebuild index", command=self.audit_project).pack(side="left", padx=6)
+        ttk.Button(actions, text="Create safe backup ZIP", command=self.backup_project).pack(side="left")
+        ttk.Label(frame, textvariable=self.recovery_summary, font=("Segoe UI", 11, "bold"), wraplength=900).pack(anchor="w", pady=8)
 
     def _require_project(self) -> ProjectStore:
         if self.store is None:
@@ -387,7 +453,13 @@ class EndeavourLiteApp(tk.Tk):
         self.project_title.set(store.project["name"])
         self.project_detail.set(f"{store.project['project_id']} · PRIVATE · {store.root.name}")
         self.status.set("Project ready. Changes remain local until you explicitly export them.")
+        try:
+            settings = store.read_settings()
+            self.corpus_root_path.set(settings["local_corpus_root"] or "")
+        except ProjectError as error:
+            self.recovery_summary.set(f"Settings error: {error}")
         self.refresh_history()
+        self.refresh_research_objects()
 
     def calculate_gp29(self) -> None:
         try:
@@ -412,6 +484,21 @@ class EndeavourLiteApp(tk.Tk):
     def choose_corpus_root(self) -> None:
         selected = filedialog.askdirectory(parent=self, title="Choose local corpus folder")
         if selected: self.corpus_root_path.set(selected)
+
+    def choose_and_save_corpus_root(self) -> None:
+        self.choose_corpus_root()
+        if not self.corpus_root_path.get(): return
+        try: settings = self._require_project().set_local_corpus_root(Path(self.corpus_root_path.get()))
+        except (ProjectError, OSError) as error:
+            messagebox.showerror("Corpus link failed", str(error), parent=self); return
+        self.recovery_summary.set(f"Private local corpus linked: {settings['local_corpus_root']}")
+
+    def clear_corpus_root(self) -> None:
+        try: self._require_project().set_local_corpus_root(None)
+        except (ProjectError, OSError) as error:
+            messagebox.showerror("Unable to clear corpus link", str(error), parent=self); return
+        self.corpus_root_path.set("")
+        self.recovery_summary.set("Private corpus link cleared. No corpus files were changed.")
 
     def verify_corpus(self) -> None:
         try:
@@ -463,6 +550,125 @@ class EndeavourLiteApp(tk.Tk):
         except (OSError, UnicodeError, json.JSONDecodeError): return
         for item in manifest.get("files", []):
             self.atlas_table.insert("", "end", values=(item.get("path",""),item.get("bytes",""),item.get("sha256","")))
+
+    def selected_atlas_pages(self) -> list[str]:
+        return [str(self.atlas_table.item(item, "values")[0]) for item in self.atlas_table.selection()]
+
+    def atlas_selection_changed(self, _event=None) -> None:
+        pages = self.selected_atlas_pages()
+        self.atlas_summary.set(f"{len(pages)} page(s) selected" if pages else "Select one or more registered pages.")
+        self.research_pages.set(", ".join(pages))
+
+    def open_selected_page(self) -> None:
+        pages = self.selected_atlas_pages()
+        if len(pages) != 1:
+            messagebox.showinfo("Select one page", "Select exactly one Atlas page to open.", parent=self); return
+        try:
+            root = self._require_project().read_settings()["local_corpus_root"]
+            if not root: raise ProjectError("Link the private local corpus folder in Project & Recovery first.")
+            target = (Path(root) / pages[0]).resolve()
+            if not target.is_relative_to(Path(root).resolve()) or not target.is_file():
+                raise ProjectError(f"local corpus page is unavailable: {pages[0]}")
+            if os.name == "nt": os.startfile(target)  # type: ignore[attr-defined]
+            elif sys.platform == "darwin": subprocess.Popen(["open", str(target)])
+            else: subprocess.Popen(["xdg-open", str(target)])
+        except (ProjectError, OSError) as error:
+            messagebox.showerror("Unable to open page", str(error), parent=self)
+
+    def save_atlas_bookmark(self) -> None:
+        pages = self.selected_atlas_pages()
+        if len(pages) != 1:
+            messagebox.showinfo("Select one page", "Select exactly one Atlas page to bookmark.", parent=self); return
+        try: value = self._require_project().save_research_object("BOOKMARK", f"Bookmark {pages[0]}", {}, page_refs=pages)
+        except (ProjectError, OSError) as error:
+            messagebox.showerror("Bookmark failed", str(error), parent=self); return
+        self.status.set(f"Saved private bookmark {value['object_id']}.")
+        self.refresh_research_objects()
+
+    def save_atlas_pageset(self) -> None:
+        pages = self.selected_atlas_pages()
+        if not pages:
+            messagebox.showinfo("Select pages", "Select one or more Atlas pages first.", parent=self); return
+        title = simpledialog.askstring("Page Set", "Name this Page Set:", parent=self)
+        if not title: return
+        try: value = self._require_project().save_research_object("PAGE_SET", title, {"ordered_pages": pages}, page_refs=pages)
+        except (ProjectError, OSError) as error:
+            messagebox.showerror("Page Set failed", str(error), parent=self); return
+        self.status.set(f"Saved Page Set {value['object_id']} with {len(pages)} page(s).")
+        self.refresh_research_objects()
+
+    def save_research_object(self) -> None:
+        text_value = self.research_text.get("1.0", "end-1c").strip()
+        pages = [item.strip() for item in self.research_pages.get().split(",") if item.strip()]
+        try:
+            payload: dict[str, object] = {"text": text_value}
+            if self.research_type.get() == "REGION":
+                coordinates = {"x":float(self.region_x.get()), "y":float(self.region_y.get()), "width":float(self.region_width.get()), "height":float(self.region_height.get())}
+                if len(pages) != 1: raise ValueError("a Region must reference exactly one page")
+                if any(value < 0 or value > 1 for value in coordinates.values()) or coordinates["width"] <= 0 or coordinates["height"] <= 0:
+                    raise ValueError("Region coordinates must be normalized from 0 to 1 with positive width and height")
+                payload.update(coordinates)
+            result_refs = [str(self._result_by_item[item]["result_id"]) for item in self.history.selection()]
+            value = self._require_project().save_research_object(self.research_type.get(), self.research_title.get(), payload, page_refs=pages, result_refs=result_refs)
+        except (ProjectError, OSError, ValueError) as error:
+            messagebox.showerror("Research object failed", str(error), parent=self); return
+        self.research_text.delete("1.0", "end"); self.research_title.set("")
+        self.research_summary.set(f"Saved {value['object_id']} as {value['object_type']}.")
+        self.refresh_research_objects()
+
+    def refresh_research_objects(self) -> None:
+        for item in self.research_table.get_children(): self.research_table.delete(item)
+        self._object_by_item.clear()
+        if self.store is None: return
+        try: values = self.store.list_research_objects()
+        except (ProjectError, OSError, json.JSONDecodeError) as error:
+            self.research_summary.set(f"Research history error: {error}"); return
+        for value in reversed(values):
+            item = self.research_table.insert("", "end", values=(value["object_type"], value["title"], ", ".join(value["page_refs"]), value["created_at"]))
+            self._object_by_item[item] = value
+
+    def export_selected_object(self) -> None:
+        selected = self.research_table.selection()
+        if not selected or self.store is None:
+            messagebox.showinfo("Select an object", "Select a research object first.", parent=self); return
+        value = self._object_by_item[selected[0]]
+        destination = filedialog.asksaveasfilename(parent=self, title="Export portable research object", initialfile=f"{value['object_id']}.json", defaultextension=".json", filetypes=(("JSON","*.json"),))
+        if not destination: return
+        try: self.store.export_research_object(str(value["object_id"]), Path(destination))
+        except (ProjectError, OSError, json.JSONDecodeError) as error:
+            messagebox.showerror("Export failed", str(error), parent=self); return
+        self.status.set(f"Exported research object {value['object_id']}.")
+
+    def compare_selected_results(self) -> None:
+        selected = self.history.selection()
+        if len(selected) != 2:
+            messagebox.showinfo("Select two Results", "Select exactly two different Results.", parent=self); return
+        try:
+            store = self._require_project()
+            job = create_result_comparison_job(self._result_by_item[selected[0]], self._result_by_item[selected[1]])
+            envelope = store.save_execution(job, execute_job(job), instrument_id="hms-result-comparator", instrument_version=VERSION)
+        except (ProjectError, OSError, ValueError) as error:
+            messagebox.showerror("Comparison failed", str(error), parent=self); return
+        self.status.set(f"Saved structural comparison {envelope['result_id']}; no semantic conclusion was made.")
+        self.refresh_history()
+
+    def audit_project(self) -> None:
+        try: report = self._require_project().audit()
+        except (ProjectError, OSError, json.JSONDecodeError) as error:
+            messagebox.showerror("Audit failed", str(error), parent=self); return
+        counts = report["summary"]
+        self.recovery_summary.set(f"{report['status']} - {counts['runs']} Runs, {counts['results']} Results, {counts['objects']} objects; index rebuilt. Problems: {len(report['problems'])}.")
+
+    def backup_project(self) -> None:
+        try: store = self._require_project()
+        except ProjectError as error:
+            messagebox.showerror("Backup failed", str(error), parent=self); return
+        destination = filedialog.asksaveasfilename(parent=self, title="Create safe project backup", initialfile=f"{store.root.name}-metadata-backup.zip", defaultextension=".zip", filetypes=(("ZIP","*.zip"),))
+        if not destination: return
+        try: store.create_backup(Path(destination))
+        except (ProjectError, OSError, zipfile.BadZipFile) as error:
+            messagebox.showerror("Backup failed", str(error), parent=self); return
+        self.recovery_summary.set("Backup created: corpus images, exports, and the private local corpus path were excluded.")
 
     def refresh_history(self) -> None:
         for item in self.history.get_children(): self.history.delete(item)

@@ -4,8 +4,8 @@
   "last_reviewed": "2026-08-15",
   "status_vocabulary": ["PLANNED", "IN_DEVELOPMENT", "INTERNAL_TESTING", "RELEASE_CANDIDATE", "RELEASED", "DEPRECATED", "RETIRED"],
   "release_channels": ["DEVELOPMENT", "EXPERIMENTAL", "BETA", "RC", "STABLE"],
-  "current_release_objective": "corpus-manifest-verifier",
-  "parallel_preparation": ["corpus-manifest-verifier", "expedition-verifier"],
+  "current_release_objective": "endeavour-lite",
+  "parallel_preparation": ["corpus-manifest-verifier", "expedition-verifier", "liber-runtime-beta"],
   "build_order": [
     "public-gp29-calculator",
     "corpus-manifest-verifier",
@@ -75,12 +75,12 @@
       "id": "endeavour-lite",
       "name": "Endeavour Lite",
       "purpose": "Unify the qualified public instruments in a coherent local-first research workstation.",
-      "status": "IN_DEVELOPMENT",
-      "release_channel": "DEVELOPMENT",
+      "status": "RELEASE_CANDIDATE",
+      "release_channel": "RC",
       "access_level": "OBSERVER",
-      "current_version": "0.1.0-dev",
-      "target_next_state": "INTERNAL_TESTING",
-      "required_gate": "Complete recovery and privacy review of the integrated fail-closed Expedition client, pass clean-environment human UAT, and approve the exact checksum-identified package; the unified local workflows and automated Windows qualification pass.",
+      "current_version": "1.0.0-rc.1",
+      "target_next_state": "RELEASED",
+      "required_gate": "Build and qualify the exact Windows Runtime package in a clean environment, complete privacy review and human UAT, then approve the checksum-identified artifact; automated source tests pass.",
       "depends_on": ["public-gp29-calculator", "corpus-manifest-verifier", "expedition-verifier"]
     },
     {
@@ -90,9 +90,9 @@
       "status": "IN_DEVELOPMENT",
       "release_channel": "DEVELOPMENT",
       "access_level": "NAVIGATOR",
-      "current_version": "0.0.2-dev",
+      "current_version": "1.0.0-rc.1",
       "target_next_state": "INTERNAL_TESTING",
-      "required_gate": "Advance the implemented metadata Atlas, Rune Workbench, bounded GP29 experiment, and local history into page-aware Regions, general experiments/comparison, Auto Explore, and Evidence as separately accepted increments before an integrated beta.",
+      "required_gate": "Qualify the integrated page-aware Atlas, research objects, structural comparison, recovery, and privacy-safe backup in the exact Windows RC; Auto Explore and contextual AEGIS remain later releases.",
       "depends_on": ["endeavour-lite"]
     },
     {

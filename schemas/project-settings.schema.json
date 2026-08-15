@@ -1,0 +1,12 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://hms-endeavour.invalid/schemas/project-settings.schema.json",
+  "title":"HMS Endeavour private local settings",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","local_corpus_root"],
+  "properties":{
+    "schema":{"const":"HMS_PROJECT_SETTINGS_V1"},
+    "local_corpus_root":{"type":["string","null"],"minLength":1}
+  }
+}

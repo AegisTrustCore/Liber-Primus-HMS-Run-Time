@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -12,9 +13,13 @@ from typing import Any
 
 PROJECT_SCHEMA = "HMS_PROJECT_V1"
 RESULT_SCHEMA = "HMS_RESULT_ENVELOPE_V1"
-PROJECT_VERSION = "0.1.0-dev"
+SETTINGS_SCHEMA = "HMS_PROJECT_SETTINGS_V1"
+OBJECT_SCHEMA = "HMS_RESEARCH_OBJECT_V1"
+PROJECT_VERSION = "1.0.0-rc.1"
+SUPPORTED_PROJECT_VERSIONS = {"0.1.0-dev", PROJECT_VERSION}
 VISIBILITIES = {"PRIVATE", "PROJECT", "GROUP", "HMS_REVIEW", "PUBLIC"}
 EVIDENCE_LABELS = {"CALCULATION_ONLY", "PROVENANCE_ONLY", "TRAINING_ONLY", "EXPERIMENTAL", "CANDIDATE", "BOUNDED_NEGATIVE", "STRUCTURAL", "KNOWN_CONTROL"}
+OBJECT_TYPES = {"NOTE", "BOOKMARK", "REGION", "PAGE_SET", "RUNE_SELECTION", "EVIDENCE", "CLAIM"}
 ID_RE = re.compile(r"^[A-Z]+-[A-F0-9]{16}$")
 
 
@@ -62,8 +67,74 @@ def validate_project(value: object) -> dict[str, Any]:
         raise ProjectError("manifest_sha256 must be lowercase SHA-256 or null")
     if not isinstance(corpus["local_root_configured"], bool):
         raise ProjectError("local_root_configured must be boolean")
-    if value.get("application_version") != PROJECT_VERSION:
-        raise ProjectError(f"application_version must be {PROJECT_VERSION}")
+    if value.get("application_version") not in SUPPORTED_PROJECT_VERSIONS:
+        raise ProjectError(f"unsupported application_version: {value.get('application_version')}")
+    return value
+
+
+def validate_settings(value: object) -> dict[str, Any]:
+    if not isinstance(value, dict) or value.get("schema") != SETTINGS_SCHEMA:
+        raise ProjectError(f"settings schema must be {SETTINGS_SCHEMA}")
+    if set(value) != {"schema", "local_corpus_root"}:
+        raise ProjectError("project settings contain unsupported fields")
+    root = value.get("local_corpus_root")
+    if root is not None and (not isinstance(root, str) or not root.strip()):
+        raise ProjectError("local_corpus_root must be a non-empty string or null")
+    return value
+
+
+def create_research_object(
+    *, project_id: str, object_type: str, title: str, payload: dict[str, Any],
+    page_refs: list[str] | None = None, result_refs: list[str] | None = None,
+    visibility: str = "PRIVATE", created_at: str | None = None,
+) -> dict[str, Any]:
+    object_type = str(object_type).upper()
+    if object_type not in OBJECT_TYPES:
+        raise ProjectError(f"unsupported research object type: {object_type}")
+    if not isinstance(title, str) or not title.strip():
+        raise ProjectError("research object title is required")
+    if not isinstance(payload, dict):
+        raise ProjectError("research object payload must be an object")
+    if visibility not in VISIBILITIES:
+        raise ProjectError("research object visibility is invalid")
+    core = {
+        "schema": OBJECT_SCHEMA, "project_id": project_id, "object_type": object_type,
+        "title": title.strip(), "created_at": created_at or utc_now(), "visibility": visibility,
+        "page_refs": page_refs or [], "result_refs": result_refs or [], "payload": payload,
+    }
+    digest = hashlib.sha256(canonical_json(core)).hexdigest()
+    return {**core, "object_id": f"LOBJ-{digest[:16].upper()}", "object_sha256": digest}
+
+
+def validate_research_object(value: object) -> dict[str, Any]:
+    if not isinstance(value, dict) or value.get("schema") != OBJECT_SCHEMA:
+        raise ProjectError(f"research object schema must be {OBJECT_SCHEMA}")
+    digest = value.get("object_sha256")
+    if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
+        raise ProjectError("research object digest is invalid")
+    if value.get("object_id") != f"LOBJ-{digest[:16].upper()}":
+        raise ProjectError("research object id does not match digest")
+    core = {key: item for key, item in value.items() if key not in {"object_id", "object_sha256"}}
+    if hashlib.sha256(canonical_json(core)).hexdigest() != digest:
+        raise ProjectError("research object digest does not match canonical content")
+    if value.get("object_type") not in OBJECT_TYPES or value.get("visibility") not in VISIBILITIES:
+        raise ProjectError("research object type or visibility is invalid")
+    if not isinstance(value.get("page_refs"), list) or not isinstance(value.get("result_refs"), list):
+        raise ProjectError("research object references must be arrays")
+    return value
+
+
+def validate_runtime_job(value: object) -> dict[str, Any]:
+    if not isinstance(value, dict) or value.get("schema") != "HMS_RUNTIME_JOB_V1":
+        raise ProjectError("runtime job schema is invalid")
+    digest = value.get("specification_sha256")
+    if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
+        raise ProjectError("runtime job digest is invalid")
+    if value.get("job_id") != f"JOB-{digest[:16].upper()}":
+        raise ProjectError("runtime job id does not match digest")
+    specification = {key: item for key, item in value.items() if key not in {"job_id", "specification_sha256"}}
+    if hashlib.sha256(canonical_json(specification)).hexdigest() != digest:
+        raise ProjectError("runtime job digest does not match canonical content")
     return value
 
 
@@ -175,11 +246,11 @@ class ProjectStore:
             raise ProjectError("project folder must be empty")
         root.mkdir(parents=True, exist_ok=True)
         project = create_project_record(name, created_at=created_at, manifest_ref=manifest_ref, manifest_sha256=manifest_sha256)
-        for name_part in ("runs", "results", "exports", "notes"):
+        for name_part in ("runs", "results", "objects", "exports"):
             (root / name_part).mkdir()
         _write_json(root / "project.json", project)
-        _write_json(root / "settings.json", {"schema":"HMS_PROJECT_SETTINGS_V1","local_corpus_root":None})
-        _write_json(root / "index.json", {"schema":"HMS_PROJECT_INDEX_V1","runs":[],"results":[]})
+        _write_json(root / "settings.json", {"schema":SETTINGS_SCHEMA,"local_corpus_root":None})
+        _write_json(root / "index.json", {"schema":"HMS_PROJECT_INDEX_V1","runs":[],"results":[],"objects":[]})
         return cls(root, project)
 
     @classmethod
@@ -281,10 +352,59 @@ class ProjectStore:
         self.rebuild_index()
         return envelope
 
+    def read_settings(self) -> dict[str, Any]:
+        try:
+            return validate_settings(json.loads((self.root / "settings.json").read_text(encoding="utf-8")))
+        except (OSError, UnicodeError, json.JSONDecodeError) as error:
+            raise ProjectError(f"project settings could not be read: {error}") from error
+
+    def set_local_corpus_root(self, root: Path | None) -> dict[str, Any]:
+        value = None if root is None else str(Path(root).resolve())
+        if value is not None and not Path(value).is_dir():
+            raise ProjectError("local corpus root must be an existing folder")
+        settings = validate_settings({"schema": SETTINGS_SCHEMA, "local_corpus_root": value})
+        _write_json(self.root / "settings.json", settings)
+        self.project["corpus"]["local_root_configured"] = value is not None
+        self.project["application_version"] = PROJECT_VERSION
+        _write_json(self.root / "project.json", self.project)
+        return settings
+
+    def save_research_object(
+        self, object_type: str, title: str, payload: dict[str, Any], *,
+        page_refs: list[str] | None = None, result_refs: list[str] | None = None,
+        visibility: str = "PRIVATE",
+    ) -> dict[str, Any]:
+        value = create_research_object(
+            project_id=self.project["project_id"], object_type=object_type, title=title,
+            payload=payload, page_refs=page_refs, result_refs=result_refs, visibility=visibility,
+        )
+        self._immutable_write(Path("objects") / f"{value['object_id']}.json", value)
+        self.rebuild_index()
+        return value
+
+    def list_research_objects(self) -> list[dict[str, Any]]:
+        values = []
+        object_root = self.root / "objects"
+        object_root.mkdir(exist_ok=True)
+        for path in sorted(object_root.glob("LOBJ-*.json")):
+            values.append(validate_research_object(json.loads(path.read_text(encoding="utf-8"))))
+        return values
+
+    def export_research_object(self, object_id: str, destination: Path) -> Path:
+        source = self.root / "objects" / f"{object_id}.json"
+        if not source.is_file():
+            raise ProjectError(f"unknown research object: {object_id}")
+        value = validate_research_object(json.loads(source.read_text(encoding="utf-8")))
+        _write_json(Path(destination), value)
+        return Path(destination)
+
     def rebuild_index(self) -> dict[str, Any]:
         runs = sorted(path.stem for path in (self.root / "runs").glob("JOB-*.json"))
         results = sorted(path.stem for path in (self.root / "results").glob("LRES-*.json"))
-        index = {"schema":"HMS_PROJECT_INDEX_V1","runs":runs,"results":results}
+        object_root = self.root / "objects"
+        object_root.mkdir(exist_ok=True)
+        objects = sorted(path.stem for path in object_root.glob("LOBJ-*.json"))
+        index = {"schema":"HMS_PROJECT_INDEX_V1","runs":runs,"results":results,"objects":objects}
         _write_json(self.root / "index.json", index)
         return index
 
@@ -301,3 +421,58 @@ class ProjectStore:
         value = validate_result_envelope(json.loads(source.read_text(encoding="utf-8")))
         _write_json(Path(destination), value)
         return Path(destination)
+
+    def audit(self) -> dict[str, Any]:
+        problems: list[str] = []
+        try:
+            validate_project(json.loads((self.root / "project.json").read_text(encoding="utf-8")))
+        except (ProjectError, OSError, UnicodeError, json.JSONDecodeError) as error:
+            problems.append(f"project.json: {error}")
+        try:
+            self.read_settings()
+        except ProjectError as error:
+            problems.append(f"settings.json: {error}")
+        for folder, pattern, validator in (
+            ("runs", "JOB-*.json", validate_runtime_job),
+            ("results", "LRES-*.json", validate_result_envelope),
+            ("objects", "LOBJ-*.json", validate_research_object),
+        ):
+            for path in sorted((self.root / folder).glob(pattern)):
+                try:
+                    validator(json.loads(path.read_text(encoding="utf-8")))
+                except (ProjectError, OSError, UnicodeError, json.JSONDecodeError) as error:
+                    problems.append(f"{path.relative_to(self.root).as_posix()}: {error}")
+        expected = self.rebuild_index()
+        return {
+            "schema": "HMS_PROJECT_AUDIT_V1", "project_id": self.project["project_id"],
+            "status": "PASS" if not problems else "FAIL", "problems": problems,
+            "summary": {"runs": len(expected["runs"]), "results": len(expected["results"]), "objects": len(expected["objects"])},
+            "privacy": {"network_access": False, "corpus_files_embedded": False, "local_path_in_backup": False},
+        }
+
+    def create_backup(self, destination: Path) -> Path:
+        """Create a deterministic metadata backup with local paths and exports excluded."""
+        audit = self.audit()
+        if audit["status"] != "PASS":
+            raise ProjectError("project audit must pass before backup")
+        destination = Path(destination)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        entries: dict[str, bytes] = {}
+        project = dict(self.project)
+        project["corpus"] = dict(project["corpus"])
+        project["corpus"]["local_root_configured"] = False
+        entries["project.json"] = json.dumps(project, ensure_ascii=False, indent=2).encode("utf-8") + b"\n"
+        entries["settings.json"] = json.dumps({"schema": SETTINGS_SCHEMA, "local_corpus_root": None}, indent=2).encode("utf-8") + b"\n"
+        entries["index.json"] = (self.root / "index.json").read_bytes()
+        for folder, pattern in (("runs", "JOB-*.json"), ("results", "LRES-*.json"), ("objects", "LOBJ-*.json")):
+            for path in sorted((self.root / folder).glob(pattern)):
+                entries[path.relative_to(self.root).as_posix()] = path.read_bytes()
+        checksums = "".join(f"{hashlib.sha256(entries[name]).hexdigest()}  {name}\n" for name in sorted(entries))
+        entries["SHA256SUMS"] = checksums.encode("utf-8")
+        with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+            for name in sorted(entries):
+                info = zipfile.ZipInfo(name, date_time=(2026, 8, 15, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                info.external_attr = 0o100644 << 16
+                archive.writestr(info, entries[name], compresslevel=9)
+        return destination

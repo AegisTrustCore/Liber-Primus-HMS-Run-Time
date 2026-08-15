@@ -11,7 +11,7 @@ from .corpus_manifest import validate_verification_report
 from .gp29 import calculate
 
 
-SUPPORTED_OPERATIONS = {"gp29.calculate", "corpus.report.validate", "experiment.gp29.batch"}
+SUPPORTED_OPERATIONS = {"gp29.calculate", "corpus.report.validate", "experiment.gp29.batch", "result.compare"}
 
 
 def canonical_json(value: object) -> bytes:
@@ -76,6 +76,22 @@ def create_gp29_experiment_job(
     )
 
 
+def create_result_comparison_job(left: dict[str, Any], right: dict[str, Any], visibility: str = "PRIVATE") -> dict[str, Any]:
+    """Create a deterministic structural comparison of two validated Result envelopes."""
+    from .project import validate_result_envelope
+
+    left_value = validate_result_envelope(left)
+    right_value = validate_result_envelope(right)
+    if left_value["result_id"] == right_value["result_id"]:
+        raise ValueError("select two different Results for comparison")
+    return _create_job(
+        "result.compare",
+        {"left": left_value, "right": right_value},
+        {"comparison_scope": "STRUCTURAL_ONLY"},
+        visibility,
+    )
+
+
 def execute_job(job: dict[str, Any]) -> dict[str, Any]:
     operation = job.get("operation")
     if operation not in SUPPORTED_OPERATIONS:
@@ -85,7 +101,7 @@ def execute_job(job: dict[str, Any]) -> dict[str, Any]:
     elif operation == "corpus.report.validate":
         report = job.get("input", {}).get("report", {})
         expected = create_corpus_report_job(report if isinstance(report, dict) else {}, str(job.get("visibility", "PRIVATE")))
-    else:
+    elif operation == "experiment.gp29.batch":
         input_value = job.get("input", {})
         parameters = job.get("parameters", {})
         gate = parameters.get("success_gate", {})
@@ -95,6 +111,13 @@ def execute_job(job: dict[str, Any]) -> dict[str, Any]:
             hypothesis=str(parameters.get("hypothesis", "")),
             target_gp_sum=gate.get("target") if isinstance(gate, dict) else None,
             visibility=str(job.get("visibility", "PRIVATE")),
+        )
+    else:
+        input_value = job.get("input", {})
+        expected = create_result_comparison_job(
+            input_value.get("left", {}) if isinstance(input_value, dict) else {},
+            input_value.get("right", {}) if isinstance(input_value, dict) else {},
+            str(job.get("visibility", "PRIVATE")),
         )
     if job.get("job_id") != expected["job_id"] or job.get("specification_sha256") != expected["specification_sha256"]:
         raise ValueError("job identity does not match its canonical specification")
@@ -106,7 +129,7 @@ def execute_job(job: dict[str, Any]) -> dict[str, Any]:
         output = validate_verification_report(expected["input"]["report"])
         evidence_label = "PROVENANCE_ONLY"
         limitations = ["Report validation confirms canonical report integrity, not corpus authenticity, rights, transcription correctness, or a Liber Primus solution."]
-    else:
+    elif operation == "experiment.gp29.batch":
         gate = expected["parameters"]["success_gate"]
         rows = []
         for index, variant in enumerate(expected["input"]["variants"], start=1):
@@ -134,6 +157,28 @@ def execute_job(job: dict[str, Any]) -> dict[str, Any]:
         limitations = [
             "A gate match is a declared numerical observation, not a plaintext, route, translation, or verified Liber Primus solution.",
             "The Runtime does not rank, optimize, or generate candidate variants for this experiment.",
+        ]
+    else:
+        left = expected["input"]["left"]
+        right = expected["input"]["right"]
+        comparable_fields = ("operation", "status", "visibility", "evidence_label", "parameters", "payload", "limitations")
+        field_matches = {field: left.get(field) == right.get(field) for field in comparable_fields}
+        output = {
+            "schema": "HMS_RESULT_COMPARISON_V1",
+            "left_result_id": left["result_id"],
+            "right_result_id": right["result_id"],
+            "left_instrument": left["instrument"],
+            "right_instrument": right["instrument"],
+            "matching_fields": [field for field, matches in field_matches.items() if matches],
+            "different_fields": [field for field, matches in field_matches.items() if not matches],
+            "field_matches": field_matches,
+            "left_envelope_sha256": left["envelope_sha256"],
+            "right_envelope_sha256": right["envelope_sha256"],
+        }
+        evidence_label = "STRUCTURAL"
+        limitations = [
+            "This comparison reports deterministic structural equality and difference only.",
+            "It does not assess semantic truth, corroboration, translation quality, or Liber Primus solution status.",
         ]
     result_core = {
         "schema": "HMS_RUNTIME_RESULT_V1",
