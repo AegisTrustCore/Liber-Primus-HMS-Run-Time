@@ -37,12 +37,12 @@
     },
     {
       "instrument_id": "corpus-manifest-verifier", "name": "Corpus Manifest Verifier", "purpose": "Determine whether a selected folder exactly matches a declared corpus manifest.",
-      "version": "0.1.0-rc.2", "status": "RELEASE_CANDIDATE", "release_channel": "RC", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": false,
+      "version": "0.1.0-rc.3", "status": "RELEASE_CANDIDATE", "release_channel": "RC", "access_level": "OBSERVER", "product_class": "USER_INSTRUMENT", "customer_ready": false,
       "delivery_modes": ["DESKTOP_PORTABLE", "CLI_BINARY", "DEVELOPER_SOURCE"], "released_delivery_modes": ["DEVELOPER_SOURCE"], "supported_platforms": ["Windows 10/11 x64 release candidate", "CPython 3.12 source"],
       "input_contract": "Researcher-selected folder, versioned manifest, and explicit strictness mode.", "output_contract": "HMS_CORPUS_VERIFICATION_V1 report with PASS/MISMATCH and expected, verified, missing, altered, and undeclared entries.",
-      "authority_class": "PROVENANCE", "evidence_scope": "MANIFEST_MATCH_ONLY", "capabilities": ["SHA-256 verification", "missing/altered/extra detection", "strict mode", "responsive desktop verification", "manifest identity preview", "searchable and sortable findings", "portable report", "five-case synthetic demo", "self-test"],
+      "authority_class": "PROVENANCE", "evidence_scope": "MANIFEST_MATCH_ONLY", "capabilities": ["SHA-256 verification", "missing/altered/extra detection", "strict mode", "responsive desktop verification", "safe multi-file page selection", "manifest identity preview", "searchable and sortable findings", "portable report", "five-case synthetic demo", "self-test"],
       "offline_behavior": "Runs entirely on explicit local inputs.", "network_behavior": "No network access.", "privacy_behavior": "Does not crawl outside the selected root and does not include the local root path in the portable report.",
-      "test_vectors": ["tests/test_corpus_manifest.py", "tests/test_corpus_package.py", "demo/corpus-verifier/README.md"], "self_test": true, "ordinary_user_acceptance": "Automated five-case qualification, canonical 75-page binding, and desktop usability controls are complete; clean-environment human UAT remains pending.",
+      "test_vectors": ["tests/test_corpus_manifest.py", "tests/test_corpus_package.py", "demo/corpus-verifier/README.md"], "self_test": true, "ordinary_user_acceptance": "Automated five-case qualification, canonical 75-page binding, desktop usability, and safe page-selection controls are complete; clean-environment human UAT remains pending.",
       "limitations": ["A manifest match does not prove historical authenticity.", "Canonical experiments may block mismatch while explicit user-corpus experiments remain permissible and recorded."], "release_gate": "Complete clean-environment human UAT and approve the exact checksum-identified package.", "human_approval": "REQUIRED_PENDING", "download_page": null, "last_updated": "2026-08-15"
     },
     {

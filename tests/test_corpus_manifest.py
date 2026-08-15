@@ -10,7 +10,7 @@ from pathlib import Path
 
 from hms_tools.corpus_manifest import CorpusManifestError, canonical_json, create_manifest, run_demo_self_test, validate_manifest, validate_verification_report, verify_manifest
 from hms_tools.runtime import create_corpus_report_job, execute_job
-from scripts.corpus_verifier_app import finding_matches, inspect_manifest, packaged_self_test
+from scripts.corpus_verifier_app import finding_matches, infer_corpus_root, inspect_manifest, packaged_self_test
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,6 +32,23 @@ class CorpusManifestTests(unittest.TestCase):
         self.assertTrue(result["passed"], result)
         self.assertEqual(set(result["cases"]), {"GOOD", "ALTERED", "MISSING", "EXTRA", "TRAVERSAL"})
 
+    def test_page_selection_infers_one_root_without_partial_verification(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "pages").mkdir()
+            first = root / "pages/00.jpg"
+            second = root / "pages/01.jpg"
+            first.write_bytes(b"first")
+            second.write_bytes(b"second")
+            manifest = create_manifest(root, "TEST", "1")
+            inferred, selected = infer_corpus_root([first, second], manifest)
+            self.assertEqual(inferred, root.resolve())
+            self.assertEqual(selected, ["pages/00.jpg", "pages/01.jpg"])
+            outside = root / "not-declared.jpg"
+            outside.write_bytes(b"outside")
+            with self.assertRaises(CorpusManifestError):
+                infer_corpus_root([outside], manifest)
+
     def test_canonical_lp_manifest_has_fixed_identity_and_complete_page_range(self):
         path = ROOT / "corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json"
         manifest = json.loads(path.read_text(encoding="utf-8"))
@@ -50,7 +67,7 @@ class CorpusManifestTests(unittest.TestCase):
         )
         self.assertEqual(completed.returncode, 0, completed.stderr)
         info = json.loads(completed.stdout)
-        self.assertEqual(info["application_version"], "0.1.0-rc.2")
+        self.assertEqual(info["application_version"], "0.1.0-rc.3")
         self.assertEqual(info["file_count"], 75)
         self.assertEqual(info["manifest_sha256"], "d11ef54e113d92cc5fd86976709d0ece188f09c7ce95fcc8d0fdb140c685b009")
 

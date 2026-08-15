@@ -17,7 +17,7 @@ HMS treats the source image, canonical transcription, alternative transcription,
 
 Corpus navigation status: **PUBLIC**
 
-Verifier status: **RELEASE CANDIDATE `0.1.0-rc.2` — NOT A PUBLIC RELEASE**
+Verifier status: **RELEASE CANDIDATE `0.1.0-rc.3` — NOT A PUBLIC RELEASE**
 
 The deterministic verifier core, CLI, desktop interface, JSON report contract, Windows portable candidate, and canonical 75-page identity manifest now exist. Clean-environment human UAT and approval of the exact package remain required before a public customer release.
 

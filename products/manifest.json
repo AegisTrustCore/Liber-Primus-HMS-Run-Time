@@ -66,9 +66,9 @@
       "status": "RELEASE_CANDIDATE",
       "release_channel": "RC",
       "access_level": "OBSERVER",
-      "current_version": "0.1.0-rc.2",
+      "current_version": "0.1.0-rc.3",
       "target_next_state": "RELEASED",
-      "required_gate": "Complete clean-environment human UAT and approve the exact checksum-identified Windows package; canonical binding, the five-case synthetic suite, and the desktop usability pass are complete.",
+      "required_gate": "Complete clean-environment human UAT and approve the exact checksum-identified Windows package; canonical binding, the five-case synthetic suite, desktop usability, and safe page selection are complete.",
       "depends_on": ["public-foundation"]
     },
     {

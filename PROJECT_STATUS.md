@@ -69,7 +69,7 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 ## Immediate focus
 
 1. Keep every status surface synchronized with the canonical Research Archive indexes.
-2. Complete clean-environment human UAT and exact-package approval for Corpus Manifest Verifier `0.1.0-rc.2`.
+2. Complete clean-environment human UAT and exact-package approval for Corpus Manifest Verifier `0.1.0-rc.3`.
 3. Qualify, leak-audit, and approve the Expedition 001 customer package before opening its public campaign.
 4. Complete recovery/privacy review and human UAT for HMS Endeavour Lite's integrated fail-closed Expedition client, then continue its metadata Atlas and first bounded experiment into page-aware Regions, general experiments, and comparison.
 5. Keep approved RR-0003 synchronized while continuing Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
@@ -85,7 +85,7 @@ The staged product, access, dependency, and human-gate architecture is now froze
 - Public GP29 Calculator: v0.1.1 is released as a free Observer-level Windows desktop and CLI download with an approved exact-subject gate and recorded acceptance limitation.
 - Expedition verifier: the v0.2.0 offline candidate was rejected after its five-letter digest failed the solution-leak audit. The v0.3.0 sealed-service/client deployment candidate now provides Ed25519-verified receipts, replay binding, bounded application rate controls, trusted-proxy handling, a non-root container, OpenAPI contract, and deterministic Windows packaging. No host, endpoint, production key, or customer download is public; deployment qualification, human UAT, and the campaign-opening decision remain pending.
 - Corpus navigation: the complete 75-page working-corpus map, timeline, page index, and verification route are public.
-- Corpus Manifest Verifier: `0.1.0-rc.2` is bound to the canonical 75-page manifest and adds responsive verification, manifest identity preview, searchable findings, visible digests, and detailed five-case self-testing; clean-environment human UAT and approval of the exact package remain pending.
+- Corpus Manifest Verifier: `0.1.0-rc.3` is bound to the canonical 75-page manifest and adds responsive verification, safe page-file selection, manifest identity preview, searchable findings, visible digests, and detailed five-case self-testing; clean-environment human UAT and approval of the exact package remain pending.
 - Endeavour Lite: runnable `0.1.0-dev` source now provides local projects, a selectable 29-rune workbench, GP29 and Corpus Results, one bounded declared GP29 experiment, history/export, a metadata-only 75-page Atlas, and a fail-closed signed Expedition client. The integrated client stores only the validated receipt and submission hash, never the answer text. The deterministic Windows package passes automated exact-package qualification and Defender scanning; recovery/privacy review, independent human UAT, and exact-package approval remain pending, and no public download exists. Liber Runtime remains a local developer core with no hosted public service.
 - Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
 - Scope: public status and identity records reflect the current merged service and workstation candidates; Expedition 001 remains closed pending deployment qualification and its own exact-subject release decision.
