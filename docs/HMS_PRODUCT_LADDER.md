@@ -33,7 +33,7 @@ The arrows describe dependency maturity, not a requirement that all engineering 
 | Expedition Verifier | IN_DEVELOPMENT | RELEASE_CANDIDATE | Customer package, solution-leak audit, synthetic/public tests, exact-subject approval |
 | Public GP29 Calculator | RELEASED | Maintain | Approved exact-subject gate; future changes require a new release subject |
 | Corpus Manifest Verifier | INTERNAL_TESTING | RELEASE_CANDIDATE | Promoted version, five-case synthetic corpus, canonical manifest, UAT, approval |
-| Endeavour Lite | IN_DEVELOPMENT — 0.1.0-dev | INTERNAL_TESTING | Secure Expedition integration, recovery checks, clean-environment human UAT, and exact-subject approval |
+| Endeavour Lite | IN_DEVELOPMENT — 0.1.0-dev | INTERNAL_TESTING | Recovery/privacy checks for the integrated fail-closed Expedition client, clean-environment human UAT, and exact-subject approval |
 | Liber Runtime Beta | IN_DEVELOPMENT developer core | INTERNAL_TESTING | Page-aware Atlas/Regions → general Experiments/comparison → Auto Explore → Evidence |
 | Advanced Instruments | PLANNED / mixed private prototypes | IN_DEVELOPMENT per module | Individual contracts, tests, capability gates, limitations, approval |
 | Full HMS / AEGIS Research Station | PLANNED | IN_DEVELOPMENT | Accepted dependency layers, privacy, trust, recovery, permissions, and operations |

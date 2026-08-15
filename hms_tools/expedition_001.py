@@ -39,7 +39,13 @@ HINTS = (
 )
 
 
-def instructions_text() -> str:
+def instructions_text(campaign_state: str = "CLOSED") -> str:
+    state = campaign_state.strip().upper()
+    campaign_line = (
+        "Campaign state: OPEN; submit through the signed official verification service."
+        if state == "OPEN"
+        else "Campaign state: closed redesign preview; the verification service is not active."
+    )
     sections = [
         "EXPEDITION 001 — THE EVIDENCE LEDGER",
         "Goal: classify five fictional logs, extract five characters, and verify the answer.",
@@ -53,7 +59,7 @@ def instructions_text() -> str:
         "STEPS",
         *STEPS,
         "",
-        "Campaign state: closed redesign preview; the verification service is not active.",
+        campaign_line,
     ]
     return "\n".join(sections)
 

@@ -24,7 +24,7 @@ DEVELOPMENT PACKAGE — NOT AN APPROVED PUBLIC RELEASE
 
 HMS Endeavour Lite is the local workstation foundation for the Rune Workbench, GP29,
 corpus verification, LP carrier navigation, bounded experiments, immutable Runs and
-Results, explicit evidence labels, and JSON export.
+Results, signed Expedition receipts, explicit evidence labels, and JSON export.
 
 START
 1. Double-click HMS-Endeavour-Lite.exe.
@@ -41,8 +41,10 @@ BOUNDARIES
 - The package includes the 75-page identity manifest, not page images.
 - GP29 output is CALCULATION_ONLY; corpus reports are PROVENANCE_ONLY.
 - Bounded comparison output is EXPERIMENTAL and never a solve declaration.
-- Expedition 001 remains closed and is shown as status only.
-- This build has no accounts, telemetry, upload, sockets, solver, or automatic solve claims.
+- Expedition 001 remains closed; its signed HTTPS client is disabled until an approved
+  campaign manifest supplies an OPEN state, endpoint, Ed25519 public key, and key ID.
+- Expedition answers are never saved; only the signed receipt and submission hash enter history.
+- This exact build has no active endpoint, accounts, telemetry, uploads, solver, or automatic solve claims.
 """
 
 
@@ -80,11 +82,12 @@ def main() -> int:
     build("scripts/endeavour_lite_app.py","HMS-Endeavour-Lite",stage,work,True)
     (stage / "START-HERE.txt").write_text(START_HERE,encoding="utf-8",newline="\n")
     (stage / "canonical").mkdir(); shutil.copyfile(CANONICAL_MANIFEST,stage / "canonical" / CANONICAL_MANIFEST.name)
+    (stage / "expedition").mkdir(); shutil.copyfile(ROOT / "challenges/manifest.json",stage / "expedition/manifest.json")
     (stage / "schemas").mkdir()
-    for name in ("hms-project.schema.json","result-envelope.schema.json","corpus-manifest.schema.json","corpus-verification.schema.json"):
+    for name in ("hms-project.schema.json","result-envelope.schema.json","corpus-manifest.schema.json","corpus-verification.schema.json","challenge-manifest.schema.json","expedition-verification-receipt.schema.json"):
         shutil.copyfile(ROOT / "schemas" / name,stage / "schemas" / name)
     shutil.copyfile(ROOT / "LICENSE",stage / "LICENSE.txt")
-    (stage / "manifest.json").write_text(json.dumps({"schema":"HMS_CUSTOMER_PACKAGE_V1","product":"HMS Endeavour Lite","version":VERSION,"status":"IN_DEVELOPMENT","package_state":"DEVELOPMENT_NOT_FOR_RELEASE","network_access":False,"telemetry":False,"expedition_campaign":"CLOSED","features":["RUNE_WORKBENCH","GP29","CORPUS_VERIFY","LP_ATLAS_METADATA","BOUNDED_GP29_EXPERIMENT","LOCAL_RUNS_RESULTS","EXPLICIT_JSON_EXPORT"]},indent=2)+"\n",encoding="utf-8",newline="\n")
+    (stage / "manifest.json").write_text(json.dumps({"schema":"HMS_CUSTOMER_PACKAGE_V1","product":"HMS Endeavour Lite","version":VERSION,"status":"IN_DEVELOPMENT","package_state":"DEVELOPMENT_NOT_FOR_RELEASE","network_access":False,"telemetry":False,"expedition_campaign":"CLOSED","features":["RUNE_WORKBENCH","GP29","CORPUS_VERIFY","LP_ATLAS_METADATA","BOUNDED_GP29_EXPERIMENT","EXPEDITION_SIGNED_CLIENT_FAIL_CLOSED","LOCAL_RUNS_RESULTS","EXPLICIT_JSON_EXPORT"]},indent=2)+"\n",encoding="utf-8",newline="\n")
     output=write_package(stage,ROOT / "dist" / PACKAGE_NAME)
     print(f"Built {output}"); print(f"SHA256 {sha256(output)}"); return 0
 
