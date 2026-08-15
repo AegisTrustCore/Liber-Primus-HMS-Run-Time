@@ -141,7 +141,7 @@ jobs:
         shell: pwsh
         run: |
           python scripts/build_corpus_verifier_windows.py
-          $zip = 'dist/HMS-Corpus-Verifier-v0.1.0-rc.1-Windows-x64-portable.zip'
+          $zip = 'dist/HMS-Corpus-Verifier-v0.1.0-rc.2-Windows-x64-portable.zip'
           $first = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
           python scripts/build_corpus_verifier_windows.py
           $second = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
@@ -150,7 +150,7 @@ jobs:
       - name: Qualify exact packaged verifier
         shell: pwsh
         run: |
-          $zip = Resolve-Path 'dist/HMS-Corpus-Verifier-v0.1.0-rc.1-Windows-x64-portable.zip'
+          $zip = Resolve-Path 'dist/HMS-Corpus-Verifier-v0.1.0-rc.2-Windows-x64-portable.zip'
           $qual = Join-Path $env:RUNNER_TEMP 'corpus-verifier-qualification'
           Expand-Archive -LiteralPath $zip -DestinationPath $qual
           $sample = Join-Path $qual 'sample'
@@ -182,7 +182,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: corpus-verifier-windows-rc-not-for-release
-          path: dist/HMS-Corpus-Verifier-v0.1.0-rc.1-Windows-x64-portable.zip
+          path: dist/HMS-Corpus-Verifier-v0.1.0-rc.2-Windows-x64-portable.zip
           if-no-files-found: error
           retention-days: 7
 

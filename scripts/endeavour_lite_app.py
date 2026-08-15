@@ -420,7 +420,7 @@ class EndeavourLiteApp(tk.Tk):
             report = verify_manifest(manifest, Path(self.corpus_root_path.get()), self.corpus_strict.get())
             job = create_corpus_report_job(report)
             result = execute_job(job)
-            envelope = store.save_execution(job, result, instrument_id="corpus-manifest-verifier", instrument_version="0.1.0-rc.1")
+            envelope = store.save_execution(job, result, instrument_id="corpus-manifest-verifier", instrument_version="0.1.0-rc.2")
         except (ProjectError, CorpusManifestError, OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
             messagebox.showerror("Corpus verification failed", str(error), parent=self); return
         for item in self.corpus_table.get_children(): self.corpus_table.delete(item)

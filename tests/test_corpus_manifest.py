@@ -10,12 +10,28 @@ from pathlib import Path
 
 from hms_tools.corpus_manifest import CorpusManifestError, canonical_json, create_manifest, run_demo_self_test, validate_manifest, validate_verification_report, verify_manifest
 from hms_tools.runtime import create_corpus_report_job, execute_job
+from scripts.corpus_verifier_app import finding_matches, inspect_manifest, packaged_self_test
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class CorpusManifestTests(unittest.TestCase):
+    def test_desktop_manifest_identity_and_finding_filters(self):
+        manifest = json.loads((ROOT / "corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json").read_text(encoding="utf-8"))
+        identity = inspect_manifest(manifest)
+        self.assertEqual(identity["corpus_id"], "LP-75-IMAGES")
+        self.assertEqual(identity["file_count"], 75)
+        self.assertEqual(identity["manifest_sha256"], "d11ef54e113d92cc5fd86976709d0ece188f09c7ce95fcc8d0fdb140c685b009")
+        self.assertTrue(finding_matches("MISMATCH", "32.jpg", "Problems only", "32"))
+        self.assertFalse(finding_matches("VERIFIED", "32.jpg", "Problems only", ""))
+        self.assertTrue(finding_matches("VERIFIED", "72.jpg", "Verified only", "72"))
+
+    def test_desktop_self_test_exercises_all_packaged_controls(self):
+        result = packaged_self_test()
+        self.assertTrue(result["passed"], result)
+        self.assertEqual(set(result["cases"]), {"GOOD", "ALTERED", "MISSING", "EXTRA", "TRAVERSAL"})
+
     def test_canonical_lp_manifest_has_fixed_identity_and_complete_page_range(self):
         path = ROOT / "corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json"
         manifest = json.loads(path.read_text(encoding="utf-8"))
@@ -34,7 +50,7 @@ class CorpusManifestTests(unittest.TestCase):
         )
         self.assertEqual(completed.returncode, 0, completed.stderr)
         info = json.loads(completed.stdout)
-        self.assertEqual(info["application_version"], "0.1.0-rc.1")
+        self.assertEqual(info["application_version"], "0.1.0-rc.2")
         self.assertEqual(info["file_count"], 75)
         self.assertEqual(info["manifest_sha256"], "d11ef54e113d92cc5fd86976709d0ece188f09c7ce95fcc8d0fdb140c685b009")
 

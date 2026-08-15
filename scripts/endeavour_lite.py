@@ -67,7 +67,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "corpus":
             manifest = json.loads(args.manifest.read_text(encoding="utf-8")); report = verify_manifest(manifest, args.corpus_root, args.strict)
             job = create_corpus_report_job(report); result = execute_job(job)
-            emit(store.save_execution(job, result, instrument_id="corpus-manifest-verifier", instrument_version="0.1.0-rc.1")); return 0 if report["status"] == "PASS" else 1
+            emit(store.save_execution(job, result, instrument_id="corpus-manifest-verifier", instrument_version="0.1.0-rc.2")); return 0 if report["status"] == "PASS" else 1
         if args.command == "experiment":
             job = create_gp29_experiment_job(args.variant, mode=args.mode, hypothesis=args.hypothesis, target_gp_sum=args.target)
             result = execute_job(job)
