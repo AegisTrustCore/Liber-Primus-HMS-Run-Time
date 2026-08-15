@@ -1,6 +1,6 @@
 # HMS Corpus Manifest Verifier
 
-Status: **RELEASE CANDIDATE `0.1.0-rc.1` — NOT AN APPROVED PUBLIC RELEASE**
+Status: **RELEASE CANDIDATE `0.1.0-rc.2` — NOT AN APPROVED PUBLIC RELEASE**
 
 ## What it is
 
@@ -19,7 +19,8 @@ There is no public download yet. The exact Windows candidate is retained only as
 3. Double-click `HMS-Corpus-Verifier.exe`.
 4. Keep the preselected canonical manifest, then choose the folder containing exactly `00.jpg` through `74.jpg`.
 5. Leave strict mode enabled and select **Verify corpus**.
-6. Save the JSON report when a durable verification record is needed.
+6. Use **Problems only**, Search, and sortable column headings to assess failures without scanning a wall of output.
+7. Save the digest-protected JSON report when a durable verification record is needed.
 
 Power users may run:
 
@@ -45,6 +46,17 @@ Expected behavior: GOOD passes; ALTERED reports a mismatch; MISSING reports a mi
 ## Output
 
 The portable `HMS_CORPUS_VERIFICATION_V1` JSON report records the manifest identity, verification status, summary counts, and per-file findings. It deliberately excludes the selected local root path. This report is the safe handoff to the future HMS Runtime.
+
+## Desktop usability
+
+- Corpus hashing runs in a background worker so the window remains responsive.
+- Manifest identity, declared file count, total bytes, and canonical digest are visible before verification.
+- PASS and FAIL summaries are color-coded, and findings can be filtered, searched, sorted, and copied.
+- Expected and observed SHA-256 values are visible beside byte counts.
+- Strict-mode disabling requires an explicit warning acknowledgement.
+- The GUI self-test reports GOOD, ALTERED, MISSING, EXTRA, and TRAVERSAL separately.
+- Export uses a descriptive filename and confirms that the local corpus-root path is excluded.
+- Keyboard shortcuts cover manifest selection, corpus selection, verification, search, export, and help.
 
 ## Limitations
 
@@ -78,5 +90,6 @@ Manifest creation records sorted relative POSIX paths, SHA-256 digests, byte cou
 
 ## Changelog
 
+- `0.1.0-rc.2`: responsive verification, manifest identity preview, searchable and sortable findings, visible digests, detailed five-case GUI self-test, strict-mode warning, safer report export, and keyboard shortcuts.
 - `0.1.0-rc.1`: bound the canonical 75-page manifest; added canonical identity inspection; promoted Windows GUI/CLI packaging and five-case qualification to release-candidate status.
 - `0.1.0-dev`: initial deterministic core, GUI/CLI, report contract, packaging, and synthetic controls.

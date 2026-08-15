@@ -3,7 +3,7 @@
   "schema_version": "1.1.0",
   "release_id": "CMV-v0.1.0-rc.1",
   "release_type": "SOFTWARE",
-  "status": "PENDING",
+  "status": "SUPERSEDED",
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
@@ -38,6 +38,7 @@
     "The canonical manifest publishes byte identities only and does not redistribute page images.",
     "Two independent GitHub Windows workflow runs passed package reproduction and exact packaged-interface qualification.",
     "The gate remains pending until clean-environment human UAT and explicit owner approval of this exact subject.",
-    "A PASS establishes declared byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution."
+    "A PASS establishes declared byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution.",
+    "Superseded by CMV-v0.1.0-rc.2 before public approval or release."
   ]
 }

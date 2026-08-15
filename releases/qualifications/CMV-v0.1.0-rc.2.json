@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "CMV-v0.1.0-rc.2",
+  "candidate_commit_sha": "b9f7395a3c48f79c849317ab05d353341d6ed095",
+  "environment_id": "ENV-0010",
+  "artifact": {
+    "name": "HMS-Corpus-Verifier-v0.1.0-rc.2-Windows-x64-portable.zip",
+    "sha256": "ee379e1f9fc0f3601833161202aae9f2118deda53fad309478336932d8d88ba9"
+  },
+  "qualification_date": "2026-08-15",
+  "build_reproducibility": {"clean_builds":2,"byte_identical":true,"source_date_epoch":"1786578000","python_hash_seed":"0"},
+  "functional_checks": [
+    {"check":"complete source suite: 75 unit tests and two Expedition guidance checks","passed":true},
+    {"check":"exact packaged GOOD/ALTERED/MISSING/EXTRA/TRAVERSAL suite","passed":true},
+    {"check":"exact packaged GUI five-case self-test","passed":true},
+    {"check":"exact packaged canonical-info returns 75 files and the fixed manifest digest","passed":true},
+    {"check":"exact packaged strict verification of the bound local 75-page set","passed":true},
+    {"check":"package internal SHA256SUMS","passed":true},
+    {"check":"portable report contains no local corpus-root path","passed":true},
+    {"check":"manifest identity and finding-filter source controls","passed":true},
+    {"check":"independent GitHub Windows runner reproduction and exact packaged-interface qualification (two successful workflow runs)","passed":true}
+  ],
+  "canonical_binding": {
+    "manifest":"LP-75-IMAGES-v1.0.0.json",
+    "canonical_json_sha256":"d11ef54e113d92cc5fd86976709d0ece188f09c7ce95fcc8d0fdb140c685b009",
+    "files_verified":75,
+    "verification_status":"PASS",
+    "verification_report_sha256":"8328387bc1a9f6074ad0ab1b65c30ae67d07815c0e813542dc98349482f2871d"
+  },
+  "security_scan": {
+    "scanner":"Microsoft Defender Antivirus",
+    "engine_version":"1.1.26070.7",
+    "signature_version":"1.457.172.0",
+    "result":"NO_THREATS",
+    "targets":[
+      {"name":"HMS-Corpus-Verifier-v0.1.0-rc.2-Windows-x64-portable.zip","sha256":"ee379e1f9fc0f3601833161202aae9f2118deda53fad309478336932d8d88ba9"},
+      {"name":"HMS-Corpus-Verifier.exe","sha256":"e5f5c3657f10b6afadbc5d6deb276af687bce95bc32f5b0af1f552db595d8e7a"},
+      {"name":"HMS-Corpus-Verifier-CLI.exe","sha256":"498eda23ef2d4a64e3618c81c1ea8025f89d476018b50eccebd4171aeae6a02e"}
+    ]
+  },
+  "remaining_checks":["Independent ordinary-user clean-environment UAT","Explicit human publication approval"]
+}

@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
 from hms_tools.corpus_manifest import CorpusManifestError, canonical_json, create_manifest, run_demo_self_test, validate_manifest, verify_manifest
 
 
-APP_VERSION = "0.1.0-rc.1"
+APP_VERSION = "0.1.0-rc.2"
 CANONICAL_MANIFEST_NAME = "LP-75-IMAGES-v1.0.0.json"
 
 

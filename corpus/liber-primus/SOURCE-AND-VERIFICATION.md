@@ -41,7 +41,7 @@ GNU/Linux example for one page:
 sha256sum ./00.jpg
 ```
 
-The expected hash for each page is in both manifests. Corpus Manifest Verifier `0.1.0-rc.1` is bound to the JSON manifest, but remains a release candidate until clean-environment human UAT and exact-package approval are complete. Until then, native hashing remains the public reference check.
+The expected hash for each page is in both manifests. Corpus Manifest Verifier `0.1.0-rc.2` is bound to the JSON manifest, but remains a release candidate until clean-environment human UAT and exact-package approval are complete. Until then, native hashing remains the public reference check.
 
 ## Derived images
 
