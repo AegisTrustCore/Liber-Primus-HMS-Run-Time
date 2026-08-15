@@ -1,2 +1,2 @@
+-r requirements-runtime.txt
 gunicorn==23.0.0
-cryptography==48.0.0

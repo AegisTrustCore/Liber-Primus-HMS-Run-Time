@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.title="HMS Expedition Sealed Verification Service
       org.opencontainers.image.version="0.3.0" \
       org.opencontainers.image.source="https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time"
 
-COPY requirements-service.txt /app/requirements-service.txt
+COPY requirements-runtime.txt requirements-service.txt /app/
 RUN pip install --no-cache-dir --requirement /app/requirements-service.txt
 
 COPY hms_tools /app/hms_tools
