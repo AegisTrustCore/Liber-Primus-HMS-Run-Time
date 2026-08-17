@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "HMS-Endeavour-Runtime-v1.0.0-rc.1",
+  "candidate_commit_sha": "b44a0886c20d4976eb43689c839732a6c0b3bb33",
+  "environment_id": "ENV-0012",
+  "artifact": {
+    "name": "HMS-Endeavour-Runtime-v1.0.0-rc.1-Windows-x64-portable.zip",
+    "sha256": "b6583c34a56aad63b4ee8cc88ca05890844cdabebb62e3e59a349414973c71cb"
+  },
+  "qualification_date": "2026-08-17",
+  "build_reproducibility": {
+    "clean_builds": 2,
+    "byte_identical": true,
+    "source_date_epoch": "1786664400",
+    "python_hash_seed": "0"
+  },
+  "functional_checks": [
+    {"check":"79 source unit and integration tests","passed":true},
+    {"check":"public record and workstation-boundary validation","passed":true},
+    {"check":"exact packaged CLI and GUI self-tests","passed":true},
+    {"check":"packaged Pillow image-engine control","passed":true},
+    {"check":"internal SHA256SUMS verification","passed":true},
+    {"check":"project creation, GP29 Result, and bounded experiment","passed":true},
+    {"check":"immutable Note, normalized Region, and Page Set persistence","passed":true},
+    {"check":"project integrity audit","passed":true},
+    {"check":"privacy-safe backup excludes corpus images, exports, and local corpus-root path","passed":true},
+    {"check":"source GUI Atlas renders a bound 75-page carrier and supports selection and zoom","passed":true}
+  ],
+  "security_scan": {
+    "scanner": "Microsoft Defender Antivirus",
+    "engine_version": "1.1.26070.7",
+    "signature_version": "1.457.214.0",
+    "result": "NO_THREATS",
+    "targets": [
+      {"name":"HMS-Endeavour-Runtime-v1.0.0-rc.1-Windows-x64-portable.zip","sha256":"b6583c34a56aad63b4ee8cc88ca05890844cdabebb62e3e59a349414973c71cb"},
+      {"name":"HMS-Endeavour-Runtime.exe","sha256":"fd5f4aa7f716ebf0622f6adf4f64261625724865ec60aabedcda5c7055c84256"},
+      {"name":"HMS-Endeavour-Runtime-CLI.exe","sha256":"6b4ab8e704efdd69fc59f98320981848e428b29f50633e0f0d44d6794236130e"}
+    ]
+  },
+  "code_signing": {
+    "signed": false,
+    "disclosure": "The release-candidate executables are not Authenticode-signed. Windows may display an Unknown Publisher or reputation warning; users must verify the published SHA-256 checksum before running them."
+  },
+  "ordinary_user_acceptance": {
+    "status": "PENDING",
+    "protocol": "docs/tooling/RUNTIME_V1_UAT.md",
+    "remaining": "Clean ordinary-user visual UAT at 100% and 150% display scaling and explicit owner approval bound to the exact artifact SHA-256."
+  },
+  "remaining_checks": ["Independent ordinary-user visual UAT","Explicit human publication approval"]
+}

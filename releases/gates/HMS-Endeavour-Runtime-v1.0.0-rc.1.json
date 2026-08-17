@@ -1,0 +1,50 @@
+{
+  "$schema": "../../schemas/release-gate.schema.json",
+  "schema_version": "1.1.0",
+  "release_id": "HMS-Endeavour-Runtime-v1.0.0-rc.1",
+  "release_type": "SOFTWARE",
+  "status": "PENDING",
+  "classification": "PUBLIC",
+  "release_subject": {
+    "schema_version": "1.0.0",
+    "candidate_commit_sha": "b44a0886c20d4976eb43689c839732a6c0b3bb33",
+    "release_manifest": "releases/manifests/HMS-Endeavour-Runtime-v1.0.0-rc.1.json",
+    "release_manifest_sha256": "22bda53b8a251071f388734b1189d391ff495f3fdc9b7e38128690a2077f6056",
+    "environment_id": "ENV-0012",
+    "intended_tag": "HMS-Endeavour-Runtime-v1.0.0-rc.1"
+  },
+  "common_checks": {
+    "publication_approved": false,
+    "secret_scan_passed": true,
+    "rights_reviewed": true,
+    "provenance_complete": true,
+    "environment_recorded": true,
+    "links_tested": true,
+    "automated_validation_passed": true
+  },
+  "type_checks": {
+    "software": {
+      "tests_passed": true,
+      "package_hashes_present": true,
+      "dependency_manifest_present": true,
+      "security_scan_passed": true,
+      "build_reproducible": true,
+      "release_notes_complete": true
+    }
+  },
+  "human_approval": {
+    "approved": false,
+    "approver": null,
+    "approved_at": null,
+    "approved_subject_sha256": null
+  },
+  "notes": [
+    "The exact candidate binds the Runtime source at commit b44a0886c20d4976eb43689c839732a6c0b3bb33 and ZIP SHA-256 b6583c34a56aad63b4ee8cc88ca05890844cdabebb62e3e59a349414973c71cb.",
+    "Two local clean builds were byte-identical. The exact extracted package passed checksums, CLI and GUI self-tests, project workflows, bounded experiments, research objects, audit, and privacy-safe backup inspection.",
+    "The embedded Atlas displays a privately linked carrier; the release package contains the canonical identity manifest but no Liber Primus page images.",
+    "Microsoft Defender reported no threats for the ZIP and both executable files.",
+    "The executables are not Authenticode-signed; release notes require checksum verification and disclose possible Windows warnings.",
+    "The gate remains pending until clean ordinary-user visual UAT at 100% and 150% scaling and explicit owner approval.",
+    "GP29 and other numerical output do not establish a plaintext, translation, route, or Liber Primus solution."
+  ]
+}
