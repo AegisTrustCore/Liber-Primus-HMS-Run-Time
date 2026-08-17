@@ -7,7 +7,7 @@ Runtime v1 is the persistent local research environment inside HMS Endeavour. It
 ## Implemented v1 surface
 
 - Canonical 75-page identity manifest and privately configured corpus root.
-- Page selection, local carrier opening, Bookmarks, Page Sets, and normalized Regions.
+- Embedded page viewing with selection, fit/zoom, pan, previous/next navigation, optional external opening, Bookmarks, Page Sets, and normalized Regions.
 - Reusable immutable Notes, Rune Selections, Evidence, and Claims.
 - Versioned jobs for GP29, corpus-report validation, bounded GP29 experiments, and structural Result comparison.
 - Immutable Run and Result envelopes with provenance, visibility, evidence labels, limitations, and canonical hashes.
@@ -19,7 +19,7 @@ Canonical contracts include `schemas/runtime-job.schema.json`, `schemas/runtime-
 
 ## Explicitly deferred
 
-Auto Explore, candidate decryption, broad transform families, automated ranking, solver claims, network sockets/API, entitlements, plugins, contextual AEGIS, hosted compute, and Admiral workflows remain separate reviewed releases. Tier access never changes an evidence label or bypasses provenance controls.
+Auto Explore, candidate decryption, broad transform families, automated ranking, solver claims, network sockets/API, entitlements, plugins, contextual AEGIS, hosted compute, and Admiral workflows remain separate reviewed releases under the future Hosted Liber Runtime. Tier access never changes an evidence label or bypasses provenance controls.
 
 ## Release gate
 

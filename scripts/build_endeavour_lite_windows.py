@@ -23,14 +23,15 @@ START_HERE = """HMS ENDEAVOUR RUNTIME ENVIRONMENT v1.0.0-rc.1
 RELEASE CANDIDATE - NOT AN APPROVED PUBLIC RELEASE
 
 HMS Endeavour Runtime is a private local workstation for the Rune Workbench, GP29,
-corpus verification, page-aware LP Atlas, bounded experiments, immutable Runs,
+corpus verification, an embedded page-aware LP Atlas, bounded experiments, immutable Runs,
 Results and research objects, structural comparison, audit, safe backup, and export.
 
 START
 1. Double-click HMS-Endeavour-Runtime.exe.
 2. Create a project in a new empty folder, or open an existing HMS project.
-3. Use Rune Workbench, GP29, Corpus Verify, or Experiments and save the Result.
-4. Inspect Runs & Results and explicitly export only the Result you intend to share.
+3. Link your own local 75-page carrier in Corpus Verify; browse it privately in LP Atlas.
+4. Use Rune Workbench, GP29, Corpus Verify, or Experiments and save the Result.
+5. Inspect Runs & Results and explicitly export only the Result you intend to share.
 
 Power users:
   HMS-Endeavour-Runtime-CLI.exe --help

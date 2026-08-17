@@ -15,6 +15,15 @@
 
 Only the releases listed above are downloadable customer-facing GitHub releases. Development source may be visible on `main` before a packaged tool is approved for release.
 
+## Next two public instruments
+
+| Candidate | What is complete | Final gate |
+|---|---|---|
+| **Corpus Manifest Verifier 0.1.0-rc.3** | Canonical 75-page identity binding, file/folder selection, searchable findings, portable reports, five-case controls, deterministic Windows package | Exact-package visual UAT and owner approval |
+| **HMS Endeavour Runtime Environment 1.0.0-rc.1** | GP29, corpus verification, embedded 75-page Atlas with zoom/pan, research objects, bounded experiments, comparison, audit, safe backup, GUI/CLI packaging | Merge the green RC branch, exact-package visual UAT, and owner approval |
+
+Release-candidate source and CI artifacts are not public downloads. When approved, each instrument receives one immutable GitHub release, SHA-256, quick start, limitations, and matching Patreon notice.
+
 ## Start here
 
 | I want to… | Start with |
@@ -65,9 +74,9 @@ The puzzle is synthetic and does not conceal an unpublished *Liber Primus* resea
 | LP Source Audit Inventory | Released | Python developer source in `v0.1.0` |
 | Expedition Verifier | In development | Signed remote client and non-root sealed service candidate; no deployed endpoint or approved customer package |
 | Public GP29 Calculator | **Released** | Downloadable Windows desktop and CLI package with checksums, self-tests, dashboard, alphabet, JSON, and CSV export |
-| Corpus Manifest Verifier | Internal testing | Canonical 75-page Windows release candidate qualified; public package not released |
-| Liber Runtime Beta | In development | Local developer core only; no hosted public service |
-| HMS Endeavour Lite | In development | Runnable local workstation and qualified Windows development package; no public download |
+| Corpus Manifest Verifier | **Release candidate — 0.1.0-rc.3** | Qualified Windows package; final visual UAT and owner approval pending |
+| HMS Endeavour Runtime Environment | **Release candidate — 1.0.0-rc.1** | Qualified local workstation with embedded 75-page viewer; final visual UAT and owner approval pending |
+| Hosted Liber Runtime Beta | Planned | No hosted public service |
 | Advanced instruments | Planned | No solver, batch engine, API/socket layer, or Plugin SDK is available |
 
 The GP29 calculator is a deterministic calculator, **not a solver**. Its exact public artifact and approval are recorded in the [GP29 v0.1.1 release gate](releases/gates/GP29-v0.1.1.json).
@@ -84,10 +93,10 @@ See the machine-readable [Product Ladder](products/manifest.json), readable [HMS
 
 ## What comes next
 
-1. Complete clean-environment human UAT and exact-package approval for the Corpus Manifest Verifier release candidate.
+1. Complete exact-package visual UAT and owner approval for the Corpus Manifest Verifier release candidate.
 2. Deploy and privately qualify the sealed Expedition service, then approve the configured customer package before opening a public campaign.
-3. Complete Endeavour Lite recovery/privacy review and human UAT, then promote an exact checksum-identified package.
-4. Grow those increments into Liber Runtime Beta; add Auto Explore and contextual AEGIS only after the object lifecycle is dependable.
+3. Merge and complete exact-package visual UAT for HMS Endeavour Runtime Environment v1, then promote its checksum-identified package.
+4. Build the hosted Liber Runtime Beta separately; add Auto Explore and contextual AEGIS only after the local object lifecycle is dependable.
 5. Add batch, Advanced GP, solver, sockets/API, and the Plugin SDK only after their dependency gates are met.
 
 The detailed sequence is maintained in [Next Steps](NEXT_STEPS.md).

@@ -1,6 +1,6 @@
 # Public Release Catalog
 
-Last reviewed: 2026-08-14
+Last reviewed: 2026-08-17
 
 This page is the human-readable authority for what HMS Endeavour has actually released through GitHub.
 
@@ -15,6 +15,15 @@ The foundation publishes one verified provenance record, `OBS-0001`. It publishe
 [`GP29-v0.1.1 — HMS GP29 Calculator`](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) is the released free Observer-level Windows desktop and CLI calculator. The release includes the exact portable ZIP, checksums, self-tests, a visible Gematria Primus alphabet, readable dashboard, raw JSON, and CSV export.
 
 GP29 remains an offline deterministic calculator, not a decoder or Liber Primus solve claim.
+
+## Next public releases — gated
+
+Two instruments are complete release candidates but are **not downloads yet**:
+
+1. **HMS Corpus Manifest Verifier `0.1.0-rc.3`** — verifies all 75 declared page files against the canonical identity manifest and reports altered, missing, extra, and unsafe-path conditions. Automated and packaged qualification passes; ordinary-user UAT and exact-checksum owner approval remain.
+2. **HMS Endeavour Runtime Environment `1.0.0-rc.1`** — combines the Rune Workbench, GP29, Corpus Verify, an embedded LP Atlas, research objects, bounded experiments, comparisons, history, audit, recovery, backup, and export in one local workstation. Its final rebuilt package still requires clean-environment visual UAT, security scan, and exact-checksum owner approval.
+
+The repository may expose their source, documentation, and pending release records. That does not make an RC an approved public download. The release catalog will link the immutable ZIPs only after their gates change to `APPROVED`.
 
 ## Structured Research Archive
 
@@ -34,7 +43,7 @@ The public source tree exposes actual [Runs](research/runs/README.md), [Results]
 
 The release contains the historical Cicada 3301 public-key reference, verified fingerprint record `OBS-0001`, and a status-level five-item LP release roadmap. Exact research assignments and experimental details remain private. GP29 is distributed separately through its approved `GP29-v0.1.1` release.
 
-Foundation content was frozen and merged in [PR #1](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/pull/1); release state was activated separately. GP29 received its own approved release decision; Expedition 001, `RC-0001`, and HMS Endeavour Lite remain separately gated.
+Foundation content was frozen and merged in [PR #1](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/pull/1); release state was activated separately. GP29 received its own approved release decision. Expedition 001, the Corpus Manifest Verifier, and HMS Endeavour Runtime Environment remain independently gated.
 
 ## GitHub release destinations
 

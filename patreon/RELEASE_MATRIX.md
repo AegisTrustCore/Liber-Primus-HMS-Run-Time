@@ -1,6 +1,6 @@
 # Patreon Release Matrix
 
-Last reviewed: 2026-08-15
+Last reviewed: 2026-08-17
 
 Patreon is the member delivery and development-support layer. It points back to GitHub for stable public evidence and provides progressively deeper material only when that material exists and has been approved for the intended audience.
 
@@ -29,7 +29,7 @@ Public and member packages use the same [`RUN → RES → CAP → RSET`](../docs
 
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
 
-As of 2026-08-14, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. No Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit; its v0.3 sealed-service/client deployment candidate is built but has no approved host, endpoint, configured public client, or campaign release. No tiered hint, worksheet, validation, or solution release is live.
+As of 2026-08-17, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. Corpus Manifest Verifier 0.1.0-rc.3 and HMS Endeavour Runtime Environment 1.0.0-rc.1 are pending public candidates, not downloads; Patreon announcements must remain drafts until their exact GitHub releases are approved. No Hosted Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit; its v0.3 sealed-service/client deployment candidate is built but has no approved host, endpoint, configured public client, or campaign release. No tiered hint, worksheet, validation, or solution release is live.
 
 ## Expedition release ladder
 

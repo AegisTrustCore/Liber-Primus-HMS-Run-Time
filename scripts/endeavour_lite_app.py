@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""HMS Endeavour Lite local research workstation development shell."""
+"""HMS Endeavour Runtime Environment local research workstation."""
 
 from __future__ import annotations
 
@@ -12,6 +12,8 @@ import tkinter as tk
 import zipfile
 from pathlib import Path
 from tkinter import filedialog, messagebox, simpledialog, ttk
+
+from PIL import Image, ImageOps, ImageTk
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -65,6 +67,10 @@ def load_expedition_configuration() -> tuple[str, ServiceConfiguration | None]:
 
 def packaged_self_test() -> bool:
     with tempfile.TemporaryDirectory() as directory:
+        atlas_page = Path(directory) / "atlas-control.png"
+        Image.new("RGB", (29, 75), "#d4af37").save(atlas_page)
+        with Image.open(atlas_page) as source:
+            atlas_control = ImageOps.exif_transpose(source).copy()
         store = ProjectStore.create(Path(directory) / "project", "Self Test", created_at="2026-08-14T00:00:00Z")
         job = create_job("F U/V TH", "tokens")
         result = execute_job(job)
@@ -91,6 +97,7 @@ def packaged_self_test() -> bool:
             and research_object["object_type"] == "REGION"
             and reopened.audit()["status"] == "PASS"
             and backup.is_file()
+            and atlas_control.size == (29, 75)
         )
 
 
@@ -116,6 +123,13 @@ class EndeavourLiteApp(tk.Tk):
         self.corpus_strict = tk.BooleanVar(value=True)
         self.corpus_summary = tk.StringVar(value="No verification yet.")
         self.atlas_summary = tk.StringVar(value="Select one or more registered pages.")
+        self.atlas_page_title = tk.StringVar(value="No page selected")
+        self.atlas_zoom_text = tk.StringVar(value="Fit")
+        self.atlas_zoom = 1.0
+        self.atlas_fit = True
+        self._atlas_source_image: Image.Image | None = None
+        self._atlas_photo: ImageTk.PhotoImage | None = None
+        self._atlas_resize_job: str | None = None
         self.research_title = tk.StringVar()
         self.research_type = tk.StringVar(value="NOTE")
         self.research_pages = tk.StringVar()
@@ -201,7 +215,7 @@ class EndeavourLiteApp(tk.Tk):
             ("GP29", "RELEASED", "Calculate and save deterministic GP29 Results."),
             ("Corpus", "RC", "Verify the canonical 75-page identity manifest."),
             ("Expedition", self.expedition_state, "Signed remote receipts; submitted plaintext is never saved."),
-            ("Runtime", "DEVELOPMENT", "Local jobs, Results, provenance, and history."),
+            ("Runtime", "RELEASE CANDIDATE", "Local Atlas, research objects, Results, audit, and recovery."),
         )):
             card = ttk.LabelFrame(cards, text=title, padding=12)
             card.grid(row=0, column=column, sticky="nsew", padx=(0 if column == 0 else 6, 0))
@@ -279,19 +293,43 @@ class EndeavourLiteApp(tk.Tk):
 
     def _build_atlas_tab(self) -> None:
         frame = self._tab("LP Atlas")
-        ttk.Label(frame, text="LP Atlas - page-aware research index", font=("Segoe UI", 18, "bold")).pack(anchor="w")
-        ttk.Label(frame, text="The canonical manifest is preloaded. Link local images privately, select pages, open a carrier, or save bookmarks and Page Sets.").pack(anchor="w", pady=(4, 8))
+        ttk.Label(frame, text="LP Atlas - all 75 registered pages", font=("Segoe UI", 18, "bold")).pack(anchor="w")
+        ttk.Label(frame, text="The manifest is preloaded. Link your private local corpus once, then view, zoom, pan, annotate, bookmark, and group pages without copying them into the project.").pack(anchor="w", pady=(4, 8))
         controls = ttk.Frame(frame); controls.pack(fill="x", pady=(0, 8))
-        ttk.Button(controls, text="Open selected page", command=self.open_selected_page).pack(side="left")
-        ttk.Button(controls, text="Save bookmark", command=self.save_atlas_bookmark).pack(side="left", padx=6)
+        ttk.Button(controls, text="Previous", command=lambda: self.move_atlas_page(-1)).pack(side="left")
+        ttk.Button(controls, text="Next", command=lambda: self.move_atlas_page(1)).pack(side="left", padx=(4, 10))
+        ttk.Button(controls, text="Fit", command=self.fit_atlas_page).pack(side="left")
+        ttk.Button(controls, text="-", width=3, command=lambda: self.zoom_atlas_page(0.8)).pack(side="left", padx=(4, 0))
+        ttk.Button(controls, text="+", width=3, command=lambda: self.zoom_atlas_page(1.25)).pack(side="left", padx=(2, 8))
+        ttk.Label(controls, textvariable=self.atlas_zoom_text, width=8).pack(side="left")
+        ttk.Button(controls, text="Open externally", command=self.open_selected_page).pack(side="left", padx=(0, 6))
+        ttk.Button(controls, text="Bookmark", command=self.save_atlas_bookmark).pack(side="left")
         ttk.Button(controls, text="Save selected as Page Set", command=self.save_atlas_pageset).pack(side="left")
         ttk.Label(controls, textvariable=self.atlas_summary).pack(side="right")
-        self.atlas_table = ttk.Treeview(frame, columns=("page","bytes","sha256"), show="headings", selectmode="extended")
-        self.atlas_table.heading("page", text="Page"); self.atlas_table.column("page", width=100)
-        self.atlas_table.heading("bytes", text="Bytes"); self.atlas_table.column("bytes", width=120)
-        self.atlas_table.heading("sha256", text="SHA-256"); self.atlas_table.column("sha256", width=620)
-        self.atlas_table.pack(fill="both", expand=True)
+        pane = ttk.Panedwindow(frame, orient="horizontal"); pane.pack(fill="both", expand=True)
+        list_frame = ttk.Frame(pane); viewer = ttk.Frame(pane)
+        pane.add(list_frame, weight=1); pane.add(viewer, weight=4)
+        self.atlas_table = ttk.Treeview(list_frame, columns=("page","bytes"), show="headings", selectmode="extended")
+        self.atlas_table.heading("page", text="Page"); self.atlas_table.column("page", width=105, anchor="w")
+        self.atlas_table.heading("bytes", text="Bytes"); self.atlas_table.column("bytes", width=90, anchor="e")
+        atlas_scroll = ttk.Scrollbar(list_frame, orient="vertical", command=self.atlas_table.yview)
+        self.atlas_table.configure(yscrollcommand=atlas_scroll.set)
+        self.atlas_table.pack(side="left", fill="both", expand=True); atlas_scroll.pack(side="right", fill="y")
+        ttk.Label(viewer, textvariable=self.atlas_page_title, font=("Segoe UI", 11, "bold")).pack(fill="x", pady=(0, 4))
+        canvas_frame = ttk.Frame(viewer); canvas_frame.pack(fill="both", expand=True)
+        self.atlas_canvas = tk.Canvas(canvas_frame, background="#20252b", highlightthickness=0)
+        atlas_x = ttk.Scrollbar(canvas_frame, orient="horizontal", command=self.atlas_canvas.xview)
+        atlas_y = ttk.Scrollbar(canvas_frame, orient="vertical", command=self.atlas_canvas.yview)
+        self.atlas_canvas.configure(xscrollcommand=atlas_x.set, yscrollcommand=atlas_y.set)
+        self.atlas_canvas.grid(row=0, column=0, sticky="nsew"); atlas_y.grid(row=0, column=1, sticky="ns"); atlas_x.grid(row=1, column=0, sticky="ew")
+        canvas_frame.rowconfigure(0, weight=1); canvas_frame.columnconfigure(0, weight=1)
+        self.atlas_canvas.create_text(20, 20, anchor="nw", fill="#d7dde5", text="Link a local corpus folder in Project & Recovery, then select a page.", tags="message", font=("Segoe UI", 11))
+        self.atlas_canvas.bind("<ButtonPress-1>", lambda event: self.atlas_canvas.scan_mark(event.x, event.y))
+        self.atlas_canvas.bind("<B1-Motion>", lambda event: self.atlas_canvas.scan_dragto(event.x, event.y, gain=1))
+        self.atlas_canvas.bind("<Control-MouseWheel>", self.atlas_mouse_zoom)
+        self.atlas_canvas.bind("<Configure>", self.atlas_canvas_resized)
         self.atlas_table.bind("<<TreeviewSelect>>", self.atlas_selection_changed)
+        self.atlas_table.bind("<Double-1>", lambda _event: self.fit_atlas_page())
 
     def _build_experiment_tab(self) -> None:
         frame = self._tab("Experiments")
@@ -460,6 +498,7 @@ class EndeavourLiteApp(tk.Tk):
             self.recovery_summary.set(f"Settings error: {error}")
         self.refresh_history()
         self.refresh_research_objects()
+        self.render_atlas_page(reload_source=True)
 
     def calculate_gp29(self) -> None:
         try:
@@ -492,6 +531,7 @@ class EndeavourLiteApp(tk.Tk):
         except (ProjectError, OSError) as error:
             messagebox.showerror("Corpus link failed", str(error), parent=self); return
         self.recovery_summary.set(f"Private local corpus linked: {settings['local_corpus_root']}")
+        self.render_atlas_page()
 
     def clear_corpus_root(self) -> None:
         try: self._require_project().set_local_corpus_root(None)
@@ -499,6 +539,10 @@ class EndeavourLiteApp(tk.Tk):
             messagebox.showerror("Unable to clear corpus link", str(error), parent=self); return
         self.corpus_root_path.set("")
         self.recovery_summary.set("Private corpus link cleared. No corpus files were changed.")
+        self._atlas_source_image = None
+        self._atlas_photo = None
+        self.atlas_canvas.delete("all")
+        self.atlas_canvas.create_text(20, 20, anchor="nw", fill="#d7dde5", text="Link a local corpus folder in Project & Recovery, then select a page.", tags="message", font=("Segoe UI", 11))
 
     def verify_corpus(self) -> None:
         try:
@@ -517,6 +561,9 @@ class EndeavourLiteApp(tk.Tk):
             self.corpus_table.insert("", "end", values=("UNEXPECTED",path,"—","—"))
         summary = report["summary"]
         self.corpus_summary.set(f"{report['status']} · {summary['verified']} verified · {summary['mismatch']} altered · {summary['missing']} missing · {summary['unexpected']} extra")
+        if report["status"] == "PASS":
+            store.set_local_corpus_root(Path(self.corpus_root_path.get()))
+            self.render_atlas_page(reload_source=True)
         self.status.set(f"Corpus report saved as {envelope['result_id']} with PROVENANCE_ONLY evidence.")
         self.refresh_history()
 
@@ -550,6 +597,9 @@ class EndeavourLiteApp(tk.Tk):
         except (OSError, UnicodeError, json.JSONDecodeError): return
         for item in manifest.get("files", []):
             self.atlas_table.insert("", "end", values=(item.get("path",""),item.get("bytes",""),item.get("sha256","")))
+        children = self.atlas_table.get_children()
+        if children:
+            self.atlas_table.selection_set(children[0]); self.atlas_table.focus(children[0])
 
     def selected_atlas_pages(self) -> list[str]:
         return [str(self.atlas_table.item(item, "values")[0]) for item in self.atlas_table.selection()]
@@ -558,17 +608,79 @@ class EndeavourLiteApp(tk.Tk):
         pages = self.selected_atlas_pages()
         self.atlas_summary.set(f"{len(pages)} page(s) selected" if pages else "Select one or more registered pages.")
         self.research_pages.set(", ".join(pages))
+        if len(pages) == 1:
+            self.atlas_page_title.set(pages[0])
+            self.atlas_fit = True
+            self.render_atlas_page(reload_source=True)
+
+    def atlas_page_path(self) -> Path:
+        pages = self.selected_atlas_pages()
+        if len(pages) != 1: raise ProjectError("select exactly one Atlas page")
+        root = self._require_project().read_settings()["local_corpus_root"]
+        if not root: raise ProjectError("link the private local corpus folder in Project & Recovery first")
+        root_path = Path(root).resolve(); target = (root_path / pages[0]).resolve()
+        if not target.is_relative_to(root_path) or not target.is_file():
+            raise ProjectError(f"local corpus page is unavailable: {pages[0]}")
+        return target
+
+    def render_atlas_page(self, *, reload_source: bool = False) -> None:
+        try:
+            target = self.atlas_page_path()
+            if reload_source or self._atlas_source_image is None:
+                with Image.open(target) as image:
+                    self._atlas_source_image = ImageOps.exif_transpose(image).convert("RGB")
+            source = self._atlas_source_image
+            if source is None: return
+            if self.atlas_fit:
+                self.update_idletasks()
+                available_width = max(200, self.atlas_canvas.winfo_width() - 24)
+                available_height = max(200, self.atlas_canvas.winfo_height() - 24)
+                self.atlas_zoom = min(available_width / source.width, available_height / source.height, 1.0)
+            width = max(1, round(source.width * self.atlas_zoom)); height = max(1, round(source.height * self.atlas_zoom))
+            rendered = source.resize((width, height), Image.Resampling.LANCZOS)
+            self._atlas_photo = ImageTk.PhotoImage(rendered)
+            self.atlas_canvas.delete("all")
+            self.atlas_canvas.create_image(0, 0, anchor="nw", image=self._atlas_photo, tags="page")
+            self.atlas_canvas.configure(scrollregion=(0, 0, width, height))
+            self.atlas_zoom_text.set(f"{round(self.atlas_zoom * 100)}%")
+            self.atlas_page_title.set(f"{target.name}  ·  {source.width} x {source.height}px")
+        except (ProjectError, OSError, ValueError) as error:
+            self._atlas_source_image = None; self._atlas_photo = None
+            self.atlas_canvas.delete("all")
+            self.atlas_canvas.create_text(20, 20, anchor="nw", width=max(300, self.atlas_canvas.winfo_width() - 40), fill="#d7dde5", text=str(error), tags="message", font=("Segoe UI", 11))
+
+    def fit_atlas_page(self) -> None:
+        self.atlas_fit = True
+        self.render_atlas_page()
+
+    def zoom_atlas_page(self, factor: float) -> None:
+        if self._atlas_source_image is None:
+            self.render_atlas_page(reload_source=True)
+            if self._atlas_source_image is None: return
+        self.atlas_fit = False
+        self.atlas_zoom = min(4.0, max(0.1, self.atlas_zoom * factor))
+        self.render_atlas_page()
+
+    def atlas_mouse_zoom(self, event) -> str:
+        self.zoom_atlas_page(1.15 if event.delta > 0 else 1 / 1.15)
+        return "break"
+
+    def atlas_canvas_resized(self, _event=None) -> None:
+        if not self.atlas_fit or self._atlas_source_image is None: return
+        if self._atlas_resize_job is not None: self.after_cancel(self._atlas_resize_job)
+        self._atlas_resize_job = self.after(120, self.render_atlas_page)
+
+    def move_atlas_page(self, offset: int) -> None:
+        children = list(self.atlas_table.get_children())
+        if not children: return
+        selected = self.atlas_table.selection()
+        current = children.index(selected[0]) if selected and selected[0] in children else 0
+        target = children[(current + offset) % len(children)]
+        self.atlas_table.selection_set(target); self.atlas_table.focus(target); self.atlas_table.see(target)
 
     def open_selected_page(self) -> None:
-        pages = self.selected_atlas_pages()
-        if len(pages) != 1:
-            messagebox.showinfo("Select one page", "Select exactly one Atlas page to open.", parent=self); return
         try:
-            root = self._require_project().read_settings()["local_corpus_root"]
-            if not root: raise ProjectError("Link the private local corpus folder in Project & Recovery first.")
-            target = (Path(root) / pages[0]).resolve()
-            if not target.is_relative_to(Path(root).resolve()) or not target.is_file():
-                raise ProjectError(f"local corpus page is unavailable: {pages[0]}")
+            target = self.atlas_page_path()
             if os.name == "nt": os.startfile(target)  # type: ignore[attr-defined]
             elif sys.platform == "darwin": subprocess.Popen(["open", str(target)])
             else: subprocess.Popen(["xdg-open", str(target)])

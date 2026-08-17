@@ -1,6 +1,6 @@
 # Project Status
 
-Last reviewed: 2026-08-14
+Last reviewed: 2026-08-17
 
 ## Released in the `v0.1.0` foundation
 
@@ -71,7 +71,7 @@ The 1,322-file inventory will be converted deliberately rather than bulk-publish
 1. Keep every status surface synchronized with the canonical Research Archive indexes.
 2. Complete clean-environment human UAT and exact-package approval for Corpus Manifest Verifier `0.1.0-rc.3`.
 3. Qualify, leak-audit, and approve the Expedition 001 customer package before opening its public campaign.
-4. Complete recovery/privacy review and human UAT for HMS Endeavour Lite's integrated fail-closed Expedition client, then continue its metadata Atlas and first bounded experiment into page-aware Regions, general experiments, and comparison.
+4. Complete final visual UAT and owner approval for HMS Endeavour Runtime Environment v1; its privacy/recovery controls, embedded Atlas, research objects, bounded experiment, and structural comparison are implemented.
 5. Keep approved RR-0003 synchronized while continuing Page 72/73 provenance reconciliation as a separate research lane without displacing the customer-tool sequence.
 
 The staged product, access, dependency, and human-gate architecture is now frozen in the [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md). The mature application direction is recorded separately and does not change current availability.
@@ -86,6 +86,6 @@ The staged product, access, dependency, and human-gate architecture is now froze
 - Expedition verifier: the v0.2.0 offline candidate was rejected after its five-letter digest failed the solution-leak audit. The v0.3.0 sealed-service/client deployment candidate now provides Ed25519-verified receipts, replay binding, bounded application rate controls, trusted-proxy handling, a non-root container, OpenAPI contract, and deterministic Windows packaging. No host, endpoint, production key, or customer download is public; deployment qualification, human UAT, and the campaign-opening decision remain pending.
 - Corpus navigation: the complete 75-page working-corpus map, timeline, page index, and verification route are public.
 - Corpus Manifest Verifier: `0.1.0-rc.3` is bound to the canonical 75-page manifest and adds responsive verification, safe page-file selection, manifest identity preview, searchable findings, visible digests, and detailed five-case self-testing; clean-environment human UAT and approval of the exact package remain pending.
-- HMS Endeavour Runtime Environment: bounded v1 source is code-complete at `1.0.0-rc.1`. It includes local projects, the Rune Workbench, GP29 and Corpus Results, a page-aware 75-page Atlas, immutable research objects, a bounded declared GP29 experiment, structural Result comparison, history/export, integrity audit, privacy-safe backup, and the fail-closed signed Expedition client. Automated source tests pass; a new exact Windows RC build, clean-environment/human UAT, Defender scan, and checksum approval remain pending. No Runtime v1 public download or hosted service exists yet.
+- HMS Endeavour Runtime Environment: bounded v1 is a qualified `1.0.0-rc.1` release candidate. It includes local projects, Rune Workbench, GP29 and Corpus Results, an embedded 75-page Atlas with fit/zoom/pan/navigation, immutable research objects, bounded experiments, structural Result comparison, history/export, integrity audit, privacy-safe backup, and the fail-closed signed Expedition client. Automated source and exact-package tests, Atlas loading, recovery/privacy qualification, and Defender scanning pass. Final clean-environment visual UAT, merge, owner approval, and public release remain pending. The future hosted Liber Runtime is separate and not built.
 - Sockets/API, add-ons, plugin SDK, and advanced applications: planned; no availability claim is made.
 - Scope: public status and identity records reflect the current merged service and workstation candidates; Expedition 001 remains closed pending deployment qualification and its own exact-subject release decision.

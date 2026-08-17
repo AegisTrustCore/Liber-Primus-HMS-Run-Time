@@ -8,7 +8,7 @@ The former Endeavour Lite development shell is now the bounded Runtime Environme
 
 - a selectable 29-rune workbench and deterministic GP29 Results;
 - canonical 75-page manifest verification without bundling page images;
-- a page-aware LP Atlas that can open a privately linked local carrier;
+- an embedded 75-page LP Atlas with page selection, fit/zoom, pan, previous/next navigation, and optional external opening of a privately linked local carrier;
 - immutable Notes, Bookmarks, Regions, Page Sets, Rune Selections, Evidence, and Claims;
 - bounded declared GP29 experiments and structural Result comparison;
 - immutable Runs and Results with evidence labels, limitations, hashes, and explicit JSON export;
@@ -25,7 +25,7 @@ GP29 is `CALCULATION_ONLY`, corpus verification is `PROVENANCE_ONLY`, declared e
 
 ## Release gate
 
-Automated tests and packaged self-tests must pass, followed by a clean Windows build, extracted-package qualification, privacy inspection, Defender scan, and human UAT. Only the checksum-approved artifact may move from RC to public release. Expedition remains unavailable until its separately qualified HTTPS service and an approved `OPEN` campaign manifest exist.
+Automated tests and packaged self-tests pass for the current source. The final candidate must now receive a deterministic Windows rebuild, extracted-package qualification, privacy inspection, Defender scan, human visual UAT, and exact-checksum owner approval. Expedition remains unavailable until its separately qualified HTTPS service and an approved `OPEN` campaign manifest exist.
 
 Developer start:
 
