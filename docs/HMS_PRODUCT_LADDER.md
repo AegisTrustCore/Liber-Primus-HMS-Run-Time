@@ -32,8 +32,9 @@ The arrows describe dependency maturity, not a requirement that all engineering 
 | Public Foundation | RELEASED | — | Continue admitting material only through public evidence and release gates |
 | Expedition Verifier | IN_DEVELOPMENT | RELEASE_CANDIDATE | Customer package, solution-leak audit, synthetic/public tests, exact-subject approval |
 | Public GP29 Calculator | RELEASED | Maintain | Approved exact-subject gate; future changes require a new release subject |
-| Corpus Manifest Verifier | RELEASE_CANDIDATE — 0.1.0-rc.3 | RELEASED | Exact qualified Windows artifact; final ordinary-user UAT and checksum-bound owner approval |
-| HMS Endeavour Runtime Environment v1 | RELEASE_CANDIDATE — 1.0.0-rc.1 | RELEASED | Final Windows rebuild, recovery/privacy inspection, clean-environment visual UAT, Defender scan, and checksum-bound owner approval |
+| Corpus Manifest Verifier | IN_DEVELOPMENT — 0.2.0-dev | RELEASE_CANDIDATE | New nautical viewer package, exact Windows qualification, UAT, and checksum-bound approval |
+| HMS Endeavour Lite | IN_DEVELOPMENT — 0.2.0-dev | RELEASE_CANDIDATE | Freeze the bounded public surface and qualify its standalone package |
+| HMS Endeavour Runtime Environment | INTERNAL_TESTING — 1.1.0-dev | RELEASE_CANDIDATE | Private repository, share-safe export, entitlement packaging, member UAT, and checksum-bound approval |
 | Hosted Liber Runtime | PLANNED | IN_DEVELOPMENT | Hosted persistence, accounts/entitlements, sockets, Auto Explore, contextual AEGIS, and separately reviewed capability gates |
 | Advanced Instruments | PLANNED / mixed private prototypes | IN_DEVELOPMENT per module | Individual contracts, tests, capability gates, limitations, approval |
 | Full HMS / AEGIS Research Station | PLANNED | IN_DEVELOPMENT | Accepted dependency layers, privacy, trust, recovery, permissions, and operations |

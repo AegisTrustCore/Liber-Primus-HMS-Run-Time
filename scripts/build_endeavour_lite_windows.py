@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the deterministic HMS Endeavour Runtime Environment Windows RC package."""
+"""Build the deterministic public HMS Endeavour Lite Windows candidate package."""
 
 from __future__ import annotations
 
@@ -13,29 +13,29 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "1.0.0-rc.1"
-PACKAGE_NAME = f"HMS-Endeavour-Runtime-v{VERSION}-Windows-x64-portable.zip"
+VERSION = "1.1.0-dev"
+PACKAGE_NAME = f"HMS-Endeavour-Lite-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 14, 0, 0, 0)
 CANONICAL_MANIFEST = ROOT / "corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json"
 
-START_HERE = """HMS ENDEAVOUR RUNTIME ENVIRONMENT v1.0.0-rc.1
+START_HERE = """HMS ENDEAVOUR LITE v1.1.0-dev
 
-RELEASE CANDIDATE - NOT AN APPROVED PUBLIC RELEASE
+PUBLIC FOUNDATION CANDIDATE - NOT YET AN APPROVED GITHUB RELEASE
 
-HMS Endeavour Runtime is a private local workstation for the Rune Workbench, GP29,
+HMS Endeavour Lite is a private-by-default local workstation for the Rune Workbench, GP29,
 corpus verification, an embedded page-aware LP Atlas, bounded experiments, immutable Runs,
 Results and research objects, structural comparison, audit, safe backup, and export.
 
 START
-1. Double-click HMS-Endeavour-Runtime.exe.
+1. Double-click HMS-Endeavour-Lite.exe.
 2. Create a project in a new empty folder, or open an existing HMS project.
 3. Link your own local 75-page carrier in Corpus Verify; browse it privately in LP Atlas.
 4. Use Rune Workbench, GP29, Corpus Verify, or Experiments and save the Result.
 5. Inspect Runs & Results and explicitly export only the Result you intend to share.
 
 Power users:
-  HMS-Endeavour-Runtime-CLI.exe --help
-  HMS-Endeavour-Runtime-CLI.exe self-test
+  HMS-Endeavour-Lite-CLI.exe --help
+  HMS-Endeavour-Lite-CLI.exe self-test
 
 BOUNDARIES
 - Projects are private and local by default.
@@ -77,10 +77,10 @@ def main() -> int:
     if os.name != "nt":
         raise SystemExit("This builder creates a Windows x64 package and must run on Windows.")
     os.environ["SOURCE_DATE_EPOCH"]="1786664400"; os.environ["PYTHONHASHSEED"]="0"
-    work=ROOT / "build/endeavour-runtime-windows"; stage=work / "package"
+    work=ROOT / "build/endeavour-lite-windows"; stage=work / "package"
     shutil.rmtree(work,ignore_errors=True); stage.mkdir(parents=True)
-    build("scripts/endeavour_lite.py","HMS-Endeavour-Runtime-CLI",stage,work,False)
-    build("scripts/endeavour_lite_app.py","HMS-Endeavour-Runtime",stage,work,True)
+    build("scripts/endeavour_lite.py","HMS-Endeavour-Lite-CLI",stage,work,False)
+    build("scripts/endeavour_lite_app.py","HMS-Endeavour-Lite",stage,work,True)
     (stage / "START-HERE.txt").write_text(START_HERE,encoding="utf-8",newline="\n")
     (stage / "canonical").mkdir(); shutil.copyfile(CANONICAL_MANIFEST,stage / "canonical" / CANONICAL_MANIFEST.name)
     (stage / "expedition").mkdir(); shutil.copyfile(ROOT / "challenges/manifest.json",stage / "expedition/manifest.json")
@@ -88,7 +88,7 @@ def main() -> int:
     for name in ("hms-project.schema.json","project-settings.schema.json","research-object.schema.json","result-envelope.schema.json","corpus-manifest.schema.json","corpus-verification.schema.json","challenge-manifest.schema.json","expedition-verification-receipt.schema.json"):
         shutil.copyfile(ROOT / "schemas" / name,stage / "schemas" / name)
     shutil.copyfile(ROOT / "LICENSE",stage / "LICENSE.txt")
-    (stage / "manifest.json").write_text(json.dumps({"schema":"HMS_CUSTOMER_PACKAGE_V1","product":"HMS Endeavour Runtime Environment","version":VERSION,"status":"RELEASE_CANDIDATE","package_state":"RC_NOT_FOR_PUBLIC_RELEASE","network_access":False,"telemetry":False,"expedition_campaign":"CLOSED","features":["RUNE_WORKBENCH","GP29","CORPUS_VERIFY","LP_ATLAS_PAGE_AWARE","RESEARCH_OBJECTS","RESULT_COMPARISON","PROJECT_AUDIT","PRIVACY_SAFE_BACKUP","BOUNDED_GP29_EXPERIMENT","EXPEDITION_SIGNED_CLIENT_FAIL_CLOSED","LOCAL_RUNS_RESULTS","EXPLICIT_JSON_EXPORT"]},indent=2)+"\n",encoding="utf-8",newline="\n")
+    (stage / "manifest.json").write_text(json.dumps({"schema":"HMS_CUSTOMER_PACKAGE_V1","product":"HMS Endeavour Lite","version":VERSION,"status":"INTERNAL_TESTING","package_state":"PUBLIC_CANDIDATE_NOT_APPROVED","served_by":"Aegis Trust Core","network_access":False,"telemetry":False,"expedition_campaign":"CLOSED","features":["RUNE_WORKBENCH","GP29","CORPUS_VERIFY","LP_ATLAS_PAGE_AWARE","RESEARCH_OBJECTS","RESULT_COMPARISON","PROJECT_AUDIT","PRIVACY_SAFE_BACKUP","BOUNDED_GP29_EXPERIMENT","EXPEDITION_SIGNED_CLIENT_FAIL_CLOSED","LOCAL_RUNS_RESULTS","EXPLICIT_JSON_EXPORT"]},indent=2)+"\n",encoding="utf-8",newline="\n")
     output=write_package(stage,ROOT / "dist" / PACKAGE_NAME)
     print(f"Built {output}"); print(f"SHA256 {sha256(output)}"); return 0
 

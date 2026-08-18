@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/challenge-manifest.schema.json",
   "schema_version": "1.0.0",
-  "last_reviewed": "2026-08-13",
+  "last_reviewed": "2026-08-17",
   "challenges": [
     {
       "id": "XPD-0001",
@@ -30,7 +30,7 @@
       "solution_status": "SEALED",
       "public_solution": null,
       "research_claim": false,
-      "last_updated": "2026-08-14"
+      "last_updated": "2026-08-17"
     }
   ]
 }

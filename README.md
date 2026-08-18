@@ -1,8 +1,20 @@
-# HMS Endeavour — Liber Primus Public Research Record
+# HMS Endeavour — Liber Primus Research Expedition
+
+**Powered and served by Aegis Trust Core.** HMS Endeavour is the public vessel: evidence on deck, reproducible instruments in the workshop, and a governed route toward deeper member research environments.
 
 > **HMS Endeavour v0.1.0 is the released public research foundation.** This repository is the evidence, verification, puzzle, and public tooling layer for our independent *Liber Primus* research. It is not a claim that the full corpus has been solved.
 
 > **Independent research:** HMS Endeavour is not Cicada 3301, has no affiliation with or endorsement from Cicada 3301, and does not possess Cicada 3301's private signing key. See [Cicada 3301 and the historical OpenPGP key](CICADA_3301.md).
+
+## Choose your starting deck
+
+| Route | Best for | Enter here |
+|---|---|---|
+| **Explore the 75 pages** | Readers who want the corpus map, provenance, and page status | [Open the Liber Primus atlas](corpus/liber-primus/START-HERE.md) |
+| **Use a public instrument** | Researchers who want an approved downloadable tool | [Public release catalog](PUBLIC_RELEASES.md) |
+| **Reproduce the evidence** | Reviewers who want Runs, Results, controls, and checksums | [Research Archive](research/README.md) |
+| **Enter the Expedition** | New participants learning the HMS evidence method | [Expedition 001](challenges/expedition-001/README.md) |
+| **Join the crew** | Supporters seeking guided research, packets, and member builds | [Membership and tier boundaries](MEMBERSHIP.md) |
 
 ## Current public releases
 
@@ -15,14 +27,17 @@
 
 Only the releases listed above are downloadable customer-facing GitHub releases. Development source may be visible on `main` before a packaged tool is approved for release.
 
-## Next two public instruments
+## Launch queue
 
 | Candidate | What is complete | Final gate |
 |---|---|---|
-| **Corpus Manifest Verifier 0.1.0-rc.3** | Canonical 75-page identity binding, file/folder selection, searchable findings, portable reports, five-case controls, deterministic Windows package | Exact-package visual UAT and owner approval |
-| **HMS Endeavour Runtime Environment 1.0.0-rc.1** | GP29, corpus verification, embedded 75-page Atlas with zoom/pan, research objects, bounded experiments, comparison, audit, safe backup, GUI/CLI packaging | Merge the green RC branch, exact-package visual UAT, and owner approval |
+| **Corpus Manifest Verifier — next RC** | Canonical identity binding plus an embedded, selectable 75-page visual inspection deck | Rebuild and qualify the nautical UI candidate; exact-package UAT and owner approval |
+| **HMS Endeavour Lite — public launch workstation** | Free GP29, corpus identity, read-only Atlas, and Expedition entry points in one bounded application | Freeze the Lite capability boundary, package it independently, and approve its exact checksum |
+| **Expedition 001** | Public briefing, progressive hints, sealed verifier client, non-root verification service, and campaign materials | Approve a host, secrets, HTTPS endpoint, privacy/abuse audit, configured client, and campaign opening |
 
-Release-candidate source and CI artifacts are not public downloads. When approved, each instrument receives one immutable GitHub release, SHA-256, quick start, limitations, and matching Patreon notice.
+The complete HMS Runtime Environment is a separate member research product. GitHub may list its approved capabilities and public contracts, but future advanced builds, annotations, translation workspaces, integrations, and prerelease packages are distributed only through their approved Patreon tiers. Historical development source already published here cannot be made private retroactively and must not be mistaken for a supported member build.
+
+Release-candidate source and CI artifacts are not public downloads. When approved, each public instrument receives one immutable GitHub release, SHA-256, quick start, limitations, and matching Patreon notice.
 
 ## Start here
 
@@ -74,8 +89,9 @@ The puzzle is synthetic and does not conceal an unpublished *Liber Primus* resea
 | LP Source Audit Inventory | Released | Python developer source in `v0.1.0` |
 | Expedition Verifier | In development | Signed remote client and non-root sealed service candidate; no deployed endpoint or approved customer package |
 | Public GP29 Calculator | **Released** | Downloadable Windows desktop and CLI package with checksums, self-tests, dashboard, alphabet, JSON, and CSV export |
-| Corpus Manifest Verifier | **Release candidate — 0.1.0-rc.3** | Qualified Windows package; final visual UAT and owner approval pending |
-| HMS Endeavour Runtime Environment | **Release candidate — 1.0.0-rc.1** | Qualified local workstation with embedded 75-page viewer; final visual UAT and owner approval pending |
+| Corpus Manifest Verifier | **In development — 0.2.0-dev** | Nautical UI and embedded 75-page viewer; prior rc.3 superseded before publication |
+| HMS Endeavour Lite | **In development** | Bounded public workstation shell; new nautical UI and 75-page viewer are under qualification |
+| HMS Endeavour Runtime Environment | **Member product — internal rebuild** | Advanced annotation, translation, research history, integrations, and tiered builds are not a public GitHub download |
 | Hosted Liber Runtime Beta | Planned | No hosted public service |
 | Advanced instruments | Planned | No solver, batch engine, API/socket layer, or Plugin SDK is available |
 
@@ -95,9 +111,9 @@ See the machine-readable [Product Ladder](products/manifest.json), readable [HMS
 
 1. Complete exact-package visual UAT and owner approval for the Corpus Manifest Verifier release candidate.
 2. Deploy and privately qualify the sealed Expedition service, then approve the configured customer package before opening a public campaign.
-3. Merge and complete exact-package visual UAT for HMS Endeavour Runtime Environment v1, then promote its checksum-identified package.
-4. Build the hosted Liber Runtime Beta separately; add Auto Explore and contextual AEGIS only after the local object lifecycle is dependable.
-5. Add batch, Advanced GP, solver, sockets/API, and the Plugin SDK only after their dependency gates are met.
+3. Package and qualify the bounded HMS Endeavour Lite public workstation.
+4. Build the full Runtime Environment behind the private member-production boundary, with visual annotation, translation notes, page workspaces, and explicit tier entitlements.
+5. Build hosted Runtime, Auto Explore, contextual AEGIS, batch, Advanced GP, solver, sockets/API, and the Plugin SDK only after their dependency gates are met.
 
 The detailed sequence is maintained in [Next Steps](NEXT_STEPS.md).
 

@@ -1,12 +1,12 @@
 # HMS Shared Design System
 
-Status: **ARCHITECTURE CONTRACT; COMPONENTS NOT YET IMPLEMENTED**
+Status: **ARCHITECTURE CONTRACT; NAUTICAL DESKTOP FOUNDATION IMPLEMENTED**
 
 Every standalone instrument, Endeavour Lite screen, Runtime workspace, and member-facing research build uses the same design language and object semantics.
 
 ## Component inventory
 
-The shared library will provide:
+The shared desktop foundation now provides a common Aegis/HMS masthead, nautical palette, authority badges, typography, controls, tables, notebooks, and text surfaces through `hms_tools/ui_theme.py`. The longer-term component library will provide:
 
 - `AppShell`, `Sidebar`, `TopBar`, `ContextRail`, and `JobDrawer`;
 - `ObjectHeader`, `StatusBadge`, and `EvidenceBadge`;

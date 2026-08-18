@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hms-endeavour.invalid/schemas/hms-plugin-manifest.schema.json",
+  "title": "HMS Capability-Scoped Plugin Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "plugin_id", "name", "version", "publisher", "runtime_compatibility", "authority_class", "permissions", "inputs", "outputs", "entry_point"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "0.1.0-dev"},
+    "plugin_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "name": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.]+)?$"},
+    "publisher": {"type": "string", "minLength": 1},
+    "runtime_compatibility": {"type": "string", "minLength": 1},
+    "authority_class": {"enum": ["REFERENCE", "CALCULATION", "PROVENANCE", "STRUCTURAL_ANALYSIS", "EXPERIMENTAL", "SOLVER", "VERIFICATION"]},
+    "permissions": {"type": "array", "uniqueItems": true, "items": {"enum": ["project.read", "page.read", "object.read", "object.write", "result.read", "result.write", "export.write", "network.request"]}},
+    "inputs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "outputs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "entry_point": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+:[A-Za-z0-9_]+$"},
+    "network_domains": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"permissions": {"contains": {"const": "network.request"}}}},
+      "then": {"required": ["network_domains"], "properties": {"network_domains": {"minItems": 1}}},
+      "else": {"properties": {"network_domains": {"maxItems": 0}}}
+    }
+  ]
+}

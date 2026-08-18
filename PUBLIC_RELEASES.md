@@ -16,14 +16,16 @@ The foundation publishes one verified provenance record, `OBS-0001`. It publishe
 
 GP29 remains an offline deterministic calculator, not a decoder or Liber Primus solve claim.
 
-## Next public releases — gated
+## Superseded private candidates
 
-Two instruments are complete release candidates but are **not downloads yet**:
+Two previously prepared private candidates are **not downloads and will not be published**:
 
-1. **HMS Corpus Manifest Verifier `0.1.0-rc.3`** — verifies all 75 declared page files against the canonical identity manifest and reports altered, missing, extra, and unsafe-path conditions. Automated and packaged qualification passes; ordinary-user UAT and exact-checksum owner approval remain.
-2. **HMS Endeavour Runtime Environment `1.0.0-rc.1`** — combines the Rune Workbench, GP29, Corpus Verify, an embedded LP Atlas, research objects, bounded experiments, comparisons, history, audit, recovery, backup, and export in one local workstation. Its final rebuilt package still requires clean-environment visual UAT, security scan, and exact-checksum owner approval.
+1. **HMS Corpus Manifest Verifier `0.1.0-rc.3`** passed its automated qualification, but the release gate is superseded by the new nautical `0.2.0-dev` viewer revision.
+2. **HMS Endeavour Runtime Environment `1.0.0-rc.1`** passed automated qualification, but its public-release direction is superseded. GitHub will receive a bounded Endeavour Lite package; the complete advanced Runtime is a separately governed member product.
 
-The repository may expose their source, documentation, and pending release records. That does not make an RC an approved public download. The release catalog will link the immutable ZIPs only after their gates change to `APPROVED`.
+Their immutable records remain for audit. Superseded packages must never be relabeled as approved downloads.
+
+The active public launch queue is Corpus Verifier `0.2`, Endeavour Lite, and the separately hosted Expedition 001 verifier client. Each requires a new exact release subject.
 
 ## Structured Research Archive
 

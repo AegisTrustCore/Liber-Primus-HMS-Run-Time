@@ -61,7 +61,8 @@ The roadmap describes intended direction. A planned capability is not an entitle
 ## Implementation boundary
 
 - Public GP29 Calculator: v0.1.1 is released under instrument-specific tag `GP29-v0.1.1` with English-letter, Latin-sound, token, and rune input plus deterministic `L/R/prime/N/Q` output. Its exact ZIP, qualification, acceptance limitation, and approval are bound by the public gate.
-- HMS Endeavour Runtime Environment: bounded `1.0.0-rc.1` release candidate implemented with local projects, selectable Rune Workbench, GP29 and Corpus workflows, embedded 75-page Atlas with zoom/pan/navigation, immutable research objects, bounded experiments, structural comparison, shared Result envelopes, audit, backup, and history/export. Automated exact-package qualification passes; final visual UAT and owner approval remain pending.
+- HMS Endeavour Lite: bounded public launch workstation in development with the nautical Aegis/HMS shell, GP29, Corpus identity, read-only 75-page Atlas, and Expedition entry workflows.
+- HMS Endeavour Runtime Environment: advanced member visual deck in private internal testing with page tabs, zoom/pan, visual marks, page-scoped rune selections, translation notes, and local workspace persistence. No member download is released.
 - Hosted Liber Runtime: planned separately from the local workstation; general experiments, hosted persistence, authentication, entitlements, quotas, sockets, Auto Explore, and contextual AEGIS remain future work.
 
 ## Frozen product sequence

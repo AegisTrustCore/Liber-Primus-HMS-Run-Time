@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""HMS Endeavour Runtime Environment local research workstation."""
+"""HMS Endeavour Lite local research workstation."""
 
 from __future__ import annotations
 
@@ -25,9 +25,10 @@ from hms_tools.expedition_client import ExpeditionClientError, ServiceConfigurat
 from hms_tools.gp29 import GP29InputError, TABLE
 from hms_tools.project import PROJECT_VERSION, ProjectError, ProjectStore
 from hms_tools.runtime import create_corpus_report_job, create_gp29_experiment_job, create_job, create_result_comparison_job, execute_job
+from hms_tools.ui_theme import SURFACE, apply_hms_theme, build_brand_header, configure_text
 
 
-PRODUCT = "HMS Endeavour Runtime Environment"
+PRODUCT = "HMS Endeavour Lite"
 VERSION = PROJECT_VERSION
 
 
@@ -107,6 +108,7 @@ class EndeavourLiteApp(tk.Tk):
         self.title(f"{PRODUCT} {VERSION}")
         self.geometry("1180x760")
         self.minsize(940, 620)
+        apply_hms_theme(self)
         self.store: ProjectStore | None = None
         self.status = tk.StringVar(value="Create or open a local project to begin.")
         self.project_title = tk.StringVar(value="No project open")
@@ -174,14 +176,12 @@ class EndeavourLiteApp(tk.Tk):
         self.bind_all("<Control-o>", lambda _event: self.open_project())
 
     def _build_shell(self) -> None:
-        header = ttk.Frame(self, padding=(18, 14))
+        header = build_brand_header(self, PRODUCT, "Private local Liber Primus research station", "AEGIS-SERVED  ·  LOCAL-FIRST  ·  RC")
         header.pack(fill="x")
-        ttk.Label(header, text="HMS ENDEAVOUR", font=("Segoe UI", 10, "bold")).pack(anchor="w")
-        title_row = ttk.Frame(header)
-        title_row.pack(fill="x")
-        ttk.Label(title_row, text=PRODUCT, font=("Segoe UI", 20, "bold")).pack(side="left")
-        ttk.Label(title_row, textvariable=self.project_title, font=("Segoe UI", 11, "bold")).pack(side="right")
-        ttk.Label(header, textvariable=self.project_detail).pack(anchor="e")
+        project_strip = ttk.Frame(self, padding=(20, 7))
+        project_strip.pack(fill="x")
+        ttk.Label(project_strip, textvariable=self.project_title, font=("Segoe UI Semibold", 10)).pack(side="left")
+        ttk.Label(project_strip, textvariable=self.project_detail, style="Muted.TLabel").pack(side="right")
         self.tabs = ttk.Notebook(self)
         self.tabs.pack(fill="both", expand=True, padx=18, pady=(0, 10))
         self._build_bridge_tab()
@@ -194,7 +194,10 @@ class EndeavourLiteApp(tk.Tk):
         self._build_history_tab()
         self._build_research_tab()
         self._build_recovery_tab()
-        ttk.Label(self, textvariable=self.status, padding=(18, 8)).pack(fill="x")
+        footer = ttk.Frame(self, style="Header.TFrame", padding=(18, 8))
+        footer.pack(fill="x")
+        ttk.Label(footer, textvariable=self.status, style="Status.TLabel").pack(side="left", fill="x", expand=True)
+        ttk.Label(footer, text="POWERED AND SERVED BY AEGIS TRUST CORE", style="Brand.TLabel").pack(side="right")
 
     def _tab(self, title: str) -> ttk.Frame:
         frame = ttk.Frame(self.tabs, padding=18)
@@ -215,7 +218,7 @@ class EndeavourLiteApp(tk.Tk):
             ("GP29", "RELEASED", "Calculate and save deterministic GP29 Results."),
             ("Corpus", "RC", "Verify the canonical 75-page identity manifest."),
             ("Expedition", self.expedition_state, "Signed remote receipts; submitted plaintext is never saved."),
-            ("Runtime", "RELEASE CANDIDATE", "Local Atlas, research objects, Results, audit, and recovery."),
+            ("Lite workstation", "PUBLIC CANDIDATE", "Local Atlas, research objects, Results, audit, and recovery."),
         )):
             card = ttk.LabelFrame(cards, text=title, padding=12)
             card.grid(row=0, column=column, sticky="nsew", padx=(0 if column == 0 else 6, 0))
@@ -233,6 +236,7 @@ class EndeavourLiteApp(tk.Tk):
         ttk.Combobox(controls, textvariable=self.gp_mode, values=("letters","latin","tokens","runes","auto"), state="readonly", width=12).pack(side="left", padx=8)
         ttk.Button(controls, text="Calculate and save", command=self.calculate_gp29).pack(side="left")
         self.gp_input = tk.Text(frame, height=5, wrap="word", font=("Segoe UI", 11))
+        configure_text(self.gp_input)
         self.gp_input.pack(fill="x", pady=10)
         ttk.Label(frame, textvariable=self.gp_summary, font=("Segoe UI", 11, "bold")).pack(anchor="w", pady=(0, 8))
         columns = ("index","rune","sound","prime","L","R","N","Q")
@@ -317,7 +321,7 @@ class EndeavourLiteApp(tk.Tk):
         self.atlas_table.pack(side="left", fill="both", expand=True); atlas_scroll.pack(side="right", fill="y")
         ttk.Label(viewer, textvariable=self.atlas_page_title, font=("Segoe UI", 11, "bold")).pack(fill="x", pady=(0, 4))
         canvas_frame = ttk.Frame(viewer); canvas_frame.pack(fill="both", expand=True)
-        self.atlas_canvas = tk.Canvas(canvas_frame, background="#20252b", highlightthickness=0)
+        self.atlas_canvas = tk.Canvas(canvas_frame, background=SURFACE, highlightthickness=0)
         atlas_x = ttk.Scrollbar(canvas_frame, orient="horizontal", command=self.atlas_canvas.xview)
         atlas_y = ttk.Scrollbar(canvas_frame, orient="vertical", command=self.atlas_canvas.yview)
         self.atlas_canvas.configure(xscrollcommand=atlas_x.set, yscrollcommand=atlas_y.set)
@@ -346,6 +350,7 @@ class EndeavourLiteApp(tk.Tk):
         declaration.columnconfigure(1, weight=1)
         ttk.Label(frame, text="Variants (one per line)").pack(anchor="w", pady=(12, 2))
         self.experiment_input = tk.Text(frame, height=6, wrap="word", font=("Segoe UI", 10))
+        configure_text(self.experiment_input)
         self.experiment_input.pack(fill="x")
         ttk.Label(frame, textvariable=self.experiment_summary, font=("Segoe UI", 10, "bold")).pack(anchor="w", pady=8)
         self.experiment_table = ttk.Treeview(frame, columns=("index", "variant", "runes", "gp_sum", "gate"), show="headings")
@@ -358,6 +363,7 @@ class EndeavourLiteApp(tk.Tk):
         ttk.Label(frame, text="Expedition 001", font=("Segoe UI", 18, "bold")).pack(anchor="w")
         ttk.Label(frame, textvariable=self.expedition_summary, font=("Segoe UI", 11, "bold")).pack(anchor="w", pady=(6, 8))
         guidance = tk.Text(frame, height=14, wrap="word", font=("Segoe UI", 10))
+        configure_text(guidance)
         guidance.insert("1.0", instructions_text(self.expedition_state))
         guidance.configure(state="disabled")
         guidance.pack(fill="both", expand=True)
@@ -422,6 +428,7 @@ class EndeavourLiteApp(tk.Tk):
         self.history.pack(fill="both", expand=True)
         self.history.bind("<<TreeviewSelect>>", self.preview_result)
         self.result_preview = tk.Text(right, wrap="none", state="disabled", font=("Consolas", 9))
+        configure_text(self.result_preview, monospace=True)
         self.result_preview.pack(fill="both", expand=True)
 
     def _build_research_tab(self) -> None:
@@ -441,7 +448,7 @@ class EndeavourLiteApp(tk.Tk):
         for label, variable in (("x",self.region_x),("y",self.region_y),("width",self.region_width),("height",self.region_height)):
             ttk.Label(region, text=label).pack(side="left", padx=(8, 2)); ttk.Entry(region, textvariable=variable, width=7).pack(side="left")
         ttk.Button(region, text="Export selected object", command=self.export_selected_object).pack(side="right")
-        self.research_text = tk.Text(frame, height=7, wrap="word"); self.research_text.pack(fill="x", pady=8)
+        self.research_text = tk.Text(frame, height=7, wrap="word"); configure_text(self.research_text); self.research_text.pack(fill="x", pady=8)
         ttk.Label(frame, textvariable=self.research_summary, font=("Segoe UI", 10, "bold")).pack(anchor="w", pady=(0, 6))
         self.research_table = ttk.Treeview(frame, columns=("type","title","pages","created"), show="headings", selectmode="browse")
         for column, title, width in (("type","Type",120),("title","Title",340),("pages","Pages",180),("created","Created",220)):
@@ -551,7 +558,7 @@ class EndeavourLiteApp(tk.Tk):
             report = verify_manifest(manifest, Path(self.corpus_root_path.get()), self.corpus_strict.get())
             job = create_corpus_report_job(report)
             result = execute_job(job)
-            envelope = store.save_execution(job, result, instrument_id="corpus-manifest-verifier", instrument_version="0.1.0-rc.3")
+            envelope = store.save_execution(job, result, instrument_id="corpus-manifest-verifier", instrument_version="0.2.0-dev")
         except (ProjectError, CorpusManifestError, OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
             messagebox.showerror("Corpus verification failed", str(error), parent=self); return
         for item in self.corpus_table.get_children(): self.corpus_table.delete(item)

@@ -17,6 +17,7 @@ from hms_tools.challenge_verifier import application_root
 from hms_tools.expedition_client import ExpeditionClientError, configured_service, verify_remote
 from hms_tools.expedition_verifier import packaged_self_test
 from hms_tools.expedition_001 import CHALLENGE_ID, HINTS, VERSION, hint_text, instructions_text
+from hms_tools.ui_theme import apply_hms_theme, build_brand_header, configure_text
 
 
 class VerifierApp:
@@ -25,13 +26,15 @@ class VerifierApp:
         root.title(f"HMS Endeavour — Expedition Verifier {VERSION}")
         root.geometry("680x470")
         root.minsize(600, 420)
+        apply_hms_theme(root)
         self.receipt: dict[str, object] | None = None
 
-        frame = ttk.Frame(root, padding=24)
+        shell = ttk.Frame(root, style="Shell.TFrame")
+        shell.pack(fill="both", expand=True)
+        build_brand_header(shell, "Expedition Verifier", "XPD-0001 · The Evidence Ledger", "VERIFICATION  ·  SEALED  ·  FAIL-CLOSED").pack(fill="x")
+        frame = ttk.Frame(shell, padding=24)
         frame.pack(fill="both", expand=True)
-        ttk.Label(frame, text="HMS ENDEAVOUR", font=("Segoe UI", 10, "bold")).pack(anchor="w")
-        ttk.Label(frame, text="Expedition Verifier", font=("Segoe UI", 18, "bold")).pack(anchor="w")
-        ttk.Label(frame, text="Sealed verification service · no account · no telemetry").pack(anchor="w", pady=(4, 20))
+        ttk.Label(frame, text="Sealed verification service · no account · no telemetry", style="Muted.TLabel").pack(anchor="w", pady=(0, 20))
 
         ttk.Label(frame, text="Expedition").pack(anchor="w")
         ttk.Label(frame, text="XPD-0001 — The Evidence Ledger").pack(anchor="w", pady=(2, 12))
@@ -42,7 +45,7 @@ class VerifierApp:
 
         actions = ttk.Frame(frame)
         actions.pack(fill="x")
-        ttk.Button(actions, text="Verify", command=self.verify).pack(side="left")
+        ttk.Button(actions, text="Verify submission", command=self.verify, style="Primary.TButton").pack(side="left")
         ttk.Button(actions, text="Copy receipt", command=self.copy_receipt).pack(side="left", padx=(8, 0))
         ttk.Button(actions, text="Save result", command=self.save_receipt).pack(side="left", padx=(8, 0))
         ttk.Button(actions, text="How to solve", command=self.show_instructions).pack(side="right")
@@ -117,6 +120,7 @@ class VerifierApp:
         window.geometry("720x620")
         window.minsize(560, 420)
         body = tk.Text(window, wrap="word", padx=18, pady=18, font=("Segoe UI", 10))
+        configure_text(body)
         body.insert("1.0", content)
         body.configure(state="disabled")
         scrollbar = ttk.Scrollbar(window, orient="vertical", command=body.yview)

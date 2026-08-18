@@ -8,9 +8,9 @@ The `v0.1.0` public foundation, research releases `RR-0002` and `RR-0003`, and t
 
 ## Current release sequence
 
-1. **Release Corpus Manifest Verifier `0.1.0-rc.3`.** Canonical binding, five-case controls, usability, page selection, deterministic packaging, exact-package automation, and Defender scanning pass; complete the short visual UAT and approve the immutable SHA-256.
+1. **Qualify Corpus Manifest Verifier `0.2`.** The nautical shell and embedded 75-page visual deck supersede rc.3; build a new deterministic package, repeat exact-package controls, and approve the new immutable SHA-256.
 2. **Deploy and qualify Expedition 001.** The v0.3 sealed service, signed-receipt client, container, leak audit, and unconfigured Windows package are built; choose the host, inject the private answer/key through its secret manager, bind the HTTPS endpoint and Ed25519 public key into the exact client, inspect redacted logs, complete accepted/rejected abuse and human UAT, then make a separate campaign-opening decision.
-3. **Release HMS Endeavour Runtime Environment `1.0.0-rc.1`.** Local projects, Rune Workbench, GP29, Corpus, embedded 75-page Atlas, research objects, bounded experiment, structural comparison, recovery audit, safe backup, and fail-closed Expedition client are implemented; merge the green RC, complete exact-package visual UAT, and approve its SHA-256.
+3. **Finish HMS Endeavour Lite and member Runtime separately.** Lite receives the bounded free tools and Expedition entry surface. The complete Runtime receives page tabs, visual marking, rune selection, translation notes, integrations, and private tier delivery only after a private package gate.
 4. **Build hosted Liber Runtime separately.** Add general Experiment Builder, synchronized workspaces, Auto Explore, and contextual AEGIS only after the released local object lifecycle is dependable.
 5. **Add advanced systems later.** Batch → Advanced GP → Solver → sockets/API and Plugin SDK only after the dependency layers are usable.
 

@@ -12,12 +12,12 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.1.0-rc.3"
+VERSION = "0.2.0-dev"
 PACKAGE_NAME = f"HMS-Corpus-Verifier-v{VERSION}-Windows-x64-portable.zip"
 FIXED_TIME = (2026, 8, 13, 0, 0, 0)
 CANONICAL_MANIFEST = ROOT / "corpus" / "liber-primus" / "manifests" / "LP-75-IMAGES-v1.0.0.json"
 
-START_HERE = """HMS Corpus Manifest Verifier v0.1.0-rc.3
+START_HERE = """HMS Corpus Manifest Verifier v0.2.0-dev
 
 RELEASE CANDIDATE — NOT AN APPROVED PUBLIC RELEASE
 

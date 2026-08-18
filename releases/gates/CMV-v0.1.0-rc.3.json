@@ -3,7 +3,7 @@
   "schema_version":"1.1.0",
   "release_id":"CMV-v0.1.0-rc.3",
   "release_type":"SOFTWARE",
-  "status":"PENDING",
+  "status":"SUPERSEDED",
   "classification":"PUBLIC",
   "release_subject":{"schema_version":"1.0.0","candidate_commit_sha":"30535ff418d39d9e820a35fa2dee374659231f20","release_manifest":"releases/manifests/CMV-v0.1.0-rc.3.json","release_manifest_sha256":"0c6c3cff89061d3f934cc4d8ee5722310689e0ddbd65e81d245133f495a70827","environment_id":"ENV-0011","intended_tag":"CMV-v0.1.0-rc.3"},
   "common_checks":{"publication_approved":false,"secret_scan_passed":true,"rights_reviewed":true,"provenance_complete":true,"environment_recorded":true,"links_tested":true,"automated_validation_passed":true},
@@ -14,7 +14,7 @@
     "Page-file selection only resolves a shared manifest root; the verifier still checks the complete manifest and cannot emit a partial-corpus PASS.",
     "Undeclared, ambiguous, duplicate, and mixed-root selections are rejected.",
     "Two clean local builds were byte-identical, two independent GitHub Windows workflow runs passed, and Microsoft Defender reported no threats.",
-    "The gate remains pending until clean-environment human UAT and explicit owner approval.",
+    "This exact candidate was superseded before publication by the 0.2 nautical viewer revision; it must not be published under the old draft release.",
     "A PASS establishes declared byte identity only; it does not establish authenticity, rights, transcription correctness, translation, or a Liber Primus solution."
   ]
 }
