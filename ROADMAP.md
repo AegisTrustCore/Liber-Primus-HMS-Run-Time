@@ -61,12 +61,12 @@ The roadmap describes intended direction. A planned capability is not an entitle
 ## Implementation boundary
 
 - Public GP29 Calculator: v0.1.1 is released under instrument-specific tag `GP29-v0.1.1` with English-letter, Latin-sound, token, and rune input plus deterministic `L/R/prime/N/Q` output. Its exact ZIP, qualification, acceptance limitation, and approval are bound by the public gate.
-- HMS Endeavour Lite: runnable `0.1.0-dev` local project shell, selectable Rune Workbench, GP29 and Corpus workflows, bounded declared GP29 experiment, shared Result envelope, history/export, and metadata-only LP Atlas implemented; deterministic packaged qualification passes, while secure Expedition integration and human UAT remain pending.
-- Liber Runtime: deterministic local GP29, corpus-report, and bounded GP29 batch job/result core plus Lite project persistence are implemented; page Regions, general experiments/comparison, hosted persistence, auth, entitlements, quotas, and sockets remain pending.
+- HMS Endeavour Runtime Environment: bounded `1.0.0-rc.1` release candidate implemented with local projects, selectable Rune Workbench, GP29 and Corpus workflows, embedded 75-page Atlas with zoom/pan/navigation, immutable research objects, bounded experiments, structural comparison, shared Result envelopes, audit, backup, and history/export. Automated exact-package qualification passes; final visual UAT and owner approval remain pending.
+- Hosted Liber Runtime: planned separately from the local workstation; general experiments, hosted persistence, authentication, entitlements, quotas, sockets, Auto Explore, and contextual AEGIS remain future work.
 
 ## Frozen product sequence
 
-GP29 release → Corpus Manifest Verifier RC → Expedition Verifier package → Endeavour Lite → LP Atlas → Rune Workbench → Experiment Engine → Liber Runtime Beta → Auto Explore → contextual AEGIS → Batch → Advanced GP → Solver → Plugin SDK.
+GP29 release → Corpus Manifest Verifier release → HMS Endeavour Runtime Environment v1 release → Expedition campaign package → Hosted Liber Runtime → Auto Explore → contextual AEGIS → Batch → Advanced GP → Solver → Plugin SDK.
 
 See the [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md). Advanced work may be researched privately, but it must not displace usable dependency layers or be advertised as released.
 

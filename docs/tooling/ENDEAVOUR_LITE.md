@@ -1,47 +1,31 @@
-# HMS Endeavour Lite — initial contract
+# HMS Endeavour Runtime Environment v1
 
-Audience: Observer basic; Pilgrim and above when released
+Audience: Observer for the local workstation foundation; advanced research content remains separately tiered.
 
-Status: **IN DEVELOPMENT — runnable `0.1.0-dev`, not publicly released**
+Status: **RELEASE CANDIDATE — runnable `1.0.0-rc.1`, not publicly released**
 
-Endeavour Lite will be the local, reduced HMS workstation:
+The former Endeavour Lite development shell is now the bounded Runtime Environment v1 release candidate. It is one private, local-first desktop and CLI workstation with:
 
-- selectable 29-rune reference and explicit-token handoff;
-- GP29 rune/token lookup and sums;
-- paste-or-file input with explicit provenance fields;
-- a bounded GP29 comparison experiment with a predeclared hypothesis and success gate;
-- result export as a portable JSON record;
-- side-by-side input/output and diff views;
-- local-only projects by default;
-- an explicit preview of every object and metadata field before any submission leaves the device;
-- canonical provenance IDs and deterministic environment manifests;
-- no automated declaration that text is solved.
+- a selectable 29-rune workbench and deterministic GP29 Results;
+- canonical 75-page manifest verification without bundling page images;
+- an embedded 75-page LP Atlas with page selection, fit/zoom, pan, previous/next navigation, and optional external opening of a privately linked local carrier;
+- immutable Notes, Bookmarks, Regions, Page Sets, Rune Selections, Evidence, and Claims;
+- bounded declared GP29 experiments and structural Result comparison;
+- immutable Runs and Results with evidence labels, limitations, hashes, and explicit JSON export;
+- project integrity audit, index recovery, and privacy-safe metadata backups;
+- a fail-closed signed Expedition client that stores no submitted plaintext.
 
-## Version sequence
+## Private project boundary
 
-### v0.1 — unified public workstation
+`project.json`, `settings.json`, `index.json`, `runs/`, `results/`, `objects/`, and `exports/` form the project. The local corpus root exists only in `settings.json`. Safe backups replace it with `null` and exclude corpus images and exports. Nothing is uploaded silently; this build has no account or telemetry service.
 
-Navigation: Bridge, Project, Files, GP29, Corpus Verify, Runs, Results, and Settings.
+## Evidence boundary
 
-Core workflows:
+GP29 is `CALCULATION_ONLY`, corpus verification is `PROVENANCE_ONLY`, declared experiments are `EXPERIMENTAL`, and Result comparisons are `STRUCTURAL`. A note or numerical match is never promoted automatically into a translation or solve claim.
 
-1. Create Project → select corpus → verify corpus → save a hash/reference-based project.
-2. Enter text → GP29 → save Run → inspect Result → export JSON.
-3. Open Run → inspect → reproduce → compare.
+## Release gate
 
-The local project layout uses `project.json`, a corpus reference, notes, Runs, Results, exports, and settings. It does not copy the full source corpus unless the researcher explicitly requests that behavior.
-
-### v0.2 — visual research bridge
-
-Add the LP page viewer, annotations, snips, Regions, basic PageSets, Run comparison, and HTML/TXT reports.
-
-### v0.3 — Runtime shell
-
-Add the basic Experiment Builder, contextual AEGIS rail, Trust Inspector, and instrument catalog.
-
-The `0.1.0-dev` slice now provides the unified desktop and CLI shell, private local project create/open workflow, immutable Run storage, shared `HMS_RESULT_ENVELOPE_V1`, selectable Rune Workbench, GP29 execution, corpus verification handoff, one bounded declared GP29 batch experiment, explicit JSON export, history inspection, a metadata-only 75-page LP Atlas, and the signed Expedition client. The Expedition path remains disabled unless the bundled campaign manifest is `OPEN` and contains a complete approved HTTPS endpoint and Ed25519 verification identity. It never stores the submitted answer; only a client-validated receipt and submission hash enter private history. It does not copy corpus images into projects.
-
-Automated Windows development-package qualification now covers deterministic rebuilds, internal checksums, packaged GUI/CLI self-tests, project creation, saved calculation, result listing/export, the bundled 75-file identity manifest, and fail-closed Expedition behavior. Still required before release: improve project settings and recovery behavior, complete the privacy review and clean-environment human UAT, and approve the exact package. A live Expedition path additionally requires a separately deployed and qualified service plus an `OPEN` campaign manifest. Annotations, Regions, page rendering, general Experiment Builder, Auto Explore, AEGIS, sockets, accounts, and hosted synchronization remain later increments.
+Automated tests and packaged self-tests pass for the current source. The final candidate must now receive a deterministic Windows rebuild, extracted-package qualification, privacy inspection, Defender scan, human visual UAT, and exact-checksum owner approval. Expedition remains unavailable until its separately qualified HTTPS service and an approved `OPEN` campaign manifest exist.
 
 Developer start:
 
@@ -51,3 +35,5 @@ python scripts/endeavour_lite_app.py --self-test
 python scripts/endeavour_lite.py --help
 python scripts/build_endeavour_lite_windows.py
 ```
+
+Auto Explore, automatic solving, sockets, accounts, hosted synchronization, plugins, and contextual AEGIS are later increments, not hidden v1 features.

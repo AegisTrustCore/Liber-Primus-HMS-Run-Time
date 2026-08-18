@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schemas/release-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "release_id": "HMS-Endeavour-Runtime-v1.0.0-rc.1",
+  "release_type": "SOFTWARE",
+  "candidate_commit_sha": "b44a0886c20d4976eb43689c839732a6c0b3bb33",
+  "intended_tag": "HMS-Endeavour-Runtime-v1.0.0-rc.1",
+  "environment_id": "ENV-0012",
+  "release_notes": "releases/HMS-Endeavour-Runtime-v1.0.0-rc.1.md",
+  "artifacts": [
+    {"name":"hms_tools/project.py","sha256":"21fa96ea8773cb7bdcea3e9f0c3a526213ae0dbf924c6330baff003a81d97aba"},
+    {"name":"hms_tools/runtime.py","sha256":"0e38e6d8b7a599a651cf461918e52bfa328a104a234434ca757a28df2f42df44"},
+    {"name":"hms_tools/gp29.py","sha256":"2ebbf1a132e4f169c7f9a7701043a3c2d4ce9bb4dba11472ab88a59f9c7c3c87"},
+    {"name":"scripts/endeavour_lite.py","sha256":"23a37ab56fedc157414a3fbfcc8769255bba9374ea78e7e460dd99bdabb03036"},
+    {"name":"scripts/endeavour_lite_app.py","sha256":"f142436abc1145898e2b036382d91b4e2e5b058b771e7f0bb365307575665db2"},
+    {"name":"scripts/build_endeavour_lite_windows.py","sha256":"3349d51e91be42bbfe06e33c8181762f26deb93309439a782a3577b9e5c6d53d"},
+    {"name":"corpus/liber-primus/manifests/LP-75-IMAGES-v1.0.0.json","sha256":"76d67e34f04b0125ad9b2893cd68b11510bb4e7e37ec2bb1849760e487a31978"},
+    {"name":"requirements-build.txt","sha256":"bf1abe2ece931e3bf2c4698e45dd6cc5279bb4a918cd676a3794d6b645ec6307"},
+    {"name":"requirements-runtime.txt","sha256":"7c1e7ae1d6bc48f63def69b4bee12086d0508c04d3a248e64f0a807e442b7ef9"},
+    {"name":"docs/tooling/ENDEAVOUR_LITE.md","sha256":"57c01444a9194acdf6241684169df5958d53271f802a43283ec66f20c9afc8bf"},
+    {"name":"docs/tooling/LIBER_RUNTIME.md","sha256":"db77c51b59f3441ae5bd8b931db4b6fbcec61c35e4862d42906c79c81f2fba3b"},
+    {"name":"docs/tooling/RUNTIME_V1_UAT.md","sha256":"a8ec5dacd3bed518f738ee8bee0660ec7097e531699be09c84f72177f0dc28e6"},
+    {"name":"releases/HMS-Endeavour-Runtime-v1.0.0-rc.1.md","sha256":"6c99def8da931306e38a9b9a98f619004d7ec12b44b82bcf2aa13d53971ae020"},
+    {"name":"tests/test_project_store.py","sha256":"4f0995b04c44b57218a0476e3ec638baddf1e63646f738bd32b210c205fa472a"},
+    {"name":"tests/test_endeavour_lite_package.py","sha256":"8115ca02586fbf97825b72affbdbb4615fae7bcf5e65751e9103d48f1d09d994"},
+    {"name":"tests/test_gp29_runtime.py","sha256":"acec5f9f10ff2bee5ca1d53d75487fe8c3c3cba293ea02771807cae2b27d10d8"},
+    {"name":"HMS-Endeavour-Runtime-v1.0.0-rc.1-Windows-x64-portable.zip","sha256":"b6583c34a56aad63b4ee8cc88ca05890844cdabebb62e3e59a349414973c71cb"}
+  ]
+}

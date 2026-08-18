@@ -5,10 +5,11 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 from hms_tools.project import ProjectError, ProjectStore, create_result_envelope, validate_result_envelope
-from hms_tools.runtime import create_job, execute_job
+from hms_tools.runtime import create_job, create_result_comparison_job, execute_job
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,7 +21,7 @@ class ProjectStoreTests(unittest.TestCase):
             root = Path(directory) / "project"
             store = ProjectStore.create(root, "LP Study", created_at="2026-08-14T00:00:00Z", manifest_ref="LP-75-IMAGES-v1.0.0.json", manifest_sha256="0" * 64)
             self.assertEqual(ProjectStore.open(root).project, store.project)
-            self.assertEqual({path.name for path in root.iterdir()}, {"project.json","settings.json","index.json","runs","results","exports","notes"})
+            self.assertEqual({path.name for path in root.iterdir()}, {"project.json","settings.json","index.json","runs","results","objects","exports"})
             self.assertFalse(any(path.suffix.lower() in {".jpg",".png"} for path in root.rglob("*")))
 
     def test_runtime_execution_is_saved_as_shared_envelope(self):
@@ -74,6 +75,41 @@ class ProjectStoreTests(unittest.TestCase):
             (root / "existing.txt").write_text("owned", encoding="utf-8")
             with self.assertRaisesRegex(ProjectError, "empty"):
                 ProjectStore.create(root, "Unsafe")
+
+    def test_research_objects_are_immutable_indexed_and_audited(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = ProjectStore.create(Path(directory) / "project", "Atlas", created_at="2026-08-15T00:00:00Z")
+            value = store.save_research_object("REGION", "Page 32 heading", {"x":0.1,"y":0.2,"width":0.3,"height":0.4}, page_refs=["32.jpg"])
+            self.assertEqual(store.list_research_objects(), [value])
+            self.assertEqual(store.rebuild_index()["objects"], [value["object_id"]])
+            self.assertEqual(store.audit()["status"], "PASS")
+            path = store.root / "objects" / f"{value['object_id']}.json"
+            changed = json.loads(path.read_text(encoding="utf-8")); changed["payload"]["x"] = 0.9
+            path.write_text(json.dumps(changed), encoding="utf-8")
+            self.assertEqual(store.audit()["status"], "FAIL")
+
+    def test_safe_backup_strips_local_path_and_excludes_corpus_and_exports(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory); corpus = base / "corpus"; corpus.mkdir(); (corpus / "secret.jpg").write_bytes(b"image")
+            store = ProjectStore.create(base / "project", "Backup", created_at="2026-08-15T00:00:00Z")
+            store.set_local_corpus_root(corpus)
+            (store.root / "exports" / "private.json").write_text("private", encoding="utf-8")
+            output = store.create_backup(base / "backup.zip")
+            with zipfile.ZipFile(output) as archive:
+                names = archive.namelist(); rendered = b"".join(archive.read(name) for name in names)
+            self.assertNotIn("secret.jpg", names); self.assertNotIn("exports/private.json", names)
+            self.assertNotIn(str(corpus).encode(), rendered)
+            self.assertIn("SHA256SUMS", names)
+
+    def test_result_comparison_is_saved_as_structural_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = ProjectStore.create(Path(directory) / "project", "Compare", created_at="2026-08-15T00:00:00Z")
+            first_job = create_job("A", "letters"); first = store.save_execution(first_job, execute_job(first_job), instrument_id="gp29", instrument_version="1")
+            second_job = create_job("B", "letters"); second = store.save_execution(second_job, execute_job(second_job), instrument_id="gp29", instrument_version="1")
+            compare_job = create_result_comparison_job(first, second)
+            compared = store.save_execution(compare_job, execute_job(compare_job), instrument_id="result-comparator", instrument_version="1")
+            self.assertEqual(compared["evidence_label"], "STRUCTURAL")
+            self.assertIn("payload", compared["payload"]["different_fields"])
 
     def test_cli_project_gp29_and_list_workflow(self):
         with tempfile.TemporaryDirectory() as directory:

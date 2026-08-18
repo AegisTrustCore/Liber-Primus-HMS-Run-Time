@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schemas/environment-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "id": "ENV-0012",
+  "hms_version": "HMS Endeavour Runtime Environment 1.0.0-rc.1",
+  "engine": "CPython 3.12.10 core; PyInstaller 6.22.0 Windows bundler; Pillow 12.2.0 image engine",
+  "operating_system": "Windows 10 Pro 22H2 x64 authoritative package build and local qualification; independent qualification configured on GitHub-hosted Windows runners",
+  "architecture": "Windows x64 standalone executables; architecture-independent Python source",
+  "dependencies": [
+    {"name":"requirements-build.txt","version":"pinned build set including PyInstaller 6.22.0","hash":"sha256:fa8f0ee072660141284809a63f675d19d1dcc249d9f409b5ebd2ed2e67324fd5"},
+    {"name":"requirements-runtime.txt","version":"pinned runtime set including Pillow 12.2.0","hash":"sha256:7c1e7ae1d6bc48f63def69b4bee12086d0508c04d3a248e64f0a807e442b7ef9"}
+  ],
+  "encoding": "UTF-8 JSON; relative POSIX corpus manifest paths; local private carrier paths",
+  "alphabet_mapping": "Gematria Primus 29-rune table implemented by GP29 0.1.1",
+  "page_numbering": "Canonical identity manifest declares 00.jpg through 74.jpg; page images are not bundled",
+  "corpus_manifest_id": "LP-75-IMAGES-v1.0.0",
+  "random_seed": null,
+  "container_or_lock_hash": "sha256:7c1e7ae1d6bc48f63def69b4bee12086d0508c04d3a248e64f0a807e442b7ef9"
+}

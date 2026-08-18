@@ -205,7 +205,7 @@ jobs:
         shell: pwsh
         run: |
           python scripts/build_endeavour_lite_windows.py
-          $zip = 'dist/HMS-Endeavour-Lite-v0.1.0-dev-Windows-x64-portable.zip'
+          $zip = 'dist/HMS-Endeavour-Runtime-v1.0.0-rc.1-Windows-x64-portable.zip'
           $first = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
           python scripts/build_endeavour_lite_windows.py
           $second = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLower()
@@ -214,10 +214,12 @@ jobs:
       - name: Qualify exact packaged workstation
         shell: pwsh
         run: |
-          $zip = Resolve-Path 'dist/HMS-Endeavour-Lite-v0.1.0-dev-Windows-x64-portable.zip'
-          $qual = Join-Path $env:RUNNER_TEMP 'endeavour-lite-qualification'
-          $project = Join-Path $env:RUNNER_TEMP 'endeavour-lite-project'
-          $export = Join-Path $env:RUNNER_TEMP 'endeavour-lite-export.json'
+          $zip = Resolve-Path 'dist/HMS-Endeavour-Runtime-v1.0.0-rc.1-Windows-x64-portable.zip'
+          $qual = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-qualification'
+          $project = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-project'
+          $export = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-export.json'
+          $objectExport = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-object.json'
+          $backup = Join-Path $env:RUNNER_TEMP 'endeavour-runtime-backup.zip'
           Expand-Archive -LiteralPath $zip -DestinationPath $qual
           Push-Location $qual
           Get-Content SHA256SUMS | ForEach-Object {
@@ -226,29 +228,40 @@ jobs:
             if ($member -ne $parts[0]) { throw "Internal checksum mismatch: $($parts[1])" }
           }
           Pop-Location
-          & (Join-Path $qual 'HMS-Endeavour-Lite-CLI.exe') self-test
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') self-test
           if ($LASTEXITCODE -ne 0) { throw 'Packaged CLI self-test failed' }
-          $gui = Start-Process -FilePath (Join-Path $qual 'HMS-Endeavour-Lite.exe') -ArgumentList '--self-test' -Wait -PassThru
+          $gui = Start-Process -FilePath (Join-Path $qual 'HMS-Endeavour-Runtime.exe') -ArgumentList '--self-test' -Wait -PassThru
           if ($gui.ExitCode -ne 0) { throw 'Packaged GUI self-test failed' }
-          & (Join-Path $qual 'HMS-Endeavour-Lite-CLI.exe') create $project --name 'CI Qualification'
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') create $project --name 'CI Qualification'
           if ($LASTEXITCODE -ne 0) { throw 'Packaged project creation failed' }
-          & (Join-Path $qual 'HMS-Endeavour-Lite-CLI.exe') gp29 $project DIVINITY
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') gp29 $project DIVINITY
           if ($LASTEXITCODE -ne 0) { throw 'Packaged GP29 workflow failed' }
-          & (Join-Path $qual 'HMS-Endeavour-Lite-CLI.exe') experiment $project --variant A --variant B --variant AB --hypothesis 'One declared variant has GP sum 61.' --target 61
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') experiment $project --variant A --variant B --variant AB --hypothesis 'One declared variant has GP sum 61.' --target 61
           if ($LASTEXITCODE -ne 0) { throw 'Packaged bounded experiment failed' }
-          $results = & (Join-Path $qual 'HMS-Endeavour-Lite-CLI.exe') list $project | ConvertFrom-Json
+          $results = & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') list $project | ConvertFrom-Json
           if ($results.Count -ne 2) { throw 'Packaged history did not contain both Results' }
-          & (Join-Path $qual 'HMS-Endeavour-Lite-CLI.exe') export $project $results[0].result_id $export
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') export $project $results[0].result_id $export
           if ($LASTEXITCODE -ne 0 -or -not (Test-Path $export)) { throw 'Packaged Result export failed' }
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') note $project 'CI note' 'Bounded packaged observation' --page '32.jpg'
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') region $project '32.jpg' 'Full page' --x 0 --y 0 --width 1 --height 1
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') pageset $project 'CI pages' '32.jpg' '72.jpg' '73.jpg'
+          $objects = & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') objects $project | ConvertFrom-Json
+          if ($objects.Count -ne 3) { throw 'Packaged research-object history is incomplete' }
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') object-export $project $objects[0].object_id $objectExport
+          if ($LASTEXITCODE -ne 0 -or -not (Test-Path $objectExport)) { throw 'Packaged research-object export failed' }
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') audit $project
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged project audit failed' }
+          & (Join-Path $qual 'HMS-Endeavour-Runtime-CLI.exe') backup $project $backup
+          if ($LASTEXITCODE -ne 0 -or -not (Test-Path $backup)) { throw 'Packaged safe backup failed' }
           $canonical = Get-Content (Join-Path $qual 'canonical/LP-75-IMAGES-v1.0.0.json') | ConvertFrom-Json
           if ($canonical.files.Count -ne 75) { throw 'Bundled canonical corpus identity is wrong' }
           $manifest = Get-Content (Join-Path $qual 'manifest.json') | ConvertFrom-Json
-          if ($manifest.package_state -ne 'DEVELOPMENT_NOT_FOR_RELEASE' -or $manifest.network_access -ne $false -or $manifest.telemetry -ne $false -or $manifest.expedition_campaign -ne 'CLOSED') { throw 'Development boundary is wrong' }
-      - name: Retain development package for review only
+          if ($manifest.package_state -ne 'RC_NOT_FOR_PUBLIC_RELEASE' -or $manifest.status -ne 'RELEASE_CANDIDATE' -or $manifest.network_access -ne $false -or $manifest.telemetry -ne $false -or $manifest.expedition_campaign -ne 'CLOSED') { throw 'Release-candidate boundary is wrong' }
+      - name: Retain release-candidate package for review only
         uses: actions/upload-artifact@v7
         with:
-          name: endeavour-lite-windows-development-not-for-release
-          path: dist/HMS-Endeavour-Lite-v0.1.0-dev-Windows-x64-portable.zip
+          name: endeavour-runtime-v1-windows-rc-not-for-release
+          path: dist/HMS-Endeavour-Runtime-v1.0.0-rc.1-Windows-x64-portable.zip
           if-no-files-found: error
           retention-days: 7
 
