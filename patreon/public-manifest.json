@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/patreon-public-manifest.schema.json",
   "schema_version": "1.0.0",
-  "last_reviewed": "2026-08-15",
+  "last_reviewed": "2026-08-20",
   "posts": [
     {"id":"PUBLIC-000","title":"Welcome To The Crew!","audience":"PUBLIC","material_type":"COMMUNITY","status":"CORRECTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/welcome-to-crew-166535096"},
     {"id":"PUBLIC-001","title":"The HMS Public Evidence Layer","audience":"PUBLIC","material_type":"COMMUNITY","status":"CORRECTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/hms-public-layer-166540390"},
@@ -12,11 +12,15 @@
     {"id":"PUBLIC-006","title":"HMS STATUS 002 — The Public Deck Is Open","audience":"PUBLIC","material_type":"COMMUNITY","status":"POSTED","related_instrument":null,"published_at":"2026-08-15","url":"https://www.patreon.com/AegisTrustCore/posts/hms-status-002-166729647"},
     {"id":"PILGRIM-001","title":"Enter the Expedition — Pilgrim Briefing 001","audience":"PILGRIM","material_type":"DISPATCH","status":"POSTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/enter-expedition-166540431"},
     {"id":"PILGRIM-005","title":"How to Read a Closed Route","audience":"PILGRIM","material_type":"DISPATCH","status":"POSTED","related_instrument":null,"published_at":"2026-08-13","url":"https://www.patreon.com/AegisTrustCore/posts/pilgrim-005-how-166586517"},
+    {"id":"PILGRIM-006","title":"Month One, Signal One: Read the Chain","audience":"PILGRIM","material_type":"DISPATCH","status":"POSTED","related_instrument":null,"published_at":"2026-08-20","url":"https://www.patreon.com/AegisTrustCore/posts/pilgrim-month-166972012"},
     {"id":"NAVIGATOR-001","title":"The First Research Queue — Navigator 001","audience":"NAVIGATOR","material_type":"RESEARCH_PREVIEW","status":"POSTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/first-research-166540488"},
     {"id":"NAVIGATOR-005","title":"Compare the Three Negative Results","audience":"NAVIGATOR","material_type":"RESEARCH_PREVIEW","status":"POSTED","related_instrument":null,"published_at":"2026-08-13","url":"https://www.patreon.com/AegisTrustCore/posts/navigator-005-166586586"},
+    {"id":"NAVIGATOR-006","title":"Month One, Briefing One: Three Evidence States","audience":"NAVIGATOR","material_type":"RESEARCH_PREVIEW","status":"POSTED","related_instrument":"endeavour-runtime-member","published_at":"2026-08-20","url":"https://www.patreon.com/AegisTrustCore/posts/navigator-month-166972061"},
     {"id":"CARTOGRAPHER-001","title":"How the Evidence Ledger Will Work — Cartographer 001","audience":"CARTOGRAPHER","material_type":"RESEARCH_PACKET","status":"POSTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/how-evidence-001-166540550"},
     {"id":"CARTOGRAPHER-005","title":"Reproduce the Closures","audience":"CARTOGRAPHER","material_type":"RESEARCH_PACKET","status":"POSTED","related_instrument":null,"published_at":"2026-08-13","url":"https://www.patreon.com/AegisTrustCore/posts/cartographer-005-166586769"},
+    {"id":"CARTOGRAPHER-006","title":"Month One, Field Packet One: Reproduce the Route","audience":"CARTOGRAPHER","material_type":"RESEARCH_PACKET","status":"POSTED","related_instrument":"endeavour-runtime-member","published_at":"2026-08-20","url":"https://www.patreon.com/AegisTrustCore/posts/cartographer-one-166972096"},
     {"id":"ADMIRAL-001","title":"The Frontier Boundary — Admiral 001","audience":"ADMIRAL","material_type":"FRONTIER_BRIEFING","status":"POSTED","related_instrument":null,"published_at":"2026-08-12","url":"https://www.patreon.com/AegisTrustCore/posts/frontier-admiral-166540610"},
-    {"id":"ADMIRAL-005","title":"Validate the Migration Boundary","audience":"ADMIRAL","material_type":"FRONTIER_BRIEFING","status":"POSTED","related_instrument":null,"published_at":"2026-08-13","url":"https://www.patreon.com/AegisTrustCore/posts/admiral-005-166586875"}
+    {"id":"ADMIRAL-005","title":"Validate the Migration Boundary","audience":"ADMIRAL","material_type":"FRONTIER_BRIEFING","status":"POSTED","related_instrument":null,"published_at":"2026-08-13","url":"https://www.patreon.com/AegisTrustCore/posts/admiral-005-166586875"},
+    {"id":"ADMIRAL-006","title":"Month One, Review Order One: Hold the Runtime Gate","audience":"ADMIRAL","material_type":"FRONTIER_BRIEFING","status":"POSTED","related_instrument":"endeavour-runtime-member","published_at":"2026-08-20","url":"https://www.patreon.com/AegisTrustCore/posts/admiral-month-166972153"}
   ]
 }

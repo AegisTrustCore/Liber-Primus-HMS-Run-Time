@@ -1,6 +1,6 @@
 # Patreon Release Matrix
 
-Last reviewed: 2026-08-17
+Last reviewed: 2026-08-20
 
 Patreon is the member delivery and development-support layer. It points back to GitHub for stable public evidence and provides progressively deeper material only when that material exists and has been approved for the intended audience.
 
@@ -11,10 +11,10 @@ Month-one production is now frozen as four weekly value drops per paid tier. The
 | Audience | Intended member material | Tooling destination | Current delivery state |
 |---|---|---|---|
 | Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch, Signal 3301, HMS Status 001, PUBLIC-004, PUBLIC-005 GP29, and HMS Status 002 live |
-| Pilgrim — Follow | Dispatches, development updates, release alerts, selected previews, early notes, and discussion | Selected entry-level Runtime tools and research utilities when released | Pilgrim Briefing 001 and PILGRIM-005 orientation live; challenge material campaign-gated; tools not available |
-| Navigator — Investigate | Research previews, discussion, and approved datasets or stronger hints during an open campaign | Runtime beta, solver datasets, and advanced GP/Gematria tools when released | Research Queue 001 and NAVIGATOR-005 analysis live; Expedition 001 closed; tools not available |
-| Cartographer — Research | Research briefings and approved campaign packets, worksheets, datasets, and ledgers | Advanced Runtime modules, batch tools, operation-bank explorer, routing tools, and visual-analysis laboratory when released | Evidence Ledger 001 and CARTOGRAPHER-005 reproduction assignment live; tools not available |
-| Admiral — Build and validate | Frontier briefings and approved validation, reproducibility, collaboration, and export packets | Prerelease builds, experimental instruments, beta solvers, expanded compute, API, Plugin SDK, and developer tools when released | Frontier Boundary 001 and ADMIRAL-005 disclosure validation live; developer platform not available |
+| Pilgrim — Follow | Dispatches, development updates, release alerts, selected previews, early notes, and discussion | Selected entry-level Runtime tools and research utilities when released | Month One Signal One and prior Pilgrim orientation live; challenge material campaign-gated; tools not available |
+| Navigator — Investigate | Research previews, discussion, and approved datasets or stronger hints during an open campaign | Runtime beta, solver datasets, and advanced GP/Gematria tools when released | Month One Briefing One and prior Navigator analysis live; Expedition 001 closed; Runtime download not yet available |
+| Cartographer — Research | Research briefings and approved campaign packets, worksheets, datasets, and ledgers | Advanced Runtime modules, batch tools, operation-bank explorer, routing tools, and visual-analysis laboratory when released | Month One Field Packet One and prior reproduction assignment live; Runtime download not yet available |
+| Admiral — Build and validate | Frontier briefings and approved validation, reproducibility, collaboration, and export packets | Prerelease builds, experimental instruments, beta solvers, expanded compute, API, Plugin SDK, and developer tools when released | Month One Review Order One and prior disclosure validation live; exact Runtime approval remains gated |
 
 ## Truth and access rule
 
@@ -31,7 +31,7 @@ Public and member packages use the same [`RUN → RES → CAP → RSET`](../docs
 
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
 
-As of 2026-08-17, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. The previous Runtime public-release direction is being split into bounded **Endeavour Lite** for GitHub and a separately packaged member **Runtime Environment**. No member Runtime, Hosted Runtime, solver, API, or SDK is downloadable yet. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit; its v0.3 sealed-service/client deployment candidate is built but has no approved host, endpoint, configured public client, or campaign release. Tier materials may be staged, but campaign-specific hints, worksheets, validation, and solution posts remain inactive until opening.
+As of 2026-08-20, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. The bounded **Endeavour Lite** public candidate and separately packaged member **Runtime Environment** remain under their declared human-UAT and approval gates. No member Runtime, Hosted Runtime, solver, API, or SDK is downloadable yet. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit; its v0.3 sealed-service/client deployment candidate is built but has no approved host, endpoint, configured public client, or campaign release. Month One Week One material is live at every paid tier, while campaign-specific hints, validation, and solution posts remain inactive until opening.
 
 ## Expedition release ladder
 
