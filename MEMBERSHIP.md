@@ -60,6 +60,19 @@ Vault access is never automatic.
 
 ## Release principle
 
+## First-month delivery commitment
+
+The first month is organized as four weekly releases rather than one vague promise:
+
+| Tier | Concrete month-one value |
+|---|---|
+| Pilgrim | Four guided dispatches: public-deck orientation, 75-page reading route, Expedition orientation when open, and a month-end ship’s log |
+| Navigator | Four analytical labs: evidence classification, page-provenance comparison, stronger campaign analysis or a synthetic substitute, and a bounded-negative research queue |
+| Cartographer | Four reusable research packets: reproduction ledger, manifest audit, Expedition worksheet or methods workbook, and a reproduction debrief template |
+| Admiral | Four validation packets: release-candidate UAT, independent package qualification, Expedition privacy/service review when deployable, and a month-end build decision ledger |
+
+If Expedition 001 remains closed, its week becomes a synthetic methods lab; Patreon will not imply that a campaign benefit exists when its release gate has not passed. Downloadable member builds require the same version, checksum, limitations, malware scan, and approval discipline as public tools.
+
 HMS Endeavour is being built in public and released progressively. GitHub will continue to grow with free tools, documentation, public research, verification systems, and stable public releases. Patreon members receive progressively deeper access to the HMS Research Station, datasets, research builds, and advanced tools as they are completed and validated.
 
 Not every HMS working file, dataset, tool, or research candidate will be released publicly. Approved public truth claims are not permanently withheld to manufacture scarcity, and a result does not become more true because it appears in a higher tier.

@@ -1,6 +1,6 @@
 # Target Observer End-to-End Workflow
 
-The free Observer workflow is deliberately narrow. Its evidence and identity foundation is public now; its ordinary-user executable chain is not yet complete.
+The free Observer workflow is deliberately complete but bounded. It verifies and explores public material; it does not include the full member Runtime research environment.
 
 ```text
 Import or identify public material
@@ -17,11 +17,11 @@ Import or identify public material
 - The `v0.1.0` foundation supplies evidence, provenance, release, and identity contracts.
 - Public Runs, Results, Capsules, and portable evidence packages demonstrate the record model.
 - The 75-page working-corpus map supplies navigation and source-verification guidance.
-- GP29 and the Expedition verifier are usable as developer source by users with the stated Python environment.
+- GP29 is an approved public download. Corpus Verifier, Endeavour Lite, and the Expedition verifier are moving through separate launch gates.
 
 ## What remains
 
-GP29 v0.1.1 is now the approved ordinary-user download. The broader customer-ready chain remains incomplete until the Corpus Manifest Verifier and Expedition Verifier pass their own release gates. Public source does not substitute for an approved ordinary-user download.
+GP29 v0.1.1 is the approved ordinary-user download. The broader customer-ready chain remains incomplete until Corpus Verifier, Endeavour Lite, and Expedition Verifier pass their own release gates. Advanced Runtime annotation, translation, saved research, integration, and hosted capability are member products rather than Observer entitlements. Public source does not substitute for an approved ordinary-user download.
 
 Every public result page uses the same approachable layer:
 

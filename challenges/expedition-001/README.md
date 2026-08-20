@@ -2,6 +2,8 @@
 
 Status: **PRACTICE PREVIEW — CAMPAIGN CLOSED**
 
+Launch position: **included in the HMS Endeavour launch route**. See the [opening gate and tier-safe release ladder](LAUNCH.md).
+
 Difficulty: **Deckhand / beginner**
 
 Access: **Observer / free GitHub**

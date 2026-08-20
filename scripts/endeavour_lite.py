@@ -35,7 +35,7 @@ def emit(value: object) -> None:
 def main(argv: list[str] | None = None) -> int:
     configure_output()
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--version", action="version", version=f"HMS Endeavour Runtime {VERSION}")
+    parser.add_argument("--version", action="version", version=f"HMS Endeavour Lite {VERSION}")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("self-test", help="Run the packaged project and GP29 control")
     create = commands.add_parser("create", help="Create a local project in an empty folder")
@@ -79,7 +79,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         if args.command == "self-test":
-            result = {"product":"HMS Endeavour Runtime","version":VERSION,"self_test":"PASS" if packaged_self_test() else "FAIL"}; emit(result); return 0 if result["self_test"] == "PASS" else 1
+            result = {"product":"HMS Endeavour Lite","version":VERSION,"self_test":"PASS" if packaged_self_test() else "FAIL"}; emit(result); return 0 if result["self_test"] == "PASS" else 1
         if args.command == "create":
             emit(ProjectStore.create(args.root, args.name).project); return 0
         store = ProjectStore.open(args.root)

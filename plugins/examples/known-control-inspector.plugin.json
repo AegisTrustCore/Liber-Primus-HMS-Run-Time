@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schemas/hms-plugin-manifest.schema.json",
+  "schema_version": "0.1.0-dev",
+  "plugin_id": "known-control-inspector",
+  "name": "Known Control Inspector",
+  "version": "0.1.0-dev",
+  "publisher": "Aegis Trust Core",
+  "runtime_compatibility": ">=1.1.0-dev,<2.0.0",
+  "authority_class": "REFERENCE",
+  "permissions": ["page.read", "object.read", "result.read"],
+  "inputs": ["HMS_RESEARCH_OBJECT_V1", "HMS_RESULT_ENVELOPE_V1"],
+  "outputs": ["HMS_RESULT_ENVELOPE_V1"],
+  "entry_point": "known_control_inspector:inspect",
+  "network_domains": [],
+  "limitations": [
+    "Design example only; no executable plugin is distributed.",
+    "A known-control comparison cannot establish new plaintext."
+  ]
+}

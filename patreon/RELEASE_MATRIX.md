@@ -6,6 +6,8 @@ Patreon is the member delivery and development-support layer. It points back to 
 
 Current Patreon state: **PUBLISHED**. The creator page and first post round are live; no table entry means a listed tool exists unless its instrument status says so.
 
+Month-one production is now frozen as four weekly value drops per paid tier. The full post bodies, worksheets, validation packets, and private download locations remain outside this public repository. Public metadata may record a transmission only after it is actually posted.
+
 | Audience | Intended member material | Tooling destination | Current delivery state |
 |---|---|---|---|
 | Public visitor | Project orientation, public posts, release notices, links to GitHub evidence | GitHub / Observer tools | Public launch, Signal 3301, HMS Status 001, PUBLIC-004, PUBLIC-005 GP29, and HMS Status 002 live |
@@ -29,7 +31,7 @@ Public and member packages use the same [`RUN → RES → CAP → RSET`](../docs
 
 The [instrument registry](../instruments/README.md) overrides marketing copy whenever availability is unclear.
 
-As of 2026-08-17, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. Corpus Manifest Verifier 0.1.0-rc.3 and HMS Endeavour Runtime Environment 1.0.0-rc.1 are pending public candidates, not downloads; Patreon announcements must remain drafts until their exact GitHub releases are approved. No Hosted Liber Runtime build, solver package, API, or SDK is downloadable. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit; its v0.3 sealed-service/client deployment candidate is built but has no approved host, endpoint, configured public client, or campaign release. No tiered hint, worksheet, validation, or solution release is live.
+As of 2026-08-17, GP29 v0.1.1 is a released free public tool whose canonical download is the official GitHub release. Patreon posts link to that artifact and do not create a competing package source. The previous Runtime public-release direction is being split into bounded **Endeavour Lite** for GitHub and a separately packaged member **Runtime Environment**. No member Runtime, Hosted Runtime, solver, API, or SDK is downloadable yet. Expedition 001 remains closed: its offline candidate was rejected by solution-leak audit; its v0.3 sealed-service/client deployment candidate is built but has no approved host, endpoint, configured public client, or campaign release. Tier materials may be staged, but campaign-specific hints, worksheets, validation, and solution posts remain inactive until opening.
 
 ## Expedition release ladder
 

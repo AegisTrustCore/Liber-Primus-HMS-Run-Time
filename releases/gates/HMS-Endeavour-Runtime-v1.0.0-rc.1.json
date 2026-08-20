@@ -3,7 +3,7 @@
   "schema_version": "1.1.0",
   "release_id": "HMS-Endeavour-Runtime-v1.0.0-rc.1",
   "release_type": "SOFTWARE",
-  "status": "PENDING",
+  "status": "SUPERSEDED",
   "classification": "PUBLIC",
   "release_subject": {
     "schema_version": "1.0.0",
@@ -44,7 +44,7 @@
     "The embedded Atlas displays a privately linked carrier; the release package contains the canonical identity manifest but no Liber Primus page images.",
     "Microsoft Defender reported no threats for the ZIP and both executable files.",
     "The executables are not Authenticode-signed; release notes require checksum verification and disclose possible Windows warnings.",
-    "The gate remains pending until clean ordinary-user visual UAT at 100% and 150% scaling and explicit owner approval.",
+    "The public-release direction was superseded before publication: GitHub will receive a bounded Endeavour Lite package, while the complete Runtime Environment moves to private member-production staging.",
     "GP29 and other numerical output do not establish a plaintext, translation, route, or Liber Primus solution."
   ]
 }
