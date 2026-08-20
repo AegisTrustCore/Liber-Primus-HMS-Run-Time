@@ -1,143 +1,89 @@
 # HMS Endeavour — Liber Primus Research Expedition
 
-**Powered and served by Aegis Trust Core.** HMS Endeavour is the public vessel: evidence on deck, reproducible instruments in the workshop, and a governed route toward deeper member research environments.
+**Powered and served by Aegis Trust Core.** This repository is the public evidence, verification, puzzle, and approved-tooling layer for independent *Liber Primus* research.
 
-> **HMS Endeavour v0.1.0 is the released public research foundation.** This repository is the evidence, verification, puzzle, and public tooling layer for our independent *Liber Primus* research. It is not a claim that the full corpus has been solved.
+> HMS Endeavour does **not** claim that the complete Liber Primus has been solved. Current HMS recoveries of previously unknown Liber Primus plaintext: **0**.
 
-> **Independent research:** HMS Endeavour is not Cicada 3301, has no affiliation with or endorsement from Cicada 3301, and does not possess Cicada 3301's private signing key. See [Cicada 3301 and the historical OpenPGP key](CICADA_3301.md).
+> HMS Endeavour is not Cicada 3301, is not endorsed by Cicada 3301, and does not possess its private signing authority. Historical keys are evidence to verify, not authority HMS can inherit. Read [Cicada 3301, Liber Primus, and HMS Endeavour](CICADA_3301.md).
 
-## Choose your starting deck
+## Begin here
 
-| Route | Best for | Enter here |
+| Your objective | Starting point | Access |
 |---|---|---|
-| **Explore the 75 pages** | Readers who want the corpus map, provenance, and page status | [Open the Liber Primus atlas](corpus/liber-primus/START-HERE.md) |
-| **Use a public instrument** | Researchers who want an approved downloadable tool | [Public release catalog](PUBLIC_RELEASES.md) |
-| **Reproduce the evidence** | Reviewers who want Runs, Results, controls, and checksums | [Research Archive](research/README.md) |
-| **Enter the Expedition** | New participants learning the HMS evidence method | [Expedition 001](challenges/expedition-001/README.md) |
-| **Join the crew** | Supporters seeking guided research, packets, and member builds | [Membership and tier boundaries](MEMBERSHIP.md) |
+| Explore the working 75-page corpus | [Liber Primus Atlas: Start Here](corpus/liber-primus/START-HERE.md) | Free |
+| Download an approved public tool | [Public Release Catalog](PUBLIC_RELEASES.md) | Free |
+| Inspect or reproduce the evidence | [Research Archive](research/README.md) | Free |
+| Try the public training puzzle | [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md) | Free preview; campaign closed |
+| Understand the claims and evidence states | [Research Methodology](METHODOLOGY.md) | Free |
+| Join the guided research expedition | [Membership and Tier Boundaries](MEMBERSHIP.md) | Patreon |
+| Build, validate, or contribute | [Contributor Route](CONTRIBUTING.md) | Public development |
 
-## Current public releases
+## Public deck status
 
-| Release | What it contains | Access |
+| Area | Current state | Authority |
 |---|---|---|
-| [HMS Endeavour v0.1.0](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0) | Public research foundation, schemas, evidence records, validation source, and provenance tooling | Free / public |
-| [Research Release RR-0002](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/RR-0002) | Five bounded closure and correction packages with a portable evidence archive | Free / public |
-| [Research Release RR-0003](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/RR-0003) | E1477 board-family closure, E156 solved-LP1 segment frames, and E159 terminal known controls | Free / public |
-| [HMS GP29 Calculator v0.1.1](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) | Offline Windows desktop and CLI Gematria Primus calculator | Free / public |
+| Public foundation | **Released — v0.1.0** | [Release](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/v0.1.0) |
+| GP29 Calculator | **Released — v0.1.1** | [Download](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) |
+| Public research | **11 Runs · 11 Results · 4 Capsules** | [Research Index](RESEARCH_INDEX.md) |
+| Research releases | **RR-0002 and RR-0003 released** | [Release Catalog](PUBLIC_RELEASES.md) |
+| Corpus Manifest Verifier | **0.2.0-dev — human UAT required** | [Instrument Registry](instruments/README.md) |
+| HMS Endeavour Lite | **In development — public candidate** | [Product Ladder](docs/HMS_PRODUCT_LADDER.md) |
+| Expedition 001 | **Practice preview — campaign closed** | [Challenge Manifest](challenges/manifest.json) |
+| Member Runtime Environment | **Internal testing — not a GitHub download** | [Membership](MEMBERSHIP.md) |
 
-Only the releases listed above are downloadable customer-facing GitHub releases. Development source may be visible on `main` before a packaged tool is approved for release.
+Only assets attached to an approved GitHub release are customer-facing downloads. Source code, CI artifacts, development ZIPs, and release candidates are not releases.
 
-## Launch queue
-
-| Candidate | What is complete | Final gate |
-|---|---|---|
-| **Corpus Manifest Verifier — next RC** | Canonical identity binding plus an embedded, selectable 75-page visual inspection deck | Rebuild and qualify the nautical UI candidate; exact-package UAT and owner approval |
-| **HMS Endeavour Lite — public launch workstation** | Free GP29, corpus identity, read-only Atlas, and Expedition entry points in one bounded application | Freeze the Lite capability boundary, package it independently, and approve its exact checksum |
-| **Expedition 001** | Public briefing, progressive hints, sealed verifier client, non-root verification service, and campaign materials | Approve a host, secrets, HTTPS endpoint, privacy/abuse audit, configured client, and campaign opening |
-
-The complete HMS Runtime Environment is a separate member research product. GitHub may list its approved capabilities and public contracts, but future advanced builds, annotations, translation workspaces, integrations, and prerelease packages are distributed only through their approved Patreon tiers. Historical development source already published here cannot be made private retroactively and must not be mistaken for a supported member build.
-
-Release-candidate source and CI artifacts are not public downloads. When approved, each public instrument receives one immutable GitHub release, SHA-256, quick start, limitations, and matching Patreon notice.
-
-## Start here
-
-| I want to… | Start with |
-|---|---|
-| Understand the 75-page working corpus | [Liber Primus: Start Here](corpus/liber-primus/START-HERE.md) |
-| See published findings and their evidence | [Explore Results](research/results/README.md) |
-| Reproduce public runs | [Research Archive](research/README.md) |
-| Try the free public puzzle | [Expedition 001: The Evidence Ledger](challenges/expedition-001/README.md) |
-| Check what is released versus planned | [Public Releases](PUBLIC_RELEASES.md) and [Project Status](PROJECT_STATUS.md) |
-| Learn how claims are classified | [Methodology and evidence states](METHODOLOGY.md#evidence-states) |
-
-## Available now
-
-- A complete [75-page working-corpus map](corpus/liber-primus/README.md), page index, timeline, and source-verification path.
-- Structured public Result objects and reproducible Runs, including [RSET-0002](research/runsets/RSET-0002/START-HERE.md) and [RSET-0003](research/runsets/RSET-0003/START-HERE.md).
-- [RSET-0004](research/runsets/RSET-0004/START-HERE.md): three bounded objects spanning a negative route closure, a structural control, and two established terminal plaintext controls.
-- Public audit dossiers for pages 32, 72, and 73. These record bounded observations and controls; they are not presented as new verified plaintext solves.
-- Historical Cicada 3301 OpenPGP provenance material and a local verification path.
-- Public schemas, release gates, record validators, and developer-source utilities.
-- A public synthetic puzzle preview and source verifier for practicing HMS evidence classification.
-- The [HMS GP29 Calculator v0.1.1](https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time/releases/tag/GP29-v0.1.1) offline Windows desktop and CLI package.
-
-The repository currently has **four public GitHub releases**. Its Research Archive contains **11 published Runs, 11 published Results, 4 published Capsules, and zero HMS-verified recoveries of previously unknown Liber Primus plaintext**. Open, negative, control, corrected, and verified states remain visibly separate.
-
-## Public puzzles — Observer access
-
-### Expedition 001: The Evidence Ledger
-
-| Field | Current state |
-|---|---|
-| Access | **Observer — free and public** |
-| Difficulty | Deckhand / beginner |
-| Purpose | Synthetic method training: classify evidence before making a claim |
-| Public material | Briefing, worksheet, hints, and developer-source verifier |
-| Campaign | **Closed** — practice preview only; submissions are not being accepted |
-| Solution | Sealed until the formal campaign closes under the published release process |
-| Packaged download | Not public yet; the Windows candidate still requires its release gate |
-
-[Enter Expedition 001](challenges/expedition-001/README.md) · [Read the public hints](challenges/expedition-001/HINTS.md) · [See all challenges](challenges/README.md)
-
-The puzzle is synthetic and does not conceal an unpublished *Liber Primus* research claim. Its eventual solution remains public rather than becoming a paid answer.
-
-## Public tool status
-
-| Instrument | Status | What a visitor can use today |
-|---|---|---|
-| Public Record Validator | Released | Python developer source in `v0.1.0` |
-| LP Source Audit Inventory | Released | Python developer source in `v0.1.0` |
-| Expedition Verifier | In development | Signed remote client and non-root sealed service candidate; no deployed endpoint or approved customer package |
-| Public GP29 Calculator | **Released** | Downloadable Windows desktop and CLI package with checksums, self-tests, dashboard, alphabet, JSON, and CSV export |
-| Corpus Manifest Verifier | **In development — 0.2.0-dev** | Nautical UI and embedded 75-page viewer; prior rc.3 superseded before publication |
-| HMS Endeavour Lite | **In development** | Bounded public workstation shell; new nautical UI and 75-page viewer are under qualification |
-| HMS Endeavour Runtime Environment | **Member product — internal rebuild** | Advanced annotation, translation, research history, integrations, and tiered builds are not a public GitHub download |
-| Hosted Liber Runtime Beta | Planned | No hosted public service |
-| Advanced instruments | Planned | No solver, batch engine, API/socket layer, or Plugin SDK is available |
-
-The GP29 calculator is a deterministic calculator, **not a solver**. Its exact public artifact and approval are recorded in the [GP29 v0.1.1 release gate](releases/gates/GP29-v0.1.1.json).
-
-See the machine-readable [Product Ladder](products/manifest.json), readable [HMS Product Ladder](docs/HMS_PRODUCT_LADDER.md), [Instrument Manifest](instruments/manifest.json), [Instrument Registry](instruments/README.md), and [Roadmap](ROADMAP.md) for exact delivery modes and boundaries.
+The public archive currently contains **11 published Runs, 11 published Results, 4 published Capsules**, and **zero HMS-verified recoveries of previously unknown Liber Primus plaintext**.
 
 ## Current research position
 
-- Pages 32, 72, and 73 have public audit dossiers and known-control material. Their labels describe the evidence actually established; they do not imply that every interpretation is solved.
-- RSET-0002 publishes bounded historical closures and corrections.
-- RSET-0003 publishes the E1059 ledger verification and a bounded default-key OutGuess branch closure.
-- Promising routes, failed routes, hypotheses, and corrections remain distinguishable in the [Research Index](RESEARCH_INDEX.md).
-- No HMS record currently establishes a newly verified *Liber Primus* plaintext. If that changes, it must pass the same public evidence and release controls.
+- Public dossiers exist for Pages 32, 72, and 73. They contain bounded observations and known controls; their presence does not imply a newly solved page.
+- [RSET-0002](research/runsets/RSET-0002/START-HERE.md), [RSET-0003](research/runsets/RSET-0003/START-HERE.md), and [RSET-0004](research/runsets/RSET-0004/START-HERE.md) publish reproducible controls, corrections, structural results, and bounded route closures.
+- The complete 75-page identity manifest, page map, timeline, and provenance route are public. Page-image carriers are not silently redistributed; tools link to a user's lawful local corpus.
+- Negative, structural, known-control, corrected, open, and verified states remain separate. A readable output is not automatically a verified result.
 
-## What comes next
+Use [Verified Results](VERIFIED_RESULTS.md), [Negative Results](NEGATIVE_RESULTS.md), [Known Controls](KNOWN_CONTROLS.md), and [Open Research](OPEN_RESEARCH.md) for the claim-specific views.
 
-1. Complete exact-package visual UAT and owner approval for the Corpus Manifest Verifier release candidate.
-2. Deploy and privately qualify the sealed Expedition service, then approve the configured customer package before opening a public campaign.
-3. Package and qualify the bounded HMS Endeavour Lite public workstation.
-4. Build the full Runtime Environment behind the private member-production boundary, with visual annotation, translation notes, page workspaces, and explicit tier entitlements.
-5. Build hosted Runtime, Auto Explore, contextual AEGIS, batch, Advanced GP, solver, sockets/API, and the Plugin SDK only after their dependency gates are met.
+## Repository map
 
-The detailed sequence is maintained in [Next Steps](NEXT_STEPS.md).
+| Area | Purpose |
+|---|---|
+| [`corpus/`](corpus/README.md) | Canonical corpus identities, map, timeline, and local verification route |
+| [`pages/`](pages/README.md) | Page-specific public dossiers |
+| [`research/`](research/README.md) | Runs, Results, Capsules, Run Sets, archive index, and reader UI |
+| [`challenges/`](challenges/README.md) | Public Expeditions, hints, manifests, and campaign state |
+| [`instruments/`](instruments/README.md) | Authoritative tool availability and capability registry |
+| [`products/`](products/README.md) | Product ladder and dependency order |
+| [`releases/`](releases/README.md) | Immutable manifests, qualification records, environments, and gates |
+| [`patreon/`](patreon/README.md) | Public metadata for tiered transmissions; no private post bodies |
+| [`docs/`](docs/README.md) | Architecture, standards, UX, distribution, and tooling documentation |
+| [`schemas/`](schemas/README.md) | Machine-readable public contracts |
+| [`hms_tools/`](hms_tools/README.md) | Shared deterministic Python core |
+| [`scripts/`](scripts/README.md) | Validation, build, packaging, audit, and operator entry points |
+| [`deploy/`](deploy/README.md) | Closed-state service deployment material |
+| [`tests/`](tests/README.md) | Unit, integration, package, security, and boundary tests |
 
-## Public, member, and private layers
+The [Documentation Library](docs/README.md) groups the stable root policies without moving their published URLs.
 
-- **Public GitHub:** stable claims, evidence needed to verify them, negative results safe to disclose, corrections, free puzzles, and approved public tools.
-- **Patreon expedition layers:** early commentary, guided walkthroughs, development notes, structured research context, and tier-appropriate participation. Paid access does not buy a “more true” answer.
-- **Private research:** unreviewed branches, sensitive routes, unpublished candidates, credentials, personal data, and material that has not passed its disclosure and release gates.
+## Public, member, and private boundary
 
-See [Membership](MEMBERSHIP.md), the [Patreon release matrix](patreon/RELEASE_MATRIX.md), and [Release Policy](RELEASE_POLICY.md).
+- **GitHub / Observer:** stable claims, reproducing evidence, corrections, public puzzles, schemas, and approved free instruments.
+- **Patreon / Expedition:** tier-appropriate walkthroughs, worksheets, research context, validation participation, and qualified member builds when available.
+- **Private operations:** unpublished candidates, sensitive routes, credentials, personal paths, corpus carriers, and material awaiting disclosure review.
 
-## Standards and verification
+Paid access changes depth and participation—not truth. The full HMS Runtime Environment and future advanced integrations are not distributed through the public GitHub release channel.
 
-- [Object Model](OBJECT_MODEL.md) — permanent IDs and provenance
-- [Methodology](METHODOLOGY.md) — what HMS means by verified
-- [Evidence States](METHODOLOGY.md#evidence-states) — verified, control, open, negative, and corrected
-- [Public Release Gate](PUBLIC_RELEASE_GATE.md) — mandatory human-controlled approval
-- [Signing](SIGNING.md) — tags, hashes, signatures, and project identity
-- [Disclosure Policy](DISCLOSURE_POLICY.md) — handling significant discoveries
-- [Corrections](CORRECTIONS.md) — narrowed, superseded, and withdrawn interpretations
-- [Research Privacy](PRIVACY.md) — private-by-default handling and compute boundaries
+## Release discipline
 
-## Release principle
+Every public claim or tool must bind its source, environment, immutable manifest, checksums, qualification evidence, limitations, and explicit human approval. Start with:
 
-HMS Endeavour publishes methods, evidence, limitations, and reproducible negative results—not just conclusions. A visible branch, source file, or release candidate is not a public product release until its recorded gate is approved.
+- [Project Status](PROJECT_STATUS.md) — current factual snapshot
+- [Public Releases](PUBLIC_RELEASES.md) — approved customer-facing releases
+- [Next Steps](NEXT_STEPS.md) — ordered execution queue
+- [Roadmap](ROADMAP.md) — longer product direction
+- [Release Policy](RELEASE_POLICY.md) and [Public Release Gate](PUBLIC_RELEASE_GATE.md) — mandatory approval controls
+- [Corrections](CORRECTIONS.md), [Privacy](PRIVACY.md), and [Security](SECURITY.md) — safety and accountability
+
+## License
 
 Original project work is licensed under the [Apache License 2.0](LICENSE), subject to the third-party and source-material boundaries in [NOTICE](NOTICE).
